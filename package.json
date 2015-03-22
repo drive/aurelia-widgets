@@ -3,7 +3,11 @@
   "version": "0.1.1",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
-  "main": "dist/system/index.js",
+  "main": "index",
+  "format": "register",
+  "directories": {
+    "lib": "dist/system"
+  },
   "keywords": [
     "Select2",
     "Aurelia",
