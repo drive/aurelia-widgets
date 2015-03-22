@@ -1,9 +1,9 @@
 {
   "name": "aurelia-widgets",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
-  "main": "index.js",
+  "main": "dist/system/index.js",
   "keywords": [
     "Select2",
     "Aurelia",
@@ -38,6 +38,11 @@
     "yargs": "^2.1.1"
   },
   "jspm": {
+    "main": "index",
+    "format": "register",
+    "directories": {
+      "lib": "dist/system"
+    },
     "dependencies": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.4.5",
       "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.2.4",
