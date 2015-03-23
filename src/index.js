@@ -1,2 +1,9 @@
-export {LookupWidget} from './widgets/lookup-widget';
-export {LookupAbstract} from './models/lookup-models';
+export * from './lookup-widget';
+export * from './lookup-models';
+
+import {LookupWidget} from './lookup-widget';
+
+export function install(aurelia)
+{
+	aurelia.withResources(LookupWidget);
+}
