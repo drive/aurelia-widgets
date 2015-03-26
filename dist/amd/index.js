@@ -7,6 +7,6 @@ define(["exports"], function (exports) {
 	});
 
 	function install(aurelia) {
-		aurelia.withResources("./lookup-widget");
+		aurelia.globalizeResources("./lookup-widget");
 	}
 });
