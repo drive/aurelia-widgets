@@ -4,7 +4,7 @@ import select2 from 'select2';
 
 export class LookupWidget {
     static metadata(){ return Behavior
-                .customElement('lookup')
+                .customElement('lookup-widget')
                 .withProperty('interface')
                 .withProperty('title')
                 .withProperty('placeholder')

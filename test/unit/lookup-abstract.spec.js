@@ -1,6 +1,6 @@
-import {HttpStub} from './helpers/httpstub';
-import {EventAggregatorStub} from './helpers/eventaggregatorstub';
-import {LookupAbstract} from '../src/widgets/lookup-models';
+import {HttpStub} from '../helpers/httpstub';
+import {EventAggregatorStub} from '../helpers/eventaggregatorstub';
+import {LookupAbstract} from '../../src/lookup-abstract';
 
 describe('lookup interface', () => {
     var lookupAbstract;
@@ -10,10 +10,8 @@ describe('lookup interface', () => {
     });
     
     it('expect interface to have the following properties and methods', () => {
-        expect(lookupAbstract.value).toBeDefined();
+      
         expect(lookupAbstract.search).toBeDefined();
-        expect(lookupAbstract.label).toBeDefined();
-        expect(lookupAbstract.placeholder).toBeDefined();
         expect(lookupAbstract.setDefaultSelection).toBeDefined();
         expect(lookupAbstract.formatItem).toBeDefined();
         expect(lookupAbstract.formatSelection).toBeDefined();

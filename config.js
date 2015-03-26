@@ -7,8 +7,6 @@ System.config({
   }
 });
 
-
-
 System.config({
   "map": {
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.4.5",

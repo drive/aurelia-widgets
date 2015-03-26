@@ -1,5 +1,5 @@
-import {LookupWidget} from '../../../../src/widgets/lookup/lookup-widget';
-import {LookupAbstract} from '../../../../src/widgets/lookup/lookup-abstract';
+import {LookupWidget} from '../../../../src/lookup-widget';
+import {LookupAbstract} from '../../../../src/lookup-abstract';
 
 describe('lookup widget', () => {
     var lookupWidget;

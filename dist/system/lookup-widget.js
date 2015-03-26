@@ -71,7 +71,7 @@ System.register(["aurelia-framework", "jquery", "select2"], function (_export) {
             }, {
                metadata: {
                   value: function metadata() {
-                     return Behavior.customElement("lookup").withProperty("interface").withProperty("title").withProperty("placeholder").withProperty("value");
+                     return Behavior.customElement("lookup-widget").withProperty("interface").withProperty("title").withProperty("placeholder").withProperty("value");
                   }
                },
                inject: {

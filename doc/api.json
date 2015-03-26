@@ -1,0 +1,1 @@
+{"classes":[{"name":"LookupAbstract","file":"aurelia-widgets/src/lookup-abstract.js","line":1,"description":"Abstract class for lookup widget\nExtend this class with your implementation that consumes your search API","is_constructor":1,"methods":[],"properties":[],"events":[]}],"methods":[],"properties":[],"events":[]}
