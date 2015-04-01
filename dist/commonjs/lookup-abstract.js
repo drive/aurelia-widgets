@@ -30,7 +30,7 @@ var LookupAbstract = exports.LookupAbstract = (function () {
             value: function search(item) {
                 //Override this class with your API to execute the query
                 return new Promise(function (resolve) {
-                    resolve({ items: [{ id: 1234, text: "Test" }] });
+                    resolve({ response: [{ id: 1234, text: "Test" }] });
                 });
             }
         },

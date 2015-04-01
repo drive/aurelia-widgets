@@ -34,8 +34,8 @@ export class LookupWidget {
                formatSelection: self.interface.formatSelection,
                formatResult: self.interface.formatItem,
                query: function(query) {
-                  self.interface.search(query.term).then((response) => {
-                     query.callback({ results: response.items }); 
+                  self.interface.search(query.term).then((result) => {
+                     query.callback({ results: result.response }); 
                   });
                },
                width:'100%' 

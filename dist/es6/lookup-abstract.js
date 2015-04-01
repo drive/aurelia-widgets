@@ -16,7 +16,7 @@ export class LookupAbstract {
     search(item) {
         //Override this class with your API to execute the query
         return new Promise((resolve) => {
-          resolve({ items: [ { id: 1234, text: 'Test' } ] });
+          resolve({ response: [ { id: 1234, text: 'Test' } ] });
         })
     }
     
