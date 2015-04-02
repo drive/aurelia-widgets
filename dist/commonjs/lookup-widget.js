@@ -55,7 +55,7 @@ var LookupWidget = exports.LookupWidget = (function () {
                      return _queryWrapper;
                   })(function (query) {
                      self["interface"].search(query.term).then(function (result) {
-                        query.callback({ results: result.response });
+                        query.callback({ results: result });
                      });
                   }),
                   width: "100%"

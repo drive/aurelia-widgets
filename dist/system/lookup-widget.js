@@ -55,7 +55,7 @@ System.register(["aurelia-framework", "jquery", "select2"], function (_export) {
                               return _queryWrapper;
                            })(function (query) {
                               self["interface"].search(query.term).then(function (result) {
-                                 query.callback({ results: result.response });
+                                 query.callback({ results: result });
                               });
                            }),
                            width: "100%"
