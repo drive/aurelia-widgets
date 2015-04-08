@@ -30,18 +30,18 @@ var LookupAbstract = exports.LookupAbstract = (function () {
             value: function search(item) {
                 //Override this class with your API to execute the query
                 return new Promise(function (resolve) {
-                    resolve({ response: [{ id: 1234, text: "Test" }] });
+                    resolve({ response: [{ code: 1234, description: "Test" }] });
                 });
             }
         },
         formatItem: {
             value: function formatItem(item) {
-                return "<div class=\"select2-user-result\"><strong>" + item.id + "</strong> " + item.text + "</div>";
+                return "<div class=\"select2-user-result\"><strong>" + item.code + "</strong> " + item.description + "</div>";
             }
         },
         formatSelection: {
             value: function formatSelection(item) {
-                return item.id;
+                return item.code;
             }
         }
     });
