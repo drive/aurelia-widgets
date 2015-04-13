@@ -53,11 +53,11 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
           var self = _this;
           _$(_this.element).find('input').select2({
             initSelection: function initSelection(element, callback) {
-              callback(self['interface'].setDefaultSelection());
+              callback(self.controller.setDefaultSelection());
             },
             placeholder: _this.placeholder,
-            formatSelection: self['interface'].formatSelection,
-            formatResult: self['interface'].formatItem,
+            formatSelection: self.controller.formatSelection,
+            formatResult: self.controller.formatItem,
             query: (function (_query) {
               function query(_x) {
                 return _query.apply(this, arguments);
@@ -69,26 +69,33 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
 
               return query;
             })(function (query) {
-              self['interface'].search(query.term).then(function (result) {
+              self.controller.search(query.term).then(function (result) {
                 query.callback({ results: result });
               });
             }),
             width: '100%'
           });
 
-          _$(_this.element).find('input').select2('val', _this.value);
+          _$(_this.element).find('input').select2('val', _this.selectedItem);
           _$(_this.element).find('input').on('change', function () {
-            _this.value = _$(_this.element).find('input').select2('val');
+            _this.selectedItem = _$(_this.element).find('input').select2('val');
           });
         }, 100);
       }
     }], null, _instanceInitializers);
 
     LookupWidget = _aureliaFramework.bindable({
-      name: 'value',
-      attribute: 'value',
+      name: 'selectedItem',
+      attribute: 'selected-item',
       defaultBindingMode: _aureliaFramework.TWO_WAY
     })(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.bindable({
+      name: 'controller',
+      attribute: 'controller',
+      defaultBindingMode: _aureliaFramework.TWO_WAY
+    })(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.customElement('lookup-widget')(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.inject(Element)(LookupWidget) || LookupWidget;
     return LookupWidget;
   })();
 

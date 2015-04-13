@@ -5,13 +5,13 @@ import select2 from 'select2';
 @inject(Element)
 @customElement('lookup-widget')
 @bindable({
-  name:'interface',
-  attribute:'interface',
+  name:'controller',
+  attribute:'controller',
   defaultBindingMode: TWO_WAY
 })
 @bindable({
-  name:'value',
-  attribute:'value',
+  name:'selectedItem',
+  attribute:'selected-item',
   defaultBindingMode: TWO_WAY
 })
 export class LookupWidget {
@@ -32,22 +32,22 @@ export class LookupWidget {
       var self = this;
       $(this.element).find('input').select2({
         initSelection: function(element, callback) {
-          callback(self.interface.setDefaultSelection());
+          callback(self.controller.setDefaultSelection());
         },
         placeholder: this.placeholder,
-        formatSelection: self.interface.formatSelection,
-        formatResult: self.interface.formatItem,
+        formatSelection: self.controller.formatSelection,
+        formatResult: self.controller.formatItem,
         query: function(query) {
-          self.interface.search(query.term).then((result) => {
+          self.controller.search(query.term).then((result) => {
             query.callback({ results: result });
           });
         },
         width:'100%'
       });
 
-      $(this.element).find('input').select2('val', this.value);
+      $(this.element).find('input').select2('val', this.selectedItem);
       $(this.element).find('input').on('change', () => {
-        this.value = $(this.element).find('input').select2('val');
+        this.selectedItem = $(this.element).find('input').select2('val');
       });
     }, 100);
   }   

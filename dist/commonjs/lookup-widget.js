@@ -58,11 +58,11 @@ var LookupWidget = (function () {
         var self = _this;
         _$2['default'](_this.element).find('input').select2({
           initSelection: function initSelection(element, callback) {
-            callback(self['interface'].setDefaultSelection());
+            callback(self.controller.setDefaultSelection());
           },
           placeholder: _this.placeholder,
-          formatSelection: self['interface'].formatSelection,
-          formatResult: self['interface'].formatItem,
+          formatSelection: self.controller.formatSelection,
+          formatResult: self.controller.formatItem,
           query: (function (_query) {
             function query(_x) {
               return _query.apply(this, arguments);
@@ -74,26 +74,33 @@ var LookupWidget = (function () {
 
             return query;
           })(function (query) {
-            self['interface'].search(query.term).then(function (result) {
+            self.controller.search(query.term).then(function (result) {
               query.callback({ results: result });
             });
           }),
           width: '100%'
         });
 
-        _$2['default'](_this.element).find('input').select2('val', _this.value);
+        _$2['default'](_this.element).find('input').select2('val', _this.selectedItem);
         _$2['default'](_this.element).find('input').on('change', function () {
-          _this.value = _$2['default'](_this.element).find('input').select2('val');
+          _this.selectedItem = _$2['default'](_this.element).find('input').select2('val');
         });
       }, 100);
     }
   }], null, _instanceInitializers);
 
   LookupWidget = _inject$bindable$customElement$TWO_WAY.bindable({
-    name: 'value',
-    attribute: 'value',
+    name: 'selectedItem',
+    attribute: 'selected-item',
     defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
   })(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.bindable({
+    name: 'controller',
+    attribute: 'controller',
+    defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
+  })(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.customElement('lookup-widget')(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.inject(Element)(LookupWidget) || LookupWidget;
   return LookupWidget;
 })();
 
