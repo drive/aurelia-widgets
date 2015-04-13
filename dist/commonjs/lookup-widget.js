@@ -1,85 +1,100 @@
-"use strict";
+'use strict';
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (initializers) initializers[key] = descriptor.initializer; } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
+Object.defineProperty(exports, '__esModule', {
+  value: true
 });
 
-var Behavior = require("aurelia-framework").Behavior;
+var _inject$bindable$customElement$TWO_WAY = require('aurelia-framework');
 
-var $ = _interopRequire(require("jquery"));
+var _$ = require('jquery');
 
-var select2 = _interopRequire(require("select2"));
+var _$2 = _interopRequireWildcard(_$);
 
-var LookupWidget = exports.LookupWidget = (function () {
-   function LookupWidget(element) {
-      _classCallCheck(this, LookupWidget);
+var _select2 = require('select2');
 
-      this.element = element;
-   }
+var _select22 = _interopRequireWildcard(_select2);
 
-   _createClass(LookupWidget, {
-      bind: {
-         value: function bind() {
-            this.apply();
-         }
-      },
-      apply: {
-         value: function apply() {
-            var _this = this;
+var LookupWidget = (function () {
+  var _instanceInitializers = {};
 
-            setTimeout(function () {
-               //normally we dont need to do this but the query function on the select2, this becomes the jquery object on the callback
-               var self = _this;
-               $(_this.element).find("input").select2({
-                  initSelection: function initSelection(element, callback) {
-                     callback(self["interface"].setDefaultSelection());
-                  },
-                  placeholder: _this.placeholder,
-                  formatSelection: self["interface"].formatSelection,
-                  formatResult: self["interface"].formatItem,
-                  query: (function (_query) {
-                     var _queryWrapper = function query(_x) {
-                        return _query.apply(this, arguments);
-                     };
+  function LookupWidget(element) {
+    _classCallCheck(this, _LookupWidget);
 
-                     _queryWrapper.toString = function () {
-                        return _query.toString();
-                     };
+    this.title = _instanceInitializers.title.call(this);
+    this.placeholder = _instanceInitializers.placeholder.call(this);
 
-                     return _queryWrapper;
-                  })(function (query) {
-                     self["interface"].search(query.term).then(function (result) {
-                        query.callback({ results: result });
-                     });
-                  }),
-                  width: "100%"
-               });
+    this.element = element;
+  }
 
-               $(_this.element).find("input").select2("val", _this.value);
-               $(_this.element).find("input").on("change", function () {
-                  _this.value = $(_this.element).find("input").select2("val");
-               });
-            }, 100);
-         }
-      }
-   }, {
-      metadata: {
-         value: function metadata() {
-            return Behavior.customElement("lookup-widget").withProperty("interface").withProperty("title").withProperty("placeholder").withProperty("value");
-         }
-      },
-      inject: {
-         value: function inject() {
-            return [Element];
-         }
-      }
-   });
+  var _LookupWidget = LookupWidget;
 
-   return LookupWidget;
+  _createDecoratedClass(_LookupWidget, [{
+    key: 'title',
+    decorators: [_inject$bindable$customElement$TWO_WAY.bindable],
+    initializer: function () {},
+    enumerable: true
+  }, {
+    key: 'placeholder',
+    decorators: [_inject$bindable$customElement$TWO_WAY.bindable],
+    initializer: function () {},
+    enumerable: true
+  }, {
+    key: 'bind',
+    value: function bind() {
+      this.apply();
+    }
+  }, {
+    key: 'apply',
+    value: function apply() {
+      var _this = this;
+
+      setTimeout(function () {
+        var self = _this;
+        _$2['default'](_this.element).find('input').select2({
+          initSelection: function initSelection(element, callback) {
+            callback(self['interface'].setDefaultSelection());
+          },
+          placeholder: _this.placeholder,
+          formatSelection: self['interface'].formatSelection,
+          formatResult: self['interface'].formatItem,
+          query: (function (_query) {
+            function query(_x) {
+              return _query.apply(this, arguments);
+            }
+
+            query.toString = function () {
+              return _query.toString();
+            };
+
+            return query;
+          })(function (query) {
+            self['interface'].search(query.term).then(function (result) {
+              query.callback({ results: result });
+            });
+          }),
+          width: '100%'
+        });
+
+        _$2['default'](_this.element).find('input').select2('val', _this.value);
+        _$2['default'](_this.element).find('input').on('change', function () {
+          _this.value = _$2['default'](_this.element).find('input').select2('val');
+        });
+      }, 100);
+    }
+  }], null, _instanceInitializers);
+
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.bindable({
+    name: 'value',
+    attribute: 'value',
+    defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
+  })(LookupWidget) || LookupWidget;
+  return LookupWidget;
 })();
+
+exports.LookupWidget = LookupWidget;
