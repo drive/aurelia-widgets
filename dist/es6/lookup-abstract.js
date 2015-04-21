@@ -27,4 +27,8 @@ export class LookupAbstract {
     formatSelection(item) {
         return item.code;    
     }
+    
+    id(item) {
+        return item.id;   
+    }
 }

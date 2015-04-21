@@ -34,6 +34,7 @@ export class LookupWidget {
         initSelection: function(element, callback) {
           callback(self.controller.setDefaultSelection());
         },
+        id: self.controller.id,
         placeholder: this.placeholder,
         formatSelection: self.controller.formatSelection,
         formatResult: self.controller.formatItem,

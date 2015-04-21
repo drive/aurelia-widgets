@@ -1,6 +1,6 @@
 <template>
   
-    <label for="lookupField">${title}</label>
-    <input type="text" class="form-control" id="lookupField">
+    <label for="lookupField" class="control-label" show.bind="title.length > 0">${title}</label>
+    <input type="text" id="lookupField">
   
 </template>
