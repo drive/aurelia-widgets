@@ -55,6 +55,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
             initSelection: function initSelection(element, callback) {
               callback(self.controller.setDefaultSelection());
             },
+            id: self.controller.id,
             placeholder: _this.placeholder,
             formatSelection: self.controller.formatSelection,
             formatResult: self.controller.formatItem,

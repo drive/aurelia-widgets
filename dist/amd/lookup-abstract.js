@@ -36,6 +36,11 @@ define(['exports'], function (exports) {
             value: function formatSelection(item) {
                 return item.code;
             }
+        }, {
+            key: 'id',
+            value: function id(item) {
+                return item.id;
+            }
         }]);
 
         return LookupAbstract;

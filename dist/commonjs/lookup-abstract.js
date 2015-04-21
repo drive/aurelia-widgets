@@ -35,6 +35,11 @@ var LookupAbstract = (function () {
         value: function formatSelection(item) {
             return item.code;
         }
+    }, {
+        key: 'id',
+        value: function id(item) {
+            return item.id;
+        }
     }]);
 
     return LookupAbstract;
