@@ -49,39 +49,37 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
       value: function apply() {
         var _this = this;
 
-        setTimeout(function () {
-          var self = _this;
-          _$(_this.element).find('input').select2({
-            initSelection: function initSelection(element, callback) {
-              callback(self.controller.setDefaultSelection());
-            },
-            id: self.controller.id,
-            placeholder: _this.placeholder,
-            formatSelection: self.controller.formatSelection,
-            formatResult: self.controller.formatItem,
-            query: (function (_query) {
-              function query(_x) {
-                return _query.apply(this, arguments);
-              }
+        var self = this;
+        _$(this.element).find('input').select2({
+          initSelection: function initSelection(element, callback) {
+            callback(self.controller.setDefaultSelection());
+          },
+          id: self.controller.id,
+          placeholder: this.placeholder,
+          formatSelection: self.controller.formatSelection,
+          formatResult: self.controller.formatItem,
+          query: (function (_query) {
+            function query(_x) {
+              return _query.apply(this, arguments);
+            }
 
-              query.toString = function () {
-                return _query.toString();
-              };
+            query.toString = function () {
+              return _query.toString();
+            };
 
-              return query;
-            })(function (query) {
-              self.controller.search(query.term).then(function (result) {
-                query.callback({ results: result });
-              });
-            }),
-            width: '100%'
-          });
+            return query;
+          })(function (query) {
+            self.controller.search(query.term).then(function (result) {
+              query.callback({ results: result });
+            });
+          }),
+          width: '100%'
+        });
 
-          _$(_this.element).find('input').select2('val', _this.selectedItem);
-          _$(_this.element).find('input').on('change', function () {
-            _this.selectedItem = _$(_this.element).find('input').select2('val');
-          });
-        }, 100);
+        _$(this.element).find('input').select2('val', this.selectedItem);
+        _$(this.element).find('input').on('change', function () {
+          _this.selectedItem = _$(_this.element).find('input').select2('val');
+        });
       }
     }], null, _instanceInitializers);
 
