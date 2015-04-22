@@ -88,6 +88,13 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
       attribute: 'selected-item',
       defaultBindingMode: _aureliaFramework.TWO_WAY
     })(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.bindable({
+      name: 'controller',
+      attribute: 'controller',
+      defaultBindingMode: _aureliaFramework.TWO_WAY
+    })(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.customElement('lookup-widget')(LookupWidget) || LookupWidget;
+    LookupWidget = _aureliaFramework.inject(Element)(LookupWidget) || LookupWidget;
     return LookupWidget;
   })();
 

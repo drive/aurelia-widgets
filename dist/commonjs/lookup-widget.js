@@ -93,6 +93,13 @@ var LookupWidget = (function () {
     attribute: 'selected-item',
     defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
   })(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.bindable({
+    name: 'controller',
+    attribute: 'controller',
+    defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
+  })(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.customElement('lookup-widget')(LookupWidget) || LookupWidget;
+  LookupWidget = _inject$bindable$customElement$TWO_WAY.inject(Element)(LookupWidget) || LookupWidget;
   return LookupWidget;
 })();
 

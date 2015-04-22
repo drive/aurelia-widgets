@@ -92,6 +92,13 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
           attribute: 'selected-item',
           defaultBindingMode: TWO_WAY
         })(LookupWidget) || LookupWidget;
+        LookupWidget = bindable({
+          name: 'controller',
+          attribute: 'controller',
+          defaultBindingMode: TWO_WAY
+        })(LookupWidget) || LookupWidget;
+        LookupWidget = customElement('lookup-widget')(LookupWidget) || LookupWidget;
+        LookupWidget = inject(Element)(LookupWidget) || LookupWidget;
         return LookupWidget;
       })();
 
