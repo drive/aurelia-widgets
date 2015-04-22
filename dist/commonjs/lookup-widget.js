@@ -54,39 +54,37 @@ var LookupWidget = (function () {
     value: function apply() {
       var _this = this;
 
-      setTimeout(function () {
-        var self = _this;
-        _$2['default'](_this.element).find('input').select2({
-          initSelection: function initSelection(element, callback) {
-            callback(self.controller.setDefaultSelection());
-          },
-          id: self.controller.id,
-          placeholder: _this.placeholder,
-          formatSelection: self.controller.formatSelection,
-          formatResult: self.controller.formatItem,
-          query: (function (_query) {
-            function query(_x) {
-              return _query.apply(this, arguments);
-            }
+      var self = this;
+      _$2['default'](this.element).find('input').select2({
+        initSelection: function initSelection(element, callback) {
+          callback(self.controller.setDefaultSelection());
+        },
+        id: self.controller.id,
+        placeholder: this.placeholder,
+        formatSelection: self.controller.formatSelection,
+        formatResult: self.controller.formatItem,
+        query: (function (_query) {
+          function query(_x) {
+            return _query.apply(this, arguments);
+          }
 
-            query.toString = function () {
-              return _query.toString();
-            };
+          query.toString = function () {
+            return _query.toString();
+          };
 
-            return query;
-          })(function (query) {
-            self.controller.search(query.term).then(function (result) {
-              query.callback({ results: result });
-            });
-          }),
-          width: '100%'
-        });
+          return query;
+        })(function (query) {
+          self.controller.search(query.term).then(function (result) {
+            query.callback({ results: result });
+          });
+        }),
+        width: '100%'
+      });
 
-        _$2['default'](_this.element).find('input').select2('val', _this.selectedItem);
-        _$2['default'](_this.element).find('input').on('change', function () {
-          _this.selectedItem = _$2['default'](_this.element).find('input').select2('val');
-        });
-      }, 100);
+      _$2['default'](this.element).find('input').select2('val', this.selectedItem);
+      _$2['default'](this.element).find('input').on('change', function () {
+        _this.selectedItem = _$2['default'](_this.element).find('input').select2('val');
+      });
     }
   }], null, _instanceInitializers);
 
@@ -95,13 +93,6 @@ var LookupWidget = (function () {
     attribute: 'selected-item',
     defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
   })(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$TWO_WAY.bindable({
-    name: 'controller',
-    attribute: 'controller',
-    defaultBindingMode: _inject$bindable$customElement$TWO_WAY.TWO_WAY
-  })(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$TWO_WAY.customElement('lookup-widget')(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$TWO_WAY.inject(Element)(LookupWidget) || LookupWidget;
   return LookupWidget;
 })();
 
