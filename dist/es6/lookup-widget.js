@@ -1,4 +1,4 @@
-import {inject, bindable, customElement, TWO_WAY} from 'aurelia-framework';
+import {inject, bindable, customElement, bindingMode} from 'aurelia-framework';
 import $ from 'jquery';
 import select2 from 'select2';
 
@@ -7,17 +7,16 @@ import select2 from 'select2';
 @bindable({
   name:'controller',
   attribute:'controller',
-  defaultBindingMode: TWO_WAY
+  defaultBindingMode: bindingMode.twoWay
 })
 @bindable({
   name:'selectedItem',
   attribute:'selected-item',
-  defaultBindingMode: TWO_WAY
+  defaultBindingMode: bindingMode.twoWay
 })
+@bindable('title')
+@bindable('placeholder')
 export class LookupWidget {
-  @bindable title;
-  @bindable placeholder;
-
   constructor(element) {
     this.element = element;
   }
