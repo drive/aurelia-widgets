@@ -35,6 +35,11 @@ var LookupWidget = (function () {
       this.apply();
     }
   }, {
+    key: 'isShowing',
+    get: function () {
+      return this.title.length > 0;
+    }
+  }, {
     key: 'apply',
     value: function apply() {
       var _this = this;
