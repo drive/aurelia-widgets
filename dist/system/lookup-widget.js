@@ -34,6 +34,11 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
             this.apply();
           }
         }, {
+          key: 'isShowing',
+          get: function () {
+            return this.title.length > 0;
+          }
+        }, {
           key: 'apply',
           value: function apply() {
             var _this = this;
