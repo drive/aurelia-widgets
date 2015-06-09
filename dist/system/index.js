@@ -1,7 +1,7 @@
 System.register([], function (_export) {
-	_export('install', install);
+	_export('configure', configure);
 
-	function install(aurelia) {
+	function configure(aurelia) {
 		aurelia.globalizeResources('./lookup-widget');
 	}
 
