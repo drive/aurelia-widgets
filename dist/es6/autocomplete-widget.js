@@ -30,7 +30,6 @@ export class AutoCompleteWidget {
   }
 
   apply() {
-    //normally we dont need to do this but the query function on the select2, this becomes the jquery object on the callback
     $(this.element).find('input').autocomplete({
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this)
