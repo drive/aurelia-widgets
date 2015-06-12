@@ -3,6 +3,7 @@ System.register([], function (_export) {
 
 	function configure(aurelia) {
 		aurelia.globalizeResources('./lookup-widget');
+		aurelia.globalizeResources('./autocomplete-widget');
 	}
 
 	return {

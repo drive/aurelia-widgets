@@ -7,4 +7,5 @@ exports.configure = configure;
 
 function configure(aurelia) {
 	aurelia.globalizeResources('./lookup-widget');
+	aurelia.globalizeResources('./autocomplete-widget');
 }
