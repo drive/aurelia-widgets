@@ -1,0 +1,20 @@
+.autocomplete-selected {
+  background: $dropdown-link-hover-bg;
+  color: $dropdown-link-hover-color;
+}
+
+.autocomplete-suggestion {
+  cursor: pointer;
+  overflow: hidden; // From the jQuery Autocomplete README.
+  padding: 3px 20px; // Same as .dropdown-menu links.
+  white-space: nowrap; // From the jQuery Autocomplete README.
+}
+
+.autocomplete-suggestions {
+  background: $dropdown-bg;
+  border: 1px solid $dropdown-border;
+  border-radius: $border-radius-base;
+  @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+  overflow: auto; // From the jQuery Autocomplete README.
+  padding: 5px 0; // From the .dropdown-menu rule.
+}

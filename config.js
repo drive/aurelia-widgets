@@ -22,6 +22,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.5.6",
     "core-js": "npm:core-js@0.9.15",
     "css": "github:systemjs/plugin-css@0.1.12",
+    "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@1.2.21",
     "jquery": "github:components/jquery@2.1.4",
     "select2": "github:select2/select2@3.5.2",
     "github:aurelia/binding@0.7.1": {
