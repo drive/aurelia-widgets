@@ -1,9 +1,9 @@
-import {inject, bindable, customElement, bindingMode, computedFrom} from 'aurelia-framework';
+import {inject, bindable, customAttribute, bindingMode, computedFrom} from 'aurelia-framework';
 import $ from 'jquery';
 import autocomplete from 'devbridge/jQuery-Autocomplete';
 
 @inject(Element)
-@customElement('autocomplete-widget')
+@customAttribute('autocomplete-widget')
 @bindable({
   name:'controller',
   attribute:'controller',
@@ -14,7 +14,6 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   attribute:'selected-item',
   defaultBindingMode: bindingMode.twoWay
 })
-@bindable('title')
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
@@ -24,13 +23,8 @@ export class AutoCompleteWidget {
     this.apply();
   }
 
-  @computedFrom('title')
-  get isShowing() {
-    return this.title != undefined && this.title.length > 0;
-  }
-
   apply() {
-    $(this.element).find('input').autocomplete({
+    $(this.element).autocomplete({
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this)
     });
