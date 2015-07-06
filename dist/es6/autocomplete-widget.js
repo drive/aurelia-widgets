@@ -23,6 +23,10 @@ export class AutoCompleteWidget {
     this.apply();
   }
 
+  unbind() {
+    $(this.element).autocomplete('dispose');
+  }
+
   apply() {
     $(this.element).autocomplete({
       lookup: this.lookup.bind(this),

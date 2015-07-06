@@ -30,6 +30,11 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
         this.apply();
       }
     }, {
+      key: 'unbind',
+      value: function unbind() {
+        _$(this.element).autocomplete('dispose');
+      }
+    }, {
       key: 'apply',
       value: function apply() {
         _$(this.element).autocomplete({

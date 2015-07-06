@@ -35,6 +35,11 @@ var LookupWidget = (function () {
       this.apply();
     }
   }, {
+    key: 'unbind',
+    value: function unbind() {
+      _$2['default'](this.element).find('input').select2('destroy');
+    }
+  }, {
     key: 'isShowing',
     get: function () {
       return this.title.length > 0;
