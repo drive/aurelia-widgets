@@ -35,6 +35,11 @@ var AutoCompleteWidget = (function () {
       this.apply();
     }
   }, {
+    key: 'unbind',
+    value: function unbind() {
+      _$2['default'](this.element).autocomplete('dispose');
+    }
+  }, {
     key: 'apply',
     value: function apply() {
       _$2['default'](this.element).autocomplete({
