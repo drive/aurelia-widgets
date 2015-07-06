@@ -25,6 +25,10 @@ export class LookupWidget {
     this.apply();
   }
 
+  unbind() {
+    $(this.element).find('input').select2('destroy');
+  }
+
   get isShowing() {
     return this.title.length > 0;
   }
