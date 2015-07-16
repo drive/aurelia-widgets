@@ -1,19 +1,19 @@
 define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete'], function (exports, _aureliaFramework, _jquery, _devbridgeJQueryAutocomplete) {
   'use strict';
 
-  var _interopRequire = function (obj) { return obj && obj.__esModule ? obj['default'] : obj; };
-
-  var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _$ = _interopRequire(_jquery);
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-  var _autocomplete = _interopRequire(_devbridgeJQueryAutocomplete);
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  var _$ = _interopRequireDefault(_jquery);
+
+  var _autocomplete = _interopRequireDefault(_devbridgeJQueryAutocomplete);
 
   var AutoCompleteWidget = (function () {
     function AutoCompleteWidget(element) {
@@ -22,9 +22,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
       this.element = element;
     }
 
-    var _AutoCompleteWidget = AutoCompleteWidget;
-
-    _createClass(_AutoCompleteWidget, [{
+    _createClass(AutoCompleteWidget, [{
       key: 'bind',
       value: function bind() {
         this.apply();
@@ -32,12 +30,12 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
     }, {
       key: 'unbind',
       value: function unbind() {
-        _$(this.element).autocomplete('dispose');
+        (0, _$['default'])(this.element).autocomplete('dispose');
       }
     }, {
       key: 'apply',
       value: function apply() {
-        _$(this.element).autocomplete({
+        (0, _$['default'])(this.element).autocomplete({
           lookup: this.lookup.bind(this),
           onSelect: this.onSelect.bind(this)
         });
@@ -56,18 +54,20 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
       }
     }]);
 
-    AutoCompleteWidget = _aureliaFramework.bindable({
+    var _AutoCompleteWidget = AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
       name: 'selectedItem',
       attribute: 'selected-item',
       defaultBindingMode: _aureliaFramework.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = _aureliaFramework.bindable({
+    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
       name: 'controller',
       attribute: 'controller',
       defaultBindingMode: _aureliaFramework.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = _aureliaFramework.customAttribute('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = _aureliaFramework.inject(Element)(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaFramework.customElement)('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaFramework.inject)(Element)(AutoCompleteWidget) || AutoCompleteWidget;
     return AutoCompleteWidget;
   })();
 
