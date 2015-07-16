@@ -25,7 +25,7 @@ export class AutoCompleteWidget {
   }
 
   unbind() {
-    $(this.element).autocomplete('dispose');
+    $(this.element).find('input').autocomplete('dispose');
   }
 
   apply() {
