@@ -35,7 +35,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
     }, {
       key: 'apply',
       value: function apply() {
-        (0, _$['default'])(this.element).autocomplete({
+        (0, _$['default'])(this.element).find('input').autocomplete({
           lookup: this.lookup.bind(this),
           onSelect: this.onSelect.bind(this)
         });

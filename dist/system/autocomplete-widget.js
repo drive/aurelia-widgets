@@ -39,7 +39,7 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
         }, {
           key: 'apply',
           value: function apply() {
-            $(this.element).autocomplete({
+            $(this.element).find('input').autocomplete({
               lookup: this.lookup.bind(this),
               onSelect: this.onSelect.bind(this)
             });
