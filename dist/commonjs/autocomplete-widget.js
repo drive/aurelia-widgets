@@ -40,7 +40,7 @@ var AutoCompleteWidget = (function () {
   }, {
     key: 'apply',
     value: function apply() {
-      (0, _jquery2['default'])(this.element).autocomplete({
+      (0, _jquery2['default'])(this.element).find('input').autocomplete({
         lookup: this.lookup.bind(this),
         onSelect: this.onSelect.bind(this)
       });

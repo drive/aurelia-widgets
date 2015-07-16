@@ -29,7 +29,7 @@ export class AutoCompleteWidget {
   }
 
   apply() {
-    $(this.element).autocomplete({
+    $(this.element).find('input').autocomplete({
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this)
     });
