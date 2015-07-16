@@ -1,24 +1,24 @@
 'use strict';
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _inject$bindable$customElement$bindingMode = require('aurelia-framework');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _$ = require('jquery');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _$2 = _interopRequireWildcard(_$);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _aureliaFramework = require('aurelia-framework');
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 var _select2 = require('select2');
 
-var _select22 = _interopRequireWildcard(_select2);
+var _select22 = _interopRequireDefault(_select2);
 
 var LookupWidget = (function () {
   function LookupWidget(element) {
@@ -27,9 +27,7 @@ var LookupWidget = (function () {
     this.element = element;
   }
 
-  var _LookupWidget = LookupWidget;
-
-  _createClass(_LookupWidget, [{
+  _createClass(LookupWidget, [{
     key: 'bind',
     value: function bind() {
       this.apply();
@@ -37,12 +35,7 @@ var LookupWidget = (function () {
   }, {
     key: 'unbind',
     value: function unbind() {
-      _$2['default'](this.element).find('input').select2('destroy');
-    }
-  }, {
-    key: 'isShowing',
-    get: function () {
-      return this.title.length > 0;
+      (0, _jquery2['default'])(this.element).find('input').select2('destroy');
     }
   }, {
     key: 'apply',
@@ -50,7 +43,7 @@ var LookupWidget = (function () {
       var _this = this;
 
       var self = this;
-      _$2['default'](this.element).find('input').select2({
+      (0, _jquery2['default'])(this.element).find('input').select2({
         initSelection: function initSelection(element, callback) {
           callback(self.controller.setDefaultSelection());
         },
@@ -58,45 +51,41 @@ var LookupWidget = (function () {
         placeholder: this.placeholder,
         formatSelection: self.controller.formatSelection,
         formatResult: self.controller.formatItem,
-        query: (function (_query) {
-          function query(_x) {
-            return _query.apply(this, arguments);
-          }
-
-          query.toString = function () {
-            return _query.toString();
-          };
-
-          return query;
-        })(function (query) {
-          self.controller.search(query.term).then(function (result) {
-            query.callback({ results: result });
+        query: function query(_query) {
+          self.controller.search(_query.term).then(function (result) {
+            _query.callback({ results: result });
           });
-        }),
+        },
         width: '100%'
       });
 
-      _$2['default'](this.element).find('input').select2('val', this.selectedItem);
-      _$2['default'](this.element).find('input').on('change', function () {
-        _this.selectedItem = _$2['default'](_this.element).find('input').select2('val');
+      (0, _jquery2['default'])(this.element).find('input').select2('val', this.selectedItem);
+      (0, _jquery2['default'])(this.element).find('input').on('change', function () {
+        _this.selectedItem = (0, _jquery2['default'])(_this.element).find('input').select2('val');
       });
+    }
+  }, {
+    key: 'isShowing',
+    get: function get() {
+      return this.title.length > 0;
     }
   }]);
 
-  LookupWidget = _inject$bindable$customElement$bindingMode.bindable('placeholder')(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$bindingMode.bindable('title')(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$bindingMode.bindable({
+  var _LookupWidget = LookupWidget;
+  LookupWidget = (0, _aureliaFramework.bindable)('placeholder')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaFramework.bindable)('title')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaFramework.bindable)({
     name: 'selectedItem',
     attribute: 'selected-item',
-    defaultBindingMode: _inject$bindable$customElement$bindingMode.bindingMode.twoWay
+    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
   })(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$bindingMode.bindable({
+  LookupWidget = (0, _aureliaFramework.bindable)({
     name: 'controller',
     attribute: 'controller',
-    defaultBindingMode: _inject$bindable$customElement$bindingMode.bindingMode.twoWay
+    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
   })(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$bindingMode.customElement('lookup-widget')(LookupWidget) || LookupWidget;
-  LookupWidget = _inject$bindable$customElement$bindingMode.inject(Element)(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaFramework.customElement)('lookup-widget')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaFramework.inject)(Element)(LookupWidget) || LookupWidget;
   return LookupWidget;
 })();
 

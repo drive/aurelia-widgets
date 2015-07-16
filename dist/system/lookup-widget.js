@@ -1,5 +1,11 @@
 System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
-  var inject, bindable, customElement, bindingMode, $, select2, _classCallCheck, _createClass, LookupWidget;
+  'use strict';
+
+  var inject, bindable, customElement, bindingMode, $, select2, LookupWidget;
+
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
     setters: [function (_aureliaFramework) {
@@ -13,12 +19,6 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
       select2 = _select2['default'];
     }],
     execute: function () {
-      'use strict';
-
-      _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-      _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
       LookupWidget = (function () {
         function LookupWidget(element) {
           _classCallCheck(this, _LookupWidget);
@@ -26,9 +26,7 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
           this.element = element;
         }
 
-        var _LookupWidget = LookupWidget;
-
-        _createClass(_LookupWidget, [{
+        _createClass(LookupWidget, [{
           key: 'bind',
           value: function bind() {
             this.apply();
@@ -37,11 +35,6 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
           key: 'unbind',
           value: function unbind() {
             $(this.element).find('input').select2('destroy');
-          }
-        }, {
-          key: 'isShowing',
-          get: function () {
-            return this.title.length > 0;
           }
         }, {
           key: 'apply',
@@ -57,21 +50,11 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
               placeholder: this.placeholder,
               formatSelection: self.controller.formatSelection,
               formatResult: self.controller.formatItem,
-              query: (function (_query) {
-                function query(_x) {
-                  return _query.apply(this, arguments);
-                }
-
-                query.toString = function () {
-                  return _query.toString();
-                };
-
-                return query;
-              })(function (query) {
-                self.controller.search(query.term).then(function (result) {
-                  query.callback({ results: result });
+              query: function query(_query) {
+                self.controller.search(_query.term).then(function (result) {
+                  _query.callback({ results: result });
                 });
-              }),
+              },
               width: '100%'
             });
 
@@ -80,8 +63,14 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
               _this.selectedItem = $(_this.element).find('input').select2('val');
             });
           }
+        }, {
+          key: 'isShowing',
+          get: function get() {
+            return this.title.length > 0;
+          }
         }]);
 
+        var _LookupWidget = LookupWidget;
         LookupWidget = bindable('placeholder')(LookupWidget) || LookupWidget;
         LookupWidget = bindable('title')(LookupWidget) || LookupWidget;
         LookupWidget = bindable({
