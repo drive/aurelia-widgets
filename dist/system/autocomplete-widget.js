@@ -34,7 +34,7 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
         }, {
           key: 'unbind',
           value: function unbind() {
-            $(this.element).autocomplete('dispose');
+            $(this.element).find('input').autocomplete('dispose');
           }
         }, {
           key: 'apply',

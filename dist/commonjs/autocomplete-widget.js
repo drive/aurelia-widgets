@@ -35,7 +35,7 @@ var AutoCompleteWidget = (function () {
   }, {
     key: 'unbind',
     value: function unbind() {
-      (0, _jquery2['default'])(this.element).autocomplete('dispose');
+      (0, _jquery2['default'])(this.element).find('input').autocomplete('dispose');
     }
   }, {
     key: 'apply',
