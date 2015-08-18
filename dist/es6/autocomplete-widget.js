@@ -14,6 +14,11 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   attribute:'selected-item',
   defaultBindingMode: bindingMode.twoWay
 })
+@bindable({
+  name:'displayedText',
+  attribute:'displayed-text',
+  defaultBindingMode: bindingMode.twoWay
+})
 @bindable('title')
 export class AutoCompleteWidget {
   constructor(element) {
@@ -43,5 +48,7 @@ export class AutoCompleteWidget {
 
   onSelect(suggestion) {
     this.selectedItem = suggestion.data;
+    //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
+    this.displayedText = suggestion.value;
   }
 }

@@ -55,11 +55,18 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
           key: 'onSelect',
           value: function onSelect(suggestion) {
             this.selectedItem = suggestion.data;
+
+            this.displayedText = suggestion.value;
           }
         }]);
 
         var _AutoCompleteWidget = AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'displayedText',
+          attribute: 'displayed-text',
+          defaultBindingMode: bindingMode.twoWay
+        })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'selectedItem',
           attribute: 'selected-item',

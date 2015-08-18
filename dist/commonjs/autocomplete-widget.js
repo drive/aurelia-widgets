@@ -56,11 +56,18 @@ var AutoCompleteWidget = (function () {
     key: 'onSelect',
     value: function onSelect(suggestion) {
       this.selectedItem = suggestion.data;
+
+      this.displayedText = suggestion.value;
     }
   }]);
 
   var _AutoCompleteWidget = AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
+  AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    name: 'displayedText',
+    attribute: 'displayed-text',
+    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+  })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)({
     name: 'selectedItem',
     attribute: 'selected-item',
