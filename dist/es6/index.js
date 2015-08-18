@@ -1,4 +1,4 @@
 export function configure(aurelia) {
-	aurelia.globalizeResources('./lookup-widget');
-	aurelia.globalizeResources('./autocomplete-widget');
+	aurelia.globalResources('./lookup-widget');
+	aurelia.globalResources('./autocomplete-widget');
 }
