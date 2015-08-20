@@ -62,6 +62,7 @@ var AutoCompleteWidget = (function () {
   }]);
 
   var _AutoCompleteWidget = AutoCompleteWidget;
+  AutoCompleteWidget = (0, _aureliaFramework.bindable)('placeholder')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)({
     name: 'displayedText',

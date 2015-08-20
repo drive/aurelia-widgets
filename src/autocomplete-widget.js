@@ -20,6 +20,7 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultBindingMode: bindingMode.twoWay
 })
 @bindable('title')
+@bindable('placeholder')
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
