@@ -38,7 +38,7 @@ System.config({
     "aurelia-templating-router": "github:aurelia/templating-router@0.15.0",
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
-    "core-js": "npm:core-js@1.1.0",
+    "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.12",
     "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@1.2.21",
     "jquery": "github:components/jquery@2.1.4",
@@ -238,11 +238,6 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-js@0.9.18": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "process": "github:jspm/nodelibs-process@0.1.1",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
-    },
-    "npm:core-js@1.1.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"

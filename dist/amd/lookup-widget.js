@@ -30,7 +30,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
     }, {
       key: 'unbind',
       value: function unbind() {
-        (0, _$['default'])(this.element).find('input').select2('destroy');
+        (0, _$['default'])(this.element).find('input').destroy();
       }
     }, {
       key: 'apply',

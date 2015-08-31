@@ -1,5 +1,5 @@
-import {LookupWidget} from '../../../../src/lookup-widget';
-import {LookupAbstract} from '../../../../src/lookup-abstract';
+import {LookupWidget} from '../../src/lookup-widget';
+import {LookupAbstract} from '../../src/lookup-abstract';
 
 describe('lookup widget', () => {
     var lookupWidget;
@@ -8,8 +8,8 @@ describe('lookup widget', () => {
         lookupWidget = new LookupWidget();
     });
     
-    it('expect ', () => {
-       
+    it('expect ', (done) => {
+       done();
     });
     
 });

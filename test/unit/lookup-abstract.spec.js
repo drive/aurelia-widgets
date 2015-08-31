@@ -9,12 +9,13 @@ describe('lookup interface', () => {
         lookupAbstract = new LookupAbstract();
     });
     
-    it('expect interface to have the following properties and methods', () => {
+    it('expect interface to have the following properties and methods', (done) => {
       
         expect(lookupAbstract.search).toBeDefined();
         expect(lookupAbstract.setDefaultSelection).toBeDefined();
         expect(lookupAbstract.formatItem).toBeDefined();
         expect(lookupAbstract.formatSelection).toBeDefined();
+        done();
     });
     
 });

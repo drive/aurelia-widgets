@@ -24,21 +24,30 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
+    this._keyUpListener = ((event) => {
+      if (this.input.value.trim() === '') {
+        this.selectedItem = null;
+        this.displayedText = '';
+      }
+    }).bind(this);
   }
 
   bind() {
+    this.input = this.element.querySelector('input');
     this.apply();
   }
 
   unbind() {
-    $(this.element).find('input').autocomplete('dispose');
+    $(this.input).autocomplete('dispose');
+    this.input.removeEventListener('keyup', this._keyUpListener);
   }
 
   apply() {
-    $(this.element).find('input').autocomplete({
+    $(this.input).autocomplete({
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this)
     });
+    this.input.addEventListener('keyup', this._keyUpListener);
   }
 
   lookup(query,done) {

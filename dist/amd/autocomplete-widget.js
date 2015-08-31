@@ -17,28 +17,39 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
 
   var AutoCompleteWidget = (function () {
     function AutoCompleteWidget(element) {
+      var _this = this;
+
       _classCallCheck(this, _AutoCompleteWidget);
 
       this.element = element;
+      this._keyUpListener = (function (event) {
+        if (_this.input.value.trim() === '') {
+          _this.selectedItem = null;
+          _this.displayedText = '';
+        }
+      }).bind(this);
     }
 
     _createClass(AutoCompleteWidget, [{
       key: 'bind',
       value: function bind() {
+        this.input = this.element.querySelector('input');
         this.apply();
       }
     }, {
       key: 'unbind',
       value: function unbind() {
-        (0, _$['default'])(this.element).find('input').autocomplete('dispose');
+        (0, _$['default'])(this.input).autocomplete('dispose');
+        this.input.removeEventListener('keyup', this._keyUpListener);
       }
     }, {
       key: 'apply',
       value: function apply() {
-        (0, _$['default'])(this.element).find('input').autocomplete({
+        (0, _$['default'])(this.input).autocomplete({
           lookup: this.lookup.bind(this),
           onSelect: this.onSelect.bind(this)
         });
+        this.input.addEventListener('keyup', this._keyUpListener);
       }
     }, {
       key: 'lookup',
