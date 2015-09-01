@@ -26,7 +26,7 @@ export class LookupWidget {
   }
 
   unbind() {
-    $(this.element).find('input').destroy();
+    $(this.element).find('input').select2('destroy');
   }
 
   get isShowing() {

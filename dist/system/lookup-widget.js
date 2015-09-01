@@ -34,7 +34,7 @@ System.register(['aurelia-framework', 'jquery', 'select2'], function (_export) {
         }, {
           key: 'unbind',
           value: function unbind() {
-            $(this.element).find('input').destroy();
+            $(this.element).find('input').select2('destroy');
           }
         }, {
           key: 'apply',

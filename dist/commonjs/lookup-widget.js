@@ -35,7 +35,7 @@ var LookupWidget = (function () {
   }, {
     key: 'unbind',
     value: function unbind() {
-      (0, _jquery2['default'])(this.element).find('input').destroy();
+      (0, _jquery2['default'])(this.element).find('input').select2('destroy');
     }
   }, {
     key: 'apply',
