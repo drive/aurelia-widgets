@@ -25,7 +25,7 @@ describe('The Autocomplete Widget', () => {
     widget.bind();
   });
 
-  it('should the selected item to null when the input text is cleared', (done) => {
+  it('should set the selected item to null when the input text is cleared', (done) => {
     //Arrange
     widget.selectedItem = { value: "this should not be selected" };
 
