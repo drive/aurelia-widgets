@@ -2,6 +2,11 @@ import {customElement, inject, bindable, bindingMode} from 'aurelia-framework';
 
 @customElement('combo')
 @bindable({
+  name:'title',
+  attribute:'title',
+  defaultBindingMode: bindingMode.oneTime
+})
+@bindable({
   name:'options',
   attribute:'options',
   defaultBindingMode: bindingMode.oneTime
