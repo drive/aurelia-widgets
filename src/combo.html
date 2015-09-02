@@ -1,0 +1,7 @@
+<template>
+  <div class="form-group">
+    <select class="form-control">
+      <option repeat.for="option of options" value="${option.value}" selected.one-time="$parent.selected === option.value">${option.description}</option>
+    </select>
+  </div>
+</template>
