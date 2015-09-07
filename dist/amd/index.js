@@ -7,6 +7,6 @@ define(['exports'], function (exports) {
 	exports.configure = configure;
 
 	function configure(aurelia) {
-		aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo']);
+		aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo', 'text-widget']);
 	}
 });
