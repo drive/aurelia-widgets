@@ -27,6 +27,9 @@ System.register(['aurelia-framework'], function (_export) {
           key: 'attached',
           value: function attached() {
             this.combo = this.element.querySelector('select');
+
+            if (this.selected) this.combo.value = this.selected;
+
             this.combo.addEventListener('change', this._boundChange);
           }
         }, {
@@ -39,6 +42,11 @@ System.register(['aurelia-framework'], function (_export) {
           value: function _change(change) {
             this.selected = change.target.value;
           }
+        }, {
+          key: '_handleSelectedChanged',
+          value: function _handleSelectedChanged(newValue) {
+            if (this.combo) this.combo.value = newValue;
+          }
         }]);
 
         var _Combo = Combo;
@@ -46,7 +54,8 @@ System.register(['aurelia-framework'], function (_export) {
         Combo = bindable({
           name: 'selected',
           attribute: 'selected',
-          defaultBindingMode: bindingMode.twoWay
+          defaultBindingMode: bindingMode.twoWay,
+          changeHandler: '_handleSelectedChanged'
         })(Combo) || Combo;
         Combo = bindable({
           name: 'options',
