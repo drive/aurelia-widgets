@@ -21,6 +21,9 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       key: 'attached',
       value: function attached() {
         this.combo = this.element.querySelector('select');
+
+        if (this.selected) this.combo.value = this.selected;
+
         this.combo.addEventListener('change', this._boundChange);
       }
     }, {
@@ -33,6 +36,11 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       value: function _change(change) {
         this.selected = change.target.value;
       }
+    }, {
+      key: '_handleSelectedChanged',
+      value: function _handleSelectedChanged(newValue) {
+        if (this.combo) this.combo.value = newValue;
+      }
     }]);
 
     var _Combo = Combo;
@@ -40,7 +48,8 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     Combo = (0, _aureliaFramework.bindable)({
       name: 'selected',
       attribute: 'selected',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
+      changeHandler: '_handleSelectedChanged'
     })(Combo) || Combo;
     Combo = (0, _aureliaFramework.bindable)({
       name: 'options',
