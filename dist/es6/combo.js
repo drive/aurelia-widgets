@@ -14,7 +14,8 @@ import {customElement, inject, bindable, bindingMode} from 'aurelia-framework';
 @bindable({
   name:'selected',
   attribute:'selected',
-  defaultBindingMode: bindingMode.twoWay
+  defaultBindingMode: bindingMode.twoWay,
+  changeHandler: '_handleSelectedChanged'
 })
 @inject(Element)
 export class Combo {
@@ -25,6 +26,11 @@ export class Combo {
 
   attached() {
     this.combo = this.element.querySelector('select');
+    //Sometimes we already have a bounded property and it's already changed before the attached callback is invoked
+    //so this ensures that the loaded/changed value will always be set on the select when attached to the DOM
+    if (this.selected) 
+      this.combo.value = this.selected;
+
     this.combo.addEventListener('change', this._boundChange);
   }
 
@@ -34,5 +40,10 @@ export class Combo {
 
   _change(change) {
     this.selected = change.target.value;
+  }
+
+  _handleSelectedChanged(newValue) {
+    if (this.combo) 
+      this.combo.value = newValue;
   }
 }
