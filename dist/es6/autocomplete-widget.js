@@ -19,8 +19,12 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   attribute:'displayed-text',
   defaultBindingMode: bindingMode.twoWay
 })
+@bindable({
+  name: 'placeholder',
+  attribute: 'placeholder',
+  defaultValue: ''
+})
 @bindable('title')
-@bindable('placeholder')
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
