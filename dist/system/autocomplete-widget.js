@@ -72,8 +72,12 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
         }]);
 
         var _AutoCompleteWidget = AutoCompleteWidget;
-        AutoCompleteWidget = bindable('placeholder')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'placeholder',
+          attribute: 'placeholder',
+          defaultValue: ''
+        })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'displayedText',
           attribute: 'displayed-text',
