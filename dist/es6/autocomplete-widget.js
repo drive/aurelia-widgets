@@ -1,4 +1,4 @@
-import {inject, bindable, customElement, bindingMode} from 'aurelia-framework';
+import {inject, bindable, customElement, bindingMode, computedFrom} from 'aurelia-framework';
 import $ from 'jquery';
 import autocomplete from 'devbridge/jQuery-Autocomplete';
 
@@ -30,8 +30,7 @@ export class AutoCompleteWidget {
     this.element = element;
     this._keyUpListener = ((event) => {
       if (this.input.value.trim() === '') {
-        this.selectedItem = null;
-        this.displayedText = '';
+        this._setSelectedItem(null, '');
       }
     }).bind(this);
   }
@@ -54,15 +53,33 @@ export class AutoCompleteWidget {
     this.input.addEventListener('keyup', this._keyUpListener);
   }
 
-  lookup(query,done) {
+  lookup(query, done) {
     this.controller.search(query).then((results) => {
       done(results);
     });
   }
 
   onSelect(suggestion) {
-    this.selectedItem = suggestion.data;
     //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
-    this.displayedText = suggestion.value;
+    this._setSelectedItem(suggestion.data, suggestion.value);
+  }
+
+  _setSelectedItem(data, value) {
+    if (typeof this.selectedItem === 'object') {
+      this.selectedItem.id = data;
+      this.selectedItem.description = value;
+    }
+    else {
+      this.selectedItem = data;
+      this.displayedText = value;
+    }
+  }
+
+  @computedFrom('selectedItem.description', 'displayedText')
+  get bindableText() {
+    if (typeof this.selectedItem === 'object') {
+      return this.selectedItem.description;
+    }
+    return this.displayedText;
   }
 }
