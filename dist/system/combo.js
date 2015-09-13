@@ -28,7 +28,7 @@ System.register(['aurelia-framework'], function (_export) {
           value: function attached() {
             this.combo = this.element.querySelector('select');
 
-            if (this.selected) this.combo.value = this.selected;
+            if (this.selected) this._setComboValue(this.selected);
 
             this.combo.addEventListener('change', this._boundChange);
           }
@@ -38,14 +38,37 @@ System.register(['aurelia-framework'], function (_export) {
             this.combo.removeEventListener('change', this._boundChange);
           }
         }, {
+          key: 'getSelectedId',
+          value: function getSelectedId(item) {
+            if (typeof item === 'object') return item.id;
+
+            return item;
+          }
+        }, {
           key: '_change',
           value: function _change(change) {
-            this.selected = change.target.value;
+            this._setSelected(change.target);
           }
         }, {
           key: '_handleSelectedChanged',
           value: function _handleSelectedChanged(newValue) {
-            if (this.combo) this.combo.value = newValue;
+            if (this.combo) this._setComboValue(newValue);
+          }
+        }, {
+          key: '_setComboValue',
+          value: function _setComboValue(newValue) {
+            if (typeof newValue === 'object') this.combo.value = newValue.id;else this.combo.value = newValue;
+          }
+        }, {
+          key: '_setSelected',
+          value: function _setSelected(item) {
+            if (typeof this.selected === 'object') {
+              this.selected.id = item.value;
+
+              this.selected.description = item.selectedOptions[0].text;
+            } else {
+              this.selected = item.value;
+            }
           }
         }]);
 
