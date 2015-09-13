@@ -29,7 +29,7 @@ export class Combo {
     //Sometimes we already have a bounded property and it's already changed before the attached callback is invoked
     //so this ensures that the loaded/changed value will always be set on the select when attached to the DOM
     if (this.selected) 
-      this.combo.value = this.selected;
+      this._setComboValue(this.selected);
 
     this.combo.addEventListener('change', this._boundChange);
   }
@@ -38,12 +38,37 @@ export class Combo {
     this.combo.removeEventListener('change', this._boundChange);
   }
 
+  getSelectedId(item) {
+    if (typeof item === 'object')
+      return item.id;
+
+    return item;
+  }
+
   _change(change) {
-    this.selected = change.target.value;
+    this._setSelected(change.target);
   }
 
   _handleSelectedChanged(newValue) {
     if (this.combo) 
+      this._setComboValue(newValue);
+  }
+
+  _setComboValue(newValue) {
+    if (typeof newValue === 'object')
+      this.combo.value = newValue.id;
+    else
       this.combo.value = newValue;
+  }
+
+  _setSelected(item) {
+    if (typeof this.selected === 'object') {
+      this.selected.id = item.value;
+      //supports only one selected option
+      this.selected.description = item.selectedOptions[0].text;
+    }
+    else {
+      this.selected = item.value;
+    }
   }
 }
