@@ -65,7 +65,7 @@ export class AutoCompleteWidget {
   }
 
   _setSelectedItem(data, value) {
-    if (typeof this.selectedItem === 'object') {
+    if (this.selectedItem && typeof this.selectedItem === 'object') {
       this.selectedItem.id = data;
       this.selectedItem.description = value;
     }
@@ -77,7 +77,7 @@ export class AutoCompleteWidget {
 
   @computedFrom('selectedItem.description', 'displayedText')
   get bindableText() {
-    if (typeof this.selectedItem === 'object') {
+    if (this.selectedItem && typeof this.selectedItem === 'object') {
       return this.selectedItem.description;
     }
     return this.displayedText;

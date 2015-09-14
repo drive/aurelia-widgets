@@ -40,7 +40,7 @@ System.register(['aurelia-framework'], function (_export) {
         }, {
           key: 'getSelectedId',
           value: function getSelectedId(item) {
-            if (typeof item === 'object') return item.id;
+            if (item && typeof item === 'object') return item.id;
 
             return item;
           }
@@ -57,7 +57,7 @@ System.register(['aurelia-framework'], function (_export) {
         }, {
           key: '_setComboValue',
           value: function _setComboValue(newValue) {
-            if (typeof newValue === 'object') this.combo.value = newValue.id;else this.combo.value = newValue;
+            if (newValue && typeof newValue === 'object') this.combo.value = newValue.id;else this.combo.value = newValue;
           }
         }, {
           key: '_setSelected',

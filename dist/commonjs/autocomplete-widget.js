@@ -70,7 +70,7 @@ var AutoCompleteWidget = (function () {
   }, {
     key: '_setSelectedItem',
     value: function _setSelectedItem(data, value) {
-      if (typeof this.selectedItem === 'object') {
+      if (this.selectedItem && typeof this.selectedItem === 'object') {
         this.selectedItem.id = data;
         this.selectedItem.description = value;
       } else {
@@ -82,7 +82,7 @@ var AutoCompleteWidget = (function () {
     key: 'bindableText',
     decorators: [(0, _aureliaFramework.computedFrom)('selectedItem.description', 'displayedText')],
     get: function get() {
-      if (typeof this.selectedItem === 'object') {
+      if (this.selectedItem && typeof this.selectedItem === 'object') {
         return this.selectedItem.description;
       }
       return this.displayedText;
