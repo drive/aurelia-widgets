@@ -28,7 +28,7 @@ System.register(['aurelia-framework'], function (_export) {
           value: function attached() {
             this.combo = this.element.querySelector('select');
 
-            if (this.selected) this._setComboValue(this.selected);
+            if (this.selected || this.selected === 0) this._setComboValue(this.selected);
 
             this.combo.addEventListener('change', this._boundChange);
           }
