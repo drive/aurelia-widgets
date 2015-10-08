@@ -25,6 +25,7 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultValue: ''
 })
 @bindable('title')
+@bindable('onEnterPressed')
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
@@ -32,7 +33,14 @@ export class AutoCompleteWidget {
       if (this.input.value.trim() === '') {
         this._setSelectedItem(null, '');
       }
+      else if (event.which === 13 && !this.showingSuggestions) {
+        if (this.onEnterPressed) {
+          this.onEnterPressed();
+        }
+      }
     }).bind(this);
+
+    this.showingSuggestions = false;
   }
 
   bind() {
@@ -48,9 +56,19 @@ export class AutoCompleteWidget {
   apply() {
     $(this.input).autocomplete({
       lookup: this.lookup.bind(this),
-      onSelect: this.onSelect.bind(this)
+      onSelect: this.onSelect.bind(this),
+      beforeRender: this.suggestionsShown.bind(this),
+      onHide: this.suggestionsHidden.bind(this)
     });
     this.input.addEventListener('keyup', this._keyUpListener);
+  }
+
+  suggestionsShown(container) {
+    this.showingSuggestions = true;
+  }
+
+  suggestionsHidden(container) {
+    this.showingSuggestions = false;
   }
 
   lookup(query, done) {

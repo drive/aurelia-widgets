@@ -14,28 +14,47 @@ var _aureliaFramework = require('aurelia-framework');
 
 var Checkbox = (function () {
   var _instanceInitializers = {};
-
-  function Checkbox() {
-    _classCallCheck(this, Checkbox);
-
-    _defineDecoratedPropertyDescriptor(this, 'toggle', _instanceInitializers);
-  }
+  var _instanceInitializers = {};
 
   _createDecoratedClass(Checkbox, [{
-    key: 'checkboxSelected',
-    value: function checkboxSelected() {
-      this.selected = !this.selected;
-      if (this.toggle) {
-        this.toggle(this.selected);
-      }
-    }
-  }, {
-    key: 'toggle',
+    key: 'ontoggle',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
 
+  function Checkbox() {
+    _classCallCheck(this, _Checkbox);
+
+    _defineDecoratedPropertyDescriptor(this, 'ontoggle', _instanceInitializers);
+
+    this.checked = false;
+    this.enabled = true;
+  }
+
+  _createDecoratedClass(Checkbox, [{
+    key: 'checkboxSelected',
+    value: function checkboxSelected() {
+      if (!this.enabled) return;
+
+      this.checked = !this.checked;
+      if (this.ontoggle) {
+        this.ontoggle();
+      }
+    }
+  }], null, _instanceInitializers);
+
+  var _Checkbox = Checkbox;
+  Checkbox = (0, _aureliaFramework.bindable)({
+    name: 'enabled',
+    attribute: 'enabled',
+    defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+  })(Checkbox) || Checkbox;
+  Checkbox = (0, _aureliaFramework.bindable)({
+    name: 'labelText',
+    attribute: 'label-text',
+    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+  })(Checkbox) || Checkbox;
   return Checkbox;
 })();
 

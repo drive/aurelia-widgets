@@ -1,13 +1,31 @@
-import {bindable} from 'aurelia-framework';
+import {bindable, bindingMode} from 'aurelia-framework';
 
+@bindable({
+  name: 'labelText',
+  attribute: 'label-text',
+  defaultBindingMode: bindingMode.oneTime
+})
+@bindable({
+  name: 'enabled',
+  attribute: 'enabled',
+  defaultBindingMode: bindingMode.oneWay
+})
 export class Checkbox {
 
-	@bindable toggle;
+  @bindable ontoggle;
+
+  constructor() {
+    this.checked = false;
+    this.enabled = true;
+  }
 
   checkboxSelected() {
-    this.selected = !this.selected;
-    if (this.toggle) {
-    	this.toggle(this.selected);
+    if (!this.enabled)
+      return;
+
+    this.checked = !this.checked;
+    if (this.ontoggle) {
+      this.ontoggle();
     }
   }
 

@@ -1,13 +1,10 @@
 <template>
-	<div click.delegate="checkboxSelected()">
-		<div class="checkbox-selectable">
-			<i class="fa ${ selected ? 'fa-check' : '' }"></i>
-		</div>
-		<div class="checkbox-code">
-			<span>${code}</span>
-		</div>
-		<div class="checkbox-description">
-			<span>${description}</span>
-		</div>
-	</div>
+  <div class="row checkbox noselect text-no-wrap" click.delegate="checkboxSelected()">
+    <div class="checkbox-selector ${enabled ? 'checkbox-selector-enabled' : ''}">
+      <i class="fa ${ checked ? 'fa-check' : '' }"></i>
+    </div>
+    <div class="checkbox-label ${enabled ? '' : 'text-muted'}">
+      <span>${labelText}</span>
+    </div>
+  </div>
 </template>
