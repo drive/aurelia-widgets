@@ -25,7 +25,7 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultValue: ''
 })
 @bindable('title')
-@bindable('onEnterPressed')
+@bindable('onenterpressed')
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
