@@ -103,7 +103,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
     }]);
 
     var _AutoCompleteWidget = AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)('onEnterPressed')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaFramework.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaFramework.bindable)({
       name: 'placeholder',
