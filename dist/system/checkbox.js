@@ -49,6 +49,11 @@ System.register(['aurelia-framework'], function (_export) {
 
         var _Checkbox = Checkbox;
         Checkbox = bindable({
+          name: 'checked',
+          attribute: 'checked',
+          defaultBindingMode: bindingMode.twoWay
+        })(Checkbox) || Checkbox;
+        Checkbox = bindable({
           name: 'enabled',
           attribute: 'enabled',
           defaultBindingMode: bindingMode.oneWay

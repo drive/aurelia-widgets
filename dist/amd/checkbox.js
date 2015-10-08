@@ -45,6 +45,11 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
     var _Checkbox = Checkbox;
     Checkbox = (0, _aureliaFramework.bindable)({
+      name: 'checked',
+      attribute: 'checked',
+      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+    })(Checkbox) || Checkbox;
+    Checkbox = (0, _aureliaFramework.bindable)({
       name: 'enabled',
       attribute: 'enabled',
       defaultBindingMode: _aureliaFramework.bindingMode.oneWay

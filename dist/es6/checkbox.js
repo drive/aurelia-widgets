@@ -10,6 +10,11 @@ import {bindable, bindingMode} from 'aurelia-framework';
   attribute: 'enabled',
   defaultBindingMode: bindingMode.oneWay
 })
+@bindable({
+  name: 'checked',
+  attribute: 'checked',
+  defaultBindingMode: bindingMode.twoWay
+})
 export class Checkbox {
 
   @bindable ontoggle;
