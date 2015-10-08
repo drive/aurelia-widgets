@@ -1,0 +1,10 @@
+<template>
+  <div class="row checkbox noselect text-no-wrap" click.delegate="checkboxSelected()">
+    <div class="checkbox-selector ${enabled ? 'checkbox-selector-enabled' : ''}">
+      <i class="fa ${ checked ? 'fa-check' : '' }"></i>
+    </div>
+    <div class="checkbox-label ${enabled ? '' : 'text-muted'}">
+      <span>${labelText}</span>
+    </div>
+  </div>
+</template>
