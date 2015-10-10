@@ -22,10 +22,16 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
 @bindable({
   name: 'placeholder',
   attribute: 'placeholder',
-  defaultValue: ''
+  defaultValue: '',
+  defaultBindingMode: bindingMode.oneTime
 })
 @bindable('title')
 @bindable('onenterpressed')
+@bindable({
+  name: 'grabFocus',
+  attribute: 'grab-focus',
+  defaultValue: false
+})
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
@@ -34,8 +40,8 @@ export class AutoCompleteWidget {
         this._setSelectedItem(null, '');
       }
       else if (event.which === 13 && !this.showingSuggestions) {
-        if (this.onEnterPressed) {
-          this.onEnterPressed();
+        if (this.onenterpressed) {
+          this.onenterpressed();
         }
       }
     }).bind(this);
@@ -51,6 +57,12 @@ export class AutoCompleteWidget {
   unbind() {
     $(this.input).autocomplete('dispose');
     this.input.removeEventListener('keyup', this._keyUpListener);
+  }
+
+  attached() {
+    if (this.grabFocus) {
+      this.input.focus();
+    }
   }
 
   apply() {

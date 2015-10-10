@@ -31,8 +31,8 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
             if (_this.input.value.trim() === '') {
               _this._setSelectedItem(null, '');
             } else if (event.which === 13 && !_this.showingSuggestions) {
-              if (_this.onEnterPressed) {
-                _this.onEnterPressed();
+              if (_this.onenterpressed) {
+                _this.onenterpressed();
               }
             }
           }).bind(this);
@@ -51,6 +51,13 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
           value: function unbind() {
             $(this.input).autocomplete('dispose');
             this.input.removeEventListener('keyup', this._keyUpListener);
+          }
+        }, {
+          key: 'attached',
+          value: function attached() {
+            if (this.grabFocus) {
+              this.input.focus();
+            }
           }
         }, {
           key: 'apply',
@@ -108,12 +115,18 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
         }]);
 
         var _AutoCompleteWidget = AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'placeholder',
           attribute: 'placeholder',
-          defaultValue: ''
+          defaultValue: '',
+          defaultBindingMode: bindingMode.oneTime
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'displayedText',

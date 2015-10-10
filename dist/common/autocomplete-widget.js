@@ -31,8 +31,8 @@ var AutoCompleteWidget = (function () {
       if (_this.input.value.trim() === '') {
         _this._setSelectedItem(null, '');
       } else if (event.which === 13 && !_this.showingSuggestions) {
-        if (_this.onEnterPressed) {
-          _this.onEnterPressed();
+        if (_this.onenterpressed) {
+          _this.onenterpressed();
         }
       }
     }).bind(this);
@@ -51,6 +51,13 @@ var AutoCompleteWidget = (function () {
     value: function unbind() {
       (0, _jquery2['default'])(this.input).autocomplete('dispose');
       this.input.removeEventListener('keyup', this._keyUpListener);
+    }
+  }, {
+    key: 'attached',
+    value: function attached() {
+      if (this.grabFocus) {
+        this.input.focus();
+      }
     }
   }, {
     key: 'apply',
@@ -108,12 +115,18 @@ var AutoCompleteWidget = (function () {
   }]);
 
   var _AutoCompleteWidget = AutoCompleteWidget;
+  AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    name: 'grabFocus',
+    attribute: 'grab-focus',
+    defaultValue: false
+  })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)({
     name: 'placeholder',
     attribute: 'placeholder',
-    defaultValue: ''
+    defaultValue: '',
+    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaFramework.bindable)({
     name: 'displayedText',
