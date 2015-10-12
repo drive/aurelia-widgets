@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports, _aureliaFramework, _jquery, _select2) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'select2'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _select2) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -67,20 +67,20 @@ define(['exports', 'aurelia-framework', 'jquery', 'select2'], function (exports,
     }]);
 
     var _LookupWidget = LookupWidget;
-    LookupWidget = (0, _aureliaFramework.bindable)('placeholder')(LookupWidget) || LookupWidget;
-    LookupWidget = (0, _aureliaFramework.bindable)('title')(LookupWidget) || LookupWidget;
-    LookupWidget = (0, _aureliaFramework.bindable)({
+    LookupWidget = (0, _aureliaTemplating.bindable)('placeholder')(LookupWidget) || LookupWidget;
+    LookupWidget = (0, _aureliaTemplating.bindable)('title')(LookupWidget) || LookupWidget;
+    LookupWidget = (0, _aureliaTemplating.bindable)({
       name: 'selectedItem',
       attribute: 'selected-item',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(LookupWidget) || LookupWidget;
-    LookupWidget = (0, _aureliaFramework.bindable)({
+    LookupWidget = (0, _aureliaTemplating.bindable)({
       name: 'controller',
       attribute: 'controller',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(LookupWidget) || LookupWidget;
-    LookupWidget = (0, _aureliaFramework.customElement)('lookup-widget')(LookupWidget) || LookupWidget;
-    LookupWidget = (0, _aureliaFramework.inject)(Element)(LookupWidget) || LookupWidget;
+    LookupWidget = (0, _aureliaTemplating.customElement)('lookup-widget')(LookupWidget) || LookupWidget;
+    LookupWidget = (0, _aureliaDependencyInjection.inject)(Element)(LookupWidget) || LookupWidget;
     return LookupWidget;
   })();
 

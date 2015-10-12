@@ -1,4 +1,6 @@
-import {inject, bindable, customElement, bindingMode} from 'aurelia-framework';
+import {customElement, bindable} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection'
 import $ from 'jquery';
 import select2 from 'select2';
 

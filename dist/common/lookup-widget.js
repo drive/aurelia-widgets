@@ -10,7 +10,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _jquery = require('jquery');
 
@@ -72,20 +76,20 @@ var LookupWidget = (function () {
   }]);
 
   var _LookupWidget = LookupWidget;
-  LookupWidget = (0, _aureliaFramework.bindable)('placeholder')(LookupWidget) || LookupWidget;
-  LookupWidget = (0, _aureliaFramework.bindable)('title')(LookupWidget) || LookupWidget;
-  LookupWidget = (0, _aureliaFramework.bindable)({
+  LookupWidget = (0, _aureliaTemplating.bindable)('placeholder')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaTemplating.bindable)('title')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaTemplating.bindable)({
     name: 'selectedItem',
     attribute: 'selected-item',
-    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   })(LookupWidget) || LookupWidget;
-  LookupWidget = (0, _aureliaFramework.bindable)({
+  LookupWidget = (0, _aureliaTemplating.bindable)({
     name: 'controller',
     attribute: 'controller',
-    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   })(LookupWidget) || LookupWidget;
-  LookupWidget = (0, _aureliaFramework.customElement)('lookup-widget')(LookupWidget) || LookupWidget;
-  LookupWidget = (0, _aureliaFramework.inject)(Element)(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaTemplating.customElement)('lookup-widget')(LookupWidget) || LookupWidget;
+  LookupWidget = (0, _aureliaDependencyInjection.inject)(Element)(LookupWidget) || LookupWidget;
   return LookupWidget;
 })();
 

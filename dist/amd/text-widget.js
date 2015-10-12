@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -29,15 +29,15 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     }]);
 
     var _TextWidget = TextWidget;
-    TextWidget = (0, _aureliaFramework.inject)(Element)(TextWidget) || TextWidget;
-    TextWidget = (0, _aureliaFramework.bindable)('label')(TextWidget) || TextWidget;
-    TextWidget = (0, _aureliaFramework.bindable)('placeholder')(TextWidget) || TextWidget;
-    TextWidget = (0, _aureliaFramework.bindable)({
+    TextWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextWidget) || TextWidget;
+    TextWidget = (0, _aureliaTemplating.bindable)('label')(TextWidget) || TextWidget;
+    TextWidget = (0, _aureliaTemplating.bindable)('placeholder')(TextWidget) || TextWidget;
+    TextWidget = (0, _aureliaTemplating.bindable)({
       name: 'textValue',
       attribute: 'text-value',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(TextWidget) || TextWidget;
-    TextWidget = (0, _aureliaFramework.customElement)('text-widget')(TextWidget) || TextWidget;
+    TextWidget = (0, _aureliaTemplating.customElement)('text-widget')(TextWidget) || TextWidget;
     return TextWidget;
   })();
 

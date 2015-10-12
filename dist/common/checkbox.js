@@ -10,7 +10,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
 
 var Checkbox = (function () {
   var _instanceInitializers = {};
@@ -18,7 +20,7 @@ var Checkbox = (function () {
 
   _createDecoratedClass(Checkbox, [{
     key: 'ontoggle',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
@@ -45,20 +47,20 @@ var Checkbox = (function () {
   }], null, _instanceInitializers);
 
   var _Checkbox = Checkbox;
-  Checkbox = (0, _aureliaFramework.bindable)({
+  Checkbox = (0, _aureliaTemplating.bindable)({
     name: 'checked',
     attribute: 'checked',
-    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   })(Checkbox) || Checkbox;
-  Checkbox = (0, _aureliaFramework.bindable)({
+  Checkbox = (0, _aureliaTemplating.bindable)({
     name: 'enabled',
     attribute: 'enabled',
-    defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
   })(Checkbox) || Checkbox;
-  Checkbox = (0, _aureliaFramework.bindable)({
+  Checkbox = (0, _aureliaTemplating.bindable)({
     name: 'labelText',
     attribute: 'label-text',
-    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   })(Checkbox) || Checkbox;
   return Checkbox;
 })();

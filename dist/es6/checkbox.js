@@ -1,4 +1,5 @@
-import {bindable, bindingMode} from 'aurelia-framework';
+import {bindable} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
 
 @bindable({
   name: 'labelText',

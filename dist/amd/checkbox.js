@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-binding'], function (exports, _aureliaTemplating, _aureliaBinding) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -17,7 +17,7 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
     _createDecoratedClass(Checkbox, [{
       key: 'ontoggle',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -44,20 +44,20 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     }], null, _instanceInitializers);
 
     var _Checkbox = Checkbox;
-    Checkbox = (0, _aureliaFramework.bindable)({
+    Checkbox = (0, _aureliaTemplating.bindable)({
       name: 'checked',
       attribute: 'checked',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(Checkbox) || Checkbox;
-    Checkbox = (0, _aureliaFramework.bindable)({
+    Checkbox = (0, _aureliaTemplating.bindable)({
       name: 'enabled',
       attribute: 'enabled',
-      defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
     })(Checkbox) || Checkbox;
-    Checkbox = (0, _aureliaFramework.bindable)({
+    Checkbox = (0, _aureliaTemplating.bindable)({
       name: 'labelText',
       attribute: 'label-text',
-      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(Checkbox) || Checkbox;
     return Checkbox;
   })();

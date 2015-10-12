@@ -1,4 +1,4 @@
-System.register(['aurelia-framework'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding'], function (_export) {
   'use strict';
 
   var bindable, bindingMode, Checkbox;
@@ -10,9 +10,10 @@ System.register(['aurelia-framework'], function (_export) {
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
-    setters: [function (_aureliaFramework) {
-      bindable = _aureliaFramework.bindable;
-      bindingMode = _aureliaFramework.bindingMode;
+    setters: [function (_aureliaTemplating) {
+      bindable = _aureliaTemplating.bindable;
+    }, function (_aureliaBinding) {
+      bindingMode = _aureliaBinding.bindingMode;
     }],
     execute: function () {
       Checkbox = (function () {

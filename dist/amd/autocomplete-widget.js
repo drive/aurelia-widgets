@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete'], function (exports, _aureliaFramework, _jquery, _devbridgeJQueryAutocomplete) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge/jQuery-Autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _devbridgeJQueryAutocomplete) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -99,7 +99,7 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
       }
     }, {
       key: 'bindableText',
-      decorators: [(0, _aureliaFramework.computedFrom)('selectedItem.description', 'displayedText')],
+      decorators: [(0, _aureliaBinding.computedFrom)('selectedItem.description', 'displayedText')],
       get: function get() {
         if (this.selectedItem && typeof this.selectedItem === 'object') {
           return this.selectedItem.description;
@@ -109,36 +109,36 @@ define(['exports', 'aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete
     }]);
 
     var _AutoCompleteWidget = AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'grabFocus',
       attribute: 'grab-focus',
       defaultValue: false
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'placeholder',
       attribute: 'placeholder',
       defaultValue: '',
-      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'displayedText',
       attribute: 'displayed-text',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'selectedItem',
       attribute: 'selected-item',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.bindable)({
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'controller',
       attribute: 'controller',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.customElement)('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
-    AutoCompleteWidget = (0, _aureliaFramework.inject)(Element)(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.customElement)('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaDependencyInjection.inject)(Element)(AutoCompleteWidget) || AutoCompleteWidget;
     return AutoCompleteWidget;
   })();
 

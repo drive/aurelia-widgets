@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -67,24 +67,24 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     }]);
 
     var _Combo = Combo;
-    Combo = (0, _aureliaFramework.inject)(Element)(Combo) || Combo;
-    Combo = (0, _aureliaFramework.bindable)({
+    Combo = (0, _aureliaDependencyInjection.inject)(Element)(Combo) || Combo;
+    Combo = (0, _aureliaTemplating.bindable)({
       name: 'selected',
       attribute: 'selected',
-      defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay,
       changeHandler: '_handleSelectedChanged'
     })(Combo) || Combo;
-    Combo = (0, _aureliaFramework.bindable)({
+    Combo = (0, _aureliaTemplating.bindable)({
       name: 'options',
       attribute: 'options',
-      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(Combo) || Combo;
-    Combo = (0, _aureliaFramework.bindable)({
+    Combo = (0, _aureliaTemplating.bindable)({
       name: 'title',
       attribute: 'title',
-      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(Combo) || Combo;
-    Combo = (0, _aureliaFramework.customElement)('combo')(Combo) || Combo;
+    Combo = (0, _aureliaTemplating.customElement)('combo')(Combo) || Combo;
     return Combo;
   })();
 

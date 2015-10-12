@@ -8,7 +8,11 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var TextWidget = (function () {
   function TextWidget(element) {
@@ -30,15 +34,15 @@ var TextWidget = (function () {
   }]);
 
   var _TextWidget = TextWidget;
-  TextWidget = (0, _aureliaFramework.inject)(Element)(TextWidget) || TextWidget;
-  TextWidget = (0, _aureliaFramework.bindable)('label')(TextWidget) || TextWidget;
-  TextWidget = (0, _aureliaFramework.bindable)('placeholder')(TextWidget) || TextWidget;
-  TextWidget = (0, _aureliaFramework.bindable)({
+  TextWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.bindable)('label')(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.bindable)('placeholder')(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.bindable)({
     name: 'textValue',
     attribute: 'text-value',
-    defaultBindingMode: _aureliaFramework.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   })(TextWidget) || TextWidget;
-  TextWidget = (0, _aureliaFramework.customElement)('text-widget')(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.customElement)('text-widget')(TextWidget) || TextWidget;
   return TextWidget;
 })();
 

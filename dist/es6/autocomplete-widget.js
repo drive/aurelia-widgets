@@ -1,4 +1,6 @@
-import {inject, bindable, customElement, bindingMode, computedFrom} from 'aurelia-framework';
+import {customElement, bindable} from 'aurelia-templating';
+import {bindingMode, computedFrom} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection'
 import $ from 'jquery';
 import autocomplete from 'devbridge/jQuery-Autocomplete';
 

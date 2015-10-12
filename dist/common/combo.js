@@ -8,7 +8,11 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var Combo = (function () {
   function Combo(element) {
@@ -68,24 +72,24 @@ var Combo = (function () {
   }]);
 
   var _Combo = Combo;
-  Combo = (0, _aureliaFramework.inject)(Element)(Combo) || Combo;
-  Combo = (0, _aureliaFramework.bindable)({
+  Combo = (0, _aureliaDependencyInjection.inject)(Element)(Combo) || Combo;
+  Combo = (0, _aureliaTemplating.bindable)({
     name: 'selected',
     attribute: 'selected',
-    defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay,
     changeHandler: '_handleSelectedChanged'
   })(Combo) || Combo;
-  Combo = (0, _aureliaFramework.bindable)({
+  Combo = (0, _aureliaTemplating.bindable)({
     name: 'options',
     attribute: 'options',
-    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   })(Combo) || Combo;
-  Combo = (0, _aureliaFramework.bindable)({
+  Combo = (0, _aureliaTemplating.bindable)({
     name: 'title',
     attribute: 'title',
-    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   })(Combo) || Combo;
-  Combo = (0, _aureliaFramework.customElement)('combo')(Combo) || Combo;
+  Combo = (0, _aureliaTemplating.customElement)('combo')(Combo) || Combo;
   return Combo;
 })();
 
