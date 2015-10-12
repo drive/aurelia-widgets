@@ -66,8 +66,7 @@ export class AutoCompleteWidget {
 
   _setSelectedItem(data, value) {
     if (this.selectedItem && typeof this.selectedItem === 'object') {
-      this.selectedItem.id = data;
-      this.selectedItem.description = value;
+      this.selectedItem = data;
     }
     else {
       this.selectedItem = data;
