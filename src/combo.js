@@ -28,7 +28,7 @@ export class Combo {
     this.combo = this.element.querySelector('select');
     //Sometimes we already have a bounded property and it's already changed before the attached callback is invoked
     //so this ensures that the loaded/changed value will always be set on the select when attached to the DOM
-    if (this.selected) 
+    if (this.selected || this.selected === 0) 
       this._setComboValue(this.selected);
 
     this.combo.addEventListener('change', this._boundChange);

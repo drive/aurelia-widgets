@@ -6,5 +6,5 @@ Object.defineProperty(exports, '__esModule', {
 exports.configure = configure;
 
 function configure(aurelia) {
-	aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo', 'text-widget']);
+	aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo', 'text-widget', 'checkbox']);
 }

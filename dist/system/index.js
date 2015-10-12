@@ -4,7 +4,7 @@ System.register([], function (_export) {
 	_export('configure', configure);
 
 	function configure(aurelia) {
-		aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo', 'text-widget']);
+		aurelia.globalResources(['lookup-widget', 'autocomplete-widget', 'combo', 'text-widget', 'checkbox']);
 	}
 
 	return {

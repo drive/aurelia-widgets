@@ -5,6 +5,7 @@
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",
   "format": "register",
+  "readme": "README.md",
   "directories": {
     "lib": "dist/system"
   },

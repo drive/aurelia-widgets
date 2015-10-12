@@ -30,8 +30,14 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
           this._keyUpListener = (function (event) {
             if (_this.input.value.trim() === '') {
               _this._setSelectedItem(null, '');
+            } else if (event.which === 13 && !_this.showingSuggestions) {
+              if (_this.onenterpressed) {
+                _this.onenterpressed();
+              }
             }
           }).bind(this);
+
+          this.showingSuggestions = false;
         }
 
         _createDecoratedClass(AutoCompleteWidget, [{
@@ -47,13 +53,32 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
             this.input.removeEventListener('keyup', this._keyUpListener);
           }
         }, {
+          key: 'attached',
+          value: function attached() {
+            if (this.grabFocus) {
+              this.input.focus();
+            }
+          }
+        }, {
           key: 'apply',
           value: function apply() {
             $(this.input).autocomplete({
               lookup: this.lookup.bind(this),
-              onSelect: this.onSelect.bind(this)
+              onSelect: this.onSelect.bind(this),
+              beforeRender: this.suggestionsShown.bind(this),
+              onHide: this.suggestionsHidden.bind(this)
             });
             this.input.addEventListener('keyup', this._keyUpListener);
+          }
+        }, {
+          key: 'suggestionsShown',
+          value: function suggestionsShown(container) {
+            this.showingSuggestions = true;
+          }
+        }, {
+          key: 'suggestionsHidden',
+          value: function suggestionsHidden(container) {
+            this.showingSuggestions = false;
           }
         }, {
           key: 'lookup',
@@ -89,11 +114,18 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
         }]);
 
         var _AutoCompleteWidget = AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'placeholder',
           attribute: 'placeholder',
-          defaultValue: ''
+          defaultValue: '',
+          defaultBindingMode: bindingMode.oneTime
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'displayedText',

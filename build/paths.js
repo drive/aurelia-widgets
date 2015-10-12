@@ -9,6 +9,7 @@ module.exports = {
   style: 'styles/**/*.css',
   sass: 'styles/styles.scss',
   saasStyle: 'styles/**/*.sass',
+  publishedSass: 'styles/checkbox.scss',
   styleFolder: './styles',
   output: 'dist/',
   doc:'./doc',
