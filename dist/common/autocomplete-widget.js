@@ -99,21 +99,15 @@ var AutoCompleteWidget = (function () {
   }, {
     key: '_setSelectedItem',
     value: function _setSelectedItem(data, value) {
-      if (this.selectedItem && typeof this.selectedItem === 'object') {
-        this.selectedItem = data;
-      } else {
-        this.selectedItem = data;
-        this.displayedText = value;
-      }
+      this.selectedItem = data;
     }
   }, {
     key: 'bindableText',
-    decorators: [(0, _aureliaBinding.computedFrom)('selectedItem.description', 'displayedText')],
+    decorators: [(0, _aureliaBinding.computedFrom)('selectedItem.code', 'selectedItem.description')],
     get: function get() {
-      if (this.selectedItem && typeof this.selectedItem === 'object') {
-        return this.selectedItem.description;
+      if (this.selectedItem) {
+        return this.selectedItem.code + ' ' + this.selectedItem.description;
       }
-      return this.displayedText;
     }
   }]);
 
@@ -130,11 +124,6 @@ var AutoCompleteWidget = (function () {
     attribute: 'placeholder',
     defaultValue: '',
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  })(AutoCompleteWidget) || AutoCompleteWidget;
-  AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
-    name: 'displayedText',
-    attribute: 'displayed-text',
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
     name: 'selectedItem',

@@ -97,21 +97,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: '_setSelectedItem',
           value: function _setSelectedItem(data, value) {
-            if (this.selectedItem && typeof this.selectedItem === 'object') {
-              this.selectedItem = data;
-            } else {
-              this.selectedItem = data;
-              this.displayedText = value;
-            }
+            this.selectedItem = data;
           }
         }, {
           key: 'bindableText',
-          decorators: [computedFrom('selectedItem.description', 'displayedText')],
+          decorators: [computedFrom('selectedItem.code', 'selectedItem.description')],
           get: function get() {
-            if (this.selectedItem && typeof this.selectedItem === 'object') {
-              return this.selectedItem.description;
+            if (this.selectedItem) {
+              return this.selectedItem.code + ' ' + this.selectedItem.description;
             }
-            return this.displayedText;
           }
         }]);
 
@@ -128,11 +122,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           attribute: 'placeholder',
           defaultValue: '',
           defaultBindingMode: bindingMode.oneTime
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'displayedText',
-          attribute: 'displayed-text',
-          defaultBindingMode: bindingMode.twoWay
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'selectedItem',

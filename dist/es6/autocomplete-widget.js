@@ -17,11 +17,6 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultBindingMode: bindingMode.twoWay
 })
 @bindable({
-  name:'displayedText',
-  attribute:'displayed-text',
-  defaultBindingMode: bindingMode.twoWay
-})
-@bindable({
   name: 'placeholder',
   attribute: 'placeholder',
   defaultValue: '',
@@ -97,20 +92,13 @@ export class AutoCompleteWidget {
   }
 
   _setSelectedItem(data, value) {
-    if (this.selectedItem && typeof this.selectedItem === 'object') {
-      this.selectedItem = data;
-    }
-    else {
-      this.selectedItem = data;
-      this.displayedText = value;
-    }
+    this.selectedItem = data;
   }
 
-  @computedFrom('selectedItem.description', 'displayedText')
+  @computedFrom('selectedItem.code', 'selectedItem.description')
   get bindableText() {
-    if (this.selectedItem && typeof this.selectedItem === 'object') {
-      return this.selectedItem.description;
+    if (this.selectedItem) {
+      return `${this.selectedItem.code} ${this.selectedItem.description}`;
     }
-    return this.displayedText;
   }
 }
