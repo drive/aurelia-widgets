@@ -71,8 +71,7 @@ System.register(['aurelia-framework', 'jquery', 'devbridge/jQuery-Autocomplete']
           key: '_setSelectedItem',
           value: function _setSelectedItem(data, value) {
             if (this.selectedItem && typeof this.selectedItem === 'object') {
-              this.selectedItem.id = data;
-              this.selectedItem.description = value;
+              this.selectedItem = data;
             } else {
               this.selectedItem = data;
               this.displayedText = value;
