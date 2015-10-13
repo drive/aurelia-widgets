@@ -92,16 +92,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: 'onSelect',
           value: function onSelect(suggestion) {
-            this._setSelectedItem(suggestion.data, suggestion.value);
+            this._setSelectedItem(suggestion.data);
           }
         }, {
           key: '_setSelectedItem',
-          value: function _setSelectedItem(data, value) {
+          value: function _setSelectedItem(data) {
             this.selectedItem = data;
           }
         }, {
+          key: 'selectAll',
+          value: function selectAll() {
+            this.input.select();
+          }
+        }, {
           key: 'bindableText',
-          decorators: [computedFrom('selectedItem.code', 'selectedItem.description')],
+          decorators: [computedFrom('selectedItem')],
           get: function get() {
             if (this.selectedItem) {
               return this.selectedItem.code + ' ' + this.selectedItem.description;

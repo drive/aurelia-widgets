@@ -88,17 +88,21 @@ export class AutoCompleteWidget {
 
   onSelect(suggestion) {
     //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
-    this._setSelectedItem(suggestion.data, suggestion.value);
+    this._setSelectedItem(suggestion.data);
   }
 
-  _setSelectedItem(data, value) {
+  _setSelectedItem(data) {
     this.selectedItem = data;
   }
 
-  @computedFrom('selectedItem.code', 'selectedItem.description')
+  @computedFrom('selectedItem')
   get bindableText() {
     if (this.selectedItem) {
       return `${this.selectedItem.code} ${this.selectedItem.description}`;
     }
+  }
+
+  selectAll() {
+    this.input.select();
   }
 }

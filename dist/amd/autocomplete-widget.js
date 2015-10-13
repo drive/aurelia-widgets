@@ -85,16 +85,21 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     }, {
       key: 'onSelect',
       value: function onSelect(suggestion) {
-        this._setSelectedItem(suggestion.data, suggestion.value);
+        this._setSelectedItem(suggestion.data);
       }
     }, {
       key: '_setSelectedItem',
-      value: function _setSelectedItem(data, value) {
+      value: function _setSelectedItem(data) {
         this.selectedItem = data;
       }
     }, {
+      key: 'selectAll',
+      value: function selectAll() {
+        this.input.select();
+      }
+    }, {
       key: 'bindableText',
-      decorators: [(0, _aureliaBinding.computedFrom)('selectedItem.code', 'selectedItem.description')],
+      decorators: [(0, _aureliaBinding.computedFrom)('selectedItem')],
       get: function get() {
         if (this.selectedItem) {
           return this.selectedItem.code + ' ' + this.selectedItem.description;
