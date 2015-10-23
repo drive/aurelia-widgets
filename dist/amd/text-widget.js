@@ -30,6 +30,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     var _TextWidget = TextWidget;
     TextWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextWidget) || TextWidget;
+    TextWidget = (0, _aureliaTemplating.bindable)({
+      name: 'grabFocus',
+      attribute: 'grab-focus',
+      defaultValue: false
+    })(TextWidget) || TextWidget;
     TextWidget = (0, _aureliaTemplating.bindable)('label')(TextWidget) || TextWidget;
     TextWidget = (0, _aureliaTemplating.bindable)('placeholder')(TextWidget) || TextWidget;
     TextWidget = (0, _aureliaTemplating.bindable)({

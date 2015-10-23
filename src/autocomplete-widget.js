@@ -56,12 +56,6 @@ export class AutoCompleteWidget {
     this.input.removeEventListener('keyup', this._keyUpListener);
   }
 
-  attached() {
-    if (this.grabFocus) {
-      this.input.focus();
-    }
-  }
-
   apply() {
     $(this.input).autocomplete({
       lookup: this.lookup.bind(this),

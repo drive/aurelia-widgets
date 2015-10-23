@@ -19,6 +19,11 @@ import {inject} from 'aurelia-dependency-injection'
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_handleSelectedChanged'
 })
+@bindable({
+  name: 'grabFocus',
+  attribute: 'grab-focus',
+  defaultValue: false
+})
 @inject(Element)
 export class Combo {
   constructor(element) {

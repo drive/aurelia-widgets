@@ -1,6 +1,15 @@
 .checkbox {
   cursor: default;
   margin: 0px;
+  padding-right: 30px;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  &:hover .checkbox-selector-enabled {
+    border-color: $brand-primary;
+  }
 }
 
 .checkbox-selector {
@@ -12,14 +21,11 @@
   border: 1px solid transparent;
 }
 
-.checkbox-selector-enabled:hover {
-  border-color: $brand-primary;
-}
-
 .checkbox-disabled {
   color: $text-muted;
 }
 
 .checkbox-label > span {
+  color: $text-color;
   margin-left: 5px;
 }

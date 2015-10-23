@@ -77,6 +77,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         var _Combo = Combo;
         Combo = inject(Element)(Combo) || Combo;
         Combo = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(Combo) || Combo;
+        Combo = bindable({
           name: 'selected',
           attribute: 'selected',
           defaultBindingMode: bindingMode.twoWay,

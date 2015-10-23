@@ -50,6 +50,11 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export) {
 
         var _Checkbox = Checkbox;
         Checkbox = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(Checkbox) || Checkbox;
+        Checkbox = bindable({
           name: 'checked',
           attribute: 'checked',
           defaultBindingMode: bindingMode.twoWay

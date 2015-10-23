@@ -18,6 +18,11 @@ import select2 from 'select2';
 })
 @bindable('title')
 @bindable('placeholder')
+@bindable({
+  name: 'grabFocus',
+  attribute: 'grab-focus',
+  defaultValue: false
+})
 export class LookupWidget {
   constructor(element) {
     this.element = element;

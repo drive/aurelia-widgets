@@ -73,6 +73,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }]);
 
         var _LookupWidget = LookupWidget;
+        LookupWidget = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(LookupWidget) || LookupWidget;
         LookupWidget = bindable('placeholder')(LookupWidget) || LookupWidget;
         LookupWidget = bindable('title')(LookupWidget) || LookupWidget;
         LookupWidget = bindable({

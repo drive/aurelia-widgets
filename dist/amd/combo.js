@@ -69,6 +69,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     var _Combo = Combo;
     Combo = (0, _aureliaDependencyInjection.inject)(Element)(Combo) || Combo;
     Combo = (0, _aureliaTemplating.bindable)({
+      name: 'grabFocus',
+      attribute: 'grab-focus',
+      defaultValue: false
+    })(Combo) || Combo;
+    Combo = (0, _aureliaTemplating.bindable)({
       name: 'selected',
       attribute: 'selected',
       defaultBindingMode: _aureliaBinding.bindingMode.twoWay,

@@ -1,10 +1,10 @@
 <template>
-  <div class="row checkbox noselect" click.delegate="checkboxSelected()">
+  <button class="btn btn-link checkbox noselect" click.delegate="checkboxSelected()" focus.bind="grabFocus">
     <div class="checkbox-selector pull-left ${enabled ? 'checkbox-selector-enabled' : ''}">
       <i class="fa ${ checked ? 'fa-check' : '' }"></i>
     </div>
     <div class="checkbox-label ${enabled ? '' : 'text-muted'}">
       <span>${labelText}</span>
     </div>
-  </div>
+  </button>
 </template>

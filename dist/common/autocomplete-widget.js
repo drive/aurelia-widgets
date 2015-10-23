@@ -57,13 +57,6 @@ var AutoCompleteWidget = (function () {
       this.input.removeEventListener('keyup', this._keyUpListener);
     }
   }, {
-    key: 'attached',
-    value: function attached() {
-      if (this.grabFocus) {
-        this.input.focus();
-      }
-    }
-  }, {
     key: 'apply',
     value: function apply() {
       (0, _jquery2['default'])(this.input).autocomplete({

@@ -48,13 +48,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.input.removeEventListener('keyup', this._keyUpListener);
       }
     }, {
-      key: 'attached',
-      value: function attached() {
-        if (this.grabFocus) {
-          this.input.focus();
-        }
-      }
-    }, {
       key: 'apply',
       value: function apply() {
         (0, _$['default'])(this.input).autocomplete({

@@ -16,6 +16,11 @@ import {bindingMode} from 'aurelia-binding';
   attribute: 'checked',
   defaultBindingMode: bindingMode.twoWay
 })
+@bindable({
+  name: 'grabFocus',
+  attribute: 'grab-focus',
+  defaultValue: false
+})
 export class Checkbox {
 
   @bindable ontoggle;

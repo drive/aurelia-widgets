@@ -76,6 +76,11 @@ var LookupWidget = (function () {
   }]);
 
   var _LookupWidget = LookupWidget;
+  LookupWidget = (0, _aureliaTemplating.bindable)({
+    name: 'grabFocus',
+    attribute: 'grab-focus',
+    defaultValue: false
+  })(LookupWidget) || LookupWidget;
   LookupWidget = (0, _aureliaTemplating.bindable)('placeholder')(LookupWidget) || LookupWidget;
   LookupWidget = (0, _aureliaTemplating.bindable)('title')(LookupWidget) || LookupWidget;
   LookupWidget = (0, _aureliaTemplating.bindable)({

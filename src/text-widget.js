@@ -10,6 +10,11 @@ import {inject} from 'aurelia-dependency-injection'
 })
 @bindable('placeholder')
 @bindable('label')
+@bindable({
+  name: 'grabFocus',
+  attribute: 'grab-focus',
+  defaultValue: false
+})
 @inject(Element)
 export class TextWidget {
   constructor(element) {

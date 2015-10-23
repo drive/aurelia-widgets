@@ -38,6 +38,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         var _TextWidget = TextWidget;
         TextWidget = inject(Element)(TextWidget) || TextWidget;
+        TextWidget = bindable({
+          name: 'grabFocus',
+          attribute: 'grab-focus',
+          defaultValue: false
+        })(TextWidget) || TextWidget;
         TextWidget = bindable('label')(TextWidget) || TextWidget;
         TextWidget = bindable('placeholder')(TextWidget) || TextWidget;
         TextWidget = bindable({

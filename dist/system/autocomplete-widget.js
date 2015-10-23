@@ -55,13 +55,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.input.removeEventListener('keyup', this._keyUpListener);
           }
         }, {
-          key: 'attached',
-          value: function attached() {
-            if (this.grabFocus) {
-              this.input.focus();
-            }
-          }
-        }, {
           key: 'apply',
           value: function apply() {
             $(this.input).autocomplete({

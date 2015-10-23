@@ -48,6 +48,11 @@ var Checkbox = (function () {
 
   var _Checkbox = Checkbox;
   Checkbox = (0, _aureliaTemplating.bindable)({
+    name: 'grabFocus',
+    attribute: 'grab-focus',
+    defaultValue: false
+  })(Checkbox) || Checkbox;
+  Checkbox = (0, _aureliaTemplating.bindable)({
     name: 'checked',
     attribute: 'checked',
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay
