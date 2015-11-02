@@ -26,6 +26,9 @@ import {inject} from 'aurelia-dependency-injection'
 })
 @inject(Element)
 export class Combo {
+
+  @bindable onchange;
+
   constructor(element) {
     this.element = element;
     this._boundChange = this._change.bind(this);
@@ -54,6 +57,10 @@ export class Combo {
 
   _change(change) {
     this._setSelected(change.target);
+
+    if (this.onchange) {
+      this.onchange();
+    }
   }
 
   _handleSelectedChanged(newValue) {
