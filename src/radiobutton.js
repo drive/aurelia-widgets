@@ -2,8 +2,6 @@ import {customElement, bindable, inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {RadioButtonSelectedEvent} from './radiobuttonselectedevent';
 
-const SELECTED_EVENT = 'radio-button-selected';
-
 @inject(EventAggregator)
 @customElement('radio-button')
 @bindable('label')

@@ -51,6 +51,7 @@
     "dependencies": {
       "aurelia-binding": "github:aurelia/binding@^0.10.0",
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.11.0",
+      "aurelia-event-aggregator": "github:aurelia/event-aggregator@^0.9.0",
       "aurelia-templating": "github:aurelia/templating@^0.16.0",
       "css": "github:systemjs/plugin-css@^0.1.6",
       "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@^1.2.21",
