@@ -23,6 +23,9 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobutton
           _classCallCheck(this, _RadioButton);
 
           this.eventAggregator = eventAggregator;
+          this.onselecting = function () {
+            return true;
+          };
         }
 
         _createClass(RadioButton, [{
@@ -39,8 +42,10 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobutton
           key: 'clicked',
           value: function clicked() {
             if (this.disabled !== true) {
-              this.selected = !this.selected;
-              this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
+              if (this.onselecting()) {
+                this.selected = !this.selected;
+                this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
+              }
             }
           }
         }, {
@@ -62,6 +67,7 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobutton
           attribute: 'group-name',
           name: 'groupName'
         })(RadioButton) || RadioButton;
+        RadioButton = bindable('onselecting')(RadioButton) || RadioButton;
         RadioButton = bindable('disabled')(RadioButton) || RadioButton;
         RadioButton = bindable('selected')(RadioButton) || RadioButton;
         RadioButton = bindable('label')(RadioButton) || RadioButton;

@@ -19,6 +19,9 @@ var RadioButton = (function () {
     _classCallCheck(this, _RadioButton);
 
     this.eventAggregator = eventAggregator;
+    this.onselecting = function () {
+      return true;
+    };
   }
 
   _createClass(RadioButton, [{
@@ -35,8 +38,10 @@ var RadioButton = (function () {
     key: 'clicked',
     value: function clicked() {
       if (this.disabled !== true) {
-        this.selected = !this.selected;
-        this.eventAggregator.publish(new _radiobuttonselectedevent.RadioButtonSelectedEvent(this.groupName, this.label));
+        if (this.onselecting()) {
+          this.selected = !this.selected;
+          this.eventAggregator.publish(new _radiobuttonselectedevent.RadioButtonSelectedEvent(this.groupName, this.label));
+        }
       }
     }
   }, {
@@ -58,6 +63,7 @@ var RadioButton = (function () {
     attribute: 'group-name',
     name: 'groupName'
   })(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaFramework.bindable)('onselecting')(RadioButton) || RadioButton;
   RadioButton = (0, _aureliaFramework.bindable)('disabled')(RadioButton) || RadioButton;
   RadioButton = (0, _aureliaFramework.bindable)('selected')(RadioButton) || RadioButton;
   RadioButton = (0, _aureliaFramework.bindable)('label')(RadioButton) || RadioButton;

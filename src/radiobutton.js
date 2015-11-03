@@ -7,6 +7,7 @@ import {RadioButtonSelectedEvent} from './radiobuttonselectedevent';
 @bindable('label')
 @bindable('selected')
 @bindable('disabled')
+@bindable('onselecting')
 @bindable({
   attribute: 'group-name',
   name: 'groupName'
@@ -20,6 +21,7 @@ export class RadioButton {
 
   constructor(eventAggregator) {
     this.eventAggregator = eventAggregator;
+    this.onselecting = () => true;
   }
 
   bind() {
@@ -32,8 +34,10 @@ export class RadioButton {
 
   clicked() {
     if (this.disabled !== true) {
-      this.selected = !this.selected;
-      this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
+      if (this.onselecting()) {
+        this.selected = !this.selected;
+        this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
+      }
     }
   }
 
