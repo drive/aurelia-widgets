@@ -66,7 +66,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this._setSelected(change.target);
 
             if (this.onchange) {
-              this.onchange();
+              this.onchange(this.selected);
             }
           }
         }, {
