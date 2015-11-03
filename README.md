@@ -18,13 +18,13 @@ Each radio button must have:
   - a non-empty, unique (within the group) `label`
   - a `group-name`
 
-Optionally, it can also have a function bound to `onselecting`, e.g. <radio-button onselecting.call="someFunction()"></radio-button>
+Optionally, it can also have a function bound to `onselecting`, e.g. `<radio-button onselecting.call="someFunction()"></radio-button>`
 This should return true to allow the selection to go ahead, or false to leave the button group in the previously selected state.
 By default, this action is always allowed.
 
 
 ### Checkbox
-Can optionally have a function bound to `ontoggle`,  e.g. <checkbox ontoggle.call="someFunction()"></checkbox> which is
+Can optionally have a function bound to `ontoggle`,  e.g. `<checkbox ontoggle.call="someFunction()"></checkbox>` which is
 called whenever the widget is checked or unchecked.
 
 
