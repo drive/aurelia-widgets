@@ -58,7 +58,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this._setSelected(change.target);
 
         if (this.onchange) {
-          this.onchange();
+          this.onchange(this.selected);
         }
       }
     }, {
