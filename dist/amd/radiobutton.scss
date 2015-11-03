@@ -5,10 +5,6 @@
   border: 1px solid transparent;
   border-radius: 50%;
   background-color: $gray-lighter;
-
-  &:hover {
-    border-color: $brand-primary;
-  }
 }
 
 .radio-button {
@@ -19,7 +15,12 @@
   position: relative;
 
   &:hover, &:focus {
-    text-decoration: none !important;  
+    text-decoration: none !important;
+    color: $brand-primary !important;
+  }
+
+  &:hover .radio-button-selector {
+    border-color: $brand-primary;   
   }
   
   & > span {

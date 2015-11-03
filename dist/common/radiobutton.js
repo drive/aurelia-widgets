@@ -14,8 +14,6 @@ var _aureliaEventAggregator = require('aurelia-event-aggregator');
 
 var _radiobuttonselectedevent = require('./radiobuttonselectedevent');
 
-var SELECTED_EVENT = 'radio-button-selected';
-
 var RadioButton = (function () {
   function RadioButton(eventAggregator) {
     _classCallCheck(this, _RadioButton);

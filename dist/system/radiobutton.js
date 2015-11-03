@@ -1,7 +1,7 @@
 System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export) {
   'use strict';
 
-  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, SELECTED_EVENT, RadioButton;
+  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, RadioButton;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -18,8 +18,6 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobutton
       RadioButtonSelectedEvent = _radiobuttonselectedevent.RadioButtonSelectedEvent;
     }],
     execute: function () {
-      SELECTED_EVENT = 'radio-button-selected';
-
       RadioButton = (function () {
         function RadioButton(eventAggregator) {
           _classCallCheck(this, _RadioButton);

@@ -9,8 +9,6 @@ define(['exports', 'aurelia-framework', 'aurelia-event-aggregator', './radiobutt
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  var SELECTED_EVENT = 'radio-button-selected';
-
   var RadioButton = (function () {
     function RadioButton(eventAggregator) {
       _classCallCheck(this, _RadioButton);
