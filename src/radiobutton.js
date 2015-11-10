@@ -1,4 +1,5 @@
-import {customElement, bindable, inject} from 'aurelia-framework';
+import {customElement, bindable} from 'aurelia-templating';
+import {inject} from 'aurelia-dependency-injection';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {RadioButtonSelectedEvent} from './radiobuttonselectedevent';
 

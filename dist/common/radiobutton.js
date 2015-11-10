@@ -8,7 +8,9 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaEventAggregator = require('aurelia-event-aggregator');
 
@@ -54,21 +56,21 @@ var RadioButton = (function () {
   }]);
 
   var _RadioButton = RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)({
+  RadioButton = (0, _aureliaTemplating.bindable)({
     name: 'grabFocus',
     attribute: 'grab-focus',
     defaultValue: false
   })(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)({
+  RadioButton = (0, _aureliaTemplating.bindable)({
     attribute: 'group-name',
     name: 'groupName'
   })(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)('onselecting')(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)('disabled')(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)('selected')(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.bindable)('label')(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.customElement)('radio-button')(RadioButton) || RadioButton;
-  RadioButton = (0, _aureliaFramework.inject)(_aureliaEventAggregator.EventAggregator)(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaTemplating.bindable)('onselecting')(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaTemplating.bindable)('disabled')(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaTemplating.bindable)('selected')(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaTemplating.bindable)('label')(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaTemplating.customElement)('radio-button')(RadioButton) || RadioButton;
+  RadioButton = (0, _aureliaDependencyInjection.inject)(_aureliaEventAggregator.EventAggregator)(RadioButton) || RadioButton;
   return RadioButton;
 })();
 

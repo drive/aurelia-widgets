@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, RadioButton;
@@ -8,10 +8,11 @@ System.register(['aurelia-framework', 'aurelia-event-aggregator', './radiobutton
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_aureliaFramework) {
-      customElement = _aureliaFramework.customElement;
-      bindable = _aureliaFramework.bindable;
-      inject = _aureliaFramework.inject;
+    setters: [function (_aureliaTemplating) {
+      customElement = _aureliaTemplating.customElement;
+      bindable = _aureliaTemplating.bindable;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaEventAggregator) {
       EventAggregator = _aureliaEventAggregator.EventAggregator;
     }, function (_radiobuttonselectedevent) {
