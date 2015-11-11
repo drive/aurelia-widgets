@@ -32,17 +32,6 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
 export class AutoCompleteWidget {
   constructor(element) {
     this.element = element;
-    this._keyUpListener = ((event) => {
-      if (this.input.value.trim() === '') {
-        this._setSelectedItem(null, '');
-      }
-      else if (event.which === 13 && !this.showingSuggestions) {
-        if (this.onenterpressed) {
-          this.onenterpressed();
-        }
-      }
-    }).bind(this);
-
     this.showingSuggestions = false;
   }
 
@@ -53,7 +42,6 @@ export class AutoCompleteWidget {
 
   unbind() {
     $(this.input).autocomplete('dispose');
-    this.input.removeEventListener('keyup', this._keyUpListener);
   }
 
   apply() {
@@ -61,9 +49,9 @@ export class AutoCompleteWidget {
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this),
       beforeRender: this.suggestionsShown.bind(this),
-      onHide: this.suggestionsHidden.bind(this)
+      onHide: this.suggestionsHidden.bind(this),
+      deferRequestBy: 200
     });
-    this.input.addEventListener('keyup', this._keyUpListener);
   }
 
   suggestionsShown(container) {
@@ -83,6 +71,18 @@ export class AutoCompleteWidget {
   onSelect(suggestion) {
     //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
     this._setSelectedItem(suggestion.data);
+  }
+
+  keyUpListener(event) {
+    if (this.input.value.trim() === '') {
+      this._setSelectedItem(null, '');
+    }
+    else if (event.which === 13 && !this.showingSuggestions) {
+      if (this.onenterpressed) {
+        this.onenterpressed();
+        event.preventDefault();
+      }
+    }
   }
 
   _setSelectedItem(data) {

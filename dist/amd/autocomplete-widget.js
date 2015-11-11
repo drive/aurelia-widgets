@@ -17,21 +17,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
   var AutoCompleteWidget = (function () {
     function AutoCompleteWidget(element) {
-      var _this = this;
-
       _classCallCheck(this, _AutoCompleteWidget);
 
       this.element = element;
-      this._keyUpListener = (function (event) {
-        if (_this.input.value.trim() === '') {
-          _this._setSelectedItem(null, '');
-        } else if (event.which === 13 && !_this.showingSuggestions) {
-          if (_this.onenterpressed) {
-            _this.onenterpressed();
-          }
-        }
-      }).bind(this);
-
       this.showingSuggestions = false;
     }
 
@@ -45,7 +33,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       key: 'unbind',
       value: function unbind() {
         (0, _$['default'])(this.input).autocomplete('dispose');
-        this.input.removeEventListener('keyup', this._keyUpListener);
       }
     }, {
       key: 'apply',
@@ -54,9 +41,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
           lookup: this.lookup.bind(this),
           onSelect: this.onSelect.bind(this),
           beforeRender: this.suggestionsShown.bind(this),
-          onHide: this.suggestionsHidden.bind(this)
+          onHide: this.suggestionsHidden.bind(this),
+          deferRequestBy: 200
         });
-        this.input.addEventListener('keyup', this._keyUpListener);
       }
     }, {
       key: 'suggestionsShown',
@@ -79,6 +66,18 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       key: 'onSelect',
       value: function onSelect(suggestion) {
         this._setSelectedItem(suggestion.data);
+      }
+    }, {
+      key: 'keyUpListener',
+      value: function keyUpListener(event) {
+        if (this.input.value.trim() === '') {
+          this._setSelectedItem(null, '');
+        } else if (event.which === 13 && !this.showingSuggestions) {
+          if (this.onenterpressed) {
+            this.onenterpressed();
+            event.preventDefault();
+          }
+        }
       }
     }, {
       key: '_setSelectedItem',
