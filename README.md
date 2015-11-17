@@ -28,3 +28,6 @@ Can optionally have a function bound to `ontoggle`,  e.g. `<checkbox ontoggle.ca
 called whenever the widget is checked or unchecked.
 
 
+### Currency Input
+This will allow all characters to be entered (to more easily not penalise power users using `Home`, `Tab`, etc) but if the input
+can't be parsed as a number, then the value will be reset and the value will be left as NaN

@@ -31,7 +31,7 @@ describe('The Autocomplete Widget', () => {
 
     //Act
     input.value = '';
-    widget._keyUpListener();
+    widget.keyUpListener();
 
     //Assert
     expect(widget.selectedItem).toBeNull();
