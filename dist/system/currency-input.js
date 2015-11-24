@@ -40,9 +40,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.input.select();
           }
         }, {
+          key: 'valueChanged',
+          value: function valueChanged(newValue) {
+            this._updateDisplay(newValue.toString());
+          }
+        }, {
           key: 'onblur',
           value: function onblur() {
-            this.displayValue = this.displayValue.trim();
+            this._updateDisplay(this.displayValue);
+          }
+        }, {
+          key: '_updateDisplay',
+          value: function _updateDisplay(update) {
+            this.displayValue = update.trim();
             if (this.displayValue) {
               this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
               if (this.value === 'NaN') {
@@ -71,7 +81,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         CurrencyInput = bindable({
           name: 'value',
           attribute: 'value',
-          defaultBindingMode: bindingMode.twoWay
+          defaultBindingMode: bindingMode.twoWay,
+          changeHandler: 'valueChanged'
         })(CurrencyInput) || CurrencyInput;
         CurrencyInput = customElement('currency-input')(CurrencyInput) || CurrencyInput;
         return CurrencyInput;

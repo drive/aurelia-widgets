@@ -36,9 +36,19 @@ var CurrencyInput = (function () {
       this.input.select();
     }
   }, {
+    key: 'valueChanged',
+    value: function valueChanged(newValue) {
+      this._updateDisplay(newValue.toString());
+    }
+  }, {
     key: 'onblur',
     value: function onblur() {
-      this.displayValue = this.displayValue.trim();
+      this._updateDisplay(this.displayValue);
+    }
+  }, {
+    key: '_updateDisplay',
+    value: function _updateDisplay(update) {
+      this.displayValue = update.trim();
       if (this.displayValue) {
         this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
         if (this.value === 'NaN') {
@@ -67,7 +77,8 @@ var CurrencyInput = (function () {
   CurrencyInput = (0, _aureliaTemplating.bindable)({
     name: 'value',
     attribute: 'value',
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay,
+    changeHandler: 'valueChanged'
   })(CurrencyInput) || CurrencyInput;
   CurrencyInput = (0, _aureliaTemplating.customElement)('currency-input')(CurrencyInput) || CurrencyInput;
   return CurrencyInput;

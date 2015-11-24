@@ -9,7 +9,8 @@ const KEY_Z = 90;
 @bindable({
   name:'value',
   attribute:'value',
-  defaultBindingMode: bindingMode.twoWay
+  defaultBindingMode: bindingMode.twoWay,
+  changeHandler: 'valueChanged'
 })
 @bindable({
   name: 'placeholder',
@@ -38,8 +39,16 @@ export class CurrencyInput {
     this.input.select();
   }
 
+  valueChanged(newValue) {
+    this._updateDisplay(newValue.toString());
+  }
+
   onblur() {
-    this.displayValue = this.displayValue.trim();
+    this._updateDisplay(this.displayValue);
+  }
+
+  _updateDisplay(update) {
+    this.displayValue = update.trim();
     if (this.displayValue) {
       this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
       if (this.value === 'NaN') {
