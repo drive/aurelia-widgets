@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="lookupField" class="control-label">${title}</label>
     <select class="form-control" focus.bind="grabFocus">
-      <option repeat.for="option of options" value="${option.id}" selected.one-time="$parent.getSelectedId($parent.selected) === option.id">${option.description}</option>
+      <option repeat.for="option of options" value="${option.id}" selected.one-time="$parent.getSelectedId($parent.selected) === option.id">${option.lookupDefaultDescription ? option.lookupDefaultDescription : option.description}</option>
     </select>
   </div>
 </template>
