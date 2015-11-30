@@ -1,12 +1,12 @@
 define(['exports'], function (exports) {
-	'use strict';
+                          'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-	exports.configure = configure;
+                          Object.defineProperty(exports, '__esModule', {
+                                                    value: true
+                          });
+                          exports.configure = configure;
 
-	function configure(aurelia) {
-		aurelia.globalResources(['autocomplete-widget', 'combo', 'text-widget', 'checkbox', 'radiobutton', 'currency-input']);
-	}
+                          function configure(aurelia) {
+                                                    aurelia.globalResources(['autocomplete-widget', 'combo', 'text-widget', 'checkbox', 'radiobutton', 'currency-input', 'text-display-widget']);
+                          }
 });

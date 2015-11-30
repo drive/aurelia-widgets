@@ -1,14 +1,14 @@
 System.register([], function (_export) {
-	'use strict';
+                          'use strict';
 
-	_export('configure', configure);
+                          _export('configure', configure);
 
-	function configure(aurelia) {
-		aurelia.globalResources(['autocomplete-widget', 'combo', 'text-widget', 'checkbox', 'radiobutton', 'currency-input']);
-	}
+                          function configure(aurelia) {
+                                                    aurelia.globalResources(['autocomplete-widget', 'combo', 'text-widget', 'checkbox', 'radiobutton', 'currency-input', 'text-display-widget']);
+                          }
 
-	return {
-		setters: [],
-		execute: function () {}
-	};
+                          return {
+                                                    setters: [],
+                                                    execute: function () {}
+                          };
 });
