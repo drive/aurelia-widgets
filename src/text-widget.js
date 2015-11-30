@@ -1,6 +1,6 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection'
+import {inject} from 'aurelia-dependency-injection';
 
 @customElement('text-widget')
 @bindable({
