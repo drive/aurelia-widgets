@@ -10,8 +10,7 @@ System.config({
     "*": "*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "aurelia-widgets/*": "dist/system/*",
-    "lookup-widget/*": "dist/*"
+    "aurelia-widgets/*": "dist/system/*"
   },
 
   map: {
