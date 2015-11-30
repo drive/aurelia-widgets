@@ -2,6 +2,7 @@
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 @import "./autocomplete.scss";
 @import "./currency-input.scss";
+@import "./text-display.scss";
 
 //I have intentionally not included checkbox.scss here, as it uses bootstrap
 //variables for colouring and should be compiled along with the rest of the scss in the project
