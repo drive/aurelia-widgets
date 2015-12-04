@@ -29,7 +29,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         _createClass(TextDisplayWidget, [{
           key: 'bind',
           value: function bind() {
-            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip();
+            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip('fixTitle');
           }
         }, {
           key: 'textChanged',

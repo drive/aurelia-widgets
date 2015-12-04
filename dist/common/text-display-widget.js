@@ -30,7 +30,7 @@ var TextDisplayWidget = (function () {
   _createClass(TextDisplayWidget, [{
     key: 'bind',
     value: function bind() {
-      (0, _jquery2['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip();
+      (0, _jquery2['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip('fixTitle');
     }
   }, {
     key: 'textChanged',

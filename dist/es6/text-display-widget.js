@@ -17,11 +17,11 @@ export class TextDisplayWidget {
   }
 
   bind() {
-    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip();
+    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip('fixTitle');
   }
     
   textChanged(newValue) {
-   $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
+    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
   }
 
 }
