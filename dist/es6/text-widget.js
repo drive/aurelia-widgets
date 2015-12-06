@@ -15,6 +15,12 @@ import {inject} from 'aurelia-dependency-injection';
   attribute: 'grab-focus',
   defaultValue: false
 })
+@bindable({
+  name: 'multiline',
+  attribute: 'multiline',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneTime
+})
 @inject(Element)
 export class TextWidget {
   constructor(element) {
@@ -22,7 +28,12 @@ export class TextWidget {
   }
 
   attached() {
-    this.input = this.element.querySelector('input');
+    if (this.multiline) {
+      this.input = this.element.querySelector('textarea');
+    }
+    else {
+      this.input = this.element.querySelector('input');
+    }
   }
 
   selectAll() {

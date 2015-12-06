@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'numeral'], function (_export) {
   'use strict';
 
-  var customElement, bindable, bindingMode, computedFrom, inject, KEY_A, KEY_Z, CurrencyInput;
+  var customElement, bindable, bindingMode, computedFrom, inject, numeral, KEY_A, KEY_Z, CurrencyInput;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -16,6 +16,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       computedFrom = _aureliaBinding.computedFrom;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_numeral) {
+      numeral = _numeral['default'];
     }],
     execute: function () {
       KEY_A = 65;
@@ -59,7 +61,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
                 this.value = NaN;
                 this.displayValue = '';
               } else {
-                this.displayValue = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                this.displayValue = numeral(this.value).format('0,0.00');
               }
             }
           }

@@ -24,6 +24,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@1.2.24",
     "jquery": "github:components/jquery@2.1.4",
+    "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -87,6 +88,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:numeral@1.5.3": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"

@@ -24,7 +24,11 @@ var TextWidget = (function () {
   _createClass(TextWidget, [{
     key: 'attached',
     value: function attached() {
-      this.input = this.element.querySelector('input');
+      if (this.multiline) {
+        this.input = this.element.querySelector('textarea');
+      } else {
+        this.input = this.element.querySelector('input');
+      }
     }
   }, {
     key: 'selectAll',
@@ -35,6 +39,12 @@ var TextWidget = (function () {
 
   var _TextWidget = TextWidget;
   TextWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.bindable)({
+    name: 'multiline',
+    attribute: 'multiline',
+    defaultValue: false,
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  })(TextWidget) || TextWidget;
   TextWidget = (0, _aureliaTemplating.bindable)({
     name: 'grabFocus',
     attribute: 'grab-focus',

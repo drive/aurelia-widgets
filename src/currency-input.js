@@ -1,6 +1,7 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode, computedFrom} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection'
+import numeral from 'numeral';
 
 const KEY_A = 65;
 const KEY_Z = 90;
@@ -56,7 +57,7 @@ export class CurrencyInput {
         this.displayValue = '';
       }
       else {
-        this.displayValue = this.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        this.displayValue = numeral(this.value).format('0,0.00');
       }
     }
   }

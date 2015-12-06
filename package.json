@@ -55,7 +55,8 @@
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1",
       "css": "github:systemjs/plugin-css@^0.1.6",
       "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@^1.2.21",
-      "jquery": "github:components/jquery@^2.1.3"
+      "jquery": "github:components/jquery@^2.1.3",
+      "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.25",

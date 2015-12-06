@@ -27,7 +27,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         _createClass(TextWidget, [{
           key: 'attached',
           value: function attached() {
-            this.input = this.element.querySelector('input');
+            if (this.multiline) {
+              this.input = this.element.querySelector('textarea');
+            } else {
+              this.input = this.element.querySelector('input');
+            }
           }
         }, {
           key: 'selectAll',
@@ -38,6 +42,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         var _TextWidget = TextWidget;
         TextWidget = inject(Element)(TextWidget) || TextWidget;
+        TextWidget = bindable({
+          name: 'multiline',
+          attribute: 'multiline',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneTime
+        })(TextWidget) || TextWidget;
         TextWidget = bindable({
           name: 'grabFocus',
           attribute: 'grab-focus',
