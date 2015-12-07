@@ -17,7 +17,13 @@ export class TextDisplayWidget {
   }
 
   bind() {
-    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip('fixTitle');
+    let toolTipElement = $(this.element.querySelector('[data-toggle="tooltip"]'));
+    toolTipElement.attr('title', this.text);
+    toolTipElement.tooltip({
+      container: 'body',
+      placement: 'auto top'
+    })
+    toolTipElement.tooltip('fixTitle');
   }
     
   textChanged(newValue) {

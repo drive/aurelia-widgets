@@ -39,6 +39,6 @@ describe('The Currency Input widget', () => {
 
     //assert
     expect(currencyInput.displayValue).toBe('');
-    expect(currencyInput.value).toBe(NaN);
+    expect(isNaN(currencyInput.value)).toBe(true);
   });
 });

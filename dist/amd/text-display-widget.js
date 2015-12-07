@@ -23,7 +23,13 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     _createClass(TextDisplayWidget, [{
       key: 'bind',
       value: function bind() {
-        (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', this.text).tooltip('fixTitle');
+        var toolTipElement = (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]'));
+        toolTipElement.attr('title', this.text);
+        toolTipElement.tooltip({
+          container: 'body',
+          placement: 'auto top'
+        });
+        toolTipElement.tooltip('fixTitle');
       }
     }, {
       key: 'textChanged',
