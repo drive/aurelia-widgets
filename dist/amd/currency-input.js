@@ -74,6 +74,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(CurrencyInput) || CurrencyInput;
     CurrencyInput = (0, _aureliaTemplating.bindable)({
+      name: 'disabled',
+      attribute: 'disabled',
+      defaultValue: false,
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })(CurrencyInput) || CurrencyInput;
+    CurrencyInput = (0, _aureliaTemplating.bindable)({
       name: 'value',
       attribute: 'value',
       defaultBindingMode: _aureliaBinding.bindingMode.twoWay,

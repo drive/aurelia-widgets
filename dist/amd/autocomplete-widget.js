@@ -123,6 +123,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       attribute: 'controller',
       defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
+      name: 'disabled',
+      attribute: 'disabled',
+      defaultValue: false,
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.customElement)('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaDependencyInjection.inject)(Element)(AutoCompleteWidget) || AutoCompleteWidget;
     return AutoCompleteWidget;

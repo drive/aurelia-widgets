@@ -130,6 +130,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           attribute: 'controller',
           defaultBindingMode: bindingMode.twoWay
         })(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'disabled',
+          attribute: 'disabled',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
+        })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = customElement('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = inject(Element)(AutoCompleteWidget) || AutoCompleteWidget;
         return AutoCompleteWidget;

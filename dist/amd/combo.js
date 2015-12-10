@@ -103,6 +103,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(Combo) || Combo;
     Combo = (0, _aureliaTemplating.bindable)({
+      name: 'disabled',
+      attribute: 'disabled',
+      defaultValue: false,
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })(Combo) || Combo;
+    Combo = (0, _aureliaTemplating.bindable)({
       name: 'title',
       attribute: 'title',
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime

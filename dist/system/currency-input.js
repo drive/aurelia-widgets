@@ -81,6 +81,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           defaultBindingMode: bindingMode.oneTime
         })(CurrencyInput) || CurrencyInput;
         CurrencyInput = bindable({
+          name: 'disabled',
+          attribute: 'disabled',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
+        })(CurrencyInput) || CurrencyInput;
+        CurrencyInput = bindable({
           name: 'value',
           attribute: 'value',
           defaultBindingMode: bindingMode.twoWay,

@@ -7,6 +7,12 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
 @inject(Element)
 @customElement('autocomplete-widget')
 @bindable({
+  name: 'disabled',
+  attribute: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
   name:'controller',
   attribute:'controller',
   defaultBindingMode: bindingMode.twoWay

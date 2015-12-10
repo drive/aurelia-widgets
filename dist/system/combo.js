@@ -111,6 +111,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           defaultBindingMode: bindingMode.oneTime
         })(Combo) || Combo;
         Combo = bindable({
+          name: 'disabled',
+          attribute: 'disabled',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
+        })(Combo) || Combo;
+        Combo = bindable({
           name: 'title',
           attribute: 'title',
           defaultBindingMode: bindingMode.oneTime

@@ -14,6 +14,12 @@ const KEY_Z = 90;
   changeHandler: 'valueChanged'
 })
 @bindable({
+  name: 'disabled',
+  attribute: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
   name: 'placeholder',
   defaultValue: '0.00',
   defaultBindingMode: bindingMode.oneTime

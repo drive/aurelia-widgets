@@ -9,6 +9,12 @@ import {inject} from 'aurelia-dependency-injection'
   defaultBindingMode: bindingMode.oneTime
 })
 @bindable({
+  name: 'disabled',
+  attribute: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
   name:'options',
   attribute:'options',
   defaultBindingMode: bindingMode.oneTime
