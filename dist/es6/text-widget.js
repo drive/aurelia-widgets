@@ -8,6 +8,12 @@ import {inject} from 'aurelia-dependency-injection';
   attribute:'text-value',
   defaultBindingMode: bindingMode.twoWay
 })
+@bindable({
+  name: 'disabled',
+  attribute: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
 @bindable('placeholder')
 @bindable('label')
 @bindable({

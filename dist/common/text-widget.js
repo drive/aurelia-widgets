@@ -53,6 +53,12 @@ var TextWidget = (function () {
   TextWidget = (0, _aureliaTemplating.bindable)('label')(TextWidget) || TextWidget;
   TextWidget = (0, _aureliaTemplating.bindable)('placeholder')(TextWidget) || TextWidget;
   TextWidget = (0, _aureliaTemplating.bindable)({
+    name: 'disabled',
+    attribute: 'disabled',
+    defaultValue: false,
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  })(TextWidget) || TextWidget;
+  TextWidget = (0, _aureliaTemplating.bindable)({
     name: 'textValue',
     attribute: 'text-value',
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay

@@ -56,6 +56,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         TextWidget = bindable('label')(TextWidget) || TextWidget;
         TextWidget = bindable('placeholder')(TextWidget) || TextWidget;
         TextWidget = bindable({
+          name: 'disabled',
+          attribute: 'disabled',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
+        })(TextWidget) || TextWidget;
+        TextWidget = bindable({
           name: 'textValue',
           attribute: 'text-value',
           defaultBindingMode: bindingMode.twoWay
