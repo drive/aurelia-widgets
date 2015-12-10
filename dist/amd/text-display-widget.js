@@ -32,6 +32,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         toolTipElement.tooltip('fixTitle');
       }
     }, {
+      key: 'unbind',
+      value: function unbind() {
+        (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
+      }
+    }, {
       key: 'textChanged',
       value: function textChanged(newValue) {
         (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');

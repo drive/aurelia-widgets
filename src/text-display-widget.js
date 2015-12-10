@@ -25,6 +25,10 @@ export class TextDisplayWidget {
     });
     toolTipElement.tooltip('fixTitle');
   }
+
+  unbind() {
+    $(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
+  }
     
   textChanged(newValue) {
     $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');

@@ -22,8 +22,12 @@ export class TextDisplayWidget {
     toolTipElement.tooltip({
       container: 'body',
       placement: 'auto top'
-    })
+    });
     toolTipElement.tooltip('fixTitle');
+  }
+
+  unbind() {
+    $(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
   }
     
   textChanged(newValue) {

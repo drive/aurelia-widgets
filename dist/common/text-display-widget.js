@@ -39,6 +39,11 @@ var TextDisplayWidget = (function () {
       toolTipElement.tooltip('fixTitle');
     }
   }, {
+    key: 'unbind',
+    value: function unbind() {
+      (0, _jquery2['default'])(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
+    }
+  }, {
     key: 'textChanged',
     value: function textChanged(newValue) {
       (0, _jquery2['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');

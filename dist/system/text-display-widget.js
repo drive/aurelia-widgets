@@ -38,6 +38,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             toolTipElement.tooltip('fixTitle');
           }
         }, {
+          key: 'unbind',
+          value: function unbind() {
+            $(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
+          }
+        }, {
           key: 'textChanged',
           value: function textChanged(newValue) {
             $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
