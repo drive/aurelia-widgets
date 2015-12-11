@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 @customElement('text-display-widget')
 @bindable('text')
+@bindable('toolTipText')
 @bindable({
   name: 'placement',
   defaultValue: 'auto'
@@ -18,12 +19,13 @@ export class TextDisplayWidget {
 
   bind() {
     let toolTipElement = $(this.element.querySelector('[data-toggle="tooltip"]'));
-    toolTipElement.attr('title', this.text);
+    toolTipElement.attr('title', this.toolTipText || this.text);
     toolTipElement.tooltip({
       container: 'body',
-      placement: 'auto top'
+      placement: 'auto top',
+      html: true
     });
-    toolTipElement.tooltip('fixTitle');
+    this._updateToolTip(this.toolTipText || this.text);
   }
 
   unbind() {
@@ -31,7 +33,21 @@ export class TextDisplayWidget {
   }
     
   textChanged(newValue) {
-    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
+    if (!this.toolTipText) {
+      this._updateToolTip(newValue); 
+    }
+  }
+
+  toolTipTextChanged(newValue) {
+    this._updateToolTip(newValue);
+  }
+
+  _updateToolTip(newValue) {
+    let tooltip = newValue;
+    if (this.formatToolTip) {
+      tooltip = formatToolTip();
+    }
+    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', tooltip).tooltip('fixTitle');
   }
 
 }
