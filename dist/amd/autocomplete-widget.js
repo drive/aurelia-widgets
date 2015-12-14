@@ -63,6 +63,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       key: 'suggestionsShown',
       value: function suggestionsShown(container) {
         this.showingSuggestions = true;
+
+        if (this.customCSS !== '') (0, _$['default'])(container)[0].classList.add(this.customCSS);
       }
     }, {
       key: 'suggestionsHidden',
@@ -125,6 +127,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     })(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
+      name: 'customCSS',
+      attribute: 'custom-css',
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+      defaultValue: ''
+    })(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'placeholder',
       attribute: 'placeholder',
