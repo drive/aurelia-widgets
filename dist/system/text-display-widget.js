@@ -30,12 +30,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: 'bind',
           value: function bind() {
             var toolTipElement = $(this.element.querySelector('[data-toggle="tooltip"]'));
-            toolTipElement.attr('title', this.text);
+            toolTipElement.attr('title', this.toolTipText || this.text);
             toolTipElement.tooltip({
               container: 'body',
-              placement: 'auto top'
+              placement: 'auto top',
+              html: true
             });
-            toolTipElement.tooltip('fixTitle');
+            this._updateToolTip(this.toolTipText || this.text);
           }
         }, {
           key: 'unbind',
@@ -45,7 +46,23 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: 'textChanged',
           value: function textChanged(newValue) {
-            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
+            if (!this.toolTipText) {
+              this._updateToolTip(newValue);
+            }
+          }
+        }, {
+          key: 'toolTipTextChanged',
+          value: function toolTipTextChanged(newValue) {
+            this._updateToolTip(newValue);
+          }
+        }, {
+          key: '_updateToolTip',
+          value: function _updateToolTip(newValue) {
+            var tooltip = newValue;
+            if (this.formatToolTip) {
+              tooltip = formatToolTip();
+            }
+            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', tooltip).tooltip('fixTitle');
           }
         }]);
 
@@ -55,6 +72,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           name: 'placement',
           defaultValue: 'auto'
         })(TextDisplayWidget) || TextDisplayWidget;
+        TextDisplayWidget = bindable('toolTipText')(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable('text')(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = customElement('text-display-widget')(TextDisplayWidget) || TextDisplayWidget;
         return TextDisplayWidget;
