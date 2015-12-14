@@ -4,6 +4,12 @@ import {inject} from 'aurelia-dependency-injection'
 
 @customElement('combo')
 @bindable({
+  name: 'size',
+  attribute: 'size',
+  defaultValue: 'medium',
+  defaultBindingMode: bindingMode.oneTime
+})
+@bindable({
   name:'title',
   attribute:'title',
   defaultBindingMode: bindingMode.oneTime

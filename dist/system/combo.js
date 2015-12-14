@@ -121,6 +121,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           attribute: 'title',
           defaultBindingMode: bindingMode.oneTime
         })(Combo) || Combo;
+        Combo = bindable({
+          name: 'size',
+          attribute: 'size',
+          defaultValue: 'medium',
+          defaultBindingMode: bindingMode.oneTime
+        })(Combo) || Combo;
         Combo = customElement('combo')(Combo) || Combo;
         return Combo;
       })();
