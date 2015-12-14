@@ -34,6 +34,12 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultValue: '',
   defaultBindingMode: bindingMode.oneTime
 })
+@bindable({
+  name: 'customCSS',
+  attribute: 'custom-css',
+  defaultBindingMode: bindingMode.oneTime,
+  defaultValue: ''
+})
 @bindable('title')
 @bindable('onenterpressed')
 @bindable({
@@ -71,6 +77,10 @@ export class AutoCompleteWidget {
 
   suggestionsShown(container) {
     this.showingSuggestions = true;
+
+    if (this.customCSS !== '')
+      $(container)[0].classList.add(this.customCSS);
+
   }
 
   suggestionsHidden(container) {
