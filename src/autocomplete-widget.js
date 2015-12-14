@@ -7,6 +7,12 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
 @inject(Element)
 @customElement('autocomplete-widget')
 @bindable({
+  name: 'size',
+  attribute: 'size',
+  defaultValue: 'medium',
+  defaultBindingMode: bindingMode.oneTime
+})
+@bindable({
   name: 'disabled',
   attribute: 'disabled',
   defaultValue: false,
@@ -36,6 +42,9 @@ import autocomplete from 'devbridge/jQuery-Autocomplete';
   defaultValue: false
 })
 export class AutoCompleteWidget {
+
+  @bindable onchange;
+  
   constructor(element) {
     this.element = element;
     this.showingSuggestions = false;
@@ -77,6 +86,10 @@ export class AutoCompleteWidget {
   onSelect(suggestion) {
     //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
     this._setSelectedItem(suggestion.data);
+
+    if (this.onchange) {
+      this.onchange(this.selectedItem);
+    }
   }
 
   keyUpListener(event) {
