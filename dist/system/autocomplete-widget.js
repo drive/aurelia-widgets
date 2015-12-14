@@ -70,6 +70,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: 'suggestionsShown',
           value: function suggestionsShown(container) {
             this.showingSuggestions = true;
+
+            if (this.customCSS !== '') $(container)[0].classList.add(this.customCSS);
           }
         }, {
           key: 'suggestionsHidden',
@@ -132,6 +134,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'customCSS',
+          attribute: 'custom-css',
+          defaultBindingMode: bindingMode.oneTime,
+          defaultValue: ''
+        })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'placeholder',
           attribute: 'placeholder',

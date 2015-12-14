@@ -72,6 +72,8 @@ var AutoCompleteWidget = (function () {
     key: 'suggestionsShown',
     value: function suggestionsShown(container) {
       this.showingSuggestions = true;
+
+      if (this.customCSS !== '') (0, _jquery2['default'])(container)[0].classList.add(this.customCSS);
     }
   }, {
     key: 'suggestionsHidden',
@@ -134,6 +136,12 @@ var AutoCompleteWidget = (function () {
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;
+  AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
+    name: 'customCSS',
+    attribute: 'custom-css',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultValue: ''
+  })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
     name: 'placeholder',
     attribute: 'placeholder',
