@@ -10,6 +10,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaBinding = require('aurelia-binding');
@@ -25,8 +27,20 @@ var _devbridgeJQueryAutocomplete = require('devbridge/jQuery-Autocomplete');
 var _devbridgeJQueryAutocomplete2 = _interopRequireDefault(_devbridgeJQueryAutocomplete);
 
 var AutoCompleteWidget = (function () {
+  var _instanceInitializers = {};
+  var _instanceInitializers = {};
+
+  _createDecoratedClass(AutoCompleteWidget, [{
+    key: 'onchange',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers);
+
   function AutoCompleteWidget(element) {
     _classCallCheck(this, _AutoCompleteWidget);
+
+    _defineDecoratedPropertyDescriptor(this, 'onchange', _instanceInitializers);
 
     this.element = element;
     this.showingSuggestions = false;
@@ -75,6 +89,10 @@ var AutoCompleteWidget = (function () {
     key: 'onSelect',
     value: function onSelect(suggestion) {
       this._setSelectedItem(suggestion.data);
+
+      if (this.onchange) {
+        this.onchange(this.selectedItem);
+      }
     }
   }, {
     key: 'keyUpListener',
@@ -106,7 +124,7 @@ var AutoCompleteWidget = (function () {
         return this.selectedItem.code + ' ' + this.selectedItem.description;
       }
     }
-  }]);
+  }], null, _instanceInitializers);
 
   var _AutoCompleteWidget = AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
@@ -137,6 +155,12 @@ var AutoCompleteWidget = (function () {
     attribute: 'disabled',
     defaultValue: false,
     defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  })(AutoCompleteWidget) || AutoCompleteWidget;
+  AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
+    name: 'size',
+    attribute: 'size',
+    defaultValue: 'medium',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.customElement)('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaDependencyInjection.inject)(Element)(AutoCompleteWidget) || AutoCompleteWidget;
