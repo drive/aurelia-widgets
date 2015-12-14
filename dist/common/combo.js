@@ -118,6 +118,12 @@ var Combo = (function () {
     attribute: 'title',
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   })(Combo) || Combo;
+  Combo = (0, _aureliaTemplating.bindable)({
+    name: 'size',
+    attribute: 'size',
+    defaultValue: 'medium',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  })(Combo) || Combo;
   Combo = (0, _aureliaTemplating.customElement)('combo')(Combo) || Combo;
   return Combo;
 })();

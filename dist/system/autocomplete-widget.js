@@ -7,6 +7,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+
   return {
     setters: [function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
@@ -23,8 +25,20 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }],
     execute: function () {
       AutoCompleteWidget = (function () {
+        var _instanceInitializers = {};
+        var _instanceInitializers = {};
+
+        _createDecoratedClass(AutoCompleteWidget, [{
+          key: 'onchange',
+          decorators: [bindable],
+          initializer: null,
+          enumerable: true
+        }], null, _instanceInitializers);
+
         function AutoCompleteWidget(element) {
           _classCallCheck(this, _AutoCompleteWidget);
+
+          _defineDecoratedPropertyDescriptor(this, 'onchange', _instanceInitializers);
 
           this.element = element;
           this.showingSuggestions = false;
@@ -73,6 +87,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: 'onSelect',
           value: function onSelect(suggestion) {
             this._setSelectedItem(suggestion.data);
+
+            if (this.onchange) {
+              this.onchange(this.selectedItem);
+            }
           }
         }, {
           key: 'keyUpListener',
@@ -104,7 +122,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               return this.selectedItem.code + ' ' + this.selectedItem.description;
             }
           }
-        }]);
+        }], null, _instanceInitializers);
 
         var _AutoCompleteWidget = AutoCompleteWidget;
         AutoCompleteWidget = bindable({
@@ -135,6 +153,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           attribute: 'disabled',
           defaultValue: false,
           defaultBindingMode: bindingMode.oneWay
+        })(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'size',
+          attribute: 'size',
+          defaultValue: 'medium',
+          defaultBindingMode: bindingMode.oneTime
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = customElement('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = inject(Element)(AutoCompleteWidget) || AutoCompleteWidget;

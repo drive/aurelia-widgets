@@ -3,7 +3,7 @@
     <label class="control-label">${label}</label>
     <div class="input-group">
       <span class="input-group-addon">$</span>
-      <input type="text" pattern="[0-9]*" value.bind="displayValue" class="form-control currency-input" placeholder.bind="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" blur.call="onblur()" disabled.bind="disabled" />
+      <input type="text" pattern="[0-9]*" value.bind="displayValue" class="form-control currency-input ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}"" placeholder.bind="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" blur.call="onblur()" disabled.bind="disabled" />
     </div>
   </div>
 </template>
