@@ -1,7 +1,7 @@
 <template>
 	<div class="form-group">
 		<label class="control-label">${title}</label>
-		<input class="form-control ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" type="text" value.one-way="bindableText" placeholder.one-time="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" autocomplete="off" keyup.delegate="keyUpListener($event)" disabled.bind="disabled" />
+		<input class="form-control ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" type="text" value.one-way="bindableText | coalesceString" placeholder.one-time="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" autocomplete="off" keyup.delegate="keyUpListener($event)" disabled.bind="disabled" />
 	</div>
 </template>
 
