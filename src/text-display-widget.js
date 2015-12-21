@@ -8,7 +8,8 @@ import $ from 'jquery';
 @bindable('toolTipText')
 @bindable({
   name: 'placement',
-  defaultValue: 'auto'
+  defaultValue: 'auto top',
+  defaultBindingMode: bindingMode.oneTime
 })
 @inject(Element)
 export class TextDisplayWidget {
@@ -22,7 +23,7 @@ export class TextDisplayWidget {
     toolTipElement.attr('title', this.toolTipText || this.text);
     toolTipElement.tooltip({
       container: 'body',
-      placement: 'auto top',
+      placement: this.placement,
       html: true
     });
     this._updateToolTip(this.toolTipText || this.text);
@@ -43,11 +44,7 @@ export class TextDisplayWidget {
   }
 
   _updateToolTip(newValue) {
-    let tooltip = newValue;
-    if (this.formatToolTip) {
-      tooltip = formatToolTip();
-    }
-    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', tooltip).tooltip('fixTitle');
+    $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
   }
 
 }

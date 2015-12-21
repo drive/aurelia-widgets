@@ -33,7 +33,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             toolTipElement.attr('title', this.toolTipText || this.text);
             toolTipElement.tooltip({
               container: 'body',
-              placement: 'auto top',
+              placement: this.placement,
               html: true
             });
             this._updateToolTip(this.toolTipText || this.text);
@@ -58,11 +58,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: '_updateToolTip',
           value: function _updateToolTip(newValue) {
-            var tooltip = newValue;
-            if (this.formatToolTip) {
-              tooltip = formatToolTip();
-            }
-            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', tooltip).tooltip('fixTitle');
+            $(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
           }
         }]);
 
@@ -70,7 +66,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         TextDisplayWidget = inject(Element)(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable({
           name: 'placement',
-          defaultValue: 'auto'
+          defaultValue: 'auto top',
+          defaultBindingMode: bindingMode.oneTime
         })(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable('toolTipText')(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable('text')(TextDisplayWidget) || TextDisplayWidget;

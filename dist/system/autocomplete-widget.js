@@ -187,7 +187,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           value: function toView(value) {
             var replacement = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
 
-            return value === null || value === undefined ? replacement : value.toString();
+            return value === null || value === undefined ? replacement : value.toString().trim();
           }
         }]);
 
