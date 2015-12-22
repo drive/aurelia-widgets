@@ -79,8 +79,7 @@ export class AutoCompleteWidget {
     this.showingSuggestions = true;
 
     if (this.customCSS !== '')
-      $(container)[0].classList.add(this.customCSS);
-
+      $(container)[0].classList.add(...this.customCSS.split(','));
   }
 
   suggestionsHidden(container) {

@@ -10,6 +10,8 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
@@ -73,9 +75,11 @@ var AutoCompleteWidget = (function () {
   }, {
     key: 'suggestionsShown',
     value: function suggestionsShown(container) {
+      var _$$0$classList;
+
       this.showingSuggestions = true;
 
-      if (this.customCSS !== '') (0, _jquery2['default'])(container)[0].classList.add(this.customCSS);
+      if (this.customCSS !== '') (_$$0$classList = (0, _jquery2['default'])(container)[0].classList).add.apply(_$$0$classList, _toConsumableArray(this.customCSS.split(',')));
     }
   }, {
     key: 'suggestionsHidden',
