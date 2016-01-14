@@ -26,9 +26,7 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _devbridgeJQueryAutocomplete = require('devbridge/jQuery-Autocomplete');
-
-var _devbridgeJQueryAutocomplete2 = _interopRequireDefault(_devbridgeJQueryAutocomplete);
+require('devbridge-autocomplete');
 
 var AutoCompleteWidget = (function () {
   var _instanceInitializers = {};

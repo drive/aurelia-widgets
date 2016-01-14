@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge/jQuery-Autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _devbridgeJQueryAutocomplete) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _devbridgeAutocomplete) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -18,8 +18,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   var _$ = _interopRequireDefault(_jquery);
-
-  var _autocomplete = _interopRequireDefault(_devbridgeJQueryAutocomplete);
 
   var AutoCompleteWidget = (function () {
     var _instanceInitializers = {};

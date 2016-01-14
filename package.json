@@ -1,6 +1,6 @@
 {
   "name": "aurelia-widgets",
-  "version": "0.3.15",
+  "version": "0.3.20",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",
@@ -54,7 +54,7 @@
       "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-beta.1",
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1",
       "css": "github:systemjs/plugin-css@^0.1.6",
-      "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@^1.2.21",
+      "devbridge-autocomplete": "npm:devbridge-autocomplete@^1.2.24",
       "jquery": "npm:jquery@^2.2.0",
       "numeral": "npm:numeral@^1.5.3"
     },

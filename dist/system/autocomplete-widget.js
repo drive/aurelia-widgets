@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge/jQuery-Autocomplete'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (_export) {
   'use strict';
 
-  var customElement, bindable, bindingMode, computedFrom, inject, $, autocomplete, AutoCompleteWidget, CoalesceStringValueConverter;
+  var customElement, bindable, bindingMode, computedFrom, inject, $, AutoCompleteWidget, CoalesceStringValueConverter;
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -24,9 +24,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_jquery) {
       $ = _jquery['default'];
-    }, function (_devbridgeJQueryAutocomplete) {
-      autocomplete = _devbridgeJQueryAutocomplete['default'];
-    }],
+    }, function (_devbridgeAutocomplete) {}],
     execute: function () {
       AutoCompleteWidget = (function () {
         var _instanceInitializers = {};

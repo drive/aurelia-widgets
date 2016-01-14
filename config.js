@@ -22,7 +22,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "devbridge/jQuery-Autocomplete": "github:devbridge/jQuery-Autocomplete@1.2.24",
+    "devbridge-autocomplete": "npm:devbridge-autocomplete@1.2.24",
     "jquery": "npm:jquery@2.2.0",
     "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -85,6 +85,10 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:devbridge-autocomplete@1.2.24": {
+      "jquery": "npm:jquery@2.2.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
