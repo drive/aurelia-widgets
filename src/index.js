@@ -5,5 +5,6 @@ export function configure(aurelia) {
                            'checkbox',
                            'radiobutton', 
                            'currency-input',
-                           'text-display-widget']);
+                           'text-display-widget',
+                           'togglebutton']);
 }

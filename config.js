@@ -20,6 +20,8 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.0.3",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "bootstrap-toggle": "npm:bootstrap-toggle@2.2.1",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "devbridge-autocomplete": "npm:devbridge-autocomplete@1.2.24",
@@ -36,6 +38,9 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:twbs/bootstrap@3.3.6": {
+      "jquery": "github:components/jquery@2.2.0"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
