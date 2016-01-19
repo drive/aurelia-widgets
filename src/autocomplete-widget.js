@@ -83,7 +83,10 @@ export class AutoCompleteWidget {
   }
 
   suggestionsHidden(container) {
-    this.showingSuggestions = false;
+    //Slight kludge as the events don't fire in the order I want.
+    setTimeout(() => {
+      this.showingSuggestions = false;
+    }, 250);
   }
 
   lookup(query, done) {
@@ -126,11 +129,5 @@ export class AutoCompleteWidget {
 
   selectAll() {
     this.input.select();
-  }
-}
-
-export class CoalesceStringValueConverter {
-  toView(value, replacement = '') {
-    return value === null || value === undefined ? replacement : value.toString().trim();
   }
 }

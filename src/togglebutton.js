@@ -24,6 +24,12 @@ import 'bootstrap-toggle/css/bootstrap-toggle.css!';
   defaultValue: null
 })
 @bindable({
+  name: 'label',
+  attribute: 'label',
+  defaultBindingMode: bindingMode.oneTime,
+  defaultValue: ''
+})
+@bindable({
   name: 'checked',
   defaultBindingMode: bindingMode.twoWay
 })
