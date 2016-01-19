@@ -9,9 +9,18 @@ Widgets Available:
 - Text Input
 - Checkbox
 - Radio Button
+- Toggle Button
 - Text Display
 
-All the input widgets have a grab-focus attribute which, when set to true, will focus the main input of the widget
+All the input widgets (except the Toggle Button) have a grab-focus attribute which, when set to true, will focus the main input of the widget
+
+### Autocomplete
+Should have a `lookup` bound to an object that has a `search(inputText)` function.  This will return a Promise that resolves to an object of the form:   
+```
+{
+    suggestions: [ { value: "Text for the input", data: { } }, { value: "...", data: {...} }, ... ]
+}
+```
 
 ### Radio Button
 
@@ -36,6 +45,13 @@ can't be parsed as a number, then the value will be reset and the value will be 
 ### Text Display
 This is intended to be a limited text area, which will then add a tooltip to show the full text.  It works best when
 `white-space` is set to `nowrap` on the `.text-display` class.
+
+### Toggle Button
+This is a switch, with a checkbox underneath (hence "checked" as an attribute).  Bindable attributes are:   
+- on-text : When the switch is "checked" this text will be displayed
+- off-text : When the switch is "unchecked" this text will be displayed
+- width : the width of the toggle in pixels (should be an integer), default is null which should be 'auto' but doesn't work as well as it should
+- checked : whether the switch is "checked"
 
 
 #### Known Issues:
