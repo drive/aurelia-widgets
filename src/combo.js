@@ -89,9 +89,7 @@ export class Combo {
 
   _setSelected(item) {
     if (typeof this.selected === 'object') {
-      this.selected.id = item.value;
-      //supports only one selected option
-      this.selected.description = item.selectedOptions[0].text;
+      this.selected = this.options.find(x => x.id == item.value);
     }
     else {
       this.selected = item.value;

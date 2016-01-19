@@ -75,9 +75,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       key: '_setSelected',
       value: function _setSelected(item) {
         if (typeof this.selected === 'object') {
-          this.selected.id = item.value;
-
-          this.selected.description = item.selectedOptions[0].text;
+          this.selected = this.options.find(function (x) {
+            return x.id == item.value;
+          });
         } else {
           this.selected = item.value;
         }
