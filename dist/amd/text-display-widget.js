@@ -64,6 +64,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })(TextDisplayWidget) || TextDisplayWidget;
     TextDisplayWidget = (0, _aureliaTemplating.bindable)('toolTipText')(TextDisplayWidget) || TextDisplayWidget;
+    TextDisplayWidget = (0, _aureliaTemplating.bindable)({
+      name: 'placeholder',
+      defaultValue: '',
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })(TextDisplayWidget) || TextDisplayWidget;
     TextDisplayWidget = (0, _aureliaTemplating.bindable)('text')(TextDisplayWidget) || TextDisplayWidget;
     TextDisplayWidget = (0, _aureliaTemplating.customElement)('text-display-widget')(TextDisplayWidget) || TextDisplayWidget;
     return TextDisplayWidget;

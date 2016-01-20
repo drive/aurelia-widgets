@@ -1,6 +1,6 @@
 {
   "name": "aurelia-widgets",
-  "version": "0.3.22",
+  "version": "0.3.24",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",

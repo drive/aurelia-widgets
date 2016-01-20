@@ -5,6 +5,11 @@ import $ from 'jquery';
 
 @customElement('text-display-widget')
 @bindable('text')
+@bindable({
+  name: 'placeholder',
+  defaultValue: '',
+  defaultBindingMode: bindingMode.oneTime
+})
 @bindable('toolTipText')
 @bindable({
   name: 'placement',

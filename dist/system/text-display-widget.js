@@ -70,6 +70,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           defaultBindingMode: bindingMode.oneTime
         })(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable('toolTipText')(TextDisplayWidget) || TextDisplayWidget;
+        TextDisplayWidget = bindable({
+          name: 'placeholder',
+          defaultValue: '',
+          defaultBindingMode: bindingMode.oneTime
+        })(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = bindable('text')(TextDisplayWidget) || TextDisplayWidget;
         TextDisplayWidget = customElement('text-display-widget')(TextDisplayWidget) || TextDisplayWidget;
         return TextDisplayWidget;
