@@ -1,4 +1,13 @@
-.text-display {
+text-display-widget {
+  max-width:100%;
+}
+
+.text-display-widget-container {
+  display: block;
+}
+
+.text-display-widget-label {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
