@@ -60,6 +60,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       defaultBindingMode: _aureliaBinding.bindingMode.twoWay
     })(ToggleButton) || ToggleButton;
     ToggleButton = (0, _aureliaTemplating.bindable)({
+      name: 'label',
+      attribute: 'label',
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+      defaultValue: ''
+    })(ToggleButton) || ToggleButton;
+    ToggleButton = (0, _aureliaTemplating.bindable)({
       name: 'width',
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
       defaultValue: null

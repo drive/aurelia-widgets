@@ -66,6 +66,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           defaultBindingMode: bindingMode.twoWay
         })(ToggleButton) || ToggleButton;
         ToggleButton = bindable({
+          name: 'label',
+          attribute: 'label',
+          defaultBindingMode: bindingMode.oneTime,
+          defaultValue: ''
+        })(ToggleButton) || ToggleButton;
+        ToggleButton = bindable({
           name: 'width',
           defaultBindingMode: bindingMode.oneTime,
           defaultValue: null
