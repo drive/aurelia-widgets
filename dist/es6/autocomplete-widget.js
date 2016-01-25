@@ -131,3 +131,9 @@ export class AutoCompleteWidget {
     this.input.select();
   }
 }
+
+export class CoalesceStringValueConverter {
+  toView(value, replacement = '') {
+    return value === null || value === undefined ? replacement : value.toString().trim();
+  }
+}

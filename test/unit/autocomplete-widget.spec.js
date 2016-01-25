@@ -22,7 +22,14 @@ describe('The Autocomplete Widget', () => {
     input = document.createElement('input');
     let mockElement = new MockElement(input)
     widget = new AutoCompleteWidget(mockElement);
+    widget.customCSS = '';
     widget.bind();
+
+    jasmine.clock().install();
+  });
+
+  afterEach(() => {
+    jasmine.clock().uninstall();
   });
 
   it('should set the selected item to null when the input text is cleared', (done) => {
@@ -36,5 +43,20 @@ describe('The Autocomplete Widget', () => {
     //Assert
     expect(widget.selectedItem).toBeNull();
     done();
+  });
+
+  it('should not select an item when enter is pressed and the suggestions are shown', () => {
+    //arrange
+    let enterPressed = false;
+    widget.onenterpressed = () => enterPressed = true;
+    widget.suggestionsShown();
+
+    //act
+    widget.suggestionsHidden(); //deliberately before the keyHandler, as this is the real world order
+    widget.keyUpListener({ which: 13 });
+    jasmine.clock().tick(500);
+
+    //assert
+    expect(enterPressed).toBeFalsy();
   });
 });
