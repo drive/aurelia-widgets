@@ -99,7 +99,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this._setSelectedItem(suggestion.data);
 
             if (this.onchange) {
-              this.onchange(this.selectedItem);
+              this.onchange({ selected: this.selectedItem });
             }
           }
         }, {

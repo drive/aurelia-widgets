@@ -101,7 +101,7 @@ var AutoCompleteWidget = (function () {
       this._setSelectedItem(suggestion.data);
 
       if (this.onchange) {
-        this.onchange(this.selectedItem);
+        this.onchange({ selected: this.selectedItem });
       }
     }
   }, {
