@@ -1,6 +1,6 @@
 {
   "name": "aurelia-widgets",
-  "version": "0.3.28",
+  "version": "0.3.29",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",
@@ -31,7 +31,7 @@
     "gulp-yuidoc": "^0.1.2",
     "jasmine-core": "^2.3.4",
     "jshint-stylish": "^1.0.0",
-    "jspm": "^0.16.14",
+    "jspm": "^0.16.26",
     "karma": "^0.13.15",
     "karma-babel-preprocessor": "^5.2.2",
     "karma-chrome-launcher": "^0.2.1",
@@ -62,7 +62,7 @@
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.25",
       "babel-runtime": "npm:babel-runtime@^5.8.25",
-      "core-js": "npm:core-js@^1.2.6"
+      "core-js": "npm:core-js@^2.0.3"
     },
     "overrides": {
       "npm:bootstrap-toggle@2.2.1": {
