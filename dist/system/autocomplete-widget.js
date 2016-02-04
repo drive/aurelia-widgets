@@ -97,10 +97,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: 'onSelect',
           value: function onSelect(suggestion) {
             this._setSelectedItem(suggestion.data);
-
-            if (this.onchange) {
-              this.onchange({ selected: this.selectedItem });
-            }
           }
         }, {
           key: 'keyUpListener',
@@ -118,6 +114,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: '_setSelectedItem',
           value: function _setSelectedItem(data) {
             this.selectedItem = data;
+
+            if (this.onchange) {
+              this.onchange({ selected: this.selectedItem });
+            }
           }
         }, {
           key: 'selectAll',

@@ -99,10 +99,6 @@ var AutoCompleteWidget = (function () {
     key: 'onSelect',
     value: function onSelect(suggestion) {
       this._setSelectedItem(suggestion.data);
-
-      if (this.onchange) {
-        this.onchange({ selected: this.selectedItem });
-      }
     }
   }, {
     key: 'keyUpListener',
@@ -120,6 +116,10 @@ var AutoCompleteWidget = (function () {
     key: '_setSelectedItem',
     value: function _setSelectedItem(data) {
       this.selectedItem = data;
+
+      if (this.onchange) {
+        this.onchange({ selected: this.selectedItem });
+      }
     }
   }, {
     key: 'selectAll',

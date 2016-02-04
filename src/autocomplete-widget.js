@@ -98,10 +98,6 @@ export class AutoCompleteWidget {
   onSelect(suggestion) {
     //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
     this._setSelectedItem(suggestion.data);
-
-    if (this.onchange) {
-      this.onchange({ selected: this.selectedItem });
-    }
   }
 
   keyUpListener(event) {
@@ -118,6 +114,10 @@ export class AutoCompleteWidget {
 
   _setSelectedItem(data) {
     this.selectedItem = data;
+
+    if (this.onchange) {
+      this.onchange({ selected: this.selectedItem });
+    }
   }
 
   @computedFrom('selectedItem')
