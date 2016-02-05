@@ -66,13 +66,42 @@ export class AutoCompleteWidget {
   }
 
   apply() {
+
+    // must set the value first for initial selection to be respected
+    this.input.value = this._formatSelectionValue(this.selectedItem);
+
     $(this.input).autocomplete({
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this),
+      onInvalidateSelection: this.onInvalidateSelection.bind(this),
+      transformResult: this.transformResult.bind(this),
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
       deferRequestBy: 200
     });
+    $(this.input).data('autocomplete').selection = this.selectedItem;    
+  }  
+
+  lookup(query, done) {
+    this.controller.search(query).then((results) => {
+      done(results);
+    });
+  }
+
+  onSelect(suggestion) {
+    this._setSelectedItem(suggestion.data);
+  }
+
+  onInvalidateSelection(param) {
+    this._setSelectedItem(null);
+  }
+
+  transformResult(response) {
+    return {
+      suggestions: $.map(response, function(dataItem) {
+        return { value: this._formatSelectionValue(dataItem), data: dataItem };
+      })
+    };
   }
 
   suggestionsShown(container) {
@@ -89,22 +118,8 @@ export class AutoCompleteWidget {
     }, 250);
   }
 
-  lookup(query, done) {
-    this.controller.search(query).then((results) => {
-      done(results);
-    });
-  }
-
-  onSelect(suggestion) {
-    //Needs to be set here too, as changing via jQuery is apparently not enough to trigger the change.
-    this._setSelectedItem(suggestion.data);
-  }
-
   keyUpListener(event) {
-    if (this.input.value.trim() === '') {
-      this._setSelectedItem(null, '');
-    }
-    else if (event.which === 13 && !this.showingSuggestions) {
+    if (event.which === 13 && !this.showingSuggestions) {
       if (this.onenterpressed) {
         this.onenterpressed();
         event.preventDefault();
@@ -112,28 +127,23 @@ export class AutoCompleteWidget {
     }
   }
 
-  _setSelectedItem(data) {
-    this.selectedItem = data;
-
-    if (this.onchange) {
-      this.onchange({ selected: this.selectedItem });
-    }
-  }
-
-  @computedFrom('selectedItem')
-  get bindableText() {
-    if (this.selectedItem) {
-      return `${this.selectedItem.code} ${this.selectedItem.description}`;
-    }
-  }
-
   selectAll() {
     this.input.select();
   }
-}
 
-export class CoalesceStringValueConverter {
-  toView(value, replacement = '') {
-    return value === null || value === undefined ? replacement : value.toString().trim();
+  _formatSelectionValue(selection) {
+    let selectionValue = '';
+    if(selection) {
+      selectionValue = `${selection.code} ${selection.description}`;
+    }
+    return selectionValue;
+  }
+
+  _setSelectedItem(data) {
+      this.selectedItem = data;
+
+      if (this.onchange) {
+        this.onchange({ selected: this.selectedItem });
+      }
   }
 }

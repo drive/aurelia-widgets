@@ -1,9 +1,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (_export) {
   'use strict';
 
-  var customElement, bindable, bindingMode, computedFrom, inject, $, AutoCompleteWidget, CoalesceStringValueConverter;
-
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  var customElement, bindable, bindingMode, computedFrom, inject, $, AutoCompleteWidget;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -60,13 +58,44 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: 'apply',
           value: function apply() {
+            this.input.value = this._formatSelectionValue(this.selectedItem);
+
             $(this.input).autocomplete({
               lookup: this.lookup.bind(this),
               onSelect: this.onSelect.bind(this),
+              onInvalidateSelection: this.onInvalidateSelection.bind(this),
+              transformResult: this.transformResult.bind(this),
               beforeRender: this.suggestionsShown.bind(this),
               onHide: this.suggestionsHidden.bind(this),
               deferRequestBy: 200
             });
+            $(this.input).data('autocomplete').selection = this.selectedItem;
+          }
+        }, {
+          key: 'lookup',
+          value: function lookup(query, done) {
+            this.controller.search(query).then(function (results) {
+              done(results);
+            });
+          }
+        }, {
+          key: 'onSelect',
+          value: function onSelect(suggestion) {
+            this._setSelectedItem(suggestion.data);
+          }
+        }, {
+          key: 'onInvalidateSelection',
+          value: function onInvalidateSelection(param) {
+            this._setSelectedItem(null);
+          }
+        }, {
+          key: 'transformResult',
+          value: function transformResult(response) {
+            return {
+              suggestions: $.map(response, function (dataItem) {
+                return { value: this._formatSelectionValue(dataItem), data: dataItem };
+              })
+            };
           }
         }, {
           key: 'suggestionsShown',
@@ -87,36 +116,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             }, 250);
           }
         }, {
-          key: 'lookup',
-          value: function lookup(query, done) {
-            this.controller.search(query).then(function (results) {
-              done(results);
-            });
-          }
-        }, {
-          key: 'onSelect',
-          value: function onSelect(suggestion) {
-            this._setSelectedItem(suggestion.data);
-          }
-        }, {
           key: 'keyUpListener',
           value: function keyUpListener(event) {
-            if (this.input.value.trim() === '') {
-              this._setSelectedItem(null, '');
-            } else if (event.which === 13 && !this.showingSuggestions) {
+            if (event.which === 13 && !this.showingSuggestions) {
               if (this.onenterpressed) {
                 this.onenterpressed();
                 event.preventDefault();
               }
-            }
-          }
-        }, {
-          key: '_setSelectedItem',
-          value: function _setSelectedItem(data) {
-            this.selectedItem = data;
-
-            if (this.onchange) {
-              this.onchange({ selected: this.selectedItem });
             }
           }
         }, {
@@ -125,11 +131,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.input.select();
           }
         }, {
-          key: 'bindableText',
-          decorators: [computedFrom('selectedItem')],
-          get: function get() {
-            if (this.selectedItem) {
-              return this.selectedItem.code + ' ' + this.selectedItem.description;
+          key: '_formatSelectionValue',
+          value: function _formatSelectionValue(selection) {
+            var selectionValue = '';
+            if (selection) {
+              selectionValue = selection.code + ' ' + selection.description;
+            }
+            return selectionValue;
+          }
+        }, {
+          key: '_setSelectedItem',
+          value: function _setSelectedItem(data) {
+            this.selectedItem = data;
+
+            if (this.onchange) {
+              this.onchange({ selected: this.selectedItem });
             }
           }
         }], null, _instanceInitializers);
@@ -182,25 +198,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       })();
 
       _export('AutoCompleteWidget', AutoCompleteWidget);
-
-      CoalesceStringValueConverter = (function () {
-        function CoalesceStringValueConverter() {
-          _classCallCheck(this, CoalesceStringValueConverter);
-        }
-
-        _createClass(CoalesceStringValueConverter, [{
-          key: 'toView',
-          value: function toView(value) {
-            var replacement = arguments.length <= 1 || arguments[1] === undefined ? '' : arguments[1];
-
-            return value === null || value === undefined ? replacement : value.toString().trim();
-          }
-        }]);
-
-        return CoalesceStringValueConverter;
-      })();
-
-      _export('CoalesceStringValueConverter', CoalesceStringValueConverter);
     }
   };
 });
