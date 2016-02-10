@@ -60,7 +60,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
           transformResult: this.transformResult.bind(this),
           beforeRender: this.suggestionsShown.bind(this),
           onHide: this.suggestionsHidden.bind(this),
-          deferRequestBy: 200
+          deferRequestBy: 200,
+          autoSelectFirst: this.autoSelectFirstResult
         });
         (0, _$['default'])(this.input).data('autocomplete').selection = this.selectedItem;
       }
@@ -147,7 +148,13 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'grabFocus',
       attribute: 'grab-focus',
-      defaultValue: false
+      defaultValue: true
+    })(AutoCompleteWidget) || AutoCompleteWidget;
+    AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
+      name: 'autoselectFirstResult',
+      attribute: 'auto-select-first',
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+      defaultValue: true
     })(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)('title')(AutoCompleteWidget) || AutoCompleteWidget;

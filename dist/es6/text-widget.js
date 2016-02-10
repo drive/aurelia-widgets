@@ -43,6 +43,24 @@ export class TextWidget {
   }
 
   selectAll() {
-    this.input.select();
+    if (this.multiline) {
+      this._moveCaretToEnd();
+    }
+    else {
+      this.input.select();
+    }
+  }
+
+
+  //function obviously stolen from: http://stackoverflow.com/a/4716021/5141725
+  _moveCaretToEnd() {
+    if (typeof this.input.selectionStart == "number") {
+        this.input.selectionStart = this.input.selectionEnd = this.inpute.value.length;
+    } else if (typeof this.input.createTextRange != "undefined") {
+        this.input.focus();
+        var range = this.input.createTextRange();
+        range.collapse(false);
+        range.select();
+    }
   }
 }

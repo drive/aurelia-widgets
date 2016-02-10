@@ -32,19 +32,6 @@ describe('The Autocomplete Widget', () => {
     jasmine.clock().uninstall();
   });
 
-  it('should set the selected item to null when the input text is cleared', (done) => {
-    //Arrange
-    widget.selectedItem = { value: "this should not be selected" };
-
-    //Act
-    input.value = '';
-    widget.keyUpListener();
-
-    //Assert
-    expect(widget.selectedItem).toBeNull();
-    done();
-  });
-
   it('should not select an item when enter is pressed and the suggestions are shown', () => {
     //arrange
     let enterPressed = false;

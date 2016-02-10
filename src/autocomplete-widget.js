@@ -43,9 +43,15 @@ import 'devbridge-autocomplete';
 @bindable('title')
 @bindable('onenterpressed')
 @bindable({
+  name: 'autoselectFirstResult',
+  attribute: 'auto-select-first',
+  defaultBindingMode: bindingMode.oneTime,
+  defaultValue: true
+})
+@bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
-  defaultValue: false
+  defaultValue: true
 })
 export class AutoCompleteWidget {
 
@@ -77,7 +83,8 @@ export class AutoCompleteWidget {
       transformResult: this.transformResult.bind(this),
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
-      deferRequestBy: 200
+      deferRequestBy: 200,
+      autoSelectFirst: this.autoSelectFirstResult
     });
     $(this.input).data('autocomplete').selection = this.selectedItem;    
   }  

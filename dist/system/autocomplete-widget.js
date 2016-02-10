@@ -67,7 +67,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               transformResult: this.transformResult.bind(this),
               beforeRender: this.suggestionsShown.bind(this),
               onHide: this.suggestionsHidden.bind(this),
-              deferRequestBy: 200
+              deferRequestBy: 200,
+              autoSelectFirst: this.autoSelectFirstResult
             });
             $(this.input).data('autocomplete').selection = this.selectedItem;
           }
@@ -154,7 +155,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         AutoCompleteWidget = bindable({
           name: 'grabFocus',
           attribute: 'grab-focus',
-          defaultValue: false
+          defaultValue: true
+        })(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget = bindable({
+          name: 'autoselectFirstResult',
+          attribute: 'auto-select-first',
+          defaultBindingMode: bindingMode.oneTime,
+          defaultValue: true
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
