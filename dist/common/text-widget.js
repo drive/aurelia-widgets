@@ -43,7 +43,7 @@ var TextWidget = (function () {
     key: '_moveCaretToEnd',
     value: function _moveCaretToEnd() {
       if (typeof this.input.selectionStart == "number") {
-        this.input.selectionStart = this.input.selectionEnd = this.inpute.value.length;
+        this.input.selectionStart = this.input.selectionEnd = this.input.value.length;
       } else if (typeof this.input.createTextRange != "undefined") {
         this.input.focus();
         var range = this.input.createTextRange();
