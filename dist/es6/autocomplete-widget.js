@@ -51,7 +51,7 @@ import 'devbridge-autocomplete';
 @bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
-  defaultValue: true
+  defaultValue: false
 })
 export class AutoCompleteWidget {
 
@@ -86,8 +86,13 @@ export class AutoCompleteWidget {
       deferRequestBy: 200,
       autoSelectFirst: this.autoSelectFirstResult
     });
-    $(this.input).data('autocomplete').selection = this.selectedItem;    
-  }  
+    $(this.input).data('autocomplete').selection = this.selectedItem;
+  }
+
+  selectedItemChanged(newValue) {
+    this.input.value = this._formatSelectionValue(newValue);
+    $(this.input).data('autocomplete').selection = newValue;
+  }
 
   lookup(query, done) {
     this.controller.search(query).then((results) => {

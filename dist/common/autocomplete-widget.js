@@ -75,6 +75,12 @@ var AutoCompleteWidget = (function () {
       (0, _jquery2['default'])(this.input).data('autocomplete').selection = this.selectedItem;
     }
   }, {
+    key: 'selectedItemChanged',
+    value: function selectedItemChanged(newValue) {
+      this.input.value = this._formatSelectionValue(newValue);
+      (0, _jquery2['default'])(this.input).data('autocomplete').selection = newValue;
+    }
+  }, {
     key: 'lookup',
     value: function lookup(query, done) {
       this.controller.search(query).then(function (results) {
@@ -157,7 +163,7 @@ var AutoCompleteWidget = (function () {
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
     name: 'grabFocus',
     attribute: 'grab-focus',
-    defaultValue: true
+    defaultValue: false
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
     name: 'autoselectFirstResult',

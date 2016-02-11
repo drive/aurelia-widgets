@@ -73,6 +73,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             $(this.input).data('autocomplete').selection = this.selectedItem;
           }
         }, {
+          key: 'selectedItemChanged',
+          value: function selectedItemChanged(newValue) {
+            this.input.value = this._formatSelectionValue(newValue);
+            $(this.input).data('autocomplete').selection = newValue;
+          }
+        }, {
           key: 'lookup',
           value: function lookup(query, done) {
             this.controller.search(query).then(function (results) {
@@ -155,7 +161,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         AutoCompleteWidget = bindable({
           name: 'grabFocus',
           attribute: 'grab-focus',
-          defaultValue: true
+          defaultValue: false
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
           name: 'autoselectFirstResult',
