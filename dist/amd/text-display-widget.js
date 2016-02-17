@@ -23,19 +23,19 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     _createClass(TextDisplayWidget, [{
       key: 'bind',
       value: function bind() {
-        var toolTipElement = (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]'));
-        toolTipElement.attr('title', this.toolTipText || this.text);
-        toolTipElement.tooltip({
+        this.toolTipElement = (0, _$['default'])(this.element.querySelector('.text-display-widget-label'));
+        this.toolTipElement.attr('title');
+        this.toolTipElement.tooltip({
           container: 'body',
           placement: this.placement,
-          html: true
+          html: true,
+          title: this.toolTipText || this.text
         });
-        this._updateToolTip(this.toolTipText || this.text);
       }
     }, {
       key: 'unbind',
       value: function unbind() {
-        (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]')).tooltip('destroy');
+        this.toolTipElement.tooltip('destroy');
       }
     }, {
       key: 'textChanged',
@@ -52,7 +52,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     }, {
       key: '_updateToolTip',
       value: function _updateToolTip(newValue) {
-        (0, _$['default'])(this.element.querySelector('[data-toggle="tooltip"]')).attr('title', newValue).tooltip('fixTitle');
+        this.toolTipElement.attr('data-original-title', newValue);
       }
     }]);
 
