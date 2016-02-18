@@ -164,7 +164,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           defaultValue: false
         })(AutoCompleteWidget) || AutoCompleteWidget;
         AutoCompleteWidget = bindable({
-          name: 'autoselectFirstResult',
+          name: 'autoSelectFirstResult',
           attribute: 'auto-select-first',
           defaultBindingMode: bindingMode.oneTime,
           defaultValue: true
