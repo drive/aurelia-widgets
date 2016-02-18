@@ -43,7 +43,7 @@ import 'devbridge-autocomplete';
 @bindable('title')
 @bindable('onenterpressed')
 @bindable({
-  name: 'autoselectFirstResult',
+  name: 'autoSelectFirstResult',
   attribute: 'auto-select-first',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: true

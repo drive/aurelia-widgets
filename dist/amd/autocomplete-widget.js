@@ -157,7 +157,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       defaultValue: false
     })(AutoCompleteWidget) || AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
-      name: 'autoselectFirstResult',
+      name: 'autoSelectFirstResult',
       attribute: 'auto-select-first',
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
       defaultValue: true

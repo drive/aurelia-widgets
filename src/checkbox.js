@@ -36,7 +36,7 @@ export class Checkbox {
 
     this.checked = !this.checked;
     if (this.ontoggle) {
-      this.ontoggle();
+      this.ontoggle({checked: this.checked});
     }
   }
 

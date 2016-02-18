@@ -43,7 +43,7 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export) {
 
             this.checked = !this.checked;
             if (this.ontoggle) {
-              this.ontoggle();
+              this.ontoggle({ checked: this.checked });
             }
           }
         }], null, _instanceInitializers);

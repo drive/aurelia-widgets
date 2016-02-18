@@ -166,7 +166,7 @@ var AutoCompleteWidget = (function () {
     defaultValue: false
   })(AutoCompleteWidget) || AutoCompleteWidget;
   AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
-    name: 'autoselectFirstResult',
+    name: 'autoSelectFirstResult',
     attribute: 'auto-select-first',
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
     defaultValue: true
