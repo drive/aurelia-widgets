@@ -43,27 +43,44 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         }, {
           key: 'valueChanged',
-          value: function valueChanged(newValue) {
-            this._updateDisplay(newValue.toString());
+          value: function valueChanged(newValue, oldValue) {
+            this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
           }
         }, {
           key: 'onblur',
           value: function onblur() {
-            this._updateDisplay(this.displayValue);
+            this._updateDisplay(this.displayValue, this.value);
           }
         }, {
           key: '_updateDisplay',
-          value: function _updateDisplay(update) {
+          value: function _updateDisplay(update, oldValue) {
             this.displayValue = update.trim();
             if (this.displayValue) {
-              this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
-              if (this.value === 'NaN') {
-                this.value = NaN;
-                this.displayValue = '';
+              var newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+              if (newValue === 'NaN') {
+                this._clearValue(oldValue);
               } else {
-                this.displayValue = numeral(this.value).format('0,0.00');
+                this._setDisplayValue(newValue, oldValue);
               }
+            } else {
+              this.value = '';
             }
+          }
+        }, {
+          key: '_setDisplayValue',
+          value: function _setDisplayValue(newValue, oldValue) {
+            if (this.onlyAllowPositiveNumbers && newValue < 0) {
+              this._clearValue(oldValue);
+            } else {
+              this.displayValue = numeral(newValue).format('0,0.00');
+              this.value = newValue;
+            }
+          }
+        }, {
+          key: '_clearValue',
+          value: function _clearValue(oldValue) {
+            this.displayValue = oldValue;
+            this.value = oldValue;
           }
         }]);
 
@@ -79,6 +96,24 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           name: 'placeholder',
           defaultValue: '0.00',
           defaultBindingMode: bindingMode.oneTime
+        })(CurrencyInput) || CurrencyInput;
+        CurrencyInput = bindable({
+          name: 'customCSS',
+          attribute: 'custom-css',
+          defaultValue: '',
+          defaultBindingMode: bindingMode.oneWay
+        })(CurrencyInput) || CurrencyInput;
+        CurrencyInput = bindable({
+          name: 'extendedView',
+          attribute: 'extended-view',
+          defaultValue: true,
+          defaultBindingMode: bindingMode.oneWay
+        })(CurrencyInput) || CurrencyInput;
+        CurrencyInput = bindable({
+          name: 'onlyAllowPositiveNumbers',
+          attribute: 'only-allow-positive-numbers',
+          defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
         })(CurrencyInput) || CurrencyInput;
         CurrencyInput = bindable({
           name: 'disabled',

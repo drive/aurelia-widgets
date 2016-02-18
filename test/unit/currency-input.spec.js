@@ -38,7 +38,33 @@ describe('The Currency Input widget', () => {
     currencyInput.onblur();
 
     //assert
-    expect(currencyInput.displayValue).toBe('');
-    expect(isNaN(currencyInput.value)).toBe(true);
+    expect(currencyInput.displayValue).toBe(undefined);
+    expect(currencyInput.value).toBe(undefined);
+  });
+
+  it('should not allow a negative number if the onlyAllowPositiveNumbers is true', () => {
+    //arrange
+    currencyInput.onlyAllowPositiveNumbers = true;
+    currencyInput.displayValue = '-1.00';
+
+    //act
+    currencyInput.onblur();
+
+    //assert
+    expect(currencyInput.displayValue).toBe(undefined);
+    expect(currencyInput.value).toBe(undefined);
+  });
+
+  it('should allow a negative number if the onlyAllowPositiveNumbers is false', () => {
+    //arrange
+    currencyInput.onlyAllowPositiveNumbers = false;
+    currencyInput.displayValue = '-1.00';
+
+    //act
+    currencyInput.onblur();
+
+    //assert
+    expect(currencyInput.displayValue).toBe('-1.00');
+    expect(currencyInput.value).toBe('-1.00');
   });
 });
