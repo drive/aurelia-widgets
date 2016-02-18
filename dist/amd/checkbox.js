@@ -38,7 +38,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding'], function (exports, 
 
         this.checked = !this.checked;
         if (this.ontoggle) {
-          this.ontoggle();
+          this.ontoggle({ checked: this.checked });
         }
       }
     }], null, _instanceInitializers);

@@ -41,7 +41,7 @@ var Checkbox = (function () {
 
       this.checked = !this.checked;
       if (this.ontoggle) {
-        this.ontoggle();
+        this.ontoggle({ checked: this.checked });
       }
     }
   }], null, _instanceInitializers);
