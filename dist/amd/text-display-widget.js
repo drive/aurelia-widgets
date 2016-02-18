@@ -24,7 +24,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       key: 'bind',
       value: function bind() {
         this.toolTipElement = (0, _$['default'])(this.element.querySelector('.text-display-widget-label'));
-        this.toolTipElement.attr('title');
+        this.toolTipElement.attr('title', '');
         this.toolTipElement.tooltip({
           container: 'body',
           placement: this.placement,

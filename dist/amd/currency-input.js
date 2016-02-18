@@ -36,27 +36,44 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     }, {
       key: 'valueChanged',
-      value: function valueChanged(newValue) {
-        this._updateDisplay(newValue.toString());
+      value: function valueChanged(newValue, oldValue) {
+        this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
       }
     }, {
       key: 'onblur',
       value: function onblur() {
-        this._updateDisplay(this.displayValue);
+        this._updateDisplay(this.displayValue, this.value);
       }
     }, {
       key: '_updateDisplay',
-      value: function _updateDisplay(update) {
+      value: function _updateDisplay(update, oldValue) {
         this.displayValue = update.trim();
         if (this.displayValue) {
-          this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
-          if (this.value === 'NaN') {
-            this.value = NaN;
-            this.displayValue = '';
+          var newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+          if (newValue === 'NaN') {
+            this._clearValue(oldValue);
           } else {
-            this.displayValue = (0, _numeral2['default'])(this.value).format('0,0.00');
+            this._setDisplayValue(newValue, oldValue);
           }
+        } else {
+          this.value = '';
         }
+      }
+    }, {
+      key: '_setDisplayValue',
+      value: function _setDisplayValue(newValue, oldValue) {
+        if (this.onlyAllowPositiveNumbers && newValue < 0) {
+          this._clearValue(oldValue);
+        } else {
+          this.displayValue = (0, _numeral2['default'])(newValue).format('0,0.00');
+          this.value = newValue;
+        }
+      }
+    }, {
+      key: '_clearValue',
+      value: function _clearValue(oldValue) {
+        this.displayValue = oldValue;
+        this.value = oldValue;
       }
     }]);
 
@@ -72,6 +89,24 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       name: 'placeholder',
       defaultValue: '0.00',
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })(CurrencyInput) || CurrencyInput;
+    CurrencyInput = (0, _aureliaTemplating.bindable)({
+      name: 'customCSS',
+      attribute: 'custom-css',
+      defaultValue: '',
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })(CurrencyInput) || CurrencyInput;
+    CurrencyInput = (0, _aureliaTemplating.bindable)({
+      name: 'extendedView',
+      attribute: 'extended-view',
+      defaultValue: true,
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })(CurrencyInput) || CurrencyInput;
+    CurrencyInput = (0, _aureliaTemplating.bindable)({
+      name: 'onlyAllowPositiveNumbers',
+      attribute: 'only-allow-positive-numbers',
+      defaultValue: false,
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
     })(CurrencyInput) || CurrencyInput;
     CurrencyInput = (0, _aureliaTemplating.bindable)({
       name: 'disabled',

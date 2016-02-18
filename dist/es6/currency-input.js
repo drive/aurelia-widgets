@@ -26,6 +26,24 @@ const KEY_Z = 90;
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
+  name: 'onlyAllowPositiveNumbers',
+  attribute: 'only-allow-positive-numbers',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
+  name: 'extendedView',
+  attribute: 'extended-view',
+  defaultValue: true,
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
+  name: 'customCSS',
+  attribute: 'custom-css',
+  defaultValue: '',
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
   name: 'placeholder',
   defaultValue: '0.00',
   defaultBindingMode: bindingMode.oneTime
@@ -52,25 +70,41 @@ export class CurrencyInput {
     this.input.select();
   }
 
-  valueChanged(newValue) {
-    this._updateDisplay(newValue.toString());
+  valueChanged(newValue, oldValue) {
+    this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
   }
 
   onblur() {
-    this._updateDisplay(this.displayValue);
+    this._updateDisplay(this.displayValue, this.value);
   }
 
-  _updateDisplay(update) {
-    this.displayValue = update.trim();
+  _updateDisplay(update, oldValue) {
+    this.displayValue = update.trim();   
     if (this.displayValue) {
-      this.value = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
-      if (this.value === 'NaN') {
-        this.value = NaN;
-        this.displayValue = '';
+      let newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+      if (newValue === 'NaN') {
+        this._clearValue(oldValue);
       }
       else {
-        this.displayValue = numeral(this.value).format('0,0.00');
+        this._setDisplayValue(newValue, oldValue);
       }
+    } else {
+      this.value = '';
     }
+  }
+
+  _setDisplayValue(newValue, oldValue) {
+    if (this.onlyAllowPositiveNumbers && newValue < 0) {
+      this._clearValue(oldValue);
+    }
+    else {
+      this.displayValue = numeral(newValue).format('0,0.00');
+      this.value = newValue;
+    }
+  }
+
+  _clearValue(oldValue) {
+    this.displayValue = oldValue;
+    this.value = oldValue;
   }
 }
