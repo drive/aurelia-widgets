@@ -1,9 +1,12 @@
 <template>
-  <div class="form-group">
+  <div class="form-group" if.bind="extendedView === 'true'">
     <label class="control-label">${label}</label>
     <div class="input-group">
       <span class="input-group-addon">$</span>
-      <input type="text" pattern="[0-9]*" value.bind="displayValue" class="form-control currency-input ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" placeholder.bind="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" blur.call="onblur()" disabled.bind="disabled" autocomplete="off" />
+      <input type="text" value.bind="displayValue" class="form-control currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" placeholder.bind="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" blur.call="onblur()" disabled.bind="disabled" autocomplete="off" />
     </div>
+  </div>
+  <div if.bind="extendedView === 'false'">
+    <input type="text" value.bind="displayValue" class="currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" placeholder.bind="placeholder" click.delegate="selectAll()" focus.bind="grabFocus" blur.call="onblur()" disabled.bind="disabled" autocomplete="off" />
   </div>
 </template>

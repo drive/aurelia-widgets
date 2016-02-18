@@ -25,7 +25,7 @@ export class TextDisplayWidget {
 
   bind() {
     this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
-    this.toolTipElement.attr('title', );
+    this.toolTipElement.attr('title', '');
     this.toolTipElement.tooltip({
       container: 'body',
       placement: this.placement,
