@@ -55,6 +55,19 @@ describe('The Currency Input widget', () => {
     expect(currencyInput.value).toBe(undefined);
   });
 
+  it('should match the default value if the user clears the input', () => {
+    //arrange
+    currencyInput.setNullToDefaultValue = '1.00';
+    currencyInput.displayValue = '';
+
+    //act
+    currencyInput.onblur();
+
+    //assert
+    expect(currencyInput.displayValue).toBe('1.00');
+    expect(currencyInput.value).toBe('1.00');
+  });
+
   it('should allow a negative number if the onlyAllowPositiveNumbers is false', () => {
     //arrange
     currencyInput.onlyAllowPositiveNumbers = false;
