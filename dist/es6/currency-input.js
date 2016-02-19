@@ -26,6 +26,12 @@ const KEY_Z = 90;
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
+  name: 'setNullToDefaultValue',
+  attribute: 'set-null-to-default-value',
+  defaultValue: '',
+  defaultBindingMode: bindingMode.oneWay
+})
+@bindable({
   name: 'onlyAllowPositiveNumbers',
   attribute: 'only-allow-positive-numbers',
   defaultValue: false,
@@ -81,7 +87,7 @@ export class CurrencyInput {
   _updateDisplay(update, oldValue) {
     this.displayValue = update.trim();   
     if (this.displayValue) {
-      let newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+      let newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
       if (newValue === 'NaN') {
         this._clearValue(oldValue);
       }
@@ -89,8 +95,18 @@ export class CurrencyInput {
         this._setDisplayValue(newValue, oldValue);
       }
     } else {
-      this.value = '';
+      if (this.setNullToDefaultValue !== '') {
+        let newValue = this._castValueToFloat(this.setNullToDefaultValue);
+        this.value = newValue;
+        this.displayValue = numeral(newValue).format('0,0.00');
+      } else {
+        this.value = '';
+      }
     }
+  }
+
+  _castValueToFloat(value) {
+    return parseFloat(value).toFixed(2);
   }
 
   _setDisplayValue(newValue, oldValue) {

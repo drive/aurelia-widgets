@@ -56,15 +56,26 @@ var CurrencyInput = (function () {
     value: function _updateDisplay(update, oldValue) {
       this.displayValue = update.trim();
       if (this.displayValue) {
-        var newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+        var newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
         if (newValue === 'NaN') {
           this._clearValue(oldValue);
         } else {
           this._setDisplayValue(newValue, oldValue);
         }
       } else {
-        this.value = '';
+        if (this.setNullToDefaultValue !== '') {
+          var newValue = this._castValueToFloat(this.setNullToDefaultValue);
+          this.value = newValue;
+          this.displayValue = (0, _numeral2['default'])(newValue).format('0,0.00');
+        } else {
+          this.value = '';
+        }
       }
+    }
+  }, {
+    key: '_castValueToFloat',
+    value: function _castValueToFloat(value) {
+      return parseFloat(value).toFixed(2);
     }
   }, {
     key: '_setDisplayValue',
@@ -113,6 +124,12 @@ var CurrencyInput = (function () {
     name: 'onlyAllowPositiveNumbers',
     attribute: 'only-allow-positive-numbers',
     defaultValue: false,
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  })(CurrencyInput) || CurrencyInput;
+  CurrencyInput = (0, _aureliaTemplating.bindable)({
+    name: 'setNullToDefaultValue',
+    attribute: 'set-null-to-default-value',
+    defaultValue: '',
     defaultBindingMode: _aureliaBinding.bindingMode.oneWay
   })(CurrencyInput) || CurrencyInput;
   CurrencyInput = (0, _aureliaTemplating.bindable)({
