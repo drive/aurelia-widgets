@@ -56,15 +56,26 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           value: function _updateDisplay(update, oldValue) {
             this.displayValue = update.trim();
             if (this.displayValue) {
-              var newValue = parseFloat(this.displayValue.replace(/,|$/g, "")).toFixed(2);
+              var newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
               if (newValue === 'NaN') {
                 this._clearValue(oldValue);
               } else {
                 this._setDisplayValue(newValue, oldValue);
               }
             } else {
-              this.value = '';
+              if (this.setNullToDefaultValue !== '') {
+                var newValue = this._castValueToFloat(this.setNullToDefaultValue);
+                this.value = newValue;
+                this.displayValue = numeral(newValue).format('0,0.00');
+              } else {
+                this.value = '';
+              }
             }
+          }
+        }, {
+          key: '_castValueToFloat',
+          value: function _castValueToFloat(value) {
+            return parseFloat(value).toFixed(2);
           }
         }, {
           key: '_setDisplayValue',
@@ -113,6 +124,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           name: 'onlyAllowPositiveNumbers',
           attribute: 'only-allow-positive-numbers',
           defaultValue: false,
+          defaultBindingMode: bindingMode.oneWay
+        })(CurrencyInput) || CurrencyInput;
+        CurrencyInput = bindable({
+          name: 'setNullToDefaultValue',
+          attribute: 'set-null-to-default-value',
+          defaultValue: '',
           defaultBindingMode: bindingMode.oneWay
         })(CurrencyInput) || CurrencyInput;
         CurrencyInput = bindable({
