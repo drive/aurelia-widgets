@@ -72,7 +72,6 @@ export class AutoCompleteWidget {
   }
 
   apply() {
-
     // must set the value first for initial selection to be respected
     this.input.value = this._formatSelectionValue(this.selectedItem);
 
@@ -80,7 +79,6 @@ export class AutoCompleteWidget {
       lookup: this.lookup.bind(this),
       onSelect: this.onSelect.bind(this),
       onInvalidateSelection: this.onInvalidateSelection.bind(this),
-      transformResult: this.transformResult.bind(this),
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
       deferRequestBy: 200,
@@ -90,6 +88,15 @@ export class AutoCompleteWidget {
   }
 
   selectedItemChanged(newValue) {
+    let currentControlSelection = $(this.input).data('autocomplete').selection;
+    // onInvalidateSelection causes this function to be called async by aurelia binding engine, at this point
+    // the text of the input control may have already been changed by the user so setting this.input.value can blow
+    // away text the user has entered. If the control selection is already the same as the newValue, we should be
+    // able to ignore this callback.
+    if(currentControlSelection === null && newValue === null) {
+      return;
+    }
+    
     this.input.value = this._formatSelectionValue(newValue);
     $(this.input).data('autocomplete').selection = newValue;
   }
@@ -106,14 +113,6 @@ export class AutoCompleteWidget {
 
   onInvalidateSelection(param) {
     this._setSelectedItem(null);
-  }
-
-  transformResult(response) {
-    return {
-      suggestions: $.map(response, function(dataItem) {
-        return { value: this._formatSelectionValue(dataItem), data: dataItem };
-      })
-    };
   }
 
   suggestionsShown(container) {
