@@ -66,21 +66,24 @@ export class CurrencyInput {
   constructor(element) {
     this.element = element;
     this.displayValue = '';
+
+    this._boundOnBlur = this.onBlur.bind(this);
   }
 
   attached() {
-    this.input = this.element.querySelector('input');
+    this.input = this.element.querySelector('input');    
+    this.input.addEventListener('blur', this._boundOnBlur, true);
   }
 
-  selectAll() {
-    this.input.select();
+  detached() {  
+    this.input.removeEventListener('blur', this._boundOnBlur, true);
   }
 
   valueChanged(newValue, oldValue) {
     this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
   }
 
-  onblur() {
+  onBlur() {
     this._updateDisplay(this.displayValue, this.value);
   }
 

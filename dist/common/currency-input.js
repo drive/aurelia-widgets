@@ -29,17 +29,20 @@ var CurrencyInput = (function () {
 
     this.element = element;
     this.displayValue = '';
+
+    this._boundOnBlur = this.onBlur.bind(this);
   }
 
   _createClass(CurrencyInput, [{
     key: 'attached',
     value: function attached() {
       this.input = this.element.querySelector('input');
+      this.input.addEventListener('blur', this._boundOnBlur, true);
     }
   }, {
-    key: 'selectAll',
-    value: function selectAll() {
-      this.input.select();
+    key: 'detached',
+    value: function detached() {
+      this.input.removeEventListener('blur', this._boundOnBlur, true);
     }
   }, {
     key: 'valueChanged',
@@ -47,8 +50,8 @@ var CurrencyInput = (function () {
       this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
     }
   }, {
-    key: 'onblur',
-    value: function onblur() {
+    key: 'onBlur',
+    value: function onBlur() {
       this._updateDisplay(this.displayValue, this.value);
     }
   }, {
