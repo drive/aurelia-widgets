@@ -66,7 +66,6 @@ var AutoCompleteWidget = (function () {
         lookup: this.lookup.bind(this),
         onSelect: this.onSelect.bind(this),
         onInvalidateSelection: this.onInvalidateSelection.bind(this),
-        transformResult: this.transformResult.bind(this),
         beforeRender: this.suggestionsShown.bind(this),
         onHide: this.suggestionsHidden.bind(this),
         deferRequestBy: 200,
@@ -77,6 +76,12 @@ var AutoCompleteWidget = (function () {
   }, {
     key: 'selectedItemChanged',
     value: function selectedItemChanged(newValue) {
+      var currentControlSelection = (0, _jquery2['default'])(this.input).data('autocomplete').selection;
+
+      if (currentControlSelection === null && newValue === null) {
+        return;
+      }
+
       this.input.value = this._formatSelectionValue(newValue);
       (0, _jquery2['default'])(this.input).data('autocomplete').selection = newValue;
     }
@@ -96,15 +101,6 @@ var AutoCompleteWidget = (function () {
     key: 'onInvalidateSelection',
     value: function onInvalidateSelection(param) {
       this._setSelectedItem(null);
-    }
-  }, {
-    key: 'transformResult',
-    value: function transformResult(response) {
-      return {
-        suggestions: _jquery2['default'].map(response, function (dataItem) {
-          return { value: this._formatSelectionValue(dataItem), data: dataItem };
-        })
-      };
     }
   }, {
     key: 'suggestionsShown',

@@ -64,7 +64,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               lookup: this.lookup.bind(this),
               onSelect: this.onSelect.bind(this),
               onInvalidateSelection: this.onInvalidateSelection.bind(this),
-              transformResult: this.transformResult.bind(this),
               beforeRender: this.suggestionsShown.bind(this),
               onHide: this.suggestionsHidden.bind(this),
               deferRequestBy: 200,
@@ -75,6 +74,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         }, {
           key: 'selectedItemChanged',
           value: function selectedItemChanged(newValue) {
+            var currentControlSelection = $(this.input).data('autocomplete').selection;
+
+            if (currentControlSelection === null && newValue === null) {
+              return;
+            }
+
             this.input.value = this._formatSelectionValue(newValue);
             $(this.input).data('autocomplete').selection = newValue;
           }
@@ -94,15 +99,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           key: 'onInvalidateSelection',
           value: function onInvalidateSelection(param) {
             this._setSelectedItem(null);
-          }
-        }, {
-          key: 'transformResult',
-          value: function transformResult(response) {
-            return {
-              suggestions: $.map(response, function (dataItem) {
-                return { value: this._formatSelectionValue(dataItem), data: dataItem };
-              })
-            };
           }
         }, {
           key: 'suggestionsShown',

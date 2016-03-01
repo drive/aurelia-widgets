@@ -30,27 +30,6 @@ var TextWidget = (function () {
         this.input = this.element.querySelector('input');
       }
     }
-  }, {
-    key: 'selectAll',
-    value: function selectAll() {
-      if (this.multiline) {
-        this._moveCaretToEnd();
-      } else {
-        this.input.select();
-      }
-    }
-  }, {
-    key: '_moveCaretToEnd',
-    value: function _moveCaretToEnd() {
-      if (typeof this.input.selectionStart == "number") {
-        this.input.selectionStart = this.input.selectionEnd = this.input.value.length;
-      } else if (typeof this.input.createTextRange != "undefined") {
-        this.input.focus();
-        var range = this.input.createTextRange();
-        range.collapse(false);
-        range.select();
-      }
-    }
   }]);
 
   var _TextWidget = TextWidget;

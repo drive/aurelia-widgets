@@ -6,5 +6,6 @@ export function configure(aurelia) {
                            'radiobutton', 
                            'currency-input',
                            'text-display-widget',
-                           'togglebutton']);
+                           'togglebutton',
+                           'select-on-focus']);
 }
