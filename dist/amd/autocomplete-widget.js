@@ -69,7 +69,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       value: function selectedItemChanged(newValue) {
         var currentControlSelection = (0, _$['default'])(this.input).data('autocomplete').selection;
 
-        if (currentControlSelection === null && newValue === null) {
+        if (currentControlSelection === null && newValue === null || currentControlSelection.data === newValue) {
           return;
         }
 
@@ -131,7 +131,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       value: function _formatSelectionValue(selection) {
         var selectionValue = '';
         if (selection) {
-          selectionValue = selection.code + ' ' + selection.description;
+          selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : selection.code + ' ' + selection.description;
         }
         return selectionValue;
       }
