@@ -13,7 +13,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = '10000';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe('10,000.00');
@@ -24,7 +24,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = '10,000.00';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe('10,000.00');
@@ -35,7 +35,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = 'kjhdf';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe(undefined);
@@ -48,7 +48,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = '-1.00';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe(undefined);
@@ -61,7 +61,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = '';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe('1.00');
@@ -74,7 +74,7 @@ describe('The Currency Input widget', () => {
     currencyInput.displayValue = '-1.00';
 
     //act
-    currencyInput.onblur();
+    currencyInput.onBlur();
 
     //assert
     expect(currencyInput.displayValue).toBe('-1.00');

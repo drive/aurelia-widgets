@@ -1,17 +1,13 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaEventAggregator, _radiobuttonselectedevent) {
+define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaTemplating, _aureliaDependencyInjection, _aureliaEventAggregator, _radiobuttonselectedevent) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
   var RadioButton = (function () {
     function RadioButton(eventAggregator) {
-      _classCallCheck(this, _RadioButton);
+      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _RadioButton);
 
       this.eventAggregator = eventAggregator;
       this.onselecting = function () {
@@ -19,7 +15,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
       };
     }
 
-    _createClass(RadioButton, [{
+    (0, _babelRuntimeHelpersCreateClass['default'])(RadioButton, [{
       key: 'bind',
       value: function bind() {
         this.selectedEventSubscription = this.eventAggregator.subscribe(_radiobuttonselectedevent.RadioButtonSelectedEvent, this._handleButtonSelected.bind(this));
@@ -47,7 +43,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
         }
       }
     }]);
-
     var _RadioButton = RadioButton;
     RadioButton = (0, _aureliaTemplating.bindable)({
       name: 'grabFocus',

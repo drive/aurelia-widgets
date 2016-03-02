@@ -1,6 +1,6 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode, computedFrom} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection'
+import {inject} from 'aurelia-dependency-injection';
 import $ from 'jquery';
 import 'devbridge-autocomplete';
 
@@ -56,7 +56,7 @@ import 'devbridge-autocomplete';
 export class AutoCompleteWidget {
 
   @bindable onchange;
-  
+
   constructor(element) {
     this.element = element;
     this.showingSuggestions = false;
@@ -96,7 +96,7 @@ export class AutoCompleteWidget {
     if(currentControlSelection === null && newValue === null) {
       return;
     }
-    
+
     this.input.value = this._formatSelectionValue(newValue);
     $(this.input).data('autocomplete').selection = newValue;
   }

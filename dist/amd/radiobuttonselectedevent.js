@@ -1,14 +1,12 @@
-define(["exports"], function (exports) {
+define(["exports", "babel-runtime/helpers/class-call-check"], function (exports, _babelRuntimeHelpersClassCallCheck) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
   var RadioButtonSelectedEvent = function RadioButtonSelectedEvent(groupName, buttonLabel) {
-    _classCallCheck(this, RadioButtonSelectedEvent);
+    (0, _babelRuntimeHelpersClassCallCheck["default"])(this, RadioButtonSelectedEvent);
 
     this.groupName = groupName;
     this.buttonLabel = buttonLabel;

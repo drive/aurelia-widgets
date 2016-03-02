@@ -1,26 +1,20 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery) {
+define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'babel-runtime/helpers/interop-require-default'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _babelRuntimeHelpersInteropRequireDefault) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  var _$ = _interopRequireDefault(_jquery);
+  var _$ = (0, _babelRuntimeHelpersInteropRequireDefault['default'])(_jquery);
 
   var TextDisplayWidget = (function () {
     function TextDisplayWidget(element) {
-      _classCallCheck(this, _TextDisplayWidget);
+      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _TextDisplayWidget);
 
       this.element = element;
     }
 
-    _createClass(TextDisplayWidget, [{
+    (0, _babelRuntimeHelpersCreateClass['default'])(TextDisplayWidget, [{
       key: 'bind',
       value: function bind() {
         this.toolTipElement = (0, _$['default'])(this.element.querySelector('.text-display-widget-label'));
@@ -55,7 +49,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.toolTipElement.attr('data-original-title', newValue);
       }
     }]);
-
     var _TextDisplayWidget = TextDisplayWidget;
     TextDisplayWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextDisplayWidget) || TextDisplayWidget;
     TextDisplayWidget = (0, _aureliaTemplating.bindable)({
