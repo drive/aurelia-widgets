@@ -1,26 +1,20 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _bootstrap, _bootstrapToggle, _bootstrapToggleCssBootstrapToggleCss) {
+define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'babel-runtime/helpers/interop-require-default', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _babelRuntimeHelpersInteropRequireDefault, _bootstrap, _bootstrapToggle, _bootstrapToggleCssBootstrapToggleCss) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  var _$ = _interopRequireDefault(_jquery);
+  var _$ = (0, _babelRuntimeHelpersInteropRequireDefault['default'])(_jquery);
 
   var ToggleButton = (function () {
     function ToggleButton(element) {
-      _classCallCheck(this, _ToggleButton);
+      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _ToggleButton);
 
       this.element = element;
     }
 
-    _createClass(ToggleButton, [{
+    (0, _babelRuntimeHelpersCreateClass['default'])(ToggleButton, [{
       key: 'bind',
       value: function bind() {
         var _this = this;
@@ -51,7 +45,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.toggleElement.bootstrapToggle('destroy');
       }
     }]);
-
     var _ToggleButton = ToggleButton;
     ToggleButton = (0, _aureliaTemplating.customElement)('toggle-button')(ToggleButton) || ToggleButton;
     ToggleButton = (0, _aureliaDependencyInjection.inject)(Element)(ToggleButton) || ToggleButton;

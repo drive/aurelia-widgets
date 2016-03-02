@@ -1,24 +1,18 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'numeral'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _numeral) {
+define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'numeral', 'babel-runtime/helpers/interop-require-default'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _numeral, _babelRuntimeHelpersInteropRequireDefault) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  var _numeral2 = _interopRequireDefault(_numeral);
+  var _numeral2 = (0, _babelRuntimeHelpersInteropRequireDefault['default'])(_numeral);
 
   var KEY_A = 65;
   var KEY_Z = 90;
 
   var CurrencyInput = (function () {
     function CurrencyInput(element) {
-      _classCallCheck(this, _CurrencyInput);
+      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _CurrencyInput);
 
       this.element = element;
       this.displayValue = '';
@@ -26,7 +20,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this._boundOnBlur = this.onBlur.bind(this);
     }
 
-    _createClass(CurrencyInput, [{
+    (0, _babelRuntimeHelpersCreateClass['default'])(CurrencyInput, [{
       key: 'attached',
       value: function attached() {
         this.input = this.element.querySelector('input');
@@ -90,7 +84,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.value = oldValue;
       }
     }]);
-
     var _CurrencyInput = CurrencyInput;
     CurrencyInput = (0, _aureliaDependencyInjection.inject)(Element)(CurrencyInput) || CurrencyInput;
     CurrencyInput = (0, _aureliaTemplating.bindable)({

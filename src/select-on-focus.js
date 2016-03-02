@@ -1,4 +1,5 @@
-import {customAttribute, inject} from 'aurelia-framework';
+import {customAttribute} from 'aurelia-templating';
+import {inject} from 'aurelia-dependency-injection';
 
 @customAttribute('selectonfocus')
 @inject(Element)
@@ -16,10 +17,10 @@ export class SelectOnFocus {
     this.element.addEventListener('focus', this._boundOnFocus);
     this.element.addEventListener('mousedown', this._boundOnMouseDown);
     this.element.addEventListener('mouseup', this._boundOnMouseUp);
-    
+
   }
 
-  detached() {  
+  detached() {
     this.element.removeEventListener('focus', this._boundOnFocus);
     this.element.removeEventListener('mousedown', this._boundOnMouseDown);
     this.element.removeEventListener('mouseup', this._boundOnMouseUp);
