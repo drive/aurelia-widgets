@@ -1,6 +1,6 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode, computedFrom} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection'
+import {inject} from 'aurelia-dependency-injection';
 import $ from 'jquery';
 import 'devbridge-autocomplete';
 
@@ -56,7 +56,7 @@ import 'devbridge-autocomplete';
 export class AutoCompleteWidget {
 
   @bindable onchange;
-  
+
   constructor(element) {
     this.element = element;
     this.showingSuggestions = false;
@@ -93,11 +93,11 @@ export class AutoCompleteWidget {
     // the text of the input control may have already been changed by the user so setting this.input.value can blow
     // away text the user has entered. If the control selection is already the same as the newValue, we should be
     // able to ignore this callback.
-    if((currentControlSelection === null && newValue === null)
-        || (currentControlSelection.data === newValue)) {
+    if((currentControlSelection == null && newValue == null) ||
+       (currentControlSelection != null && currentControlSelection.data === newValue)) {
       return;
     }
-    
+
     this.input.value = this._formatSelectionValue(newValue);
     $(this.input).data('autocomplete').selection = newValue;
   }

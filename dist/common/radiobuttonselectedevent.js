@@ -1,10 +1,10 @@
 "use strict";
 
-var _classCallCheck = require("babel-runtime/helpers/class-call-check")["default"];
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var RadioButtonSelectedEvent = function RadioButtonSelectedEvent(groupName, buttonLabel) {
   _classCallCheck(this, RadioButtonSelectedEvent);

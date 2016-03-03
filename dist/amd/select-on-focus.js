@@ -1,13 +1,17 @@
-define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-framework'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
   var SelectOnFocus = (function () {
     function SelectOnFocus(element) {
-      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _SelectOnFocus);
+      _classCallCheck(this, _SelectOnFocus);
 
       this.element = element;
       this.blockMouseUp = false;
@@ -17,7 +21,7 @@ define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/
       this._boundOnMouseUp = this.onMouseUp.bind(this);
     }
 
-    (0, _babelRuntimeHelpersCreateClass['default'])(SelectOnFocus, [{
+    _createClass(SelectOnFocus, [{
       key: 'attached',
       value: function attached() {
         this.element.addEventListener('focus', this._boundOnFocus);
@@ -49,9 +53,10 @@ define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/
         }
       }
     }]);
+
     var _SelectOnFocus = SelectOnFocus;
-    SelectOnFocus = (0, _aureliaFramework.inject)(Element)(SelectOnFocus) || SelectOnFocus;
-    SelectOnFocus = (0, _aureliaFramework.customAttribute)('selectonfocus')(SelectOnFocus) || SelectOnFocus;
+    SelectOnFocus = (0, _aureliaDependencyInjection.inject)(Element)(SelectOnFocus) || SelectOnFocus;
+    SelectOnFocus = (0, _aureliaTemplating.customAttribute)('selectonfocus')(SelectOnFocus) || SelectOnFocus;
     return SelectOnFocus;
   })();
 

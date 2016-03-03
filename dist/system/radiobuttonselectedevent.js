@@ -1,13 +1,13 @@
-System.register(["babel-runtime/helpers/class-call-check"], function (_export) {
-  var _classCallCheck, RadioButtonSelectedEvent;
+System.register([], function (_export) {
+  "use strict";
+
+  var RadioButtonSelectedEvent;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
   return {
-    setters: [function (_babelRuntimeHelpersClassCallCheck) {
-      _classCallCheck = _babelRuntimeHelpersClassCallCheck["default"];
-    }],
+    setters: [],
     execute: function () {
-      "use strict";
-
       RadioButtonSelectedEvent = function RadioButtonSelectedEvent(groupName, buttonLabel) {
         _classCallCheck(this, RadioButtonSelectedEvent);
 

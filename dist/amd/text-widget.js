@@ -1,18 +1,22 @@
-define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _babelRuntimeHelpersCreateClass, _babelRuntimeHelpersClassCallCheck, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
   var TextWidget = (function () {
     function TextWidget(element) {
-      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _TextWidget);
+      _classCallCheck(this, _TextWidget);
 
       this.element = element;
     }
 
-    (0, _babelRuntimeHelpersCreateClass['default'])(TextWidget, [{
+    _createClass(TextWidget, [{
       key: 'attached',
       value: function attached() {
         if (this.multiline) {
@@ -22,6 +26,7 @@ define(['exports', 'babel-runtime/helpers/create-class', 'babel-runtime/helpers/
         }
       }
     }]);
+
     var _TextWidget = TextWidget;
     TextWidget = (0, _aureliaDependencyInjection.inject)(Element)(TextWidget) || TextWidget;
     TextWidget = (0, _aureliaTemplating.bindable)({

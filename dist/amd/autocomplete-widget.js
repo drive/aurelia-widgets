@@ -1,16 +1,27 @@
-define(['exports', 'babel-runtime/helpers/define-decorated-property-descriptor', 'babel-runtime/helpers/create-decorated-class', 'babel-runtime/helpers/class-call-check', 'babel-runtime/helpers/to-consumable-array', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'babel-runtime/helpers/interop-require-default', 'devbridge-autocomplete'], function (exports, _babelRuntimeHelpersDefineDecoratedPropertyDescriptor, _babelRuntimeHelpersCreateDecoratedClass, _babelRuntimeHelpersClassCallCheck, _babelRuntimeHelpersToConsumableArray, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _babelRuntimeHelpersInteropRequireDefault, _devbridgeAutocomplete) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _devbridgeAutocomplete) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
     value: true
   });
 
-  var _$ = (0, _babelRuntimeHelpersInteropRequireDefault['default'])(_jquery);
+  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+
+  var _$ = _interopRequireDefault(_jquery);
 
   var AutoCompleteWidget = (function () {
     var _instanceInitializers = {};
     var _instanceInitializers = {};
-    (0, _babelRuntimeHelpersCreateDecoratedClass['default'])(AutoCompleteWidget, [{
+
+    _createDecoratedClass(AutoCompleteWidget, [{
       key: 'onchange',
       decorators: [_aureliaTemplating.bindable],
       initializer: null,
@@ -18,14 +29,15 @@ define(['exports', 'babel-runtime/helpers/define-decorated-property-descriptor',
     }], null, _instanceInitializers);
 
     function AutoCompleteWidget(element) {
-      (0, _babelRuntimeHelpersClassCallCheck['default'])(this, _AutoCompleteWidget);
-      (0, _babelRuntimeHelpersDefineDecoratedPropertyDescriptor['default'])(this, 'onchange', _instanceInitializers);
+      _classCallCheck(this, _AutoCompleteWidget);
+
+      _defineDecoratedPropertyDescriptor(this, 'onchange', _instanceInitializers);
 
       this.element = element;
       this.showingSuggestions = false;
     }
 
-    (0, _babelRuntimeHelpersCreateDecoratedClass['default'])(AutoCompleteWidget, [{
+    _createDecoratedClass(AutoCompleteWidget, [{
       key: 'bind',
       value: function bind() {
         this.input = this.element.querySelector('input');
@@ -57,7 +69,7 @@ define(['exports', 'babel-runtime/helpers/define-decorated-property-descriptor',
       value: function selectedItemChanged(newValue) {
         var currentControlSelection = (0, _$['default'])(this.input).data('autocomplete').selection;
 
-        if (currentControlSelection === null && newValue === null || currentControlSelection.data === newValue) {
+        if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
           return;
         }
 
@@ -88,7 +100,7 @@ define(['exports', 'babel-runtime/helpers/define-decorated-property-descriptor',
 
         this.showingSuggestions = true;
 
-        if (this.customCSS !== '') (_$$0$classList = (0, _$['default'])(container)[0].classList).add.apply(_$$0$classList, (0, _babelRuntimeHelpersToConsumableArray['default'])(this.customCSS.split(',')));
+        if (this.customCSS !== '') (_$$0$classList = (0, _$['default'])(container)[0].classList).add.apply(_$$0$classList, _toConsumableArray(this.customCSS.split(',')));
       }
     }, {
       key: 'suggestionsHidden',
@@ -133,6 +145,7 @@ define(['exports', 'babel-runtime/helpers/define-decorated-property-descriptor',
         }
       }
     }], null, _instanceInitializers);
+
     var _AutoCompleteWidget = AutoCompleteWidget;
     AutoCompleteWidget = (0, _aureliaTemplating.bindable)({
       name: 'grabFocus',
