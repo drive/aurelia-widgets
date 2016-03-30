@@ -1,23 +1,19 @@
-import {customElement, bindable} from 'aurelia-templating';
-import {bindingMode} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection';
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
+
+import { customElement, bindable } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import $ from 'jquery';
 
-@customElement('text-display-widget')
-@bindable('text')
-@bindable({
+export let TextDisplayWidget = (_dec = customElement('text-display-widget'), _dec2 = bindable('text'), _dec3 = bindable({
   name: 'placeholder',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneTime
-})
-@bindable('toolTipText')
-@bindable({
+}), _dec4 = bindable('toolTipText'), _dec5 = bindable({
   name: 'placement',
   defaultValue: 'auto top',
   defaultBindingMode: bindingMode.oneTime
-})
-@inject(Element)
-export class TextDisplayWidget {
+}), _dec6 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = class TextDisplayWidget {
 
   constructor(element) {
     this.element = element;
@@ -37,10 +33,10 @@ export class TextDisplayWidget {
   unbind() {
     this.toolTipElement.tooltip('destroy');
   }
-    
+
   textChanged(newValue) {
     if (!this.toolTipText) {
-      this._updateToolTip(newValue); 
+      this._updateToolTip(newValue);
     }
   }
 
@@ -52,4 +48,4 @@ export class TextDisplayWidget {
     this.toolTipElement.attr('data-original-title', newValue);
   }
 
-}
+}) || _class) || _class) || _class) || _class) || _class) || _class);

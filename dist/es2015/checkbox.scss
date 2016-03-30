@@ -1,0 +1,34 @@
+.checkbox {
+  cursor: default;
+  margin: 0px;
+  padding-right: 30px;
+
+  display: flex;
+  align-items: center;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+
+  &:hover .checkbox-selector-enabled {
+    border-color: $brand-primary;
+  }
+}
+
+.checkbox-selector {
+  color: $brand-primary;
+  background-color: $gray-lighter;
+  line-height: 100%;
+  height: 16px;
+  width: 16px !important;
+  border: 1px solid transparent;
+}
+
+.checkbox-disabled {
+  color: $text-muted;
+}
+
+.checkbox-label > span {
+  color: $text-color;
+  margin-left: 5px;
+}

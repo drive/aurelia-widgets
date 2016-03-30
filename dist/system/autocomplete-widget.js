@@ -1,15 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customElement, bindable, bindingMode, computedFrom, inject, $, AutoCompleteWidget;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (_export, _context) {
+  var customElement, bindable, bindingMode, computedFrom, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, AutoCompleteWidget;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -21,190 +62,155 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_jquery) {
-      $ = _jquery['default'];
+      $ = _jquery.default;
     }, function (_devbridgeAutocomplete) {}],
     execute: function () {
-      AutoCompleteWidget = (function () {
-        var _instanceInitializers = {};
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(AutoCompleteWidget, [{
-          key: 'onchange',
-          decorators: [bindable],
-          initializer: null,
-          enumerable: true
-        }], null, _instanceInitializers);
-
+      _export('AutoCompleteWidget', AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('autocomplete-widget'), _dec3 = bindable({
+        name: 'size',
+        attribute: 'size',
+        defaultValue: 'medium',
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec4 = bindable({
+        name: 'disabled',
+        attribute: 'disabled',
+        defaultValue: false,
+        defaultBindingMode: bindingMode.oneWay
+      }), _dec5 = bindable({
+        name: 'controller',
+        attribute: 'controller',
+        defaultBindingMode: bindingMode.twoWay
+      }), _dec6 = bindable({
+        name: 'selectedItem',
+        attribute: 'selected-item',
+        defaultBindingMode: bindingMode.twoWay
+      }), _dec7 = bindable({
+        name: 'placeholder',
+        attribute: 'placeholder',
+        defaultValue: '',
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec8 = bindable({
+        name: 'customCSS',
+        attribute: 'custom-css',
+        defaultBindingMode: bindingMode.oneTime,
+        defaultValue: ''
+      }), _dec9 = bindable('title'), _dec10 = bindable('onenterpressed'), _dec11 = bindable({
+        name: 'autoSelectFirstResult',
+        attribute: 'auto-select-first',
+        defaultBindingMode: bindingMode.oneTime,
+        defaultValue: true
+      }), _dec12 = bindable({
+        name: 'grabFocus',
+        attribute: 'grab-focus',
+        defaultValue: false
+      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = _dec11(_class = _dec12(_class = (_class2 = function () {
         function AutoCompleteWidget(element) {
-          _classCallCheck(this, _AutoCompleteWidget);
+          _classCallCheck(this, AutoCompleteWidget);
 
-          _defineDecoratedPropertyDescriptor(this, 'onchange', _instanceInitializers);
+          _initDefineProp(this, 'onchange', _descriptor, this);
 
           this.element = element;
           this.showingSuggestions = false;
         }
 
-        _createDecoratedClass(AutoCompleteWidget, [{
-          key: 'bind',
-          value: function bind() {
-            this.input = this.element.querySelector('input');
-            this.apply();
-          }
-        }, {
-          key: 'unbind',
-          value: function unbind() {
-            $(this.input).autocomplete('dispose');
-          }
-        }, {
-          key: 'apply',
-          value: function apply() {
-            this.input.value = this._formatSelectionValue(this.selectedItem);
+        AutoCompleteWidget.prototype.bind = function bind() {
+          this.input = this.element.querySelector('input');
+          this.apply();
+        };
 
-            $(this.input).autocomplete({
-              lookup: this.lookup.bind(this),
-              onSelect: this.onSelect.bind(this),
-              onInvalidateSelection: this.onInvalidateSelection.bind(this),
-              beforeRender: this.suggestionsShown.bind(this),
-              onHide: this.suggestionsHidden.bind(this),
-              deferRequestBy: 200,
-              autoSelectFirst: this.autoSelectFirstResult
-            });
-            $(this.input).data('autocomplete').selection = this.selectedItem;
-          }
-        }, {
-          key: 'selectedItemChanged',
-          value: function selectedItemChanged(newValue) {
-            var currentControlSelection = $(this.input).data('autocomplete').selection;
+        AutoCompleteWidget.prototype.unbind = function unbind() {
+          $(this.input).autocomplete('dispose');
+        };
 
-            if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
-              return;
-            }
+        AutoCompleteWidget.prototype.apply = function apply() {
+          this.input.value = this._formatSelectionValue(this.selectedItem);
 
-            this.input.value = this._formatSelectionValue(newValue);
-            $(this.input).data('autocomplete').selection = newValue;
-          }
-        }, {
-          key: 'lookup',
-          value: function lookup(query, done) {
-            this.controller.search(query).then(function (results) {
-              done(results);
-            });
-          }
-        }, {
-          key: 'onSelect',
-          value: function onSelect(suggestion) {
-            this._setSelectedItem(suggestion.data);
-          }
-        }, {
-          key: 'onInvalidateSelection',
-          value: function onInvalidateSelection(param) {
-            this._setSelectedItem(null);
-          }
-        }, {
-          key: 'suggestionsShown',
-          value: function suggestionsShown(container) {
-            var _$$0$classList;
+          $(this.input).autocomplete({
+            lookup: this.lookup.bind(this),
+            onSelect: this.onSelect.bind(this),
+            onInvalidateSelection: this.onInvalidateSelection.bind(this),
+            beforeRender: this.suggestionsShown.bind(this),
+            onHide: this.suggestionsHidden.bind(this),
+            deferRequestBy: 200,
+            autoSelectFirst: this.autoSelectFirstResult
+          });
+          $(this.input).data('autocomplete').selection = this.selectedItem;
+        };
 
-            this.showingSuggestions = true;
+        AutoCompleteWidget.prototype.selectedItemChanged = function selectedItemChanged(newValue) {
+          var currentControlSelection = $(this.input).data('autocomplete').selection;
 
-            if (this.customCSS !== '') (_$$0$classList = $(container)[0].classList).add.apply(_$$0$classList, _toConsumableArray(this.customCSS.split(',')));
+          if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
+            return;
           }
-        }, {
-          key: 'suggestionsHidden',
-          value: function suggestionsHidden(container) {
-            var _this = this;
 
-            setTimeout(function () {
-              _this.showingSuggestions = false;
-            }, 250);
-          }
-        }, {
-          key: 'keyUpListener',
-          value: function keyUpListener(event) {
-            if (event.which === 13 && !this.showingSuggestions) {
-              if (this.onenterpressed) {
-                this.onenterpressed();
-                event.preventDefault();
-              }
+          this.input.value = this._formatSelectionValue(newValue);
+          $(this.input).data('autocomplete').selection = newValue;
+        };
+
+        AutoCompleteWidget.prototype.lookup = function lookup(query, done) {
+          this.controller.search(query).then(function (results) {
+            done(results);
+          });
+        };
+
+        AutoCompleteWidget.prototype.onSelect = function onSelect(suggestion) {
+          this._setSelectedItem(suggestion.data);
+        };
+
+        AutoCompleteWidget.prototype.onInvalidateSelection = function onInvalidateSelection(param) {
+          this._setSelectedItem(null);
+        };
+
+        AutoCompleteWidget.prototype.suggestionsShown = function suggestionsShown(container) {
+          var _$$0$classList;
+
+          this.showingSuggestions = true;
+
+          if (this.customCSS !== '') (_$$0$classList = $(container)[0].classList).add.apply(_$$0$classList, this.customCSS.split(','));
+        };
+
+        AutoCompleteWidget.prototype.suggestionsHidden = function suggestionsHidden(container) {
+          var _this = this;
+
+          setTimeout(function () {
+            _this.showingSuggestions = false;
+          }, 250);
+        };
+
+        AutoCompleteWidget.prototype.keyUpListener = function keyUpListener(event) {
+          if (event.which === 13 && !this.showingSuggestions) {
+            if (this.onenterpressed) {
+              this.onenterpressed();
+              event.preventDefault();
             }
           }
-        }, {
-          key: 'selectAll',
-          value: function selectAll() {
-            this.input.select();
-          }
-        }, {
-          key: '_formatSelectionValue',
-          value: function _formatSelectionValue(selection) {
-            var selectionValue = '';
-            if (selection) {
-              selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : selection.code + ' ' + selection.description;
-            }
-            return selectionValue;
-          }
-        }, {
-          key: '_setSelectedItem',
-          value: function _setSelectedItem(data) {
-            this.selectedItem = data;
+        };
 
-            if (this.onchange) {
-              this.onchange({ selected: this.selectedItem });
-            }
-          }
-        }], null, _instanceInitializers);
+        AutoCompleteWidget.prototype.selectAll = function selectAll() {
+          this.input.select();
+        };
 
-        var _AutoCompleteWidget = AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'grabFocus',
-          attribute: 'grab-focus',
-          defaultValue: false
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'autoSelectFirstResult',
-          attribute: 'auto-select-first',
-          defaultBindingMode: bindingMode.oneTime,
-          defaultValue: true
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable('onenterpressed')(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable('title')(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'customCSS',
-          attribute: 'custom-css',
-          defaultBindingMode: bindingMode.oneTime,
-          defaultValue: ''
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'placeholder',
-          attribute: 'placeholder',
-          defaultValue: '',
-          defaultBindingMode: bindingMode.oneTime
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'selectedItem',
-          attribute: 'selected-item',
-          defaultBindingMode: bindingMode.twoWay
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'controller',
-          attribute: 'controller',
-          defaultBindingMode: bindingMode.twoWay
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'disabled',
-          attribute: 'disabled',
-          defaultValue: false,
-          defaultBindingMode: bindingMode.oneWay
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = bindable({
-          name: 'size',
-          attribute: 'size',
-          defaultValue: 'medium',
-          defaultBindingMode: bindingMode.oneTime
-        })(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = customElement('autocomplete-widget')(AutoCompleteWidget) || AutoCompleteWidget;
-        AutoCompleteWidget = inject(Element)(AutoCompleteWidget) || AutoCompleteWidget;
+        AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {
+          var selectionValue = '';
+          if (selection) {
+            selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : selection.code + ' ' + selection.description;
+          }
+          return selectionValue;
+        };
+
+        AutoCompleteWidget.prototype._setSelectedItem = function _setSelectedItem(data) {
+          this.selectedItem = data;
+
+          if (this.onchange) {
+            this.onchange({ selected: this.selectedItem });
+          }
+        };
+
         return AutoCompleteWidget;
-      })();
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'onchange', [bindable], {
+        enumerable: true,
+        initializer: null
+      })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('AutoCompleteWidget', AutoCompleteWidget);
     }

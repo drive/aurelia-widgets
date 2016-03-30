@@ -1,11 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customElement, bindable, bindingMode, inject, $, TextDisplayWidget;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery'], function (_export, _context) {
+  var customElement, bindable, bindingMode, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, TextDisplayWidget;
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -16,69 +18,55 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_jquery) {
-      $ = _jquery['default'];
+      $ = _jquery.default;
     }],
     execute: function () {
-      TextDisplayWidget = (function () {
+      _export('TextDisplayWidget', TextDisplayWidget = (_dec = customElement('text-display-widget'), _dec2 = bindable('text'), _dec3 = bindable({
+        name: 'placeholder',
+        defaultValue: '',
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec4 = bindable('toolTipText'), _dec5 = bindable({
+        name: 'placement',
+        defaultValue: 'auto top',
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec6 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
         function TextDisplayWidget(element) {
-          _classCallCheck(this, _TextDisplayWidget);
+          _classCallCheck(this, TextDisplayWidget);
 
           this.element = element;
         }
 
-        _createClass(TextDisplayWidget, [{
-          key: 'bind',
-          value: function bind() {
-            this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
-            this.toolTipElement.attr('title', '');
-            this.toolTipElement.tooltip({
-              container: 'body',
-              placement: this.placement,
-              html: true,
-              title: this.toolTipText || this.text
-            });
-          }
-        }, {
-          key: 'unbind',
-          value: function unbind() {
-            this.toolTipElement.tooltip('destroy');
-          }
-        }, {
-          key: 'textChanged',
-          value: function textChanged(newValue) {
-            if (!this.toolTipText) {
-              this._updateToolTip(newValue);
-            }
-          }
-        }, {
-          key: 'toolTipTextChanged',
-          value: function toolTipTextChanged(newValue) {
+        TextDisplayWidget.prototype.bind = function bind() {
+          this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
+          this.toolTipElement.attr('title', '');
+          this.toolTipElement.tooltip({
+            container: 'body',
+            placement: this.placement,
+            html: true,
+            title: this.toolTipText || this.text
+          });
+        };
+
+        TextDisplayWidget.prototype.unbind = function unbind() {
+          this.toolTipElement.tooltip('destroy');
+        };
+
+        TextDisplayWidget.prototype.textChanged = function textChanged(newValue) {
+          if (!this.toolTipText) {
             this._updateToolTip(newValue);
           }
-        }, {
-          key: '_updateToolTip',
-          value: function _updateToolTip(newValue) {
-            this.toolTipElement.attr('data-original-title', newValue);
-          }
-        }]);
+        };
 
-        var _TextDisplayWidget = TextDisplayWidget;
-        TextDisplayWidget = inject(Element)(TextDisplayWidget) || TextDisplayWidget;
-        TextDisplayWidget = bindable({
-          name: 'placement',
-          defaultValue: 'auto top',
-          defaultBindingMode: bindingMode.oneTime
-        })(TextDisplayWidget) || TextDisplayWidget;
-        TextDisplayWidget = bindable('toolTipText')(TextDisplayWidget) || TextDisplayWidget;
-        TextDisplayWidget = bindable({
-          name: 'placeholder',
-          defaultValue: '',
-          defaultBindingMode: bindingMode.oneTime
-        })(TextDisplayWidget) || TextDisplayWidget;
-        TextDisplayWidget = bindable('text')(TextDisplayWidget) || TextDisplayWidget;
-        TextDisplayWidget = customElement('text-display-widget')(TextDisplayWidget) || TextDisplayWidget;
+        TextDisplayWidget.prototype.toolTipTextChanged = function toolTipTextChanged(newValue) {
+          this._updateToolTip(newValue);
+        };
+
+        TextDisplayWidget.prototype._updateToolTip = function _updateToolTip(newValue) {
+          this.toolTipElement.attr('data-original-title', newValue);
+        };
+
         return TextDisplayWidget;
-      })();
+      }()) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('TextDisplayWidget', TextDisplayWidget);
     }

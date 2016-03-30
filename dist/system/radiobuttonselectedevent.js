@@ -1,19 +1,23 @@
-System.register([], function (_export) {
-  "use strict";
+"use strict";
 
+System.register([], function (_export, _context) {
   var RadioButtonSelectedEvent;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [],
     execute: function () {
-      RadioButtonSelectedEvent = function RadioButtonSelectedEvent(groupName, buttonLabel) {
+      _export("RadioButtonSelectedEvent", RadioButtonSelectedEvent = function RadioButtonSelectedEvent(groupName, buttonLabel) {
         _classCallCheck(this, RadioButtonSelectedEvent);
 
         this.groupName = groupName;
         this.buttonLabel = buttonLabel;
-      };
+      });
 
       _export("RadioButtonSelectedEvent", RadioButtonSelectedEvent);
     }

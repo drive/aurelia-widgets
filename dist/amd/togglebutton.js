@@ -1,89 +1,83 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery, _bootstrap, _bootstrapToggle, _bootstrapToggleCssBootstrapToggleCss) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery) {
   'use strict';
 
-  Object.defineProperty(exports, '__esModule', {
+  Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.ToggleButton = undefined;
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  var _jquery2 = _interopRequireDefault(_jquery);
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var _$ = _interopRequireDefault(_jquery);
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
 
-  var ToggleButton = (function () {
+  var ToggleButton = exports.ToggleButton = (_dec = (0, _aureliaTemplating.bindable)({
+    name: 'onText',
+    attribute: 'on-text',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultValue: 'On'
+  }), _dec2 = (0, _aureliaTemplating.bindable)({
+    name: 'offText',
+    attribute: 'off-text',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultValue: 'Off'
+  }), _dec3 = (0, _aureliaTemplating.bindable)({
+    name: 'width',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultValue: null
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    name: 'label',
+    attribute: 'label',
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultValue: ''
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    name: 'checked',
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element), _dec7 = (0, _aureliaTemplating.customElement)('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = function () {
     function ToggleButton(element) {
-      _classCallCheck(this, _ToggleButton);
+      _classCallCheck(this, ToggleButton);
 
       this.element = element;
     }
 
-    _createClass(ToggleButton, [{
-      key: 'bind',
-      value: function bind() {
-        var _this = this;
+    ToggleButton.prototype.bind = function bind() {
+      var _this = this;
 
-        this.toggleElement = (0, _$['default'])(this.element.querySelector('[data-toggle="toggle"]'));
-        this.toggleElement.bootstrapToggle({
-          on: this.onText,
-          off: this.offText,
-          width: this.width
-        });
-        this.toggleElement.change(function () {
-          _this.checked = _this.toggleElement.prop('checked');
-        });
-        this.checkedChanged(this.checked);
-      }
-    }, {
-      key: 'checkedChanged',
-      value: function checkedChanged(newValue) {
-        if (newValue) {
-          this.toggleElement.bootstrapToggle('on');
-        } else {
-          this.toggleElement.bootstrapToggle('off');
-        }
-      }
-    }, {
-      key: 'unbind',
-      value: function unbind() {
-        this.toggleElement.bootstrapToggle('destroy');
-      }
-    }]);
+      this.toggleElement = (0, _jquery2.default)(this.element.querySelector('[data-toggle="toggle"]'));
+      this.toggleElement.bootstrapToggle({
+        on: this.onText,
+        off: this.offText,
+        width: this.width
+      });
+      this.toggleElement.change(function () {
+        _this.checked = _this.toggleElement.prop('checked');
+      });
+      this.checkedChanged(this.checked);
+    };
 
-    var _ToggleButton = ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.customElement)('toggle-button')(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaDependencyInjection.inject)(Element)(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.bindable)({
-      name: 'checked',
-      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-    })(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.bindable)({
-      name: 'label',
-      attribute: 'label',
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
-      defaultValue: ''
-    })(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.bindable)({
-      name: 'width',
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
-      defaultValue: null
-    })(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.bindable)({
-      name: 'offText',
-      attribute: 'off-text',
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
-      defaultValue: 'Off'
-    })(ToggleButton) || ToggleButton;
-    ToggleButton = (0, _aureliaTemplating.bindable)({
-      name: 'onText',
-      attribute: 'on-text',
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
-      defaultValue: 'On'
-    })(ToggleButton) || ToggleButton;
+    ToggleButton.prototype.checkedChanged = function checkedChanged(newValue) {
+      if (newValue) {
+        this.toggleElement.bootstrapToggle('on');
+      } else {
+        this.toggleElement.bootstrapToggle('off');
+      }
+    };
+
+    ToggleButton.prototype.unbind = function unbind() {
+      this.toggleElement.bootstrapToggle('destroy');
+    };
+
     return ToggleButton;
-  })();
-
-  exports.ToggleButton = ToggleButton;
+  }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 });

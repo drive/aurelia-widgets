@@ -1,67 +1,57 @@
-import {customElement, bindable} from 'aurelia-templating';
-import {bindingMode, computedFrom} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection'
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class;
+
+import { customElement, bindable } from 'aurelia-templating';
+import { bindingMode, computedFrom } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import numeral from 'numeral';
 
 const KEY_A = 65;
 const KEY_Z = 90;
 
-@customElement('currency-input')
-@bindable({
-  name:'value',
-  attribute:'value',
+export let CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bindable({
+  name: 'value',
+  attribute: 'value',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: 'valueChanged'
-})
-@bindable({
+}), _dec3 = bindable({
   name: 'size',
   attribute: 'size',
   defaultValue: 'medium',
   defaultBindingMode: bindingMode.oneTime
-})
-@bindable({
+}), _dec4 = bindable({
   name: 'disabled',
   attribute: 'disabled',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
+}), _dec5 = bindable({
   name: 'setNullToDefaultValue',
   attribute: 'set-null-to-default-value',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
+}), _dec6 = bindable({
   name: 'onlyAllowPositiveNumbers',
   attribute: 'only-allow-positive-numbers',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
+}), _dec7 = bindable({
   name: 'extendedView',
   attribute: 'extended-view',
   defaultValue: true,
   defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
+}), _dec8 = bindable({
   name: 'customCSS',
   attribute: 'custom-css',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
+}), _dec9 = bindable({
   name: 'placeholder',
   defaultValue: '0.00',
   defaultBindingMode: bindingMode.oneTime
-})
-@bindable('label')
-@bindable({
+}), _dec10 = bindable('label'), _dec11 = bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-})
-@inject(Element)
-export class CurrencyInput {
+}), _dec12 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = _dec11(_class = _dec12(_class = class CurrencyInput {
 
   constructor(element) {
     this.element = element;
@@ -71,11 +61,11 @@ export class CurrencyInput {
   }
 
   attached() {
-    this.input = this.element.querySelector('input');    
+    this.input = this.element.querySelector('input');
     this.input.addEventListener('blur', this._boundOnBlur, true);
   }
 
-  detached() {  
+  detached() {
     this.input.removeEventListener('blur', this._boundOnBlur, true);
   }
 
@@ -88,13 +78,12 @@ export class CurrencyInput {
   }
 
   _updateDisplay(update, oldValue) {
-    this.displayValue = update.trim();   
+    this.displayValue = update.trim();
     if (this.displayValue) {
       let newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
       if (newValue === 'NaN') {
         this._clearValue(oldValue);
-      }
-      else {
+      } else {
         this._setDisplayValue(newValue, oldValue);
       }
     } else {
@@ -115,8 +104,7 @@ export class CurrencyInput {
   _setDisplayValue(newValue, oldValue) {
     if (this.onlyAllowPositiveNumbers && newValue < 0) {
       this._clearValue(oldValue);
-    }
-    else {
+    } else {
       this.displayValue = numeral(newValue).format('0,0.00');
       this.value = newValue;
     }
@@ -126,4 +114,4 @@ export class CurrencyInput {
     this.displayValue = oldValue;
     this.value = oldValue;
   }
-}
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

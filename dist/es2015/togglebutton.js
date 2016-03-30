@@ -1,41 +1,36 @@
-import {customElement, bindable} from 'aurelia-templating';
-import {bindingMode} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection';
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
+
+import { customElement, bindable } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap-toggle';
 import 'bootstrap-toggle/css/bootstrap-toggle.css!';
 
-@bindable({
+export let ToggleButton = (_dec = bindable({
   name: 'onText',
-  attribute:'on-text',
+  attribute: 'on-text',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: 'On'
-})
-@bindable({
+}), _dec2 = bindable({
   name: 'offText',
-  attribute:'off-text',
+  attribute: 'off-text',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: 'Off'
-})
-@bindable({
+}), _dec3 = bindable({
   name: 'width',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: null
-})
-@bindable({
+}), _dec4 = bindable({
   name: 'label',
   attribute: 'label',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: ''
-})
-@bindable({
+}), _dec5 = bindable({
   name: 'checked',
   defaultBindingMode: bindingMode.twoWay
-})
-@inject(Element)
-@customElement('toggle-button')
-export class ToggleButton {
+}), _dec6 = inject(Element), _dec7 = customElement('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = class ToggleButton {
 
   constructor(element) {
     this.element = element;
@@ -50,7 +45,7 @@ export class ToggleButton {
     });
     this.toggleElement.change(() => {
       this.checked = this.toggleElement.prop('checked');
-    })
+    });
     this.checkedChanged(this.checked);
   }
 
@@ -65,4 +60,4 @@ export class ToggleButton {
   unbind() {
     this.toggleElement.bootstrapToggle('destroy');
   }
-}
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

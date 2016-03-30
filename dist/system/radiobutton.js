@@ -1,11 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, RadioButton;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export, _context) {
+  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, RadioButton;
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -19,9 +21,16 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       RadioButtonSelectedEvent = _radiobuttonselectedevent.RadioButtonSelectedEvent;
     }],
     execute: function () {
-      RadioButton = (function () {
+      _export('RadioButton', RadioButton = (_dec = inject(EventAggregator), _dec2 = customElement('radio-button'), _dec3 = bindable('label'), _dec4 = bindable('selected'), _dec5 = bindable('disabled'), _dec6 = bindable('onselecting'), _dec7 = bindable({
+        attribute: 'group-name',
+        name: 'groupName'
+      }), _dec8 = bindable({
+        name: 'grabFocus',
+        attribute: 'grab-focus',
+        defaultValue: false
+      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
         function RadioButton(eventAggregator) {
-          _classCallCheck(this, _RadioButton);
+          _classCallCheck(this, RadioButton);
 
           this.eventAggregator = eventAggregator;
           this.onselecting = function () {
@@ -29,53 +38,31 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           };
         }
 
-        _createClass(RadioButton, [{
-          key: 'bind',
-          value: function bind() {
-            this.selectedEventSubscription = this.eventAggregator.subscribe(RadioButtonSelectedEvent, this._handleButtonSelected.bind(this));
-          }
-        }, {
-          key: 'unbind',
-          value: function unbind() {
-            this.selectedEventSubscription.dispose();
-          }
-        }, {
-          key: 'clicked',
-          value: function clicked() {
-            if (this.disabled !== true) {
-              if (this.onselecting()) {
-                this.selected = !this.selected;
-                this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
-              }
-            }
-          }
-        }, {
-          key: '_handleButtonSelected',
-          value: function _handleButtonSelected(event) {
-            if (event.groupName === this.groupName) {
-              this.selected = this.label === event.buttonLabel;
-            }
-          }
-        }]);
+        RadioButton.prototype.bind = function bind() {
+          this.selectedEventSubscription = this.eventAggregator.subscribe(RadioButtonSelectedEvent, this._handleButtonSelected.bind(this));
+        };
 
-        var _RadioButton = RadioButton;
-        RadioButton = bindable({
-          name: 'grabFocus',
-          attribute: 'grab-focus',
-          defaultValue: false
-        })(RadioButton) || RadioButton;
-        RadioButton = bindable({
-          attribute: 'group-name',
-          name: 'groupName'
-        })(RadioButton) || RadioButton;
-        RadioButton = bindable('onselecting')(RadioButton) || RadioButton;
-        RadioButton = bindable('disabled')(RadioButton) || RadioButton;
-        RadioButton = bindable('selected')(RadioButton) || RadioButton;
-        RadioButton = bindable('label')(RadioButton) || RadioButton;
-        RadioButton = customElement('radio-button')(RadioButton) || RadioButton;
-        RadioButton = inject(EventAggregator)(RadioButton) || RadioButton;
+        RadioButton.prototype.unbind = function unbind() {
+          this.selectedEventSubscription.dispose();
+        };
+
+        RadioButton.prototype.clicked = function clicked() {
+          if (this.disabled !== true) {
+            if (this.onselecting()) {
+              this.selected = !this.selected;
+              this.eventAggregator.publish(new RadioButtonSelectedEvent(this.groupName, this.label));
+            }
+          }
+        };
+
+        RadioButton.prototype._handleButtonSelected = function _handleButtonSelected(event) {
+          if (event.groupName === this.groupName) {
+            this.selected = this.label === event.buttonLabel;
+          }
+        };
+
         return RadioButton;
-      })();
+      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('RadioButton', RadioButton);
     }
