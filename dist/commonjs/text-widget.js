@@ -15,6 +15,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var elasticEvents = ['keyup', 'cut', 'paste', 'change'];
+
 var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customElement)('text-widget'), _dec2 = (0, _aureliaTemplating.bindable)({
   name: 'textValue',
   attribute: 'text-value',
@@ -38,14 +40,43 @@ var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customEleme
     _classCallCheck(this, TextWidget);
 
     this.element = element;
+    this.boundResize = this.resize.bind(this);
   }
 
   TextWidget.prototype.attached = function attached() {
+    var _this = this;
+
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
+      elasticEvents.forEach(function (event) {
+        _this.input.addEventListener(event, _this.boundResize);
+      });
+      document.addEventListener('resize', this.boundResize);
+      this.minSize = this.input.scrollHeight;
     } else {
       this.input = this.element.querySelector('input');
     }
+  };
+
+  TextWidget.prototype.detached = function detached() {
+    var _this2 = this;
+
+    if (this.multiline) {
+      elasticEvents.forEach(function (event) {
+        _this2.input.removeEventListener(event, _this2.boundResize);
+      });
+      document.removeEventListener('resize', this.boundResize);
+    }
+  };
+
+  TextWidget.prototype.resize = function resize() {
+    this.input.style.overflow = 'hidden';
+    this.input.style.height = 'auto';
+    var newSize = this.input.scrollHeight;
+    if (newSize > this.minSize) {
+      newSize += 20;
+    }
+    this.input.style.height = newSize + 'px';
   };
 
   return TextWidget;
