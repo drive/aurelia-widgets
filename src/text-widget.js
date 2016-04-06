@@ -1,8 +1,10 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {VelocityAnimator} from 'aurelia-animator-velocity';
 
 const elasticEvents = ['keyup', 'cut', 'paste', 'change'];
+const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
 @bindable({
@@ -29,12 +31,15 @@ const elasticEvents = ['keyup', 'cut', 'paste', 'change'];
   defaultValue: false,
   defaultBindingMode: bindingMode.oneTime
 })
-@inject(Element)
+@inject(Element, VelocityAnimator)
 export class TextWidget {
 
-  constructor(element) {
+  constructor(element, animator) {
     this.element = element;
+    this.animator = animator;
     this.boundResize = this.resize.bind(this);
+    this.boundExpand = this._expand.bind(this);
+    this.boundShrink = this._shrink.bind(this);
   }
 
   attached() {
@@ -45,6 +50,9 @@ export class TextWidget {
       });
       document.addEventListener('resize', this.boundResize);
       this.minSize = this.input.scrollHeight;
+
+      this.input.addEventListener('focus', this.boundExpand);
+      this.input.addEventListener('blur', this.boundShrink);
     }
     else {
       this.input = this.element.querySelector('input');
@@ -57,10 +65,12 @@ export class TextWidget {
         this.input.removeEventListener(event, this.boundResize);
       });
       document.removeEventListener('resize', this.boundResize);
+      this.input.removeEventListener('focus', this.boundExpand);
+      this.input.removeEventListener('blur', this.boundShrink);
     }
   }
 
-  resize() {
+  get optimalHeight() {
     this.input.style.overflow = 'hidden';
     this.input.style.height = 'auto';
     let newSize = this.input.scrollHeight;
@@ -68,6 +78,19 @@ export class TextWidget {
       //the '+ 20' means the text doesn't jump about on screen when resizing.
       newSize += 20;
     }
-    this.input.style.height = `${newSize}px`;
+    return newSize;
+  }
+
+  resize() {
+    this.input.style.height = `${this.optimalHeight}px`;
+  }
+
+  _expand(e) {
+    this.animator.animate(this.input, { height: `${this.optimalHeight}px` }, { duration: ANIMATION_LENGTH });
+  }
+
+  _shrink(e) {
+    this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
+    this.input.style.overflow = 'scroll';
   }
 }
