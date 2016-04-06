@@ -80,7 +80,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               _this.input.addEventListener(event, _this.boundResize);
             });
             document.addEventListener('resize', this.boundResize);
-            this.minSize = this.input.scrollHeight;
+            if (!this.minSize) {
+              this.minSize = this.input.scrollHeight;
+            }
 
             this.input.addEventListener('focus', this.boundExpand);
             this.input.addEventListener('blur', this.boundShrink);
@@ -107,12 +109,20 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         TextWidget.prototype._expand = function _expand(e) {
-          this.animator.animate(this.input, { height: this.optimalHeight + 'px' }, { duration: ANIMATION_LENGTH });
+          var contentHeight = this.optimalHeight;
+          if (contentHeight > this.minSize) {
+            this.animator.animate(this.input, { height: contentHeight + 'px' }, { duration: ANIMATION_LENGTH });
+          }
         };
 
         TextWidget.prototype._shrink = function _shrink(e) {
-          this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
-          this.input.style.overflow = 'scroll';
+          var contentHeight = this.optimalHeight;
+          if (contentHeight > this.minSize) {
+            this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
+            if (this.textValue) {
+              this.input.style.overflow = 'scroll';
+            }
+          }
         };
 
         _createClass(TextWidget, [{

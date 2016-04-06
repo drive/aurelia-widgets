@@ -42,7 +42,9 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
         this.input.addEventListener(event, this.boundResize);
       });
       document.addEventListener('resize', this.boundResize);
-      this.minSize = this.input.scrollHeight;
+      if (!this.minSize) {
+        this.minSize = this.input.scrollHeight;
+      }
 
       this.input.addEventListener('focus', this.boundExpand);
       this.input.addEventListener('blur', this.boundShrink);
@@ -77,11 +79,19 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   }
 
   _expand(e) {
-    this.animator.animate(this.input, { height: `${ this.optimalHeight }px` }, { duration: ANIMATION_LENGTH });
+    let contentHeight = this.optimalHeight;
+    if (contentHeight > this.minSize) {
+      this.animator.animate(this.input, { height: `${ contentHeight }px` }, { duration: ANIMATION_LENGTH });
+    }
   }
 
   _shrink(e) {
-    this.animator.animate(this.input, { height: `${ this.minSize }px` }, { duration: ANIMATION_LENGTH });
-    this.input.style.overflow = 'scroll';
+    let contentHeight = this.optimalHeight;
+    if (contentHeight > this.minSize) {
+      this.animator.animate(this.input, { height: `${ this.minSize }px` }, { duration: ANIMATION_LENGTH });
+      if (this.textValue) {
+        this.input.style.overflow = 'scroll';
+      }
+    }
   }
 }) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
