@@ -99,7 +99,7 @@ export class TextWidget {
     if (contentHeight > this.minSize) {
       this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
-        this.input.style.overflow = 'scroll';
+        this.input.style.overflowY = 'scroll';
       }
     }
   }
