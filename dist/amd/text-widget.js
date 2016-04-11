@@ -71,9 +71,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
           _this.input.addEventListener(event, _this.boundResize);
         });
         document.addEventListener('resize', this.boundResize);
-        if (!this.minSize) {
-          this.minSize = this.input.scrollHeight;
-        }
 
         this.input.addEventListener('focus', this.boundExpand);
         this.input.addEventListener('blur', this.boundShrink);
@@ -100,6 +97,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     TextWidget.prototype._expand = function _expand(e) {
+      if (!this.minSize) {
+        this.minSize = this.input.scrollHeight;
+      }
       var contentHeight = this.optimalHeight;
       if (contentHeight > this.minSize) {
         this.animator.animate(this.input, { height: contentHeight + 'px' }, { duration: ANIMATION_LENGTH });
@@ -111,7 +111,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if (contentHeight > this.minSize) {
         this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
         if (this.textValue) {
-          this.input.style.overflow = 'scroll';
+          this.input.style.overflowY = 'scroll';
         }
       }
     };
