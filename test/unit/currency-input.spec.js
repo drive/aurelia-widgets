@@ -8,6 +8,17 @@ describe('The Currency Input widget', () => {
     currencyInput = new CurrencyInput();
   });
 
+  it('should set value to number', () => {
+    //arrange
+    currencyInput.displayValue = '10000';
+
+    //act
+    currencyInput.onBlur();
+
+    //assert
+    expect(currencyInput.value).toEqual(10000);
+  });
+
   it('should prettify numbers as currency on blur', () => {
     //arrange
     currencyInput.displayValue = '10000';
@@ -57,15 +68,15 @@ describe('The Currency Input widget', () => {
 
   it('should match the default value if the user clears the input', () => {
     //arrange
-    currencyInput.setNullToDefaultValue = '1.00';
+    currencyInput.setNullToDefaultValue = 1.12;
     currencyInput.displayValue = '';
 
     //act
     currencyInput.onBlur();
 
     //assert
-    expect(currencyInput.displayValue).toBe('1.00');
-    expect(currencyInput.value).toBe('1.00');
+    expect(currencyInput.displayValue).toEqual('1.12');
+    expect(currencyInput.value).toEqual(1.12);
   });
 
   it('should allow a negative number if the onlyAllowPositiveNumbers is false', () => {
@@ -77,7 +88,7 @@ describe('The Currency Input widget', () => {
     currencyInput.onBlur();
 
     //assert
-    expect(currencyInput.displayValue).toBe('-1.00');
-    expect(currencyInput.value).toBe('-1.00');
+    expect(currencyInput.displayValue).toEqual('-1.00');
+    expect(currencyInput.value).toEqual(-1.00);
   });
 });

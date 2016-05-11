@@ -97,25 +97,25 @@ var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaTemplating.custo
   CurrencyInput.prototype._updateDisplay = function _updateDisplay(update, oldValue) {
     this.displayValue = update.trim();
     if (this.displayValue) {
-      var newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
-      if (newValue === 'NaN') {
+      this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
+      if (isNaN(this.value)) {
         this._clearValue(oldValue);
       } else {
-        this._setDisplayValue(newValue, oldValue);
+        this._setDisplayValue(this.value, oldValue);
       }
     } else {
       if (this.setNullToDefaultValue !== '') {
-        var _newValue = this._castValueToFloat(this.setNullToDefaultValue);
-        this.value = _newValue;
-        this.displayValue = (0, _numeral2.default)(_newValue).format('0,0.00');
+        var newValue = this._castValueToFloat(this.setNullToDefaultValue);
+        this.value = newValue;
+        this.displayValue = (0, _numeral2.default)(newValue).format('0,0.00');
       } else {
-        this.value = '';
+        this.value = null;
       }
     }
   };
 
   CurrencyInput.prototype._castValueToFloat = function _castValueToFloat(value) {
-    return parseFloat(value).toFixed(2);
+    return Number(parseFloat(value).toFixed(2));
   };
 
   CurrencyInput.prototype._setDisplayValue = function _setDisplayValue(newValue, oldValue) {
@@ -123,7 +123,6 @@ var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaTemplating.custo
       this._clearValue(oldValue);
     } else {
       this.displayValue = (0, _numeral2.default)(newValue).format('0,0.00');
-      this.value = newValue;
     }
   };
 

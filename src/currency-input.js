@@ -90,12 +90,11 @@ export class CurrencyInput {
   _updateDisplay(update, oldValue) {
     this.displayValue = update.trim();   
     if (this.displayValue) {
-      let newValue = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
-      if (newValue === 'NaN') {
+      this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
+      if (isNaN(this.value)) {
         this._clearValue(oldValue);
-      }
-      else {
-        this._setDisplayValue(newValue, oldValue);
+      } else {
+        this._setDisplayValue(this.value, oldValue);
       }
     } else {
       if (this.setNullToDefaultValue !== '') {
@@ -103,22 +102,20 @@ export class CurrencyInput {
         this.value = newValue;
         this.displayValue = numeral(newValue).format('0,0.00');
       } else {
-        this.value = '';
+        this.value = null;
       }
     }
   }
 
   _castValueToFloat(value) {
-    return parseFloat(value).toFixed(2);
+    return Number(parseFloat(value).toFixed(2));
   }
 
   _setDisplayValue(newValue, oldValue) {
     if (this.onlyAllowPositiveNumbers && newValue < 0) {
       this._clearValue(oldValue);
-    }
-    else {
+    } else {
       this.displayValue = numeral(newValue).format('0,0.00');
-      this.value = newValue;
     }
   }
 
