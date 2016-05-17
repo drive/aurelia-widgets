@@ -10,13 +10,13 @@ System.config({
 
   map: {
     "aurelia-animator-velocity": "npm:aurelia-animator-velocity@1.0.0-beta.1.2.1",
-    "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.5",
+    "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.6",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.3",
     "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1.2.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.1",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0-beta.1.2.1",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.0.0-beta.1.1.4",
-    "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.6",
+    "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.7",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-toggle": "npm:bootstrap-toggle@2.2.2",
     "css": "github:systemjs/plugin-css@0.1.21",
@@ -41,10 +41,10 @@ System.config({
     "npm:aurelia-animator-velocity@1.0.0-beta.1.2.1": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.2",
-      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.6",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.7",
       "velocity-animate": "npm:velocity-animate@1.2.3"
     },
-    "npm:aurelia-binding@1.0.0-beta.1.3.5": {
+    "npm:aurelia-binding@1.0.0-beta.1.3.6": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.1",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.2",
@@ -74,8 +74,8 @@ System.config({
     "npm:aurelia-task-queue@1.0.0-beta.1.2.1": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.2"
     },
-    "npm:aurelia-templating@1.0.0-beta.1.2.6": {
-      "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.5",
+    "npm:aurelia-templating@1.0.0-beta.1.2.7": {
+      "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.6",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.3",
       "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1.2.0",
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.1",
