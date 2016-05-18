@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -62,7 +62,15 @@ export let Checkbox = (_dec = bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = class Checkbox {
+}), _dec5 = bindable({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+}), _dec6 = bindable({
+  name: 'checkedIconClass',
+  attribute: 'checked-icon-class',
+  defaultValue: 'fa-check'
+}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = class Checkbox {
 
   constructor() {
     _initDefineProp(this, 'ontoggle', _descriptor, this);
@@ -83,4 +91,4 @@ export let Checkbox = (_dec = bindable({
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ontoggle', [bindable], {
   enumerable: true,
   initializer: null
-})), _class2)) || _class) || _class) || _class) || _class);
+})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);

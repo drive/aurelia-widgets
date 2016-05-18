@@ -12,7 +12,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     }
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
   var RadioButton = exports.RadioButton = (_dec = (0, _aureliaDependencyInjection.inject)(_aureliaEventAggregator.EventAggregator), _dec2 = (0, _aureliaTemplating.customElement)('radio-button'), _dec3 = (0, _aureliaTemplating.bindable)('label'), _dec4 = (0, _aureliaTemplating.bindable)('selected'), _dec5 = (0, _aureliaTemplating.bindable)('disabled'), _dec6 = (0, _aureliaTemplating.bindable)('onselecting'), _dec7 = (0, _aureliaTemplating.bindable)({
     attribute: 'group-name',
@@ -21,7 +21,15 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     name: 'grabFocus',
     attribute: 'grab-focus',
     defaultValue: false
-  }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
+  }), _dec9 = (0, _aureliaTemplating.bindable)({
+    name: 'iconFamilyClass',
+    attribute: 'icon-family-class',
+    defaultValue: 'fa'
+  }), _dec10 = (0, _aureliaTemplating.bindable)({
+    name: 'selectedIconClass',
+    attribute: 'selected-icon-class',
+    defaultValue: 'fa-circle'
+  }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
     function RadioButton(eventAggregator) {
       _classCallCheck(this, RadioButton);
 
@@ -55,5 +63,5 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     };
 
     return RadioButton;
-  }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+  }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 });

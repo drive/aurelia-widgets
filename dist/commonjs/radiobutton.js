@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RadioButton = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -24,7 +24,15 @@ var RadioButton = exports.RadioButton = (_dec = (0, _aureliaDependencyInjection.
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
+}), _dec9 = (0, _aureliaTemplating.bindable)({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+}), _dec10 = (0, _aureliaTemplating.bindable)({
+  name: 'selectedIconClass',
+  attribute: 'selected-icon-class',
+  defaultValue: 'fa-circle'
+}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
   function RadioButton(eventAggregator) {
     _classCallCheck(this, RadioButton);
 
@@ -58,4 +66,4 @@ var RadioButton = exports.RadioButton = (_dec = (0, _aureliaDependencyInjection.
   };
 
   return RadioButton;
-}()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

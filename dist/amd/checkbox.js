@@ -55,7 +55,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding'], function (exports, 
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor;
 
   var Checkbox = exports.Checkbox = (_dec = (0, _aureliaTemplating.bindable)({
     name: 'labelText',
@@ -73,7 +73,15 @@ define(['exports', 'aurelia-templating', 'aurelia-binding'], function (exports, 
     name: 'grabFocus',
     attribute: 'grab-focus',
     defaultValue: false
-  }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = function () {
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    name: 'iconFamilyClass',
+    attribute: 'icon-family-class',
+    defaultValue: 'fa'
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    name: 'checkedIconClass',
+    attribute: 'checked-icon-class',
+    defaultValue: 'fa-check'
+  }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = function () {
     function Checkbox() {
       _classCallCheck(this, Checkbox);
 
@@ -96,5 +104,5 @@ define(['exports', 'aurelia-templating', 'aurelia-binding'], function (exports, 
   }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ontoggle', [_aureliaTemplating.bindable], {
     enumerable: true,
     initializer: null
-  })), _class2)) || _class) || _class) || _class) || _class);
+  })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class);
 });

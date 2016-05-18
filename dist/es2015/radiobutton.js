@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
 import { customElement, bindable } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
@@ -12,7 +12,15 @@ export let RadioButton = (_dec = inject(EventAggregator), _dec2 = customElement(
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = class RadioButton {
+}), _dec9 = bindable({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+}), _dec10 = bindable({
+  name: 'selectedIconClass',
+  attribute: 'selected-icon-class',
+  defaultValue: 'fa-circle'
+}), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = class RadioButton {
 
   constructor(eventAggregator) {
     this.eventAggregator = eventAggregator;
@@ -41,4 +49,4 @@ export let RadioButton = (_dec = inject(EventAggregator), _dec2 = customElement(
       this.selected = this.label === event.buttonLabel;
     }
   }
-}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

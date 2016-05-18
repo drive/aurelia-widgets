@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _context) {
-  var bindable, bindingMode, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, Checkbox;
+  var bindable, bindingMode, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, Checkbox;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -75,7 +75,15 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _c
         name: 'grabFocus',
         attribute: 'grab-focus',
         defaultValue: false
-      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = function () {
+      }), _dec5 = bindable({
+        name: 'iconFamilyClass',
+        attribute: 'icon-family-class',
+        defaultValue: 'fa'
+      }), _dec6 = bindable({
+        name: 'checkedIconClass',
+        attribute: 'checked-icon-class',
+        defaultValue: 'fa-check'
+      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = function () {
         function Checkbox() {
           _classCallCheck(this, Checkbox);
 
@@ -98,7 +106,7 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _c
       }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ontoggle', [bindable], {
         enumerable: true,
         initializer: null
-      })), _class2)) || _class) || _class) || _class) || _class));
+      })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('Checkbox', Checkbox);
     }

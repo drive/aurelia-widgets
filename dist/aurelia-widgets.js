@@ -184,6 +184,16 @@ export class AutoCompleteWidget {
   attribute: 'grab-focus',
   defaultValue: false
 })
+@bindable({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+})
+@bindable({
+  name: 'checkedIconClass',
+  attribute: 'checked-icon-class',
+  defaultValue: 'fa-check'
+})
 export class Checkbox {
 
   @bindable ontoggle;
@@ -436,6 +446,16 @@ export class CurrencyInput {
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
+})
+@bindable({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+})
+@bindable({
+  name: 'selectedIconClass',
+  attribute: 'selected-icon-class',
+  defaultValue: 'fa-circle'
 })
 export class RadioButton {
 

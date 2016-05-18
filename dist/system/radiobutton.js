@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export, _context) {
-  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, RadioButton;
+  var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, RadioButton;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -28,7 +28,15 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         name: 'grabFocus',
         attribute: 'grab-focus',
         defaultValue: false
-      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
+      }), _dec9 = bindable({
+        name: 'iconFamilyClass',
+        attribute: 'icon-family-class',
+        defaultValue: 'fa'
+      }), _dec10 = bindable({
+        name: 'selectedIconClass',
+        attribute: 'selected-icon-class',
+        defaultValue: 'fa-circle'
+      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
         function RadioButton(eventAggregator) {
           _classCallCheck(this, RadioButton);
 
@@ -62,7 +70,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         };
 
         return RadioButton;
-      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
+      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('RadioButton', RadioButton);
     }
