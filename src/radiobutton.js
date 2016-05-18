@@ -18,6 +18,16 @@ import {RadioButtonSelectedEvent} from './radiobuttonselectedevent';
   attribute: 'grab-focus',
   defaultValue: false
 })
+@bindable({
+  name: 'iconFamilyClass',
+  attribute: 'icon-family-class',
+  defaultValue: 'fa'
+})
+@bindable({
+  name: 'selectedIconClass',
+  attribute: 'selected-icon-class',
+  defaultValue: 'fa-circle'
+})
 export class RadioButton {
 
   constructor(eventAggregator) {
