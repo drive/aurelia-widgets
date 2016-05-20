@@ -19,7 +19,6 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.7",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-toggle": "npm:bootstrap-toggle@2.2.2",
-    "css": "github:systemjs/plugin-css@0.1.21",
     "devbridge-autocomplete": "npm:devbridge-autocomplete@1.2.24",
     "jquery": "npm:jquery@2.2.3",
     "numeral": "npm:numeral@1.5.3",
