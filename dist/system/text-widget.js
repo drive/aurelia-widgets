@@ -83,6 +83,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
             this.input.addEventListener('focus', this.boundExpand);
             this.input.addEventListener('blur', this.boundShrink);
+
+            this.minSize = this.minimumSize;
+            var contentHeight = this.optimalHeight;
+            if (contentHeight > this.minSize && this.textValue) {
+              this.input.style.overflowY = 'scroll';
+            }
           } else {
             this.input = this.element.querySelector('input');
           }
@@ -135,6 +141,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               newSize += 20;
             }
             return newSize;
+          }
+        }, {
+          key: 'minimumSize',
+          get: function get() {
+            var currentText = this.input.value;
+            this.input.value = '';
+            var size = this.optimalHeight;
+            this.input.value = currentText;
+            return size;
           }
         }]);
 

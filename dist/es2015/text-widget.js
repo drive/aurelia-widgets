@@ -45,6 +45,12 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
 
       this.input.addEventListener('focus', this.boundExpand);
       this.input.addEventListener('blur', this.boundShrink);
+
+      this.minSize = this.minimumSize;
+      let contentHeight = this.optimalHeight;
+      if (contentHeight > this.minSize && this.textValue) {
+        this.input.style.overflowY = 'scroll';
+      }
     } else {
       this.input = this.element.querySelector('input');
     }
@@ -69,6 +75,14 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
       newSize += 20;
     }
     return newSize;
+  }
+
+  get minimumSize() {
+    let currentText = this.input.value;
+    this.input.value = '';
+    let size = this.optimalHeight;
+    this.input.value = currentText;
+    return size;
   }
 
   resize() {
