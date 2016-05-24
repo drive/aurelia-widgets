@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaAnimatorVelocity) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity', 'jquery'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaAnimatorVelocity, _jquery) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -6,33 +6,22 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   });
   exports.TextWidget = undefined;
 
+  var _jquery2 = _interopRequireDefault(_jquery);
+
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   }
 
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
   var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
 
-  var elasticEvents = ['keyup', 'cut', 'paste', 'change'];
   var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customElement)('text-widget'), _dec2 = (0, _aureliaTemplating.bindable)({
     name: 'textValue',
     attribute: 'text-value',
@@ -57,27 +46,28 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       this.element = element;
       this.animator = animator;
-      this.boundResize = this.resize.bind(this);
       this.boundExpand = this._expand.bind(this);
       this.boundShrink = this._shrink.bind(this);
+      this.boundResize = this._resize.bind(this);
+
+      this.maxHeight = window.innerHeight - 200;
     }
 
     TextWidget.prototype.attached = function attached() {
-      var _this = this;
-
       if (this.multiline) {
         this.input = this.element.querySelector('textarea');
-        elasticEvents.forEach(function (event) {
-          _this.input.addEventListener(event, _this.boundResize);
-        });
-        document.addEventListener('resize', this.boundResize);
+        this.$input = (0, _jquery2.default)(this.input);
+
+        this.minSize = this._calcCurrentHeight();
+
+        this.$input.on('input', this.boundResize);
 
         this.input.addEventListener('focus', this.boundExpand);
         this.input.addEventListener('blur', this.boundShrink);
+        document.addEventListener('resize', this.boundResize);
 
-        this.minSize = this.minimumSize;
-        var contentHeight = this.optimalHeight;
-        if (contentHeight > this.minSize && this.textValue) {
+        this.optimalHeight = this._calcOptimalHeight();
+        if (this.optimalHeight > this.minSize && this.textValue) {
           this.input.style.overflowY = 'scroll';
         }
       } else {
@@ -86,63 +76,54 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     TextWidget.prototype.detached = function detached() {
-      var _this2 = this;
-
       if (this.multiline) {
-        elasticEvents.forEach(function (event) {
-          _this2.input.removeEventListener(event, _this2.boundResize);
-        });
-        document.removeEventListener('resize', this.boundResize);
+        this.$input.off('input', this.boundResize);
         this.input.removeEventListener('focus', this.boundExpand);
         this.input.removeEventListener('blur', this.boundShrink);
+        document.removeEventListener('resize', this.boundResize);
       }
     };
 
-    TextWidget.prototype.resize = function resize() {
+    TextWidget.prototype._calcCurrentHeight = function _calcCurrentHeight() {
+      var rect = this.input.getBoundingClientRect();
+      return rect.bottom - rect.top;
+    };
+
+    TextWidget.prototype._calcOptimalHeight = function _calcOptimalHeight() {
+      this.input.style.height = 'auto';
+      var scrollHeight = this.input.scrollHeight;
+      if (scrollHeight > this.maxHeight) {
+        this.input.style.overflowY = 'scroll';
+
+        return this.maxHeight;
+      }
+
+      this.input.style.overflowY = 'hidden';
+      return scrollHeight;
+    };
+
+    TextWidget.prototype._resize = function _resize() {
+      var originalX = window.pageXOffset;
+      var originalY = window.pageYOffset;
+      this.optimalHeight = this._calcOptimalHeight();
       this.input.style.height = this.optimalHeight + 'px';
+      window.scrollTo(originalX, originalY);
     };
 
     TextWidget.prototype._expand = function _expand(e) {
-      if (!this.minSize) {
-        this.minSize = this.input.scrollHeight;
-      }
-      var contentHeight = this.optimalHeight;
-      if (contentHeight > this.minSize) {
-        this.animator.animate(this.input, { height: contentHeight + 'px' }, { duration: ANIMATION_LENGTH });
+      if (this.optimalHeight > this.minSize) {
+        this.animator.animate(this.input, { height: this.optimalHeight + 'px' }, { duration: ANIMATION_LENGTH });
       }
     };
 
     TextWidget.prototype._shrink = function _shrink(e) {
-      var contentHeight = this.optimalHeight;
-      if (contentHeight > this.minSize) {
+      if (this.optimalHeight > this.minSize) {
         this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
         if (this.textValue) {
           this.input.style.overflowY = 'scroll';
         }
       }
     };
-
-    _createClass(TextWidget, [{
-      key: 'optimalHeight',
-      get: function get() {
-        this.input.style.overflow = 'hidden';
-        this.input.style.height = 'auto';
-        var newSize = this.input.scrollHeight;
-        if (newSize > this.minSize) {
-          newSize += 20;
-        }
-        return newSize;
-      }
-    }, {
-      key: 'minimumSize',
-      get: function get() {
-        var currentText = this.input.value;
-        this.input.value = '';
-        var size = this.optimalHeight;
-        this.input.value = currentText;
-        return size;
-      }
-    }]);
 
     return TextWidget;
   }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

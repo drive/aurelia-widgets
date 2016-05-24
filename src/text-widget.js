@@ -2,8 +2,8 @@ import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {VelocityAnimator} from 'aurelia-animator-velocity';
+import $ from 'jquery';
 
-const elasticEvents = ['keyup', 'cut', 'paste', 'change'];
 const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
@@ -37,25 +37,28 @@ export class TextWidget {
   constructor(element, animator) {
     this.element = element;
     this.animator = animator;
-    this.boundResize = this.resize.bind(this);
     this.boundExpand = this._expand.bind(this);
     this.boundShrink = this._shrink.bind(this);
+    this.boundResize = this._resize.bind(this);
+
+    this.maxHeight = window.innerHeight - 200;
   }
 
   attached() {
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
-      elasticEvents.forEach(event => {
-        this.input.addEventListener(event, this.boundResize);
-      });
-      document.addEventListener('resize', this.boundResize);
+      this.$input = $(this.input);
+
+      this.minSize = this._calcCurrentHeight();
+
+      this.$input.on('input', this.boundResize);
 
       this.input.addEventListener('focus', this.boundExpand);
       this.input.addEventListener('blur', this.boundShrink);
+      document.addEventListener('resize', this.boundResize);
 
-      this.minSize = this.minimumSize;
-      let contentHeight = this.optimalHeight;
-      if (contentHeight > this.minSize && this.textValue) {
+      this.optimalHeight = this._calcOptimalHeight();
+      if (this.optimalHeight > this.minSize && this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
     }
@@ -66,51 +69,46 @@ export class TextWidget {
 
   detached() {
     if (this.multiline) {
-      elasticEvents.forEach(event => {
-        this.input.removeEventListener(event, this.boundResize);
-      });
-      document.removeEventListener('resize', this.boundResize);
+      this.$input.off('input', this.boundResize);
       this.input.removeEventListener('focus', this.boundExpand);
       this.input.removeEventListener('blur', this.boundShrink);
+      document.removeEventListener('resize', this.boundResize);
     }
   }
 
-  get optimalHeight() {
-    this.input.style.overflow = 'hidden';
+  _calcCurrentHeight() {
+    let rect = this.input.getBoundingClientRect();
+    return rect.bottom - rect.top;
+  }
+
+  _calcOptimalHeight() {
     this.input.style.height = 'auto';
-    let newSize = this.input.scrollHeight;
-    if (newSize > this.minSize) {
-      //the '+ 20' means the text doesn't jump about on screen when resizing.
-      newSize += 20;
+    let scrollHeight = this.input.scrollHeight;
+    if (scrollHeight > this.maxHeight) {
+      this.input.style.overflowY = 'scroll';
+      return this.maxHeight;
     }
-    return newSize;
+
+    this.input.style.overflowY = 'hidden';
+    return scrollHeight;
   }
 
-  get minimumSize() {
-    let currentText = this.input.value;
-    this.input.value = '';
-    let size = this.optimalHeight;
-    this.input.value = currentText;
-    return size;
-  }
-
-  resize() {
+  _resize() {
+    let originalX = window.pageXOffset;
+    let originalY = window.pageYOffset;
+    this.optimalHeight = this._calcOptimalHeight();
     this.input.style.height = `${this.optimalHeight}px`;
+    window.scrollTo(originalX, originalY);
   }
 
   _expand(e) {
-    if (!this.minSize) {
-      this.minSize = this.input.scrollHeight;
-    }
-    let contentHeight = this.optimalHeight;
-    if (contentHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${contentHeight}px` }, { duration: ANIMATION_LENGTH });
+    if (this.optimalHeight > this.minSize) {
+      this.animator.animate(this.input, { height: `${this.optimalHeight}px` }, { duration: ANIMATION_LENGTH });
     }
   }
 
   _shrink(e) {
-    let contentHeight = this.optimalHeight;
-    if (contentHeight > this.minSize) {
+    if (this.optimalHeight > this.minSize) {
       this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
