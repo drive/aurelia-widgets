@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity', 'jquery'], function (_export, _context) {
-  var customElement, bindable, bindingMode, inject, VelocityAnimator, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, ANIMATION_LENGTH, TextWidget;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity'], function (_export, _context) {
+  var customElement, bindable, bindingMode, inject, VelocityAnimator, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, ANIMATION_LENGTH, TextWidget;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -19,8 +19,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaAnimatorVelocity) {
       VelocityAnimator = _aureliaAnimatorVelocity.VelocityAnimator;
-    }, function (_jquery) {
-      $ = _jquery.default;
     }],
     execute: function () {
       ANIMATION_LENGTH = 200;
@@ -59,12 +57,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         TextWidget.prototype.attached = function attached() {
           if (this.multiline) {
             this.input = this.element.querySelector('textarea');
-            this.$input = $(this.input);
 
             this.minSize = this._calcCurrentHeight();
 
-            this.$input.on('input', this.boundResize);
-
+            this.input.addEventListener('input', this.boundResize);
             this.input.addEventListener('focus', this.boundExpand);
             this.input.addEventListener('blur', this.boundShrink);
             document.addEventListener('resize', this.boundResize);
@@ -80,7 +76,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         TextWidget.prototype.detached = function detached() {
           if (this.multiline) {
-            this.$input.off('input', this.boundResize);
+            this.input.removeEventListener('input', this.boundResize);
             this.input.removeEventListener('focus', this.boundExpand);
             this.input.removeEventListener('blur', this.boundShrink);
             document.removeEventListener('resize', this.boundResize);
@@ -97,7 +93,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           var scrollHeight = this.input.scrollHeight;
           if (scrollHeight > this.maxHeight) {
             this.input.style.overflowY = 'scroll';
-
             return this.maxHeight;
           }
 

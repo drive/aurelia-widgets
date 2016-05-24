@@ -2,7 +2,6 @@ import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {VelocityAnimator} from 'aurelia-animator-velocity';
-import $ from 'jquery';
 
 const ANIMATION_LENGTH = 200; //ms
 
@@ -47,12 +46,10 @@ export class TextWidget {
   attached() {
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
-      this.$input = $(this.input);
 
       this.minSize = this._calcCurrentHeight();
 
-      this.$input.on('input', this.boundResize);
-
+      this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);
       this.input.addEventListener('blur', this.boundShrink);
       document.addEventListener('resize', this.boundResize);
@@ -69,7 +66,7 @@ export class TextWidget {
 
   detached() {
     if (this.multiline) {
-      this.$input.off('input', this.boundResize);
+      this.input.removeEventListener('input', this.boundResize);
       this.input.removeEventListener('focus', this.boundExpand);
       this.input.removeEventListener('blur', this.boundShrink);
       document.removeEventListener('resize', this.boundResize);
