@@ -32,3 +32,7 @@
   color: $text-color;
   margin-left: 5px;
 }
+
+.checkbox-label.text-muted > span {
+  color: $text-muted;
+}

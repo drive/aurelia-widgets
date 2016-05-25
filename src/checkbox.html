@@ -1,6 +1,6 @@
 <template>
-  <button class="btn btn-link checkbox noselect" click.delegate="checkboxSelected()" focus.bind="grabFocus">
-    <div class="checkbox-selector pull-left ${enabled ? 'checkbox-selector-enabled' : ''}">
+  <button class="btn btn-link checkbox noselect" click.delegate="checkboxSelected()" focus.bind="grabFocus" disabled.bind="!enabled">
+    <div class="checkbox-selector pull-left ${enabled ? 'checkbox-selector-enabled' : 'checkbox-disabled'}">
       <i class="${iconFamilyClass} ${ checked ? checkedIconClass : '' }"></i>
     </div>
     <div class="checkbox-label ${enabled ? '' : 'text-muted'}">
