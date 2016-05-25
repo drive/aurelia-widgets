@@ -105,7 +105,7 @@ export let Combo = (_dec = customElement('combo'), _dec2 = bindable({
     this._setSelected(change.target);
 
     if (this.onchange) {
-      this.onchange(this.selected);
+      this.onchange({ selected: this.selected });
     }
   }
 

@@ -119,7 +119,7 @@ var Combo = exports.Combo = (_dec = (0, _aureliaTemplating.customElement)('combo
     this._setSelected(change.target);
 
     if (this.onchange) {
-      this.onchange(this.selected);
+      this.onchange({ selected: this.selected });
     }
   };
 
