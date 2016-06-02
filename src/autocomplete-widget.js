@@ -143,6 +143,12 @@ export class AutoCompleteWidget {
     this.input.select();
   }
 
+  blurListener() {
+    if (this.selectedItem == null) {
+      this.input.value = '';
+    }
+  }
+
   _formatSelectionValue(selection) {
     let selectionValue = '';
     if(selection) {

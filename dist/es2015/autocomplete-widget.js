@@ -169,6 +169,12 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
     this.input.select();
   }
 
+  blurListener() {
+    if (this.selectedItem == null) {
+      this.input.value = '';
+    }
+  }
+
   _formatSelectionValue(selection) {
     let selectionValue = '';
     if (selection) {

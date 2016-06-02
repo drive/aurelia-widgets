@@ -191,6 +191,12 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
     this.input.select();
   };
 
+  AutoCompleteWidget.prototype.blurListener = function blurListener() {
+    if (this.selectedItem == null) {
+      this.input.value = '';
+    }
+  };
+
   AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {
     var selectionValue = '';
     if (selection) {

@@ -190,6 +190,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.input.select();
     };
 
+    AutoCompleteWidget.prototype.blurListener = function blurListener() {
+      if (this.selectedItem == null) {
+        this.input.value = '';
+      }
+    };
+
     AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {
       var selectionValue = '';
       if (selection) {
