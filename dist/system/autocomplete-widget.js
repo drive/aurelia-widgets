@@ -139,7 +139,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         AutoCompleteWidget.prototype.selectedItemChanged = function selectedItemChanged(newValue) {
           var currentControlSelection = $(this.input).data('autocomplete').selection;
 
-          if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
+          if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.hasOwnProperty('data') && currentControlSelection.data === newValue) {
             return;
           }
 

@@ -58,7 +58,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (this.multiline) {
             this.input = this.element.querySelector('textarea');
 
-            this.minSize = this._calcCurrentHeight();
+            this.minSize = Math.Max(this._calcCurrentHeight(), 52);
 
             this.input.addEventListener('input', this.boundResize);
             this.input.addEventListener('focus', this.boundExpand);

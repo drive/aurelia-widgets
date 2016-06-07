@@ -99,7 +99,7 @@ export class AutoCompleteWidget {
     // away text the user has entered. If the control selection is already the same as the newValue, we should be
     // able to ignore this callback.
     if((currentControlSelection == null && newValue == null) ||
-       (currentControlSelection != null && currentControlSelection.data === newValue)) {
+       (currentControlSelection != null && currentControlSelection.hasOwnProperty('data') && currentControlSelection.data === newValue)) {
       return;
     }
 
@@ -156,7 +156,7 @@ export class AutoCompleteWidget {
 
   _formatSelectionValue(selection) {
     let selectionValue = '';
-    if(selection) {
+    if (selection) {
       selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : `${selection.code} ${selection.description}`;
     }
     return selectionValue;
@@ -633,7 +633,7 @@ export class TextWidget {
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
 
-      this.minSize = this._calcCurrentHeight();
+      this.minSize = Math.Max(this._calcCurrentHeight(), 52);
 
       this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);

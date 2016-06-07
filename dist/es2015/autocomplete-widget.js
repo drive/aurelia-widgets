@@ -122,7 +122,7 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
   selectedItemChanged(newValue) {
     let currentControlSelection = $(this.input).data('autocomplete').selection;
 
-    if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
+    if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.hasOwnProperty('data') && currentControlSelection.data === newValue) {
       return;
     }
 

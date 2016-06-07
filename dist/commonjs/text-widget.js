@@ -52,7 +52,7 @@ var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _au
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
 
-      this.minSize = this._calcCurrentHeight();
+      this.minSize = Math.Max(this._calcCurrentHeight(), 52);
 
       this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);

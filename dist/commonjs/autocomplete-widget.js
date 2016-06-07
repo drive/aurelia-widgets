@@ -140,7 +140,7 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
   AutoCompleteWidget.prototype.selectedItemChanged = function selectedItemChanged(newValue) {
     var currentControlSelection = (0, _jquery2.default)(this.input).data('autocomplete').selection;
 
-    if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.data === newValue) {
+    if (currentControlSelection == null && newValue == null || currentControlSelection != null && currentControlSelection.hasOwnProperty('data') && currentControlSelection.data === newValue) {
       return;
     }
 
