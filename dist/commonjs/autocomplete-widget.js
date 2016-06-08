@@ -144,8 +144,13 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
       return;
     }
 
-    this.input.value = this._formatSelectionValue(newValue);
-    (0, _jquery2.default)(this.input).data('autocomplete').selection = newValue;
+    if (newValue == null) {
+      this.input.value = '';
+      (0, _jquery2.default)(this.input).data('autocomplete').selection = null;
+    } else {
+      (0, _jquery2.default)(this.input).data('autocomplete').suggestions = [this.controller.createSuggestion(newValue)];
+      (0, _jquery2.default)(this.input).data('autocomplete').onSelect(0);
+    }
   };
 
   AutoCompleteWidget.prototype.lookup = function lookup(query, done) {

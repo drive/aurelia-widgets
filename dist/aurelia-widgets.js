@@ -103,8 +103,13 @@ export class AutoCompleteWidget {
       return;
     }
 
-    this.input.value = this._formatSelectionValue(newValue);
-    $(this.input).data('autocomplete').selection = newValue;
+    if(newValue == null) {
+      this.input.value = '';
+      $(this.input).data('autocomplete').selection = null;
+    } else {
+      $(this.input).data('autocomplete').suggestions = [ this.controller.createSuggestion(newValue) ];
+      $(this.input).data('autocomplete').onSelect(0);  
+    }
   }
 
   lookup(query, done) {
