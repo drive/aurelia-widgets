@@ -638,7 +638,7 @@ export class TextWidget {
     if (this.multiline) {
       this.input = this.element.querySelector('textarea');
 
-      this.minSize = Math.Max(this._calcCurrentHeight(), 52);
+      this.minSize = Math.max(this._calcCurrentHeight(), 52);
 
       this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);
