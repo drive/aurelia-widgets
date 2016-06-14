@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _context) {
+  "use strict";
+
   var bindable, bindingMode, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, Checkbox;
 
   function _initDefineProp(target, property, descriptor, context) {

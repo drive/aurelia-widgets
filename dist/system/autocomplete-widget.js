@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (_export, _context) {
+  "use strict";
+
   var customElement, bindable, bindingMode, computedFrom, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, AutoCompleteWidget;
 
   function _initDefineProp(target, property, descriptor, context) {

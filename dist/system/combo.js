@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (_export, _context) {
+  "use strict";
+
   var customElement, bindable, bindingMode, inject, _typeof, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, Combo;
 
   function _initDefineProp(target, property, descriptor, context) {

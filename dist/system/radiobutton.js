@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-event-aggregator', './radiobuttonselectedevent'], function (_export, _context) {
+  "use strict";
+
   var customElement, bindable, inject, EventAggregator, RadioButtonSelectedEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, RadioButton;
 
   function _classCallCheck(instance, Constructor) {

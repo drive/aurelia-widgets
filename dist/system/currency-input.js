@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'numeral'], function (_export, _context) {
+  "use strict";
+
   var customElement, bindable, bindingMode, computedFrom, inject, numeral, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, KEY_A, KEY_Z, CurrencyInput;
 
   function _classCallCheck(instance, Constructor) {
