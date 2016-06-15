@@ -75,7 +75,7 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-toggle": "npm:bootstrap-toggle@^2.2.2",
       "devbridge-autocomplete": "npm:devbridge-autocomplete@^1.2.25",
-      "jquery": "npm:jquery@^3.0.0",
+      "jquery": "npm:jquery@2.2.0",
       "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
