@@ -20,7 +20,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "bootstrap-toggle": "npm:bootstrap-toggle@2.2.2",
     "devbridge-autocomplete": "npm:devbridge-autocomplete@1.2.25",
-    "jquery": "npm:jquery@2.2.0",
+    "jquery": "npm:jquery@2.2.4",
     "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -38,7 +38,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "npm:jquery@2.2.0"
+      "jquery": "npm:jquery@2.2.4"
     },
     "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
@@ -100,7 +100,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:devbridge-autocomplete@1.2.25": {
-      "jquery": "npm:jquery@2.2.0",
+      "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:inherits@2.0.1": {
@@ -119,7 +119,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:velocity-animate@1.2.3": {
-      "jquery": "npm:jquery@2.2.0",
+      "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:vm-browserify@0.0.4": {

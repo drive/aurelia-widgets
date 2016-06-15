@@ -75,7 +75,7 @@
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-toggle": "npm:bootstrap-toggle@^2.2.2",
       "devbridge-autocomplete": "npm:devbridge-autocomplete@^1.2.25",
-      "jquery": "npm:jquery@2.2.0",
+      "jquery": "npm:jquery@2.2.4",
       "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
@@ -84,25 +84,6 @@
     "overrides": {
       "npm:bootstrap-toggle@2.2.1": {
         "main": "js/bootstrap-toggle"
-      },
-      "github:twbs/bootstrap@3.3.6": {
-        "main": "js/bootstrap",
-        "shim": {
-          "js/bootstrap": {
-            "deps": [
-              "jquery"
-            ],
-            "exports": "$"
-          }
-        },
-        "dependencies": {
-          "jquery": "npm:jquery"
-        },
-        "files": [
-          "css",
-          "fonts",
-          "js"
-        ]
       }
     }
   },
