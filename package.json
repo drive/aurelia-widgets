@@ -65,13 +65,13 @@
       "lib": "dist/system"
     },
     "dependencies": {
-      "aurelia-animator-velocity": "npm:aurelia-animator-velocity@^1.0.0-beta.2.0.0",
-      "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.2.0.5",
-      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-beta.2.1.0",
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-beta.2.0.0",
-      "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-beta.2.0.0",
-      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0-beta.3.0.0",
-      "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.3.0.2",
+      "aurelia-animator-velocity": "npm:aurelia-animator-velocity@^1.0.0-rc.1.0.0",
+      "aurelia-binding": "npm:aurelia-binding@^1.0.0-rc.1.0.2",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-rc.1.0.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-rc.1.0.0",
+      "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-rc.1.0.0",
+      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0-rc.1.0.0",
+      "aurelia-templating": "npm:aurelia-templating@^1.0.0-rc.1.0.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-toggle": "npm:bootstrap-toggle@^2.2.2",
       "devbridge-autocomplete": "npm:devbridge-autocomplete@^1.2.25",
@@ -79,7 +79,7 @@
       "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
-      "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-beta.2.0.0"
+      "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-rc.1.0.0"
     },
     "overrides": {
       "npm:bootstrap-toggle@2.2.1": {
