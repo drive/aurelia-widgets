@@ -4,7 +4,7 @@
       <i class="${iconFamilyClass} ${ checked ? checkedIconClass : '' }"></i>
     </div>
     <div class="checkbox-label ${enabled ? '' : 'text-muted'}">
-      <span>${labelText}</span>
+      <slot><span>${labelText}</span></slot>
     </div>
   </button>
 </template>
