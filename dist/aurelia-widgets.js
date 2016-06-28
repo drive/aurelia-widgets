@@ -113,9 +113,16 @@ export class AutoCompleteWidget {
   }
 
   lookup(query, done) {
-    this.controller.search(query).then((results) => {
-      done(results);
-    });
+    // if the query string is the formatted value of the selected item, just return the selected item
+    if(query == this._formatSelectionValue(this.selectedItem)) {
+      done({
+        suggestions: [ this.controller.createSuggestion(this.selectedItem) ]
+      });
+    } else {
+      this.controller.search(query).then((results) => {
+        done(results);
+      });  
+    }
   }
 
   onSelect(suggestion) {
@@ -168,8 +175,9 @@ export class AutoCompleteWidget {
   }
 
   _setSelectedItem(data) {
-      this.selectedItem = data;
+      if(this.selectedItem === data) { return; }
 
+      this.selectedItem = data;
       if (this.onchange) {
         this.onchange({ selected: this.selectedItem });
       }

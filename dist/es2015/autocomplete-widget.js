@@ -136,9 +136,15 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
   }
 
   lookup(query, done) {
-    this.controller.search(query).then(results => {
-      done(results);
-    });
+    if (query == this._formatSelectionValue(this.selectedItem)) {
+      done({
+        suggestions: [this.controller.createSuggestion(this.selectedItem)]
+      });
+    } else {
+      this.controller.search(query).then(results => {
+        done(results);
+      });
+    }
   }
 
   onSelect(suggestion) {
@@ -189,8 +195,11 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
   }
 
   _setSelectedItem(data) {
-    this.selectedItem = data;
+    if (this.selectedItem === data) {
+      return;
+    }
 
+    this.selectedItem = data;
     if (this.onchange) {
       this.onchange({ selected: this.selectedItem });
     }

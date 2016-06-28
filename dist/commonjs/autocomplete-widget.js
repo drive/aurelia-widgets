@@ -154,9 +154,15 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
   };
 
   AutoCompleteWidget.prototype.lookup = function lookup(query, done) {
-    this.controller.search(query).then(function (results) {
-      done(results);
-    });
+    if (query == this._formatSelectionValue(this.selectedItem)) {
+      done({
+        suggestions: [this.controller.createSuggestion(this.selectedItem)]
+      });
+    } else {
+      this.controller.search(query).then(function (results) {
+        done(results);
+      });
+    }
   };
 
   AutoCompleteWidget.prototype.onSelect = function onSelect(suggestion) {
@@ -211,8 +217,11 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
   };
 
   AutoCompleteWidget.prototype._setSelectedItem = function _setSelectedItem(data) {
-    this.selectedItem = data;
+    if (this.selectedItem === data) {
+      return;
+    }
 
+    this.selectedItem = data;
     if (this.onchange) {
       this.onchange({ selected: this.selectedItem });
     }
