@@ -211,7 +211,7 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
   AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {
     var selectionValue = '';
     if (selection) {
-      selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : selection.code + ' ' + selection.description;
+      selectionValue = this.controller.formatItem(selection);
     }
     return selectionValue;
   };

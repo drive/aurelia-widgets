@@ -103,7 +103,7 @@ export class AutoCompleteWidget {
       $(this.input).data('autocomplete').selection = null;
     } else {
       $(this.input).data('autocomplete').suggestions = [ this.controller.createSuggestion(newValue) ];
-      $(this.input).data('autocomplete').onSelect(0);  
+      $(this.input).data('autocomplete').onSelect(0);
     }
   }
 
@@ -164,7 +164,7 @@ export class AutoCompleteWidget {
   _formatSelectionValue(selection) {
     let selectionValue = '';
     if (selection) {
-      selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : `${selection.code} ${selection.description}`;
+      selectionValue = this.controller.formatItem(selection);
     }
     return selectionValue;
   }

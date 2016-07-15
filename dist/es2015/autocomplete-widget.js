@@ -189,7 +189,7 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
   _formatSelectionValue(selection) {
     let selectionValue = '';
     if (selection) {
-      selectionValue = selection.hasOwnProperty("toString") && typeof selection.toString === "function" ? selection.toString() : `${ selection.code } ${ selection.description }`;
+      selectionValue = this.controller.formatItem(selection);
     }
     return selectionValue;
   }
