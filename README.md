@@ -5,13 +5,13 @@ A widget library for the Aurelia Javascript Framework.  It is bootstrap-oriented
 Widgets Available:
 
 - Autocomplete
-- Combo Box
-- Text Input
 - Checkbox
-- Radio Button
-- Toggle Button
-- Text Display
+- Combo Box
 - Currency Input
+- Radio Button
+- Text Display
+- Text Input
+- Toggle Button
 
 All the input widgets (except the Toggle Button) have a grab-focus attribute which, when set to true, will focus the main input of the widget.
 
@@ -53,12 +53,14 @@ This is a switch, with a checkbox underneath (hence "checked" as an attribute). 
 - off-text : When the switch is "unchecked" this text will be displayed
 - width : the width of the toggle in pixels (should be an integer), default is null which should be 'auto' but doesn't work as well as it should
 - checked : whether the switch is "checked"
+- disabled : whether the toggle is able to be operated
 
 ### Text Widget
 Binadable attributes are:
 - multiline : Whether to use an `<input type="text">` or a `<textarea>`
 - text-value : The text value for the widget
 - disabled : whether the control is disabled
+- readonly : The multi-line expanding will still function (unlike disabled) but the text is not editable
 
 The multi-line Text input animates expanding and collapsing from the original size (as calculated from style properties) to the "optimal" size (meaning
 all text will be displayed without scroll bars).  It also automatically exapands to fit the text added to it as it happens.
