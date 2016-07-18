@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (_export, _context) {
   "use strict";
 
-  var customElement, bindable, bindingMode, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, ToggleButton;
+  var customElement, bindable, bindingMode, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, ToggleButton;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -45,7 +45,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       }), _dec5 = bindable({
         name: 'checked',
         defaultBindingMode: bindingMode.twoWay
-      }), _dec6 = inject(Element), _dec7 = customElement('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = function () {
+      }), _dec6 = bindable({
+        name: 'disabled',
+        defaultValue: false,
+        defaultBindingMode: bindingMode.oneWay
+      }), _dec7 = inject(Element), _dec8 = customElement('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
         function ToggleButton(element) {
           _classCallCheck(this, ToggleButton);
 
@@ -65,6 +69,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             _this.checked = _this.toggleElement.prop('checked');
           });
           this.checkedChanged(this.checked);
+          this.disabledChanged(this.disabled);
+        };
+
+        ToggleButton.prototype.unbind = function unbind() {
+          this.toggleElement.bootstrapToggle('destroy');
         };
 
         ToggleButton.prototype.checkedChanged = function checkedChanged(newValue) {
@@ -75,12 +84,16 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
-        ToggleButton.prototype.unbind = function unbind() {
-          this.toggleElement.bootstrapToggle('destroy');
+        ToggleButton.prototype.disabledChanged = function disabledChanged(newValue) {
+          if (newValue) {
+            this.toggleElement.bootstrapToggle('disable');
+          } else {
+            this.toggleElement.bootstrapToggle('enable');
+          }
         };
 
         return ToggleButton;
-      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
+      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('ToggleButton', ToggleButton);
     }

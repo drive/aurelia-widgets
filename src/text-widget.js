@@ -30,6 +30,11 @@ const ANIMATION_LENGTH = 200; //ms
   defaultValue: false,
   defaultBindingMode: bindingMode.oneTime
 })
+@bindable({
+  name: 'readonly',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
 @inject(Element, VelocityAnimator)
 export class TextWidget {
 

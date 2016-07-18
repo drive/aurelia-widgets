@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label class="control-label">${label}</label>
-    <input value.bind="textValue" type="text" class="form-control" placeholder.bind="placeholder" focus.bind="grabFocus" if.bind="!multiline" disabled.bind="disabled" autocomplete="off"/>
-    <textarea value.bind="textValue" class="form-control" placeholder.bind="placeholder" focus.bind="grabFocus" if.bind="multiline" disabled.bind="disabled" autcomplete="off"></textarea>
+    <input value.bind="textValue" type="text" class="form-control" placeholder.bind="placeholder" focus.bind="grabFocus" if.bind="!multiline" disabled.bind="disabled" autocomplete="off" readonly.bind="readonly"/>
+    <textarea value.bind="textValue" class="form-control" placeholder.bind="placeholder" focus.bind="grabFocus" if.bind="multiline" disabled.bind="disabled" autcomplete="off" readonly.bind="readonly"></textarea>
   </div>
 </template>

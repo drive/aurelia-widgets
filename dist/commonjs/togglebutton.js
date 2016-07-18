@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ToggleButton = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -49,7 +49,11 @@ var ToggleButton = exports.ToggleButton = (_dec = (0, _aureliaTemplating.bindabl
 }), _dec5 = (0, _aureliaTemplating.bindable)({
   name: 'checked',
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec6 = (0, _aureliaDependencyInjection.inject)(Element), _dec7 = (0, _aureliaTemplating.customElement)('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = function () {
+}), _dec6 = (0, _aureliaTemplating.bindable)({
+  name: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec7 = (0, _aureliaDependencyInjection.inject)(Element), _dec8 = (0, _aureliaTemplating.customElement)('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
   function ToggleButton(element) {
     _classCallCheck(this, ToggleButton);
 
@@ -69,6 +73,11 @@ var ToggleButton = exports.ToggleButton = (_dec = (0, _aureliaTemplating.bindabl
       _this.checked = _this.toggleElement.prop('checked');
     });
     this.checkedChanged(this.checked);
+    this.disabledChanged(this.disabled);
+  };
+
+  ToggleButton.prototype.unbind = function unbind() {
+    this.toggleElement.bootstrapToggle('destroy');
   };
 
   ToggleButton.prototype.checkedChanged = function checkedChanged(newValue) {
@@ -79,9 +88,13 @@ var ToggleButton = exports.ToggleButton = (_dec = (0, _aureliaTemplating.bindabl
     }
   };
 
-  ToggleButton.prototype.unbind = function unbind() {
-    this.toggleElement.bootstrapToggle('destroy');
+  ToggleButton.prototype.disabledChanged = function disabledChanged(newValue) {
+    if (newValue) {
+      this.toggleElement.bootstrapToggle('disable');
+    } else {
+      this.toggleElement.bootstrapToggle('enable');
+    }
   };
 
   return ToggleButton;
-}()) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

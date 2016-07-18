@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
 
 import { customElement, bindable } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
@@ -30,7 +30,11 @@ export let ToggleButton = (_dec = bindable({
 }), _dec5 = bindable({
   name: 'checked',
   defaultBindingMode: bindingMode.twoWay
-}), _dec6 = inject(Element), _dec7 = customElement('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = class ToggleButton {
+}), _dec6 = bindable({
+  name: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+}), _dec7 = inject(Element), _dec8 = customElement('toggle-button'), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = class ToggleButton {
 
   constructor(element) {
     this.element = element;
@@ -47,6 +51,11 @@ export let ToggleButton = (_dec = bindable({
       this.checked = this.toggleElement.prop('checked');
     });
     this.checkedChanged(this.checked);
+    this.disabledChanged(this.disabled);
+  }
+
+  unbind() {
+    this.toggleElement.bootstrapToggle('destroy');
   }
 
   checkedChanged(newValue) {
@@ -57,7 +66,11 @@ export let ToggleButton = (_dec = bindable({
     }
   }
 
-  unbind() {
-    this.toggleElement.bootstrapToggle('destroy');
+  disabledChanged(newValue) {
+    if (newValue) {
+      this.toggleElement.bootstrapToggle('disable');
+    } else {
+      this.toggleElement.bootstrapToggle('enable');
+    }
   }
-}) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

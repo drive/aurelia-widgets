@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class;
 
 import { customElement, bindable } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
@@ -24,7 +24,11 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   attribute: 'multiline',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneTime
-}), _dec8 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = class TextWidget {
+}), _dec8 = bindable({
+  name: 'readonly',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+}), _dec9 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = class TextWidget {
 
   constructor(element, animator) {
     this.element = element;
@@ -104,4 +108,4 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
       }
     }
   }
-}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

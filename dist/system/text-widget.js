@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity'], function (_export, _context) {
   "use strict";
 
-  var customElement, bindable, bindingMode, inject, VelocityAnimator, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, ANIMATION_LENGTH, TextWidget;
+  var customElement, bindable, bindingMode, inject, VelocityAnimator, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, ANIMATION_LENGTH, TextWidget;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -43,7 +43,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         attribute: 'multiline',
         defaultValue: false,
         defaultBindingMode: bindingMode.oneTime
-      }), _dec8 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
+      }), _dec8 = bindable({
+        name: 'readonly',
+        defaultValue: false,
+        defaultBindingMode: bindingMode.oneWay
+      }), _dec9 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = function () {
         function TextWidget(element, animator) {
           _classCallCheck(this, TextWidget);
 
@@ -126,7 +130,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         return TextWidget;
-      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
+      }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class));
 
       _export('TextWidget', TextWidget);
     }

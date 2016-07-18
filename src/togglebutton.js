@@ -33,6 +33,11 @@ import 'bootstrap-toggle/css/bootstrap-toggle.css!';
   name: 'checked',
   defaultBindingMode: bindingMode.twoWay
 })
+@bindable({
+  name: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
+})
 @inject(Element)
 @customElement('toggle-button')
 export class ToggleButton {
@@ -52,6 +57,11 @@ export class ToggleButton {
       this.checked = this.toggleElement.prop('checked');
     })
     this.checkedChanged(this.checked);
+    this.disabledChanged(this.disabled);
+  }
+
+  unbind() {
+    this.toggleElement.bootstrapToggle('destroy');
   }
 
   checkedChanged(newValue) {
@@ -62,7 +72,11 @@ export class ToggleButton {
     }
   }
 
-  unbind() {
-    this.toggleElement.bootstrapToggle('destroy');
+  disabledChanged(newValue) {
+    if (newValue) {
+      this.toggleElement.bootstrapToggle('disable');
+    } else {
+      this.toggleElement.bootstrapToggle('enable');
+    }
   }
 }

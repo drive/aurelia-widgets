@@ -12,7 +12,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     }
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class;
 
   var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customElement)('text-widget'), _dec2 = (0, _aureliaTemplating.bindable)({
     name: 'textValue',
@@ -32,7 +32,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     attribute: 'multiline',
     defaultValue: false,
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec8 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaAnimatorVelocity.VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = function () {
+  }), _dec8 = (0, _aureliaTemplating.bindable)({
+    name: 'readonly',
+    defaultValue: false,
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec9 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaAnimatorVelocity.VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = function () {
     function TextWidget(element, animator) {
       _classCallCheck(this, TextWidget);
 
@@ -115,5 +119,5 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     return TextWidget;
-  }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+  }()) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 });
