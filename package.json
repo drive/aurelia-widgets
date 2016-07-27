@@ -1,6 +1,6 @@
 {
   "name": "aurelia-widgets",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Collection of third party wrappers that get used in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",
@@ -65,21 +65,22 @@
       "lib": "dist/system"
     },
     "dependencies": {
-      "aurelia-animator-velocity": "npm:aurelia-animator-velocity@^1.0.0-rc.1.0.0",
-      "aurelia-binding": "npm:aurelia-binding@^1.0.0-rc.1.0.3",
-      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-rc.1.0.1",
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0-rc.1.0.0",
-      "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-rc.1.0.1",
-      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0-rc.1.0.1",
-      "aurelia-templating": "npm:aurelia-templating@^1.0.0-rc.1.0.1",
+      "aurelia-animator-velocity": "npm:aurelia-animator-velocity@^1.0.0",
+      "aurelia-binding": "npm:aurelia-binding@^1.0.0",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.0",
+      "aurelia-metadata": "npm:aurelia-metadata@^1.0.0",
+      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0",
+      "aurelia-templating": "npm:aurelia-templating@^1.0.0",
       "bootstrap": "github:twbs/bootstrap@^3.3.6",
       "bootstrap-toggle": "npm:bootstrap-toggle@^2.2.2",
+      "css": "github:systemjs/plugin-css@^0.1.25",
       "devbridge-autocomplete": "npm:devbridge-autocomplete@^1.2.25",
       "jquery": "npm:jquery@2.2.4",
       "numeral": "npm:numeral@^1.5.3"
     },
     "devDependencies": {
-      "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-rc.1.0.0"
+      "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0"
     },
     "overrides": {
       "npm:bootstrap-toggle@2.2.1": {
