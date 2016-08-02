@@ -48,6 +48,7 @@ var SelectOnFocus = exports.SelectOnFocus = (_dec = (0, _aureliaTemplating.custo
   SelectOnFocus.prototype.onMouseUp = function onMouseUp(event) {
     if (this.blockMouseUp) {
       event.preventDefault();
+      event.stopPropagation();
     }
   };
 

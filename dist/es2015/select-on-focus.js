@@ -36,6 +36,7 @@ export let SelectOnFocus = (_dec = customAttribute('selectonfocus'), _dec2 = inj
   onMouseUp(event) {
     if (this.blockMouseUp) {
       event.preventDefault();
+      event.stopPropagation();
     }
   }
 }) || _class) || _class);

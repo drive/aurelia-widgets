@@ -53,6 +53,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
         SelectOnFocus.prototype.onMouseUp = function onMouseUp(event) {
           if (this.blockMouseUp) {
             event.preventDefault();
+            event.stopPropagation();
           }
         };
 

@@ -37,6 +37,7 @@ export class SelectOnFocus {
   onMouseUp(event) {
     if (this.blockMouseUp) {
       event.preventDefault();
+      event.stopPropagation();
     }
   }
 }

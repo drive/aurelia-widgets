@@ -49,6 +49,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
     SelectOnFocus.prototype.onMouseUp = function onMouseUp(event) {
       if (this.blockMouseUp) {
         event.preventDefault();
+        event.stopPropagation();
       }
     };
 
