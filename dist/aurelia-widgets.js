@@ -634,6 +634,12 @@ const ANIMATION_LENGTH = 200; //ms
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
 })
+@bindable({
+  name: 'maxLength',
+  attribute: 'max-length',
+  defaultBindingMode: bindingMode.oneTime,
+  defaultValue: null
+})
 @inject(Element, VelocityAnimator)
 export class TextWidget {
 
@@ -665,6 +671,10 @@ export class TextWidget {
     }
     else {
       this.input = this.element.querySelector('input');
+    }
+
+    if (this.maxLength) {
+      this.input.setAttribute('maxlength', this.maxLength);
     }
   }
 

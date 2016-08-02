@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
 import { customElement, bindable } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
@@ -28,7 +28,12 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   name: 'readonly',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
-}), _dec9 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = class TextWidget {
+}), _dec9 = bindable({
+  name: 'maxLength',
+  attribute: 'max-length',
+  defaultBindingMode: bindingMode.oneTime,
+  defaultValue: null
+}), _dec10 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = class TextWidget {
 
   constructor(element, animator) {
     this.element = element;
@@ -57,6 +62,10 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
       }
     } else {
       this.input = this.element.querySelector('input');
+    }
+
+    if (this.maxLength) {
+      this.input.setAttribute('maxlength', this.maxLength);
     }
   }
 
@@ -108,4 +117,4 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
       }
     }
   }
-}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
