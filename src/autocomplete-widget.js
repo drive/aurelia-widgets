@@ -82,7 +82,8 @@ export class AutoCompleteWidget {
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
       deferRequestBy: 200,
-      autoSelectFirst: this.autoSelectFirstResult
+      autoSelectFirst: this.autoSelectFirstResult,
+      formatResult:this.formatResult.bind(this)
     });
     $(this.input).data('autocomplete').selection = this.selectedItem;
   }
@@ -122,6 +123,13 @@ export class AutoCompleteWidget {
 
   onSelect(suggestion) {
     this._setSelectedItem(suggestion.data);
+  }
+
+  formatResult(suggestion, currentValue) {
+    if(this.controller.formatResult)
+        return this.controller.formatResult(suggestion.data);
+    else
+      return this.controller.formatItem(suggestion.data);
   }
 
   onInvalidateSelection(param) {

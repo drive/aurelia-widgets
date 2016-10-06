@@ -114,7 +114,8 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
       deferRequestBy: 200,
-      autoSelectFirst: this.autoSelectFirstResult
+      autoSelectFirst: this.autoSelectFirstResult,
+      formatResult: this.formatResult.bind(this)
     });
     $(this.input).data('autocomplete').selection = this.selectedItem;
   }
@@ -149,6 +150,10 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
 
   onSelect(suggestion) {
     this._setSelectedItem(suggestion.data);
+  }
+
+  formatResult(suggestion, currentValue) {
+    if (this.controller.formatResult) return this.controller.formatResult(suggestion.data);else return this.controller.formatItem(suggestion.data);
   }
 
   onInvalidateSelection(param) {

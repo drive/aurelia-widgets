@@ -132,7 +132,8 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
       beforeRender: this.suggestionsShown.bind(this),
       onHide: this.suggestionsHidden.bind(this),
       deferRequestBy: 200,
-      autoSelectFirst: this.autoSelectFirstResult
+      autoSelectFirst: this.autoSelectFirstResult,
+      formatResult: this.formatResult.bind(this)
     });
     (0, _jquery2.default)(this.input).data('autocomplete').selection = this.selectedItem;
   };
@@ -167,6 +168,10 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
 
   AutoCompleteWidget.prototype.onSelect = function onSelect(suggestion) {
     this._setSelectedItem(suggestion.data);
+  };
+
+  AutoCompleteWidget.prototype.formatResult = function formatResult(suggestion, currentValue) {
+    if (this.controller.formatResult) return this.controller.formatResult(suggestion.data);else return this.controller.formatItem(suggestion.data);
   };
 
   AutoCompleteWidget.prototype.onInvalidateSelection = function onInvalidateSelection(param) {
