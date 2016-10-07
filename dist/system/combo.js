@@ -67,7 +67,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
         return typeof obj;
       } : function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
 
       _export('Combo', Combo = (_dec = customElement('combo'), _dec2 = bindable({
