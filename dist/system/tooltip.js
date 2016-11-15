@@ -29,7 +29,9 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
         }
 
         Tooltip.prototype.bind = function bind() {
-          if (this.value) this._createTooltip(this.value);
+          if (this.value) {
+            this._createTooltip(this.value);
+          }
         };
 
         Tooltip.prototype.unbind = function unbind() {
@@ -39,7 +41,9 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
         Tooltip.prototype.valueChanged = function valueChanged(newValue, oldValue) {
           if (newValue) {
             this._updateToolTip(newValue);
-          } else this._destroyToolTip();
+          } else {
+            this._destroyToolTip();
+          }
         };
 
         Tooltip.prototype._updateToolTip = function _updateToolTip(newValue) {
@@ -58,8 +62,10 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
         };
 
         Tooltip.prototype._destroyToolTip = function _destroyToolTip() {
-          this.toolTipElement.tooltip('destroy');
-          this.toolTipElement = null;
+          if (this.toolTipElement) {
+            this.toolTipElement.tooltip('destroy');
+            this.toolTipElement = null;
+          }
         };
 
         return Tooltip;

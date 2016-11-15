@@ -12,19 +12,21 @@ export class Tooltip {
   }
 
   bind() {
-    if(this.value)
-      this._createTooltip(this.value);      
+    if(this.value) {
+      this._createTooltip(this.value);
+    }
   }
 
   unbind() {
-    this._destroyToolTip(); 
+    this._destroyToolTip();
   }
     
   valueChanged(newValue, oldValue) {
     if (newValue) {
       this._updateToolTip(newValue); 
-    } else
+    } else {
       this._destroyToolTip();
+    }
   }
 
   _updateToolTip(newValue) {
@@ -46,7 +48,9 @@ export class Tooltip {
   }
 
   _destroyToolTip() {
-    this.toolTipElement.tooltip('destroy');
-    this.toolTipElement = null;
+    if(this.toolTipElement) {
+      this.toolTipElement.tooltip('destroy');
+      this.toolTipElement = null;
+    }
   }
 }

@@ -11,7 +11,9 @@ export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element)
   }
 
   bind() {
-    if (this.value) this._createTooltip(this.value);
+    if (this.value) {
+      this._createTooltip(this.value);
+    }
   }
 
   unbind() {
@@ -21,7 +23,9 @@ export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element)
   valueChanged(newValue, oldValue) {
     if (newValue) {
       this._updateToolTip(newValue);
-    } else this._destroyToolTip();
+    } else {
+      this._destroyToolTip();
+    }
   }
 
   _updateToolTip(newValue) {
@@ -40,7 +44,9 @@ export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element)
   }
 
   _destroyToolTip() {
-    this.toolTipElement.tooltip('destroy');
-    this.toolTipElement = null;
+    if (this.toolTipElement) {
+      this.toolTipElement.tooltip('destroy');
+      this.toolTipElement = null;
+    }
   }
 }) || _class) || _class);

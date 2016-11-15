@@ -27,7 +27,9 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('
   }
 
   Tooltip.prototype.bind = function bind() {
-    if (this.value) this._createTooltip(this.value);
+    if (this.value) {
+      this._createTooltip(this.value);
+    }
   };
 
   Tooltip.prototype.unbind = function unbind() {
@@ -37,7 +39,9 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('
   Tooltip.prototype.valueChanged = function valueChanged(newValue, oldValue) {
     if (newValue) {
       this._updateToolTip(newValue);
-    } else this._destroyToolTip();
+    } else {
+      this._destroyToolTip();
+    }
   };
 
   Tooltip.prototype._updateToolTip = function _updateToolTip(newValue) {
@@ -56,8 +60,10 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('
   };
 
   Tooltip.prototype._destroyToolTip = function _destroyToolTip() {
-    this.toolTipElement.tooltip('destroy');
-    this.toolTipElement = null;
+    if (this.toolTipElement) {
+      this.toolTipElement.tooltip('destroy');
+      this.toolTipElement = null;
+    }
   };
 
   return Tooltip;
