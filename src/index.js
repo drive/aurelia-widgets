@@ -7,6 +7,7 @@ export function configure(aurelia) {
                            './currency-input',
                            './text-display-widget',
                            './togglebutton',
-                           './select-on-focus']);
+                           './select-on-focus',
+                           './tooltip']);
 }
 
