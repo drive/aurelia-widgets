@@ -129,7 +129,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     TextWidget.prototype._textValueChanged = function _textValueChanged() {
-      this._resize();
+      if (this.input) this._resize();
     };
 
     return TextWidget;

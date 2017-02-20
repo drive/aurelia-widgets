@@ -120,6 +120,6 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   }
 
   _textValueChanged() {
-    this._resize();
+    if (this.input) this._resize();
   }
 }) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
