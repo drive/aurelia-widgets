@@ -9,7 +9,8 @@ const ANIMATION_LENGTH = 200;
 export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   name: 'textValue',
   attribute: 'text-value',
-  defaultBindingMode: bindingMode.twoWay
+  defaultBindingMode: bindingMode.twoWay,
+  changeHandler: '_textValueChanged'
 }), _dec3 = bindable({
   name: 'disabled',
   attribute: 'disabled',
@@ -116,5 +117,9 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
         this.input.style.overflowY = 'scroll';
       }
     }
+  }
+
+  _textValueChanged() {
+    this._resize();
   }
 }) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

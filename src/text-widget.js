@@ -9,7 +9,8 @@ const ANIMATION_LENGTH = 200; //ms
 @bindable({
   name:'textValue',
   attribute:'text-value',
-  defaultBindingMode: bindingMode.twoWay
+  defaultBindingMode: bindingMode.twoWay,
+  changeHandler: '_textValueChanged'
 })
 @bindable({
   name: 'disabled',
@@ -126,5 +127,9 @@ export class TextWidget {
         this.input.style.overflowY = 'scroll';
       }
     }
+  }
+
+  _textValueChanged() {
+    this._resize();
   }
 }

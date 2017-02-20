@@ -28,7 +28,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       _export('TextWidget', TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
         name: 'textValue',
         attribute: 'text-value',
-        defaultBindingMode: bindingMode.twoWay
+        defaultBindingMode: bindingMode.twoWay,
+        changeHandler: '_textValueChanged'
       }), _dec3 = bindable({
         name: 'disabled',
         attribute: 'disabled',
@@ -136,6 +137,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
               this.input.style.overflowY = 'scroll';
             }
           }
+        };
+
+        TextWidget.prototype._textValueChanged = function _textValueChanged() {
+          this._resize();
         };
 
         return TextWidget;

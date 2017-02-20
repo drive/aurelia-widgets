@@ -17,7 +17,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customElement)('text-widget'), _dec2 = (0, _aureliaTemplating.bindable)({
     name: 'textValue',
     attribute: 'text-value',
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay,
+    changeHandler: '_textValueChanged'
   }), _dec3 = (0, _aureliaTemplating.bindable)({
     name: 'disabled',
     attribute: 'disabled',
@@ -125,6 +126,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
           this.input.style.overflowY = 'scroll';
         }
       }
+    };
+
+    TextWidget.prototype._textValueChanged = function _textValueChanged() {
+      this._resize();
     };
 
     return TextWidget;
