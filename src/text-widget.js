@@ -130,7 +130,7 @@ export class TextWidget {
   }
 
   _textValueChanged() {
-    if(this.input)
+    if(this.multiline && this.input)
       this._resize();
   }
 }

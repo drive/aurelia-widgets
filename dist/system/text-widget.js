@@ -140,7 +140,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         TextWidget.prototype._textValueChanged = function _textValueChanged() {
-          if (this.input) this._resize();
+          if (this.multiline && this.input) this._resize();
         };
 
         return TextWidget;

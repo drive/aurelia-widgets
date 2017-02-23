@@ -132,7 +132,7 @@ var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _au
   };
 
   TextWidget.prototype._textValueChanged = function _textValueChanged() {
-    if (this.input) this._resize();
+    if (this.multiline && this.input) this._resize();
   };
 
   return TextWidget;
