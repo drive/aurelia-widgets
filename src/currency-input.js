@@ -80,7 +80,7 @@ export class CurrencyInput {
   }
 
   valueChanged(newValue, oldValue) {
-    this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
+    this._updateDisplay(!Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : '', !Number.isNaN(Number.parseFloat(oldValue)) ? oldValue.toString() : '');
   }
 
   onBlur() {

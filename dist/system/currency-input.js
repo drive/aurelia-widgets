@@ -90,7 +90,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         CurrencyInput.prototype.valueChanged = function valueChanged(newValue, oldValue) {
-          this._updateDisplay(newValue ? newValue.toString() : '', oldValue ? oldValue.toString() : '');
+          this._updateDisplay(!Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : '', !Number.isNaN(Number.parseFloat(oldValue)) ? oldValue.toString() : '');
         };
 
         CurrencyInput.prototype.onBlur = function onBlur() {
