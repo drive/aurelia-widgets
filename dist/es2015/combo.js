@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -48,83 +48,79 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 
 export let Combo = (_dec = customElement('combo'), _dec2 = bindable({
-  name: 'size',
-  attribute: 'size',
-  defaultValue: 'medium',
-  defaultBindingMode: bindingMode.oneTime
-}), _dec3 = bindable({
-  name: 'title',
-  attribute: 'title',
-  defaultBindingMode: bindingMode.oneTime
-}), _dec4 = bindable({
-  name: 'disabled',
-  attribute: 'disabled',
-  defaultValue: false,
-  defaultBindingMode: bindingMode.oneWay
-}), _dec5 = bindable({
-  name: 'options',
-  attribute: 'options',
-  defaultBindingMode: bindingMode.oneTime
-}), _dec6 = bindable({
   name: 'selected',
   attribute: 'selected',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_handleSelectedChanged'
+}), _dec3 = bindable({
+  name: 'options',
+  attribute: 'options',
+  defaultBindingMode: bindingMode.oneWay,
+  changeHandler: '_handleOptionsChanged'
+}), _dec4 = bindable({
+  name: 'size',
+  attribute: 'size',
+  defaultValue: 'medium',
+  defaultBindingMode: bindingMode.oneTime
+}), _dec5 = bindable({
+  name: 'title',
+  attribute: 'title',
+  defaultBindingMode: bindingMode.oneTime
+}), _dec6 = bindable({
+  name: 'disabled',
+  attribute: 'disabled',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneWay
 }), _dec7 = bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec8 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = class Combo {
+}), _dec8 = bindable({
+  name: 'noSelectionOption',
+  attribute: 'no-selection-option',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneTime
+}), _dec9 = bindable({
+  name: 'noSelectionText',
+  attribute: 'no-selection-text',
+  defaultValue: 'Choose...',
+  defaultBindingMode: bindingMode.oneTime
+}), _dec10 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = (_class2 = class Combo {
 
   constructor(element) {
     _initDefineProp(this, 'onchange', _descriptor, this);
 
     this.element = element;
-    this._boundChange = this._change.bind(this);
   }
 
   attached() {
     this.combo = this.element.querySelector('select');
-
-    if (this.selected || this.selected === 0) this._setComboValue(this.selected);
-
-    this.combo.addEventListener('change', this._boundChange);
   }
 
   detached() {
-    this.combo.removeEventListener('change', this._boundChange);
+    this.combo = null;
   }
 
-  getSelectedId(item) {
-    if (item && typeof item === 'object') return item.id;
-
-    return item;
-  }
-
-  _change(change) {
-    this._setSelected(change.target);
-
+  _handleSelectedChanged(newValue) {
     if (this.onchange) {
       this.onchange({ selected: this.selected });
     }
   }
 
-  _handleSelectedChanged(newValue) {
-    if (this.combo) this._setComboValue(newValue);
-  }
-
-  _setComboValue(newValue) {
-    if (newValue && typeof newValue === 'object') this.combo.value = newValue.id;else this.combo.value = newValue;
-  }
-
-  _setSelected(item) {
-    if (typeof this.selected === 'object') {
-      this.selected = this.options.find(x => x.id == item.value);
-    } else {
-      this.selected = item.value;
+  _handleOptionsChanged(newValue) {
+    if (this.selected) {
+      if (typeof this.selected === 'object') {
+        if (!this.options.some(x => x.id == this.selected.id)) {
+          this.combo.value = this.selected = null;
+        }
+      } else {
+        if (!this.options.some(x => x == this.selected)) {
+          this.combo.value = this.selected = null;
+        }
+      }
     }
   }
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'onchange', [bindable], {
   enumerable: true,
   initializer: null
-})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

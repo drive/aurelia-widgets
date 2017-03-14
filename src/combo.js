@@ -4,6 +4,18 @@ import {inject} from 'aurelia-dependency-injection'
 
 @customElement('combo')
 @bindable({
+  name:'selected',
+  attribute:'selected',
+  defaultBindingMode: bindingMode.twoWay,
+  changeHandler: '_handleSelectedChanged'
+})
+@bindable({
+  name:'options',
+  attribute:'options',
+  defaultBindingMode: bindingMode.oneWay,
+  changeHandler: '_handleOptionsChanged'
+})
+@bindable({
   name: 'size',
   attribute: 'size',
   defaultValue: 'medium',
@@ -21,20 +33,21 @@ import {inject} from 'aurelia-dependency-injection'
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
-  name:'options',
-  attribute:'options',
-  defaultBindingMode: bindingMode.oneTime
-})
-@bindable({
-  name:'selected',
-  attribute:'selected',
-  defaultBindingMode: bindingMode.twoWay,
-  changeHandler: '_handleSelectedChanged'
-})
-@bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
+})
+@bindable({
+  name: 'noSelectionOption',
+  attribute: 'no-selection-option',
+  defaultValue: false,
+  defaultBindingMode: bindingMode.oneTime
+})
+@bindable({
+  name: 'noSelectionText',
+  attribute: 'no-selection-text',
+  defaultValue: 'Choose...',
+  defaultBindingMode: bindingMode.oneTime
 })
 @inject(Element)
 export class Combo {
@@ -43,56 +56,33 @@ export class Combo {
 
   constructor(element) {
     this.element = element;
-    this._boundChange = this._change.bind(this);
   }
 
   attached() {
     this.combo = this.element.querySelector('select');
-    //Sometimes we already have a bounded property and it's already changed before the attached callback is invoked
-    //so this ensures that the loaded/changed value will always be set on the select when attached to the DOM
-    if (this.selected || this.selected === 0)
-      this._setComboValue(this.selected);
-
-    this.combo.addEventListener('change', this._boundChange);
   }
 
   detached() {
-    this.combo.removeEventListener('change', this._boundChange);
+    this.combo = null;
   }
 
-  getSelectedId(item) {
-    if (item && typeof item === 'object')
-      return item.id;
-
-    return item;
-  }
-
-  _change(change) {
-    this._setSelected(change.target);
-
+  _handleSelectedChanged(newValue) {
     if (this.onchange) {
       this.onchange({selected: this.selected});
     }
   }
 
-  _handleSelectedChanged(newValue) {
-    if (this.combo)
-      this._setComboValue(newValue);
-  }
-
-  _setComboValue(newValue) {
-    if (newValue && typeof newValue === 'object')
-      this.combo.value = newValue.id;
-    else
-      this.combo.value = newValue;
-  }
-
-  _setSelected(item) {
-    if (typeof this.selected === 'object') {
-      this.selected = this.options.find(x => x.id == item.value);
-    }
-    else {
-      this.selected = item.value;
+  _handleOptionsChanged(newValue) {
+    if (this.selected) {
+      if(typeof this.selected === 'object') {
+        if(!this.options.some(x => x.id == this.selected.id)) {
+          this.combo.value = this.selected = null;
+        }
+      } else {
+        if(!this.options.some(x => x == this.selected)) {
+          this.combo.value = this.selected = null;
+        }
+      }
     }
   }
 }
