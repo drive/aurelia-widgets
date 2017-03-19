@@ -13,6 +13,8 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaPal = require('aurelia-pal');
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -211,6 +213,8 @@ var AutoCompleteWidget = exports.AutoCompleteWidget = (_dec = (0, _aureliaDepend
     if (this.selectedItem == null) {
       this.input.value = '';
     }
+
+    this.element.dispatchEvent(_aureliaPal.DOM.createCustomEvent('blur'));
   };
 
   AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {

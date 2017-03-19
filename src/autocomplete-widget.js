@@ -1,6 +1,7 @@
 import {customElement, bindable} from 'aurelia-templating';
 import {bindingMode, computedFrom} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {DOM} from 'aurelia-pal';
 import $ from 'jquery';
 import 'devbridge-autocomplete';
 
@@ -167,6 +168,8 @@ export class AutoCompleteWidget {
     if (this.selectedItem == null) {
       this.input.value = '';
     }
+
+    this.element.dispatchEvent(DOM.createCustomEvent('blur'));
   }
 
   _formatSelectionValue(selection) {

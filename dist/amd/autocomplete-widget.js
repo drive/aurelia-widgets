@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'devbridge-autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _jquery) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-pal', 'jquery', 'devbridge-autocomplete'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaPal, _jquery) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -210,6 +210,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if (this.selectedItem == null) {
         this.input.value = '';
       }
+
+      this.element.dispatchEvent(_aureliaPal.DOM.createCustomEvent('blur'));
     };
 
     AutoCompleteWidget.prototype._formatSelectionValue = function _formatSelectionValue(selection) {

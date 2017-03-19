@@ -6,6 +6,7 @@ import 'bootstrap-toggle';
 import {customElement,bindable,customAttribute} from 'aurelia-templating';
 import {bindingMode,computedFrom} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {DOM} from 'aurelia-pal';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {VelocityAnimator} from 'aurelia-animator-velocity';
 import {inject,customAttribute} from 'aurelia-framework';
@@ -173,6 +174,8 @@ export class AutoCompleteWidget {
     if (this.selectedItem == null) {
       this.input.value = '';
     }
+
+    this.element.dispatchEvent(DOM.createCustomEvent('blur'));
   }
 
   _formatSelectionValue(selection) {

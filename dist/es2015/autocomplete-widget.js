@@ -46,6 +46,7 @@ function _initializerWarningHelper(descriptor, context) {
 import { customElement, bindable } from 'aurelia-templating';
 import { bindingMode, computedFrom } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
+import { DOM } from 'aurelia-pal';
 import $ from 'jquery';
 import 'devbridge-autocomplete';
 
@@ -189,6 +190,8 @@ export let AutoCompleteWidget = (_dec = inject(Element), _dec2 = customElement('
     if (this.selectedItem == null) {
       this.input.value = '';
     }
+
+    this.element.dispatchEvent(DOM.createCustomEvent('blur'));
   }
 
   _formatSelectionValue(selection) {
