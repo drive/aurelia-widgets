@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaAnimatorVelocity) {
+define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocity'], function (exports, _aureliaFramework, _aureliaPal, _aureliaAnimatorVelocity) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -14,42 +14,43 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
   var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
-  var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaTemplating.customElement)('text-widget'), _dec2 = (0, _aureliaTemplating.bindable)({
+  var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaFramework.customElement)('text-widget'), _dec2 = (0, _aureliaFramework.bindable)({
     name: 'textValue',
     attribute: 'text-value',
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay,
+    defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
     changeHandler: '_textValueChanged'
-  }), _dec3 = (0, _aureliaTemplating.bindable)({
+  }), _dec3 = (0, _aureliaFramework.bindable)({
     name: 'disabled',
     attribute: 'disabled',
     defaultValue: false,
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec4 = (0, _aureliaTemplating.bindable)('placeholder'), _dec5 = (0, _aureliaTemplating.bindable)('label'), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+  }), _dec4 = (0, _aureliaFramework.bindable)('placeholder'), _dec5 = (0, _aureliaFramework.bindable)('label'), _dec6 = (0, _aureliaFramework.bindable)({
     name: 'grabFocus',
     attribute: 'grab-focus',
     defaultValue: false
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
+  }), _dec7 = (0, _aureliaFramework.bindable)({
     name: 'multiline',
     attribute: 'multiline',
     defaultValue: false,
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec8 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+  }), _dec8 = (0, _aureliaFramework.bindable)({
     name: 'readonly',
     defaultValue: false,
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec9 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+  }), _dec9 = (0, _aureliaFramework.bindable)({
     name: 'maxLength',
     attribute: 'max-length',
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime,
+    defaultBindingMode: _aureliaFramework.bindingMode.oneTime,
     defaultValue: null
-  }), _dec10 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaAnimatorVelocity.VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
-    function TextWidget(element, animator) {
+  }), _dec10 = (0, _aureliaFramework.inject)(Element, _aureliaAnimatorVelocity.VelocityAnimator, _aureliaFramework.TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
+    function TextWidget(element, animator, taskQueue) {
       _classCallCheck(this, TextWidget);
 
       this.element = element;
       this.animator = animator;
+      this.taskQueue = taskQueue;
+
       this.boundExpand = this._expand.bind(this);
-      this.boundShrink = this._shrink.bind(this);
       this.boundResize = this._resize.bind(this);
 
       this.maxHeight = window.innerHeight - 200;
@@ -63,7 +64,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
         this.input.addEventListener('input', this.boundResize);
         this.input.addEventListener('focus', this.boundExpand);
-        this.input.addEventListener('blur', this.boundShrink);
         document.addEventListener('resize', this.boundResize);
 
         this.optimalHeight = this._calcOptimalHeight();
@@ -83,7 +83,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if (this.multiline) {
         this.input.removeEventListener('input', this.boundResize);
         this.input.removeEventListener('focus', this.boundExpand);
-        this.input.removeEventListener('blur', this.boundShrink);
         document.removeEventListener('resize', this.boundResize);
       }
     };
@@ -119,13 +118,19 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
-    TextWidget.prototype._shrink = function _shrink(e) {
+    TextWidget.prototype.blur = function blur(e) {
+      var _this = this;
+
       if (this.optimalHeight > this.minSize) {
         this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
         if (this.textValue) {
           this.input.style.overflowY = 'scroll';
         }
       }
+
+      this.taskQueue.queueMicroTask(function () {
+        return _this.element.dispatchEvent(_aureliaPal.DOM.createCustomEvent('blur'));
+      });
     };
 
     TextWidget.prototype._textValueChanged = function _textValueChanged() {

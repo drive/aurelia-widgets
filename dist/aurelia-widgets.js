@@ -8,8 +8,8 @@ import {bindingMode,computedFrom} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {DOM} from 'aurelia-pal';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {customElement,inject,bindable,bindingMode,TaskQueue,customAttribute} from 'aurelia-framework';
 import {VelocityAnimator} from 'aurelia-animator-velocity';
-import {inject,customAttribute} from 'aurelia-framework';
 
 @inject(Element)
 @customElement('autocomplete-widget')
@@ -297,7 +297,7 @@ import {inject} from 'aurelia-dependency-injection'
 @inject(Element)
 export class Combo {
 
-  @bindable onchange;
+  // @bindable onchange;
 
   constructor(element) {
     this.element = element;
@@ -312,9 +312,9 @@ export class Combo {
   }
 
   _handleSelectedChanged(newValue) {
-    if (this.onchange) {
-      this.onchange({selected: this.selected});
-    }
+    // if (this.onchange) {
+    //   this.onchange({selected: this.selected});
+    // }
   }
 
   _handleOptionsChanged(newValue) {
@@ -644,14 +644,15 @@ const ANIMATION_LENGTH = 200; //ms
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: null
 })
-@inject(Element, VelocityAnimator)
+@inject(Element, VelocityAnimator, TaskQueue)
 export class TextWidget {
 
-  constructor(element, animator) {
+  constructor(element, animator, taskQueue) {
     this.element = element;
     this.animator = animator;
+    this.taskQueue = taskQueue;
+
     this.boundExpand = this._expand.bind(this);
-    this.boundShrink = this._shrink.bind(this);
     this.boundResize = this._resize.bind(this);
 
     this.maxHeight = window.innerHeight - 200;
@@ -665,7 +666,6 @@ export class TextWidget {
 
       this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);
-      this.input.addEventListener('blur', this.boundShrink);
       document.addEventListener('resize', this.boundResize);
 
       this.optimalHeight = this._calcOptimalHeight();
@@ -686,7 +686,6 @@ export class TextWidget {
     if (this.multiline) {
       this.input.removeEventListener('input', this.boundResize);
       this.input.removeEventListener('focus', this.boundExpand);
-      this.input.removeEventListener('blur', this.boundShrink);
       document.removeEventListener('resize', this.boundResize);
     }
   }
@@ -722,13 +721,15 @@ export class TextWidget {
     }
   }
 
-  _shrink(e) {
+  blur(e) {
     if (this.optimalHeight > this.minSize) {
       this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
     }
+
+    this.taskQueue.queueMicroTask(() => this.element.dispatchEvent(DOM.createCustomEvent('blur')));
   }
 
   _textValueChanged() {

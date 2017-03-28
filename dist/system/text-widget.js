@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-animator-velocity'], function (_export, _context) {
+System.register(['aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocity'], function (_export, _context) {
   "use strict";
 
-  var customElement, bindable, bindingMode, inject, VelocityAnimator, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, ANIMATION_LENGTH, TextWidget;
+  var customElement, inject, bindable, bindingMode, TaskQueue, DOM, VelocityAnimator, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, ANIMATION_LENGTH, TextWidget;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,13 +12,14 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
   }
 
   return {
-    setters: [function (_aureliaTemplating) {
-      customElement = _aureliaTemplating.customElement;
-      bindable = _aureliaTemplating.bindable;
-    }, function (_aureliaBinding) {
-      bindingMode = _aureliaBinding.bindingMode;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
+    setters: [function (_aureliaFramework) {
+      customElement = _aureliaFramework.customElement;
+      inject = _aureliaFramework.inject;
+      bindable = _aureliaFramework.bindable;
+      bindingMode = _aureliaFramework.bindingMode;
+      TaskQueue = _aureliaFramework.TaskQueue;
+    }, function (_aureliaPal) {
+      DOM = _aureliaPal.DOM;
     }, function (_aureliaAnimatorVelocity) {
       VelocityAnimator = _aureliaAnimatorVelocity.VelocityAnimator;
     }],
@@ -53,14 +54,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         attribute: 'max-length',
         defaultBindingMode: bindingMode.oneTime,
         defaultValue: null
-      }), _dec10 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
-        function TextWidget(element, animator) {
+      }), _dec10 = inject(Element, VelocityAnimator, TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = function () {
+        function TextWidget(element, animator, taskQueue) {
           _classCallCheck(this, TextWidget);
 
           this.element = element;
           this.animator = animator;
+          this.taskQueue = taskQueue;
+
           this.boundExpand = this._expand.bind(this);
-          this.boundShrink = this._shrink.bind(this);
           this.boundResize = this._resize.bind(this);
 
           this.maxHeight = window.innerHeight - 200;
@@ -74,7 +76,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
             this.input.addEventListener('input', this.boundResize);
             this.input.addEventListener('focus', this.boundExpand);
-            this.input.addEventListener('blur', this.boundShrink);
             document.addEventListener('resize', this.boundResize);
 
             this.optimalHeight = this._calcOptimalHeight();
@@ -94,7 +95,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (this.multiline) {
             this.input.removeEventListener('input', this.boundResize);
             this.input.removeEventListener('focus', this.boundExpand);
-            this.input.removeEventListener('blur', this.boundShrink);
             document.removeEventListener('resize', this.boundResize);
           }
         };
@@ -130,13 +130,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
-        TextWidget.prototype._shrink = function _shrink(e) {
+        TextWidget.prototype.blur = function blur(e) {
+          var _this = this;
+
           if (this.optimalHeight > this.minSize) {
             this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
             if (this.textValue) {
               this.input.style.overflowY = 'scroll';
             }
           }
+
+          this.taskQueue.queueMicroTask(function () {
+            return _this.element.dispatchEvent(DOM.createCustomEvent('blur'));
+          });
         };
 
         TextWidget.prototype._textValueChanged = function _textValueChanged() {

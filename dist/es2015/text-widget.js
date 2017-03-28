@@ -1,8 +1,7 @@
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class;
 
-import { customElement, bindable } from 'aurelia-templating';
-import { bindingMode } from 'aurelia-binding';
-import { inject } from 'aurelia-dependency-injection';
+import { customElement, inject, bindable, bindingMode, TaskQueue } from 'aurelia-framework';
+import { DOM } from 'aurelia-pal';
 import { VelocityAnimator } from 'aurelia-animator-velocity';
 
 const ANIMATION_LENGTH = 200;
@@ -34,13 +33,14 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   attribute: 'max-length',
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: null
-}), _dec10 = inject(Element, VelocityAnimator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = class TextWidget {
+}), _dec10 = inject(Element, VelocityAnimator, TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = class TextWidget {
 
-  constructor(element, animator) {
+  constructor(element, animator, taskQueue) {
     this.element = element;
     this.animator = animator;
+    this.taskQueue = taskQueue;
+
     this.boundExpand = this._expand.bind(this);
-    this.boundShrink = this._shrink.bind(this);
     this.boundResize = this._resize.bind(this);
 
     this.maxHeight = window.innerHeight - 200;
@@ -54,7 +54,6 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
 
       this.input.addEventListener('input', this.boundResize);
       this.input.addEventListener('focus', this.boundExpand);
-      this.input.addEventListener('blur', this.boundShrink);
       document.addEventListener('resize', this.boundResize);
 
       this.optimalHeight = this._calcOptimalHeight();
@@ -74,7 +73,6 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
     if (this.multiline) {
       this.input.removeEventListener('input', this.boundResize);
       this.input.removeEventListener('focus', this.boundExpand);
-      this.input.removeEventListener('blur', this.boundShrink);
       document.removeEventListener('resize', this.boundResize);
     }
   }
@@ -110,13 +108,15 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
     }
   }
 
-  _shrink(e) {
+  blur(e) {
     if (this.optimalHeight > this.minSize) {
       this.animator.animate(this.input, { height: `${ this.minSize }px` }, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
     }
+
+    this.taskQueue.queueMicroTask(() => this.element.dispatchEvent(DOM.createCustomEvent('blur')));
   }
 
   _textValueChanged() {
