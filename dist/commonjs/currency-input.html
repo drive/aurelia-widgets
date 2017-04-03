@@ -1,11 +1,11 @@
 <template>
   <div class="form-group" if.bind="extendedView">
-    <label class="control-label">${label}</label>
+    <label for="${'au-currency-' + id}" class="control-label">${label}</label>
     <div class="input-group">
-      <input type="text" value.bind="displayValue" selectonfocus placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" autocomplete="off"  class="form-control currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" />
+      <input id="${'au-currency-' + id}" value.bind="displayValue" placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" blur.trigger="blur()" selectonfocus type="text" autocomplete="off" class="form-control currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" />
     </div>
   </div>
   <div if.bind="!extendedView">
-    <input type="text" value.bind="displayValue" selectonfocus placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" autocomplete="off" class="currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" />
+    <input value.bind="displayValue" placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" blur.trigger="blur()" selectonfocus type="text" autocomplete="off" class="currency-input ${customCSS} ${size == 'small' ? 'input-sm' : size == 'large' ? 'input-lg' : ''}" />
   </div>
 </template>

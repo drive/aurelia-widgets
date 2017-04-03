@@ -7,8 +7,8 @@ import {customElement,bindable,customAttribute} from 'aurelia-templating';
 import {bindingMode,computedFrom} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {DOM} from 'aurelia-pal';
+import {customElement,bindable,bindingMode,computedFrom,TaskQueue,inject,customAttribute} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {customElement,inject,bindable,bindingMode,TaskQueue,customAttribute} from 'aurelia-framework';
 import {VelocityAnimator} from 'aurelia-animator-velocity';
 
 @inject(Element)
@@ -383,37 +383,37 @@ const KEY_Z = 90;
   defaultValue: '0.00',
   defaultBindingMode: bindingMode.oneTime
 })
-@bindable('label')
 @bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
 })
-@inject(Element)
+@inject(Element, TaskQueue)
 export class CurrencyInput {
 
-  constructor(element) {
-    this.element = element;
-    this.displayValue = '';
+  @bindable label = '';
 
-    this._boundOnBlur = this.onBlur.bind(this);
+  id = nextID++;
+
+  constructor(element, taskQueue) {
+    this.element = element;
+    this.taskQueue = taskQueue;
+
+    this.displayValue = '';
   }
 
   attached() {
-    this.input = this.element.querySelector('input');    
-    this.input.addEventListener('blur', this._boundOnBlur, true);
-  }
-
-  detached() {  
-    this.input.removeEventListener('blur', this._boundOnBlur, true);
+    this.input = this.element.querySelector('input');
   }
 
   valueChanged(newValue, oldValue) {
     this._updateDisplay(!Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : '', !Number.isNaN(Number.parseFloat(oldValue)) ? oldValue.toString() : '');
   }
 
-  onBlur() {
+  blur() {
     this._updateDisplay(this.displayValue, this.value);
+
+    this.taskQueue.queueMicroTask(() => this.element.dispatchEvent(DOM.createCustomEvent('blur')));
   }
 
   _updateDisplay(update, oldValue) {
