@@ -6,6 +6,8 @@ import numeral from 'numeral';
 const KEY_A = 65;
 const KEY_Z = 90;
 
+let nextID = 0;
+
 @customElement('currency-input')
 @bindable({
   name:'value',

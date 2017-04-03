@@ -67,6 +67,8 @@ function _initializerWarningHelper(descriptor, context) {
 var KEY_A = 65;
 var KEY_Z = 90;
 
+var nextID = 0;
+
 var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaFramework.customElement)('currency-input'), _dec2 = (0, _aureliaFramework.bindable)({
   name: 'value',
   attribute: 'value',

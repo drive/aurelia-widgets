@@ -51,6 +51,8 @@ import numeral from 'numeral';
 const KEY_A = 65;
 const KEY_Z = 90;
 
+let nextID = 0;
+
 export let CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bindable({
   name: 'value',
   attribute: 'value',

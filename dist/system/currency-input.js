@@ -3,7 +3,7 @@
 System.register(['aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injection', 'numeral'], function (_export, _context) {
   "use strict";
 
-  var customElement, bindable, bindingMode, computedFrom, TaskQueue, DOM, inject, numeral, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, KEY_A, KEY_Z, CurrencyInput;
+  var customElement, bindable, bindingMode, computedFrom, TaskQueue, DOM, inject, numeral, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, KEY_A, KEY_Z, nextID, CurrencyInput;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -71,6 +71,7 @@ System.register(['aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injecti
     execute: function () {
       KEY_A = 65;
       KEY_Z = 90;
+      nextID = 0;
 
       _export('CurrencyInput', CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bindable({
         name: 'value',
