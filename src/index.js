@@ -1,6 +1,5 @@
 export function configure(aurelia) {
-	aurelia.globalResources(['./autocomplete-widget',
-                           './combo',
+	aurelia.globalResources(['./combo',
                            './text-widget',
                            './checkbox',
                            './radiobutton',

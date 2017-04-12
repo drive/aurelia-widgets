@@ -17,8 +17,6 @@ const ANIMATION_LENGTH = 200; //ms
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
 })
-@bindable('placeholder')
-@bindable('label')
 @bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
@@ -43,6 +41,10 @@ const ANIMATION_LENGTH = 200; //ms
 })
 @inject(Element, VelocityAnimator, TaskQueue)
 export class TextWidget {
+
+  @bindable small = false;
+  @bindable placeholder = '';
+  @bindable label = '';
 
   constructor(element, animator, taskQueue) {
     this.element = element;

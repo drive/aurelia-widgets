@@ -1,8 +1,8 @@
 .checkbox {
   cursor: default;
   margin: 0px;
-  padding-right: 30px;
 
+  background: transparent !important;
   display: flex;
   align-items: center;
 
@@ -28,9 +28,11 @@
   color: $text-muted;
 }
 
-.checkbox-label > span {
-  color: $text-color;
-  margin-left: 5px;
+.checkbox-label {
+  > span {
+    color: $text-color;
+    margin-left: 5px;
+  }
 }
 
 .checkbox-label.text-muted > span {

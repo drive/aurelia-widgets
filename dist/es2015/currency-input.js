@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -59,47 +59,39 @@ export let CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bind
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: 'valueChanged'
 }), _dec3 = bindable({
-  name: 'size',
-  attribute: 'size',
-  defaultValue: 'medium',
-  defaultBindingMode: bindingMode.oneTime
-}), _dec4 = bindable({
   name: 'disabled',
   attribute: 'disabled',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
-}), _dec5 = bindable({
+}), _dec4 = bindable({
   name: 'setNullToDefaultValue',
   attribute: 'set-null-to-default-value',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
-}), _dec6 = bindable({
+}), _dec5 = bindable({
   name: 'onlyAllowPositiveNumbers',
   attribute: 'only-allow-positive-numbers',
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
-}), _dec7 = bindable({
-  name: 'extendedView',
-  attribute: 'extended-view',
-  defaultValue: true,
-  defaultBindingMode: bindingMode.oneWay
-}), _dec8 = bindable({
+}), _dec6 = bindable({
   name: 'customCSS',
   attribute: 'custom-css',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
-}), _dec9 = bindable({
+}), _dec7 = bindable({
   name: 'placeholder',
   defaultValue: '0.00',
   defaultBindingMode: bindingMode.oneTime
-}), _dec10 = bindable({
+}), _dec8 = bindable({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec11 = inject(Element, TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = _dec11(_class = (_class2 = class CurrencyInput {
+}), _dec9 = inject(Element, TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = class CurrencyInput {
 
   constructor(element, taskQueue) {
     _initDefineProp(this, 'label', _descriptor, this);
+
+    _initDefineProp(this, 'small', _descriptor2, this);
 
     this.id = nextID++;
 
@@ -164,4 +156,9 @@ export let CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bind
   initializer: function () {
     return '';
   }
-})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'small', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return false;
+  }
+})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

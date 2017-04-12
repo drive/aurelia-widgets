@@ -2,11 +2,6 @@ import {bindable} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
 
 @bindable({
-  name: 'labelText',
-  attribute: 'label-text',
-  defaultBindingMode: bindingMode.oneTime
-})
-@bindable({
   name: 'enabled',
   attribute: 'enabled',
   defaultBindingMode: bindingMode.oneWay
@@ -34,6 +29,8 @@ import {bindingMode} from 'aurelia-binding';
 export class Checkbox {
 
   @bindable ontoggle;
+  @bindable small = false;
+  @bindable label = '';
 
   constructor() {
     this.checked = false;

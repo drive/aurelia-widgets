@@ -4,7 +4,7 @@ A widget library for the Aurelia Javascript Framework.  It is bootstrap-oriented
 
 Widgets Available:
 
-- Autocomplete
+- Autocomplete [*NOTE* Removed in v2.0.0 now available at github.com/drivesoftware/aurelia-autocomplte]
 - Checkbox
 - Combo Box
 - Currency Input
@@ -16,6 +16,9 @@ Widgets Available:
 All the input widgets (except the Toggle Button) have a grab-focus attribute which, when set to true, will focus the main input of the widget.
 
 ### Autocomplete
+
+*NOTE* Removed in v2.0.0 now available at github.com/drivesoftware/aurelia-autocomplte
+
 Should have a `lookup` bound to an object that has a `search(inputText)` function.  This will return a Promise that resolves to an object of the form:
 ```
 {

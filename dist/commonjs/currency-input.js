@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CurrencyInput = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 var _aureliaFramework = require('aurelia-framework');
 
@@ -75,48 +75,40 @@ var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaFramework.custom
   defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
   changeHandler: 'valueChanged'
 }), _dec3 = (0, _aureliaFramework.bindable)({
-  name: 'size',
-  attribute: 'size',
-  defaultValue: 'medium',
-  defaultBindingMode: _aureliaFramework.bindingMode.oneTime
-}), _dec4 = (0, _aureliaFramework.bindable)({
   name: 'disabled',
   attribute: 'disabled',
   defaultValue: false,
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
-}), _dec5 = (0, _aureliaFramework.bindable)({
+}), _dec4 = (0, _aureliaFramework.bindable)({
   name: 'setNullToDefaultValue',
   attribute: 'set-null-to-default-value',
   defaultValue: '',
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
-}), _dec6 = (0, _aureliaFramework.bindable)({
+}), _dec5 = (0, _aureliaFramework.bindable)({
   name: 'onlyAllowPositiveNumbers',
   attribute: 'only-allow-positive-numbers',
   defaultValue: false,
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
-}), _dec7 = (0, _aureliaFramework.bindable)({
-  name: 'extendedView',
-  attribute: 'extended-view',
-  defaultValue: true,
-  defaultBindingMode: _aureliaFramework.bindingMode.oneWay
-}), _dec8 = (0, _aureliaFramework.bindable)({
+}), _dec6 = (0, _aureliaFramework.bindable)({
   name: 'customCSS',
   attribute: 'custom-css',
   defaultValue: '',
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
-}), _dec9 = (0, _aureliaFramework.bindable)({
+}), _dec7 = (0, _aureliaFramework.bindable)({
   name: 'placeholder',
   defaultValue: '0.00',
   defaultBindingMode: _aureliaFramework.bindingMode.oneTime
-}), _dec10 = (0, _aureliaFramework.bindable)({
+}), _dec8 = (0, _aureliaFramework.bindable)({
   name: 'grabFocus',
   attribute: 'grab-focus',
   defaultValue: false
-}), _dec11 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaFramework.TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = _dec10(_class = _dec11(_class = (_class2 = function () {
+}), _dec9 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaFramework.TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = _dec9(_class = (_class2 = function () {
   function CurrencyInput(element, taskQueue) {
     _classCallCheck(this, CurrencyInput);
 
     _initDefineProp(this, 'label', _descriptor, this);
+
+    _initDefineProp(this, 'small', _descriptor2, this);
 
     this.id = nextID++;
 
@@ -187,4 +179,9 @@ var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaFramework.custom
   initializer: function initializer() {
     return '';
   }
-})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'small', [_aureliaFramework.bindable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+})), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

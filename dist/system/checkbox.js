@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _context) {
   "use strict";
 
-  var bindable, bindingMode, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, Checkbox;
+  var bindable, bindingMode, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, Checkbox;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -62,34 +62,34 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _c
     }],
     execute: function () {
       _export('Checkbox', Checkbox = (_dec = bindable({
-        name: 'labelText',
-        attribute: 'label-text',
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec2 = bindable({
         name: 'enabled',
         attribute: 'enabled',
         defaultBindingMode: bindingMode.oneWay
-      }), _dec3 = bindable({
+      }), _dec2 = bindable({
         name: 'checked',
         attribute: 'checked',
         defaultBindingMode: bindingMode.twoWay
-      }), _dec4 = bindable({
+      }), _dec3 = bindable({
         name: 'grabFocus',
         attribute: 'grab-focus',
         defaultValue: false
-      }), _dec5 = bindable({
+      }), _dec4 = bindable({
         name: 'iconFamilyClass',
         attribute: 'icon-family-class',
         defaultValue: 'fa'
-      }), _dec6 = bindable({
+      }), _dec5 = bindable({
         name: 'checkedIconClass',
         attribute: 'checked-icon-class',
         defaultValue: 'fa-check'
-      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = (_class2 = function () {
+      }), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = (_class2 = function () {
         function Checkbox() {
           _classCallCheck(this, Checkbox);
 
           _initDefineProp(this, 'ontoggle', _descriptor, this);
+
+          _initDefineProp(this, 'small', _descriptor2, this);
+
+          _initDefineProp(this, 'label', _descriptor3, this);
 
           this.checked = false;
           this.enabled = true;
@@ -108,7 +108,17 @@ System.register(['aurelia-templating', 'aurelia-binding'], function (_export, _c
       }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ontoggle', [bindable], {
         enumerable: true,
         initializer: null
-      })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class));
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'small', [bindable], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'label', [bindable], {
+        enumerable: true,
+        initializer: function initializer() {
+          return '';
+        }
+      })), _class2)) || _class) || _class) || _class) || _class) || _class));
 
       _export('Checkbox', Checkbox);
     }

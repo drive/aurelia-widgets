@@ -16,12 +16,6 @@ let nextID = 0;
   changeHandler: 'valueChanged'
 })
 @bindable({
-  name: 'size',
-  attribute: 'size',
-  defaultValue: 'medium',
-  defaultBindingMode: bindingMode.oneTime
-})
-@bindable({
   name: 'disabled',
   attribute: 'disabled',
   defaultValue: false,
@@ -37,12 +31,6 @@ let nextID = 0;
   name: 'onlyAllowPositiveNumbers',
   attribute: 'only-allow-positive-numbers',
   defaultValue: false,
-  defaultBindingMode: bindingMode.oneWay
-})
-@bindable({
-  name: 'extendedView',
-  attribute: 'extended-view',
-  defaultValue: true,
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
@@ -65,6 +53,7 @@ let nextID = 0;
 export class CurrencyInput {
 
   @bindable label = '';
+  @bindable small = false;
 
   id = nextID++;
 

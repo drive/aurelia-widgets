@@ -21,7 +21,6 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "bootstrap-toggle": "npm:bootstrap-toggle@2.2.2",
     "css": "github:systemjs/plugin-css@0.1.26",
-    "devbridge-autocomplete": "npm:devbridge-autocomplete@1.2.26",
     "jquery": "npm:jquery@2.2.4",
     "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -99,10 +98,6 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "ieee754": "npm:ieee754@1.1.8",
       "isarray": "npm:isarray@1.0.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:devbridge-autocomplete@1.2.26": {
-      "jquery": "npm:jquery@2.2.4",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:inherits@2.0.1": {
