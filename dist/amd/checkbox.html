@@ -1,6 +1,6 @@
 <template>
   <div class-name.bind="'form-group ' + (small ? 'form-group-sm' : '')">
-    <button click.delegate="checkboxSelected()" focus.bind="grabFocus" disabled.bind="!enabled" class="btn btn-link form-control checkbox noselect">
+    <button click.delegate="checkboxSelected()" focus.bind="grabFocus" disabled.bind="!enabled" type="button" class="btn btn-link form-control checkbox noselect">
       <div class="checkbox-selector ${enabled ? 'checkbox-selector-enabled' : 'checkbox-disabled'}">
         <i class="${iconFamilyClass} ${ checked ? checkedIconClass : '' }"></i>
       </div>
