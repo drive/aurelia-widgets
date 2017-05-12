@@ -4,7 +4,6 @@ import {inject} from 'aurelia-dependency-injection';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap-toggle';
-import 'bootstrap-toggle/css/bootstrap-toggle.css!';
 
 @bindable({
   name: 'onText',

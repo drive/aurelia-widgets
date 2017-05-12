@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle', 'bootstrap-toggle/css/bootstrap-toggle.css!'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'jquery', 'bootstrap', 'bootstrap-toggle'], function (_export, _context) {
   "use strict";
 
   var customElement, bindable, bindingMode, inject, $, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, ToggleButton;
@@ -21,7 +21,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_jquery) {
       $ = _jquery.default;
-    }, function (_bootstrap) {}, function (_bootstrapToggle) {}, function (_bootstrapToggleCssBootstrapToggleCss) {}],
+    }, function (_bootstrap) {}, function (_bootstrapToggle) {}],
     execute: function () {
       _export('ToggleButton', ToggleButton = (_dec = bindable({
         name: 'onText',

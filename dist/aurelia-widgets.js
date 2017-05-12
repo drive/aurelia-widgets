@@ -542,8 +542,6 @@ export class TextWidget {
       this._resize();
   }
 }
-import 'bootstrap-toggle/css/bootstrap-toggle.css!';
-
 @bindable({
   name: 'onText',
   attribute:'on-text',

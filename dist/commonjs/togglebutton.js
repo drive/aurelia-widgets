@@ -21,8 +21,6 @@ require('bootstrap');
 
 require('bootstrap-toggle');
 
-require('bootstrap-toggle/css/bootstrap-toggle.css!');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
