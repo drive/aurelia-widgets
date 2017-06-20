@@ -1,5 +1,5 @@
 <template>
-  <div class-name.bind="'form-group ' + (small ? 'form-group-sm' : '')">
+  <div class.bind="'form-group ' + (small ? 'form-group-sm' : '')">
     <label if.bind="label.length > 0" for="${'au-currency-' + id}" class="control-label">${label}</label>
     <input id="${'au-currency-' + id}" value.bind="displayValue" placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" blur.trigger="blur()" selectonfocus type="text" autocomplete="off" class="form-control currency-input ${customCSS}" />
   </div>

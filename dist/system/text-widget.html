@@ -1,5 +1,5 @@
 <template>
-  <div class-name.bind="'form-group ' + (small ? 'form-group-sm' : '')">
+  <div class.bind="'form-group ' + (small ? 'form-group-sm' : '')">
     <label if.bind="label.length > 0" class="control-label">${label}</label>
     <input if.bind="!multiline" value.bind="textValue" placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" readonly.bind="readonly"  blur.trigger="blur()" type="text" autocomplete="off" class="form-control" />
     <textarea if.bind="multiline" value.bind="textValue" placeholder.bind="placeholder" focus.bind="grabFocus" disabled.bind="disabled" readonly.bind="readonly"  blur.trigger="blur()" autcomplete="off" class="form-control"></textarea>
