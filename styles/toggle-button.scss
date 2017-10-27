@@ -1,0 +1,5 @@
+toggle-button {
+  .btn-default {
+    @extend .btn-secondary;
+  }
+}
