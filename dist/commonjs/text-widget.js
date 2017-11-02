@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TextWidget = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 var _aureliaFramework = require('aurelia-framework');
 
@@ -95,6 +95,10 @@ var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _au
     _initDefineProp(this, 'placeholder', _descriptor2, this);
 
     _initDefineProp(this, 'label', _descriptor3, this);
+
+    _initDefineProp(this, 'small', _descriptor4, this);
+
+    _initDefineProp(this, 'horizontal', _descriptor5, this);
 
     this.element = element;
     this.animator = animator;
@@ -202,5 +206,15 @@ var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _au
   enumerable: true,
   initializer: function initializer() {
     return '';
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'small', [_aureliaFramework.bindable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'horizontal', [_aureliaFramework.bindable], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
   }
 })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

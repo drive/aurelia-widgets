@@ -27,7 +27,7 @@ var TextDisplayWidget = exports.TextDisplayWidget = (_dec = (0, _aureliaTemplati
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec4 = (0, _aureliaTemplating.bindable)('toolTipText'), _dec5 = (0, _aureliaTemplating.bindable)({
   name: 'placement',
-  defaultValue: 'auto top',
+  defaultValue: 'top',
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
   function TextDisplayWidget(element) {
@@ -48,7 +48,7 @@ var TextDisplayWidget = exports.TextDisplayWidget = (_dec = (0, _aureliaTemplati
   };
 
   TextDisplayWidget.prototype.unbind = function unbind() {
-    this.toolTipElement.tooltip('destroy');
+    this.toolTipElement.tooltip('dispose');
   };
 
   TextDisplayWidget.prototype.textChanged = function textChanged(newValue) {

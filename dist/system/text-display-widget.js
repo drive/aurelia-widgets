@@ -29,7 +29,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.oneTime
       }), _dec4 = bindable('toolTipText'), _dec5 = bindable({
         name: 'placement',
-        defaultValue: 'auto top',
+        defaultValue: 'top',
         defaultBindingMode: bindingMode.oneTime
       }), _dec6 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
         function TextDisplayWidget(element) {
@@ -50,7 +50,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         TextDisplayWidget.prototype.unbind = function unbind() {
-          this.toolTipElement.tooltip('destroy');
+          this.toolTipElement.tooltip('dispose');
         };
 
         TextDisplayWidget.prototype.textChanged = function textChanged(newValue) {

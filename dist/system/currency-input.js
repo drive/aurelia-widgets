@@ -94,8 +94,8 @@ System.register(['aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injecti
         defaultValue: false,
         defaultBindingMode: bindingMode.oneWay
       }), _dec6 = bindable({
-        name: 'customCSS',
-        attribute: 'custom-css',
+        name: 'cssClasses',
+        attribute: 'css-classes',
         defaultValue: '',
         defaultBindingMode: bindingMode.oneWay
       }), _dec7 = bindable({

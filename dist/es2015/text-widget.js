@@ -1,4 +1,4 @@
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -84,6 +84,10 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
     _initDefineProp(this, 'placeholder', _descriptor2, this);
 
     _initDefineProp(this, 'label', _descriptor3, this);
+
+    _initDefineProp(this, 'small', _descriptor4, this);
+
+    _initDefineProp(this, 'horizontal', _descriptor5, this);
 
     this.element = element;
     this.animator = animator;
@@ -185,5 +189,15 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   enumerable: true,
   initializer: function () {
     return '';
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'small', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return false;
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'horizontal', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return false;
   }
 })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);

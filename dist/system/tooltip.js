@@ -63,7 +63,7 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
 
         Tooltip.prototype._destroyToolTip = function _destroyToolTip() {
           if (this.toolTipElement) {
-            this.toolTipElement.tooltip('destroy');
+            this.toolTipElement.tooltip('dispose');
             this.toolTipElement = null;
           }
         };

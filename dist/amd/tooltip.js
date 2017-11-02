@@ -66,7 +66,7 @@ define(['exports', 'aurelia-framework', 'jquery'], function (exports, _aureliaFr
 
     Tooltip.prototype._destroyToolTip = function _destroyToolTip() {
       if (this.toolTipElement) {
-        this.toolTipElement.tooltip('destroy');
+        this.toolTipElement.tooltip('dispose');
         this.toolTipElement = null;
       }
     };

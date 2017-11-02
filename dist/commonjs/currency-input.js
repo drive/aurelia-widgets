@@ -90,8 +90,8 @@ var CurrencyInput = exports.CurrencyInput = (_dec = (0, _aureliaFramework.custom
   defaultValue: false,
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
 }), _dec6 = (0, _aureliaFramework.bindable)({
-  name: 'customCSS',
-  attribute: 'custom-css',
+  name: 'cssClasses',
+  attribute: 'css-classes',
   defaultValue: '',
   defaultBindingMode: _aureliaFramework.bindingMode.oneWay
 }), _dec7 = (0, _aureliaFramework.bindable)({

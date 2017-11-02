@@ -45,7 +45,7 @@ export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element)
 
   _destroyToolTip() {
     if (this.toolTipElement) {
-      this.toolTipElement.tooltip('destroy');
+      this.toolTipElement.tooltip('dispose');
       this.toolTipElement = null;
     }
   }

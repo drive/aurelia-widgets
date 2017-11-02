@@ -91,8 +91,8 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injec
     defaultValue: false,
     defaultBindingMode: _aureliaFramework.bindingMode.oneWay
   }), _dec6 = (0, _aureliaFramework.bindable)({
-    name: 'customCSS',
-    attribute: 'custom-css',
+    name: 'cssClasses',
+    attribute: 'css-classes',
     defaultValue: '',
     defaultBindingMode: _aureliaFramework.bindingMode.oneWay
   }), _dec7 = (0, _aureliaFramework.bindable)({

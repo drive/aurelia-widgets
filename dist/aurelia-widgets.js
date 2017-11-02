@@ -57,18 +57,18 @@ export class Checkbox {
   }
 
 }
-import {inject} from 'aurelia-dependency-injection'
+import { inject } from 'aurelia-dependency-injection'
 
 @customElement('combo')
 @bindable({
-  name:'selected',
-  attribute:'selected',
+  name: 'selected',
+  attribute: 'selected',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_handleSelectedChanged'
 })
 @bindable({
-  name:'options',
-  attribute:'options',
+  name: 'options',
+  attribute: 'options',
   defaultBindingMode: bindingMode.oneWay,
   changeHandler: '_handleOptionsChanged'
 })
@@ -79,8 +79,8 @@ import {inject} from 'aurelia-dependency-injection'
   defaultBindingMode: bindingMode.oneTime
 })
 @bindable({
-  name:'title',
-  attribute:'title',
+  name: 'title',
+  attribute: 'title',
   defaultBindingMode: bindingMode.oneTime
 })
 @bindable({
@@ -109,7 +109,7 @@ import {inject} from 'aurelia-dependency-injection'
 @inject(Element)
 export class Combo {
 
-  // @bindable onchange;
+  @bindable horizontal = false;
 
   constructor(element) {
     this.element = element;
@@ -131,19 +131,19 @@ export class Combo {
 
   _handleOptionsChanged(newValue) {
     if (this.selected) {
-      if(typeof this.selected === 'object') {
-        if(!this.options.some(x => x.id == this.selected.id)) {
+      if (typeof this.selected === 'object') {
+        if (!this.options.some(x => x.id == this.selected.id)) {
           this.combo.value = this.selected = null;
         }
       } else {
-        if(!this.options.some(x => x == this.selected)) {
+        if (!this.options.some(x => x == this.selected)) {
           this.combo.value = this.selected = null;
         }
       }
     }
   }
 }
-import {inject} from 'aurelia-dependency-injection'
+import { inject } from 'aurelia-dependency-injection'
 const KEY_A = 65;
 const KEY_Z = 90;
 
@@ -151,8 +151,8 @@ let nextID = 0;
 
 @customElement('currency-input')
 @bindable({
-  name:'value',
-  attribute:'value',
+  name: 'value',
+  attribute: 'value',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: 'valueChanged'
 })
@@ -175,8 +175,8 @@ let nextID = 0;
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
-  name: 'customCSS',
-  attribute: 'custom-css',
+  name: 'cssClasses',
+  attribute: 'css-classes',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
 })
@@ -220,7 +220,7 @@ export class CurrencyInput {
   }
 
   _updateDisplay(update, oldValue) {
-    this.displayValue = update.trim();   
+    this.displayValue = update.trim();
     if (this.displayValue) {
       this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
       if (isNaN(this.value)) {
@@ -368,7 +368,7 @@ export class SelectOnFocus {
 @bindable('toolTipText')
 @bindable({
   name: 'placement',
-  defaultValue: 'auto top',
+  defaultValue: 'top',
   defaultBindingMode: bindingMode.oneTime
 })
 @inject(Element)
@@ -390,12 +390,12 @@ export class TextDisplayWidget {
   }
 
   unbind() {
-    this.toolTipElement.tooltip('destroy');
+    this.toolTipElement.tooltip('dispose');
   }
-    
+
   textChanged(newValue) {
     if (!this.toolTipText) {
-      this._updateToolTip(newValue); 
+      this._updateToolTip(newValue);
     }
   }
 
@@ -412,8 +412,8 @@ const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
 @bindable({
-  name:'textValue',
-  attribute:'text-value',
+  name: 'textValue',
+  attribute: 'text-value',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_textValueChanged'
 })
@@ -451,6 +451,8 @@ export class TextWidget {
   @bindable small = false;
   @bindable placeholder = '';
   @bindable label = '';
+  @bindable small = false;
+  @bindable horizontal = false;
 
   constructor(element, animator, taskQueue) {
     this.element = element;
@@ -528,7 +530,7 @@ export class TextWidget {
 
   blur(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
+      this.animator.animate(this.input, { height: `${this.minSize}px` }, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
@@ -538,7 +540,7 @@ export class TextWidget {
   }
 
   _textValueChanged() {
-    if(this.multiline && this.input)
+    if (this.multiline && this.input)
       this._resize();
   }
 }
@@ -627,7 +629,7 @@ export class Tooltip {
   }
 
   bind() {
-    if(this.value) {
+    if (this.value) {
       this._createTooltip(this.value);
     }
   }
@@ -635,17 +637,17 @@ export class Tooltip {
   unbind() {
     this._destroyToolTip();
   }
-    
+
   valueChanged(newValue, oldValue) {
     if (newValue) {
-      this._updateToolTip(newValue); 
+      this._updateToolTip(newValue);
     } else {
       this._destroyToolTip();
     }
   }
 
   _updateToolTip(newValue) {
-    if(!this.toolTipElement)
+    if (!this.toolTipElement)
       this._createTooltip(newValue);
     else
       this.toolTipElement.attr('data-original-title', newValue);
@@ -663,8 +665,8 @@ export class Tooltip {
   }
 
   _destroyToolTip() {
-    if(this.toolTipElement) {
-      this.toolTipElement.tooltip('destroy');
+    if (this.toolTipElement) {
+      this.toolTipElement.tooltip('dispose');
       this.toolTipElement = null;
     }
   }

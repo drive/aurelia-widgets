@@ -61,7 +61,7 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('
 
   Tooltip.prototype._destroyToolTip = function _destroyToolTip() {
     if (this.toolTipElement) {
-      this.toolTipElement.tooltip('destroy');
+      this.toolTipElement.tooltip('dispose');
       this.toolTipElement = null;
     }
   };

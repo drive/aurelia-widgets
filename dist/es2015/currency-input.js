@@ -74,8 +74,8 @@ export let CurrencyInput = (_dec = customElement('currency-input'), _dec2 = bind
   defaultValue: false,
   defaultBindingMode: bindingMode.oneWay
 }), _dec6 = bindable({
-  name: 'customCSS',
-  attribute: 'custom-css',
+  name: 'cssClasses',
+  attribute: 'css-classes',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
 }), _dec7 = bindable({
