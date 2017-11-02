@@ -1,4 +1,4 @@
-import {inject, customAttribute} from 'aurelia-framework';
+import { inject, customAttribute } from 'aurelia-framework';
 import $ from 'jquery';
 
 // todo: change this to a bindable property
@@ -12,7 +12,7 @@ export class Tooltip {
   }
 
   bind() {
-    if(this.value) {
+    if (this.value) {
       this._createTooltip(this.value);
     }
   }
@@ -20,17 +20,17 @@ export class Tooltip {
   unbind() {
     this._destroyToolTip();
   }
-    
+
   valueChanged(newValue, oldValue) {
     if (newValue) {
-      this._updateToolTip(newValue); 
+      this._updateToolTip(newValue);
     } else {
       this._destroyToolTip();
     }
   }
 
   _updateToolTip(newValue) {
-    if(!this.toolTipElement)
+    if (!this.toolTipElement)
       this._createTooltip(newValue);
     else
       this.toolTipElement.attr('data-original-title', newValue);
@@ -48,8 +48,8 @@ export class Tooltip {
   }
 
   _destroyToolTip() {
-    if(this.toolTipElement) {
-      this.toolTipElement.tooltip('destroy');
+    if (this.toolTipElement) {
+      this.toolTipElement.tooltip('dispose');
       this.toolTipElement = null;
     }
   }

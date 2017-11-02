@@ -1,6 +1,6 @@
-import {customElement, bindable, bindingMode, computedFrom, TaskQueue} from 'aurelia-framework';
-import {DOM} from 'aurelia-pal';
-import {inject} from 'aurelia-dependency-injection'
+import { customElement, bindable, bindingMode, computedFrom, TaskQueue } from 'aurelia-framework';
+import { DOM } from 'aurelia-pal';
+import { inject } from 'aurelia-dependency-injection'
 import numeral from 'numeral';
 
 const KEY_A = 65;
@@ -10,8 +10,8 @@ let nextID = 0;
 
 @customElement('currency-input')
 @bindable({
-  name:'value',
-  attribute:'value',
+  name: 'value',
+  attribute: 'value',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: 'valueChanged'
 })
@@ -34,8 +34,8 @@ let nextID = 0;
   defaultBindingMode: bindingMode.oneWay
 })
 @bindable({
-  name: 'customCSS',
-  attribute: 'custom-css',
+  name: 'cssClasses',
+  attribute: 'css-classes',
   defaultValue: '',
   defaultBindingMode: bindingMode.oneWay
 })
@@ -79,7 +79,7 @@ export class CurrencyInput {
   }
 
   _updateDisplay(update, oldValue) {
-    this.displayValue = update.trim();   
+    this.displayValue = update.trim();
     if (this.displayValue) {
       this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
       if (isNaN(this.value)) {

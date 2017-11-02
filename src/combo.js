@@ -1,17 +1,17 @@
-import {customElement, bindable} from 'aurelia-templating';
-import {bindingMode} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection'
+import { customElement, bindable } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection'
 
 @customElement('combo')
 @bindable({
-  name:'selected',
-  attribute:'selected',
+  name: 'selected',
+  attribute: 'selected',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_handleSelectedChanged'
 })
 @bindable({
-  name:'options',
-  attribute:'options',
+  name: 'options',
+  attribute: 'options',
   defaultBindingMode: bindingMode.oneWay,
   changeHandler: '_handleOptionsChanged'
 })
@@ -22,8 +22,8 @@ import {inject} from 'aurelia-dependency-injection'
   defaultBindingMode: bindingMode.oneTime
 })
 @bindable({
-  name:'title',
-  attribute:'title',
+  name: 'title',
+  attribute: 'title',
   defaultBindingMode: bindingMode.oneTime
 })
 @bindable({
@@ -52,7 +52,7 @@ import {inject} from 'aurelia-dependency-injection'
 @inject(Element)
 export class Combo {
 
-  // @bindable onchange;
+  @bindable horizontal = false;
 
   constructor(element) {
     this.element = element;
@@ -74,12 +74,12 @@ export class Combo {
 
   _handleOptionsChanged(newValue) {
     if (this.selected) {
-      if(typeof this.selected === 'object') {
-        if(!this.options.some(x => x.id == this.selected.id)) {
+      if (typeof this.selected === 'object') {
+        if (!this.options.some(x => x.id == this.selected.id)) {
           this.combo.value = this.selected = null;
         }
       } else {
-        if(!this.options.some(x => x == this.selected)) {
+        if (!this.options.some(x => x == this.selected)) {
           this.combo.value = this.selected = null;
         }
       }

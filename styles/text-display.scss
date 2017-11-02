@@ -1,5 +1,10 @@
 text-display-widget {
   max-width:100%;
+
+  label {
+    display: block;
+    margin-bottom: unset;
+  }
 }
 
 .text-display-widget-container {
@@ -10,8 +15,6 @@ text-display-widget {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-bottom: 0;
-  padding: 1px 5px;
 }
 
 .text-display-widget-placeholder {

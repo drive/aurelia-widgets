@@ -1,6 +1,6 @@
-import {customElement, bindable} from 'aurelia-templating';
-import {bindingMode} from 'aurelia-binding';
-import {inject} from 'aurelia-dependency-injection';
+import { customElement, bindable } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import $ from 'jquery';
 
 @customElement('text-display-widget')
@@ -13,7 +13,7 @@ import $ from 'jquery';
 @bindable('toolTipText')
 @bindable({
   name: 'placement',
-  defaultValue: 'auto top',
+  defaultValue: 'top',
   defaultBindingMode: bindingMode.oneTime
 })
 @inject(Element)
@@ -35,12 +35,12 @@ export class TextDisplayWidget {
   }
 
   unbind() {
-    this.toolTipElement.tooltip('destroy');
+    this.toolTipElement.tooltip('dispose');
   }
-    
+
   textChanged(newValue) {
     if (!this.toolTipText) {
-      this._updateToolTip(newValue); 
+      this._updateToolTip(newValue);
     }
   }
 

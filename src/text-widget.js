@@ -1,13 +1,13 @@
-import {customElement, inject, bindable, bindingMode, TaskQueue} from 'aurelia-framework';
-import {DOM} from 'aurelia-pal';
-import {VelocityAnimator} from 'aurelia-animator-velocity';
+import { customElement, inject, bindable, bindingMode, TaskQueue } from 'aurelia-framework';
+import { DOM } from 'aurelia-pal';
+import { VelocityAnimator } from 'aurelia-animator-velocity';
 
 const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
 @bindable({
-  name:'textValue',
-  attribute:'text-value',
+  name: 'textValue',
+  attribute: 'text-value',
   defaultBindingMode: bindingMode.twoWay,
   changeHandler: '_textValueChanged'
 })
@@ -45,6 +45,8 @@ export class TextWidget {
   @bindable small = false;
   @bindable placeholder = '';
   @bindable label = '';
+  @bindable small = false;
+  @bindable horizontal = false;
 
   constructor(element, animator, taskQueue) {
     this.element = element;
@@ -122,7 +124,7 @@ export class TextWidget {
 
   blur(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${this.minSize}px`}, { duration: ANIMATION_LENGTH });
+      this.animator.animate(this.input, { height: `${this.minSize}px` }, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
@@ -132,7 +134,7 @@ export class TextWidget {
   }
 
   _textValueChanged() {
-    if(this.multiline && this.input)
+    if (this.multiline && this.input)
       this._resize();
   }
 }
