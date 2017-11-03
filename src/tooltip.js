@@ -43,7 +43,7 @@ export class Tooltip {
       container: 'body',
       placement: TOOLTIP_PLACEMENT,
       html: true,
-      title: this.value
+      title: this.value || ''
     });
   }
 
