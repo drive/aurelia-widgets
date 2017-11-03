@@ -60,7 +60,7 @@ define(['exports', 'aurelia-framework', 'jquery'], function (exports, _aureliaFr
         container: 'body',
         placement: TOOLTIP_PLACEMENT,
         html: true,
-        title: this.value
+        title: this.value || ''
       });
     };
 

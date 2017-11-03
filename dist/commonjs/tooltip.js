@@ -55,7 +55,7 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('
       container: 'body',
       placement: TOOLTIP_PLACEMENT,
       html: true,
-      title: this.value
+      title: this.value || ''
     });
   };
 

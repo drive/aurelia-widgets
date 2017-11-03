@@ -381,12 +381,13 @@ export class TextDisplayWidget {
   bind() {
     this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
     this.toolTipElement.attr('title', '');
-    this.toolTipElement.tooltip({
+    const options = {
       container: 'body',
       placement: this.placement,
       html: true,
-      title: this.toolTipText || this.text
-    });
+      title: this.toolTipText || this.text || ''
+    }
+    this.toolTipElement.tooltip(options);
   }
 
   unbind() {
@@ -660,7 +661,7 @@ export class Tooltip {
       container: 'body',
       placement: TOOLTIP_PLACEMENT,
       html: true,
-      title: this.value
+      title: this.value || ''
     });
   }
 

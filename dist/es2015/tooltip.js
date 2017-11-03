@@ -39,7 +39,7 @@ export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element)
       container: 'body',
       placement: TOOLTIP_PLACEMENT,
       html: true,
-      title: this.value
+      title: this.value || ''
     });
   }
 

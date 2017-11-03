@@ -22,12 +22,13 @@ export let TextDisplayWidget = (_dec = customElement('text-display-widget'), _de
   bind() {
     this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
     this.toolTipElement.attr('title', '');
-    this.toolTipElement.tooltip({
+    const options = {
       container: 'body',
       placement: this.placement,
       html: true,
-      title: this.toolTipText || this.text
-    });
+      title: this.toolTipText || this.text || ''
+    };
+    this.toolTipElement.tooltip(options);
   }
 
   unbind() {

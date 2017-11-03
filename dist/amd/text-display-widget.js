@@ -40,12 +40,13 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     TextDisplayWidget.prototype.bind = function bind() {
       this.toolTipElement = (0, _jquery2.default)(this.element.querySelector('.text-display-widget-label'));
       this.toolTipElement.attr('title', '');
-      this.toolTipElement.tooltip({
+      var options = {
         container: 'body',
         placement: this.placement,
         html: true,
-        title: this.toolTipText || this.text
-      });
+        title: this.toolTipText || this.text || ''
+      };
+      this.toolTipElement.tooltip(options);
     };
 
     TextDisplayWidget.prototype.unbind = function unbind() {

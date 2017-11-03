@@ -57,7 +57,7 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
             container: 'body',
             placement: TOOLTIP_PLACEMENT,
             html: true,
-            title: this.value
+            title: this.value || ''
           });
         };
 

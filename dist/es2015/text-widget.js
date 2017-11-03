@@ -151,19 +151,19 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
     let originalX = window.pageXOffset;
     let originalY = window.pageYOffset;
     this.optimalHeight = this._calcOptimalHeight();
-    this.input.style.height = `${ this.optimalHeight }px`;
+    this.input.style.height = `${this.optimalHeight}px`;
     window.scrollTo(originalX, originalY);
   }
 
   _expand(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${ this.optimalHeight }px` }, { duration: ANIMATION_LENGTH });
+      this.animator.animate(this.input, { height: `${this.optimalHeight}px` }, { duration: ANIMATION_LENGTH });
     }
   }
 
   blur(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${ this.minSize }px` }, { duration: ANIMATION_LENGTH });
+      this.animator.animate(this.input, { height: `${this.minSize}px` }, { duration: ANIMATION_LENGTH });
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }
