@@ -3,7 +3,7 @@ var _dec, _dec2, _class;
 import { inject, customAttribute } from 'aurelia-framework';
 import $ from 'jquery';
 
-const TOOLTIP_PLACEMENT = 'auto top';
+const TOOLTIP_PLACEMENT = 'top';
 
 export let Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element), _dec(_class = _dec2(_class = class Tooltip {
   constructor(element) {

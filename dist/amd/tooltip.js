@@ -22,7 +22,7 @@ define(['exports', 'aurelia-framework', 'jquery'], function (exports, _aureliaFr
 
   var _dec, _dec2, _class;
 
-  var TOOLTIP_PLACEMENT = 'auto top';
+  var TOOLTIP_PLACEMENT = 'top';
 
   var Tooltip = exports.Tooltip = (_dec = (0, _aureliaFramework.customAttribute)('tooltip'), _dec2 = (0, _aureliaFramework.inject)(Element), _dec(_class = _dec2(_class = function () {
     function Tooltip(element) {

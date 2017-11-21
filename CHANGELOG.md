@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.4"></a>
+## [3.0.4](https://github.com/drivesoftware/aurelia-widgets/compare/3.0.3...v3.0.4) (2017-11-21)
+
+
+### Bug Fixes
+
+* **tooltip:** placement api change from bootstrap four ([a34d188](https://github.com/drivesoftware/aurelia-widgets/commit/a34d188))
+
+
+
 <a name="3.0.3"></a>
 ## [3.0.3](https://github.com/drivesoftware/aurelia-widgets/compare/3.0.2...v3.0.3) (2017-11-21)
 

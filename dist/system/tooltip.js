@@ -19,7 +19,7 @@ System.register(['aurelia-framework', 'jquery'], function (_export, _context) {
       $ = _jquery.default;
     }],
     execute: function () {
-      TOOLTIP_PLACEMENT = 'auto top';
+      TOOLTIP_PLACEMENT = 'top';
 
       _export('Tooltip', Tooltip = (_dec = customAttribute('tooltip'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
         function Tooltip(element) {
