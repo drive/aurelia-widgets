@@ -2,7 +2,7 @@ import { inject, customAttribute } from 'aurelia-framework';
 import $ from 'jquery';
 
 // todo: change this to a bindable property
-const TOOLTIP_PLACEMENT = 'auto top';
+const TOOLTIP_PLACEMENT = 'top';
 
 @customAttribute('tooltip')
 @inject(Element)
