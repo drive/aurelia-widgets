@@ -61,6 +61,7 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
     name: 'textValue',
     attribute: 'text-value',
     defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
+    defaultValue: null,
     changeHandler: '_textValueChanged'
   }), _dec3 = (0, _aureliaFramework.bindable)({
     name: 'disabled',

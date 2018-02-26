@@ -52,6 +52,7 @@ export let TextWidget = (_dec = customElement('text-widget'), _dec2 = bindable({
   name: 'textValue',
   attribute: 'text-value',
   defaultBindingMode: bindingMode.twoWay,
+  defaultValue: null,
   changeHandler: '_textValueChanged'
 }), _dec3 = bindable({
   name: 'disabled',

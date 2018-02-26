@@ -62,6 +62,7 @@ var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _au
   name: 'textValue',
   attribute: 'text-value',
   defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
+  defaultValue: null,
   changeHandler: '_textValueChanged'
 }), _dec3 = (0, _aureliaFramework.bindable)({
   name: 'disabled',

@@ -416,6 +416,7 @@ const ANIMATION_LENGTH = 200; //ms
   name: 'textValue',
   attribute: 'text-value',
   defaultBindingMode: bindingMode.twoWay,
+  defaultValue: null,
   changeHandler: '_textValueChanged'
 })
 @bindable({

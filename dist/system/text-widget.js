@@ -73,6 +73,7 @@ System.register(['aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocity'
         name: 'textValue',
         attribute: 'text-value',
         defaultBindingMode: bindingMode.twoWay,
+        defaultValue: null,
         changeHandler: '_textValueChanged'
       }), _dec3 = bindable({
         name: 'disabled',
