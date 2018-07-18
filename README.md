@@ -1,3 +1,7 @@
+## NOTE: This Library is no longer actively maintained.
+### Some of the controls listed below have been removed.
+### Each time we remove the major version will be bumped.
+
 Aurelia-Widgets
 
 A widget library for the Aurelia Javascript Framework.  It is bootstrap-oriented, in that these widgets have the layout and class necessary for bootstrap styling.

@@ -19,7 +19,6 @@ System.config({
     "aurelia-polyfills": "npm:aurelia-polyfills@1.2.1",
     "aurelia-templating": "npm:aurelia-templating@1.4.2",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
-    "bootstrap-toggle": "npm:bootstrap-toggle@2.2.2",
     "css": "github:systemjs/plugin-css@0.1.26",
     "jquery": "npm:jquery@2.2.4",
     "numeral": "npm:numeral@1.5.3",
