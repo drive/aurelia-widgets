@@ -1,6 +1,6 @@
 {
   "name": "aurelia-widgets",
-  "version": "3.0.5",
+  "version": "4.0.0",
   "description": "A Collection of UI Widgets for use in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
   "main": "index",
@@ -67,7 +67,7 @@
     "karma-jasmine": "^0.3.7",
     "karma-jspm": "^2.0.2",
     "object.assign": "^1.1.1",
-    "require-dir": "^0.1.0",
+    "require-dir": "^1.0.0",
     "run-sequence": "^1.0.2",
     "through2": "^2.0.1",
     "vinyl-paths": "^1.0.0",

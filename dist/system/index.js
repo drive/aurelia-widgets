@@ -1,16 +1,16 @@
 'use strict';
 
 System.register([], function (_export, _context) {
-                          "use strict";
+  "use strict";
 
-                          function configure(aurelia) {
-                                                    aurelia.globalResources(['./combo', './text-widget', './checkbox', './radiobutton', './currency-input', './text-display-widget', './togglebutton', './select-on-focus', './tooltip']);
-                          }
+  function configure(aurelia) {
+    aurelia.globalResources(['./combo', './text-widget', './checkbox', './radiobutton', './currency-input', './text-display-widget', './select-on-focus', './tooltip']);
+  }
 
-                          _export('configure', configure);
+  _export('configure', configure);
 
-                          return {
-                                                    setters: [],
-                                                    execute: function () {}
-                          };
+  return {
+    setters: [],
+    execute: function () {}
+  };
 });

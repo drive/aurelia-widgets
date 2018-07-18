@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/drivesoftware/aurelia-widgets/compare/3.0.5...v4.0.0) (2018-07-18)
+
+
+### Chores
+
+* **all:** remove toggle ([26cbd6a](https://github.com/drivesoftware/aurelia-widgets/commit/26cbd6a))
+
+
+### BREAKING CHANGES
+
+* **all:** remove toggle button
+
+
+
 <a name="3.0.5"></a>
 ## [3.0.5](https://github.com/drivesoftware/aurelia-widgets/compare/3.0.4...v3.0.5) (2018-02-26)
 

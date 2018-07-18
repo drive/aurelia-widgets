@@ -4694,9 +4694,9 @@ request@~2.21.0:
     qs "~0.6.0"
     tunnel-agent "~0.3.0"
 
-require-dir@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/require-dir/-/require-dir-0.1.0.tgz#81e01e299faf5b74c34b6594f8e5add5985ddec5"
+require-dir@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/require-dir/-/require-dir-1.0.0.tgz#c2639de72960ea1ee280279f2da35e03c6536b2d"
 
 require-relative@^0.8.7:
   version "0.8.7"
