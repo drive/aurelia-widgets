@@ -20,7 +20,6 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.4.2",
     "bootstrap": "github:twbs/bootstrap@3.3.7",
     "css": "github:systemjs/plugin-css@0.1.26",
-    "jquery": "npm:jquery@2.2.4",
     "numeral": "npm:numeral@1.5.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
