@@ -1,8 +1,7 @@
 import numeral from 'numeral';
-import $ from 'jquery';
 import {bindable,customElement,customAttribute} from 'aurelia-templating';
 import {bindingMode} from 'aurelia-binding';
-import {customElement,bindable,bindingMode,computedFrom,TaskQueue,inject,customAttribute} from 'aurelia-framework';
+import {customElement,bindable,bindingMode,computedFrom,TaskQueue,inject} from 'aurelia-framework';
 import {DOM} from 'aurelia-pal';
 import {inject} from 'aurelia-dependency-injection';
 import {EventAggregator} from 'aurelia-event-aggregator';
@@ -356,57 +355,6 @@ export class SelectOnFocus {
     }
   }
 }
-@customElement('text-display-widget')
-@bindable('text')
-@bindable({
-  name: 'placeholder',
-  defaultValue: '',
-  defaultBindingMode: bindingMode.oneTime
-})
-@bindable('toolTipText')
-@bindable({
-  name: 'placement',
-  defaultValue: 'top',
-  defaultBindingMode: bindingMode.oneTime
-})
-@inject(Element)
-export class TextDisplayWidget {
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  bind() {
-    this.toolTipElement = $(this.element.querySelector('.text-display-widget-label'));
-    this.toolTipElement.attr('title', '');
-    const options = {
-      container: 'body',
-      placement: this.placement,
-      html: true,
-      title: this.toolTipText || this.text || ''
-    }
-    this.toolTipElement.tooltip(options);
-  }
-
-  unbind() {
-    this.toolTipElement.tooltip('dispose');
-  }
-
-  textChanged(newValue) {
-    if (!this.toolTipText) {
-      this._updateToolTip(newValue);
-    }
-  }
-
-  toolTipTextChanged(newValue) {
-    this._updateToolTip(newValue);
-  }
-
-  _updateToolTip(newValue) {
-    this.toolTipElement.attr('data-original-title', newValue);
-  }
-
-}
 const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
@@ -542,58 +490,5 @@ export class TextWidget {
   _textValueChanged() {
     if (this.multiline && this.input)
       this._resize();
-  }
-}
-// todo: change this to a bindable property
-const TOOLTIP_PLACEMENT = 'top';
-
-@customAttribute('tooltip')
-@inject(Element)
-export class Tooltip {
-  constructor(element) {
-    this.element = element;
-  }
-
-  bind() {
-    if (this.value) {
-      this._createTooltip(this.value);
-    }
-  }
-
-  unbind() {
-    this._destroyToolTip();
-  }
-
-  valueChanged(newValue, oldValue) {
-    if (newValue) {
-      this._updateToolTip(newValue);
-    } else {
-      this._destroyToolTip();
-    }
-  }
-
-  _updateToolTip(newValue) {
-    if (!this.toolTipElement)
-      this._createTooltip(newValue);
-    else
-      this.toolTipElement.attr('data-original-title', newValue);
-  }
-
-  _createTooltip(value) {
-    this.toolTipElement = $(this.element);
-    this.toolTipElement.attr('title', '');
-    this.toolTipElement.tooltip({
-      container: 'body',
-      placement: TOOLTIP_PLACEMENT,
-      html: true,
-      title: this.value || ''
-    });
-  }
-
-  _destroyToolTip() {
-    if (this.toolTipElement) {
-      this.toolTipElement.tooltip('dispose');
-      this.toolTipElement = null;
-    }
   }
 }

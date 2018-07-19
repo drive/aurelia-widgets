@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/drivesoftware/aurelia-widgets/compare/4.0.0...v5.0.0) (2018-07-19)
+
+
+### Chores
+
+* **all:** remove controls ([257a088](https://github.com/drivesoftware/aurelia-widgets/commit/257a088))
+
+
+### BREAKING CHANGES
+
+* **all:** text display widget and the tooltip attribute
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/drivesoftware/aurelia-widgets/compare/3.0.5...v4.0.0) (2018-07-18)
 
