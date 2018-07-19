@@ -4,8 +4,6 @@ export function configure(aurelia) {
     './checkbox',
     './radiobutton',
     './currency-input',
-    './text-display-widget',
-    './select-on-focus',
-    './tooltip']);
+    './select-on-focus']);
 }
 
