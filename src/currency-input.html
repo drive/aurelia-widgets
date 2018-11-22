@@ -4,7 +4,7 @@
            for="${'au-currency-' + id}"
            class.bind="'control-label ' + (small ? 'small' : '')">${label}</label>
     <input id="${'au-currency-' + id}"
-           value.bind="displayValue"
+           value.bind="inputValue & updateTrigger:'blur'"
            placeholder.bind="placeholder"
            focus.bind="grabFocus"
            disabled.bind="disabled"

@@ -1,4 +1,4 @@
-import { customElement, bindable, bindingMode, computedFrom, TaskQueue } from 'aurelia-framework';
+import { customElement, bindable, bindingMode, observable, TaskQueue } from 'aurelia-framework';
 import { DOM } from 'aurelia-pal';
 import { inject } from 'aurelia-dependency-injection'
 import numeral from 'numeral';
@@ -56,68 +56,48 @@ export class CurrencyInput {
   @bindable small = false;
   @bindable change = () => { };
 
+  @observable inputValue: string = null;
+
   id = nextID++;
 
   constructor(element, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
-
-    this.displayValue = '';
   }
 
   attached() {
     this.input = this.element.querySelector('input');
   }
 
-  valueChanged(newValue, oldValue) {
-    this._updateDisplay(!Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : '', !Number.isNaN(Number.parseFloat(oldValue)) ? oldValue.toString() : '');
-  }
-
-  blur() {
-    this._updateDisplay(this.displayValue, this.value);
-
-    this.taskQueue.queueMicroTask(() => this.element.dispatchEvent(DOM.createCustomEvent('blur')));
-  }
-
-  _updateDisplay(update, oldValue) {
-    let original = this.value;
-    this.displayValue = update.trim();
-    if (this.displayValue) {
-      this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
-      if (isNaN(this.value)) {
-        this._clearValue(oldValue);
-      } else {
-        this._setDisplayValue(this.value, oldValue);
-      }
+  valueChanged(newValue) {
+    if (newValue === null && this.setNullToDefaultValue !== "") {
+      this.taskQueue.queueMicroTask(() => {
+        this.value = Number.parseFloat(newInputValue).toFixed(2);
+      });
     } else {
-      if (this.setNullToDefaultValue !== '') {
-        let newValue = this._castValueToFloat(this.setNullToDefaultValue);
-        this.value = newValue;
-        this.displayValue = numeral(newValue).format('0,0.00');
-      } else {
-        this.value = null;
-      }
+      const newInputValue = !Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : "";
+      if (newInputValue !== this.inputValue)
+        this.inputValue = numeral(newInputValue).format('0,0.00');
+    }
+  }
+
+  inputValueChanged(newInputValue) {
+    newInputValue = newInputValue.replace(/,|$/g, "")
+    let newValue = !Number.isNaN(Number.parseFloat(newInputValue)) ? Number.parseFloat(newInputValue).toFixed(2) : (this.emptyStringIsNull ? null : 0);
+    if (this.onlyAllowPositiveNumbers && newValue < 0) {
+      newValue = 0;
+      this.taskQueue.queueMicroTask(() => {
+        this.inputValue = numeral(newValue).format('0,0.00');
+      });
     }
 
-    if (original !== this.value) {
+    if (newValue !== this.value) {
+      this.value = newValue;
       this.change({ value: this.value });
     }
   }
 
-  _castValueToFloat(value) {
-    return Number(parseFloat(value).toFixed(2));
-  }
-
-  _setDisplayValue(newValue, oldValue) {
-    if (this.onlyAllowPositiveNumbers && newValue < 0) {
-      this._clearValue(oldValue);
-    } else {
-      this.displayValue = numeral(newValue).format('0,0.00');
-    }
-  }
-
-  _clearValue(oldValue) {
-    this.displayValue = oldValue;
-    this.value = oldValue;
+  blur() {
+    this.taskQueue.queueMicroTask(() => this.element.dispatchEvent(DOM.createCustomEvent('blur')));
   }
 }
