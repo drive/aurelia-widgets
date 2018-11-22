@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.0.2"></a>
+## [5.0.2](https://github.com/drivesoftware/aurelia-widgets/compare/5.0.1...v5.0.2) (2018-11-22)
+
+
+### Bug Fixes
+
+* **currency:** add a change callback when value changes ([b17df30](https://github.com/drivesoftware/aurelia-widgets/commit/b17df30))
+* **currency-input:** only call change callback when control initiates change ([296a627](https://github.com/drivesoftware/aurelia-widgets/commit/296a627))
+
+
+
 <a name="5.0.1"></a>
 ## [5.0.1](https://github.com/drivesoftware/aurelia-widgets/compare/5.0.0...v5.0.1) (2018-07-19)
 
