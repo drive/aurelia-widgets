@@ -61,7 +61,7 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injec
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
   var KEY_A = 65;
   var KEY_Z = 90;
@@ -111,72 +111,55 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injec
 
       _initDefineProp(this, 'change', _descriptor3, this);
 
+      _initDefineProp(this, 'inputValue', _descriptor4, this);
+
       this.id = nextID++;
 
       this.element = element;
       this.taskQueue = taskQueue;
-
-      this.displayValue = '';
     }
 
     CurrencyInput.prototype.attached = function attached() {
       this.input = this.element.querySelector('input');
     };
 
-    CurrencyInput.prototype.valueChanged = function valueChanged(newValue, oldValue) {
-      this._updateDisplay(!Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : '', !Number.isNaN(Number.parseFloat(oldValue)) ? oldValue.toString() : '');
-    };
-
-    CurrencyInput.prototype.blur = function blur() {
+    CurrencyInput.prototype.valueChanged = function valueChanged(newValue) {
       var _this = this;
 
-      this._updateDisplay(this.displayValue, this.value);
-
-      this.taskQueue.queueMicroTask(function () {
-        return _this.element.dispatchEvent(_aureliaPal.DOM.createCustomEvent('blur'));
-      });
+      if (newValue === null && this.setNullToDefaultValue !== "") {
+        this.taskQueue.queueMicroTask(function () {
+          _this.value = Number.parseFloat(newInputValue).toFixed(2);
+        });
+      } else {
+        var _newInputValue = !Number.isNaN(Number.parseFloat(newValue)) ? newValue.toString() : "";
+        if (_newInputValue !== this.inputValue) this.inputValue = (0, _numeral2.default)(_newInputValue).format('0,0.00');
+      }
     };
 
-    CurrencyInput.prototype._updateDisplay = function _updateDisplay(update, oldValue) {
-      var original = this.value;
-      this.displayValue = update.trim();
-      if (this.displayValue) {
-        this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
-        if (isNaN(this.value)) {
-          this._clearValue(oldValue);
-        } else {
-          this._setDisplayValue(this.value, oldValue);
-        }
-      } else {
-        if (this.setNullToDefaultValue !== '') {
-          var newValue = this._castValueToFloat(this.setNullToDefaultValue);
-          this.value = newValue;
-          this.displayValue = (0, _numeral2.default)(newValue).format('0,0.00');
-        } else {
-          this.value = null;
-        }
+    CurrencyInput.prototype.inputValueChanged = function inputValueChanged(newInputValue) {
+      var _this2 = this;
+
+      newInputValue = newInputValue.replace(/,|$/g, "");
+      var newValue = !Number.isNaN(Number.parseFloat(newInputValue)) ? Number.parseFloat(newInputValue).toFixed(2) : this.emptyStringIsNull ? null : 0;
+      if (this.onlyAllowPositiveNumbers && newValue < 0) {
+        newValue = 0;
+        this.taskQueue.queueMicroTask(function () {
+          _this2.inputValue = (0, _numeral2.default)(newValue).format('0,0.00');
+        });
       }
 
-      if (original !== this.value) {
+      if (newValue !== this.value) {
+        this.value = newValue;
         this.change({ value: this.value });
       }
     };
 
-    CurrencyInput.prototype._castValueToFloat = function _castValueToFloat(value) {
-      return Number(parseFloat(value).toFixed(2));
-    };
+    CurrencyInput.prototype.blur = function blur() {
+      var _this3 = this;
 
-    CurrencyInput.prototype._setDisplayValue = function _setDisplayValue(newValue, oldValue) {
-      if (this.onlyAllowPositiveNumbers && newValue < 0) {
-        this._clearValue(oldValue);
-      } else {
-        this.displayValue = (0, _numeral2.default)(newValue).format('0,0.00');
-      }
-    };
-
-    CurrencyInput.prototype._clearValue = function _clearValue(oldValue) {
-      this.displayValue = oldValue;
-      this.value = oldValue;
+      this.taskQueue.queueMicroTask(function () {
+        return _this3.element.dispatchEvent(_aureliaPal.DOM.createCustomEvent('blur'));
+      });
     };
 
     return CurrencyInput;
@@ -194,6 +177,11 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-dependency-injec
     enumerable: true,
     initializer: function initializer() {
       return function () {};
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'inputValue', [_aureliaFramework.observable], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
     }
   })), _class2)) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class) || _class);
 });
