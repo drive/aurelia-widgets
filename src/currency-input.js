@@ -54,6 +54,7 @@ export class CurrencyInput {
 
   @bindable label = '';
   @bindable small = false;
+  @bindable change = () => { };
 
   id = nextID++;
 
@@ -79,6 +80,7 @@ export class CurrencyInput {
   }
 
   _updateDisplay(update, oldValue) {
+    let original = this.value;
     this.displayValue = update.trim();
     if (this.displayValue) {
       this.value = this._castValueToFloat(this.displayValue.replace(/,|$/g, ""));
@@ -95,6 +97,10 @@ export class CurrencyInput {
       } else {
         this.value = null;
       }
+    }
+
+    if (original !== this.value) {
+      this.change({ value: this.value });
     }
   }
 
