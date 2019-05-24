@@ -1,8 +1,6 @@
 import { customElement, inject, bindable, bindingMode, TaskQueue } from 'aurelia-framework';
 import { DOM } from 'aurelia-pal';
-import { VelocityAnimator } from 'aurelia-animator-velocity';
 
-const ANIMATION_LENGTH = 200; //ms
 
 @customElement('text-widget')
 @bindable({
@@ -40,7 +38,7 @@ const ANIMATION_LENGTH = 200; //ms
   defaultBindingMode: bindingMode.oneTime,
   defaultValue: null
 })
-@inject(Element, VelocityAnimator, TaskQueue)
+@inject(Element, TaskQueue)
 export class TextWidget {
 
   @bindable small = false;
@@ -49,9 +47,8 @@ export class TextWidget {
   @bindable small = false;
   @bindable horizontal = false;
 
-  constructor(element, animator, taskQueue) {
+  constructor(element, taskQueue) {
     this.element = element;
-    this.animator = animator;
     this.taskQueue = taskQueue;
 
     this.boundExpand = this._expand.bind(this);
@@ -119,13 +116,13 @@ export class TextWidget {
 
   _expand(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${this.optimalHeight}px` }, { duration: ANIMATION_LENGTH });
+      this.input.style.height = `${this.optimalHeight}px`;
     }
   }
 
   blur(e) {
     if (this.optimalHeight > this.minSize) {
-      this.animator.animate(this.input, { height: `${this.minSize}px` }, { duration: ANIMATION_LENGTH });
+      this.input.style.height = `${this.minSize}px`;
       if (this.textValue) {
         this.input.style.overflowY = 'scroll';
       }

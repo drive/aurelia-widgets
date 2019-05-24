@@ -20,7 +20,6 @@
   "author": "Drive Software",
   "license": "MIT",
   "dependencies": {
-    "aurelia-animator-velocity": "^1.2.0",
     "aurelia-binding": "^2.1.2",
     "aurelia-dependency-injection": "^1.4.1",
     "aurelia-event-aggregator": "^1.0.1",
