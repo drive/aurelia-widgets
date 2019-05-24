@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocity'], function (exports, _aureliaFramework, _aureliaPal, _aureliaAnimatorVelocity) {
+define(['exports', 'aurelia-framework', 'aurelia-pal'], function (exports, _aureliaFramework, _aureliaPal) {
   'use strict';
 
   exports.__esModule = true;
@@ -55,7 +55,7 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
 
   var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
-  var ANIMATION_LENGTH = 200;var TextWidget = exports.TextWidget = (_dec = (0, _aureliaFramework.customElement)('text-widget'), _dec2 = (0, _aureliaFramework.bindable)({
+  var TextWidget = exports.TextWidget = (_dec = (0, _aureliaFramework.customElement)('text-widget'), _dec2 = (0, _aureliaFramework.bindable)({
     name: 'textValue',
     attribute: 'text-value',
     defaultBindingMode: _aureliaFramework.bindingMode.twoWay,
@@ -84,8 +84,8 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
     attribute: 'max-length',
     defaultBindingMode: _aureliaFramework.bindingMode.oneTime,
     defaultValue: null
-  }), _dec8 = (0, _aureliaFramework.inject)(Element, _aureliaAnimatorVelocity.VelocityAnimator, _aureliaFramework.TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = function () {
-    function TextWidget(element, animator, taskQueue) {
+  }), _dec8 = (0, _aureliaFramework.inject)(Element, _aureliaFramework.TaskQueue), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = _dec7(_class = _dec8(_class = (_class2 = function () {
+    function TextWidget(element, taskQueue) {
       _classCallCheck(this, TextWidget);
 
       _initDefineProp(this, 'small', _descriptor, this);
@@ -99,7 +99,6 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
       _initDefineProp(this, 'horizontal', _descriptor5, this);
 
       this.element = element;
-      this.animator = animator;
       this.taskQueue = taskQueue;
 
       this.boundExpand = this._expand.bind(this);
@@ -166,7 +165,7 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
 
     TextWidget.prototype._expand = function _expand(e) {
       if (this.optimalHeight > this.minSize) {
-        this.animator.animate(this.input, { height: this.optimalHeight + 'px' }, { duration: ANIMATION_LENGTH });
+        this.input.style.height = this.optimalHeight + 'px';
       }
     };
 
@@ -174,7 +173,7 @@ define(['exports', 'aurelia-framework', 'aurelia-pal', 'aurelia-animator-velocit
       var _this = this;
 
       if (this.optimalHeight > this.minSize) {
-        this.animator.animate(this.input, { height: this.minSize + 'px' }, { duration: ANIMATION_LENGTH });
+        this.input.style.height = this.minSize + 'px';
         if (this.textValue) {
           this.input.style.overflowY = 'scroll';
         }
