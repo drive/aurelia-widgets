@@ -1,6 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [6.0.1](https://github.com/drivesoftware/aurelia-widgets/compare/6.0.0...6.0.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **package:** set plugin primary entry point ([#6](https://github.com/drivesoftware/aurelia-widgets/issues/6)) ([f079000](https://github.com/drivesoftware/aurelia-widgets/commit/f079000))
+
+
 
 # [6.0.0](https://github.com/drivesoftware/aurelia-widgets/compare/5.0.2...6.0.0) (2019-05-24)
 
