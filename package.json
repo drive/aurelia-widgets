@@ -3,7 +3,7 @@
   "version": "6.0.0",
   "description": "A Collection of UI Widgets for use in Aurelia applications",
   "homepage": "http://drivesoftware.co.nz",
-  "main": "index",
+  "main": "dist/index",
   "format": "register",
   "readme": "README.md",
   "directories": {
